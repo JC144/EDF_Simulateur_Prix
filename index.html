@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Linky analyser</title>
+</head>
+
+<body>
+    <h1>Comparatif des offres EDF</h1>
+    <div id="importView">
+        <h2>Importez votre fichier mes-puissances-atteintes-30min</h2>
+        <form id="formImport">
+            <input type="file" id="csvFile" accept=".csv" />
+            <br />
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+
+    <div id="importResultView">
+        <h2>Votre consommation</h2>
+        <button id="showSubscriptionPicker">Configurez votre abonnement</button>
+        <div id="importResult">
+
+        </div>
+    </div>
+
+    <div id="subscriptionPickerView">
+        <h2>Configurez votre abonnement</h2>
+        <button id="viewResults">Voir le résultat</button>
+        <div id="subscriptionPicker">
+        </div>
+    </div>
+
+    <div id="pricesResultView">
+        <h2>Votre tarif</h2>
+        <div id="pricesResult">
+        </div>
+    </div>
+
+    <script src="./scripts/tarifs/bleu.js"></script>
+    <script src="./scripts/tarifs/bleuHC.js"></script>
+    <script src="./scripts/tarifs/tempo.js"></script>
+
+    <script src="./scripts/parser.js"></script>
+    <script src="./scripts/viewManager.js"></script>
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>
