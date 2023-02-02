@@ -4,11 +4,9 @@ var viewManager = {
     init: function () {
         const importView = document.getElementById("importView");
         const resultView = document.getElementById("importResultView");
-        const subscriptionPickerView = document.getElementById("subscriptionPickerView");
         const pricesResultView = document.getElementById("pricesResultView");
         this.views["import"] = importView;
         this.views["result"] = resultView;
-        this.views["subscription"] = subscriptionPickerView;
         this.views["prices"] = pricesResultView;
 
         this.setAllViewsToNoneExceptFirst();
