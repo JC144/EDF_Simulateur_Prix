@@ -76,8 +76,10 @@ var tarifBleu = {
 
                 for (let hour = 0; hour < data[day].hours.length - 1; hour += 2) {
                     let hourData = {};
+
                     hourData.hour = data[day].hours[hour][0].split(":")[0] + ":00:00";
                     hourData.conso = (parseInt(data[day].hours[hour][1]) + parseInt(data[day].hours[hour + 1][1])) / 2;
+                    
                     hourData.price = (((hourData.conso / 1000) * parseInt(abonnement.prixKwh)) / 100);
                     dayData.hours.push(hourData);
                 }

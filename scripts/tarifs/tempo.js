@@ -197,12 +197,10 @@ var tarifTempo = {
                             prixKwhHP = abonnement.bleu.prixKwhHP;
                         }
                         hourData.price = (((hourData.conso / 1000) * parseInt(prixKwhHP)) / 100);
-                    }
-
-                    dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
-                    dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0);
+                    }                    
                     dayData.hours.push(hourData);
                 }
+                dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
                 dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0);
                 monthData.days.push(dayData);
             }
