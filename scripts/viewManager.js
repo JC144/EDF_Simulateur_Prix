@@ -3,10 +3,8 @@ var viewManager = {
     currentView: 0,
     init: function () {
         const importView = document.getElementById("importView");
-        const resultView = document.getElementById("importResultView");
         const pricesResultView = document.getElementById("pricesResultView");
         this.views["import"] = importView;
-        this.views["result"] = resultView;
         this.views["prices"] = pricesResultView;
 
         this.setAllViewsToNoneExceptFirst();
