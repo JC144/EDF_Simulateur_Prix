@@ -5,6 +5,7 @@ Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [M
 
 ## Utilisation
 1) Récupérez sur le site d'EDF votre consommation [https://equilibre.edf.fr/comprendre?dashboardOpenRequired=true](https://equilibre.edf.fr/comprendre?dashboardOpenRequired=true)
+![Bouton télécharger](https://user-images.githubusercontent.com/1168432/216930725-d3af991d-7761-40bc-892f-285d11390fd8.png)
 2) Dézippez ce répertoire
 3) Téléchargez ce projet en cliquant sur le bouton code puis "Download zip"
 ![Comment récupérer le projet](https://user-images.githubusercontent.com/1168432/216541398-0d862d3f-30d6-4b08-9e79-7e3d5a1cdfef.png)
