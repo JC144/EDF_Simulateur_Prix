@@ -3,6 +3,8 @@ Un outil pour simuler les différents Tarifs EDF depuis un export de la consomma
 
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
 
+Derniers tarifs: 1 Aout 2023
+
 ## Utilisation
 1) Récupérez sur le site d'EDF votre consommation [https://equilibre.edf.fr/comprendre?dashboardOpenRequired=true](https://equilibre.edf.fr/comprendre?dashboardOpenRequired=true)
 ![Bouton télécharger](https://user-images.githubusercontent.com/1168432/216930725-d3af991d-7761-40bc-892f-285d11390fd8.png)
@@ -17,9 +19,9 @@ Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [M
 ## A venir
 - [ ] Amélioration de Tempo. Actuellement les jours rouges sont pris aléatoirement.
   - [ ] Sélectionner les pires jours rouges de l'année
-  - [ ] Autoriser l'utilisateur à sélectionner ces jours rouges et blancs
-- [ ] Support de l'export Enedis
-- [ ] Affichage des trois tarifications côte à côte
+  - [ ] Autoriser l'utilisateur à sélectionner ses jours rouges et blancs
+- [ ] Refactoriser gestion des HP/HC/Jours rouges/blancs pour fusionner ZenFlex, Tempo et BleuHC
+- [ ] Uniformiser le franglais :°
 
 
 ## A propos de l'auteur

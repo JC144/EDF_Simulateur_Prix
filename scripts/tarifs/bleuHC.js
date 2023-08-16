@@ -2,51 +2,51 @@ var tarifBleuHC = {
     prices: [
         {
             puissance: 6,
-            abonnement: 12.35,
-            prixKwhHP: 22.28,
-            prixKwhHC: 16.15
+            abonnement: 12.85,
+            prixKwhHP: 24.60,
+            prixKwhHC: 18.28
         },
         {
             puissance: 9,
-            abonnement: 16.03,
-            prixKwhHP: 22.28,
-            prixKwhHC: 16.15
+            abonnement: 16.55,
+            prixKwhHP: 24.60,
+            prixKwhHC: 18.28
         },
         {
             puissance: 12,
-            abonnement: 19.34,
-            prixKwhHP: 22.28,
-            prixKwhHC: 16.15
+            abonnement: 19.97,
+            prixKwhHP: 24.60,
+            prixKwhHC: 18.28
         },
         {
             puissance: 15,
-            abonnement: 22.50,
-            prixKwhHP: 22.28,
-            prixKwhHC: 16.15
+            abonnement: 23.24,
+            prixKwhHP: 24.60,
+            prixKwhHC: 18.28
         },
         {
             puissance: 18,
-            abonnement: 25.58,
-            prixKwhHP: 22.28,
-            prixKwhHC: 16.15
+            abonnement: 26.48,
+            prixKwhHP: 24.60,
+            prixKwhHC: 18.28
         },
         {
             puissance: 24,
-            abonnement: 31.69,
-            prixKwhHP: 22.28,
-            prixKwhHC: 16.15
+            abonnement: 33.28,
+            prixKwhHP: 24.60,
+            prixKwhHC: 18.28
         },
         {
             puissance: 30,
-            abonnement: 37.68,
-            prixKwhHP: 22.28,
-            prixKwhHC: 16.15
+            abonnement: 39.46,
+            prixKwhHP: 24.60,
+            prixKwhHC: 18.28
         },
         {
             puissance: 36,
-            abonnement: 42.42,
-            prixKwhHP: 22.28,
-            prixKwhHC: 16.15
+            abonnement: 44.64,
+            prixKwhHP: 24.60,
+            prixKwhHC: 18.28
         }],
     hc: {
         start: 22,
@@ -68,7 +68,8 @@ var tarifBleuHC = {
 
             let monthData = {};
             for (let day = 0; day < data.length; day++) {
-                let date = data[day].date.split("/");
+                let date = data[day].date.split("/");                
+
                 if (date[1] != currentMonth) {
                     if (monthData.days) {
                         monthData.conso = monthData.days.reduce((a, b) => a + b.conso, 0);
@@ -85,6 +86,8 @@ var tarifBleuHC = {
                     date: data[day].date,
                     hours: []
                 };
+                dayData.priceHC = 0;
+                dayData.priceHP = 0;
 
                 for (let hour = 0; hour < data[day].hours.length - 1; hour += 2) {
                     let hourData = {};
@@ -94,10 +97,14 @@ var tarifBleuHC = {
 
                     let currentHour = parseInt(data[day].hours[hour][0].split(":")[0]);
                     if (currentHour >= this.hc.start || currentHour <= this.hc.end) {
-                        hourData.price = (((hourData.conso / 1000) * parseInt(abonnement.prixKwhHC)) / 100);
+                        hourData.price = (((hourData.conso / 1000) * abonnement.prixKwhHC) / 100);
+                        dayData.priceHC += hourData.price;
+                        hourData.type = "HC";
                     }
                     else {
-                        hourData.price = (((hourData.conso / 1000) * parseInt(abonnement.prixKwhHP)) / 100);
+                        hourData.price = (((hourData.conso / 1000) * abonnement.prixKwhHP) / 100);
+                        dayData.priceHP += hourData.price;
+                        hourData.type = "HP";
                     }
                     dayData.hours.push(hourData);
                 }

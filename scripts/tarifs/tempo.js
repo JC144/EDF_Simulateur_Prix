@@ -2,124 +2,124 @@ var tarifTempo = {
     prices: [
         {
             puissance: 6,
-            abonnement: 12.28,
+            abonnement: 12.80,
             bleu: {
-                prixKwhHP: 12.49,
-                prixKwhHC: 9.70
+                prixKwhHP: 13.69,
+                prixKwhHC: 10.56
             },
             blanc: {
-                prixKwhHP: 15.08,
-                prixKwhHC: 11.40
+                prixKwhHP: 16.54,
+                prixKwhHC: 12.46
             },
             rouge: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 12.16
+                prixKwhHP: 73.24,
+                prixKwhHC: 13.28
             }
         },
         {
             puissance: 9,
-            abonnement: 15.33,
+            abonnement: 16.00,
             bleu: {
-                prixKwhHP: 12.49,
-                prixKwhHC: 9.70
+                prixKwhHP: 13.69,
+                prixKwhHC: 10.56
             },
             blanc: {
-                prixKwhHP: 15.08,
-                prixKwhHC: 11.40
+                prixKwhHP: 16.54,
+                prixKwhHC: 12.46
             },
             rouge: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 12.16
+                prixKwhHP: 73.24,
+                prixKwhHC: 13.28
             }
         },
         {
             puissance: 12,
-            abonnement: 18.78,
+            abonnement: 19.29,
             bleu: {
-                prixKwhHP: 12.49,
-                prixKwhHC: 9.70
+                prixKwhHP: 13.69,
+                prixKwhHC: 10.56
             },
             blanc: {
-                prixKwhHP: 15.08,
-                prixKwhHC: 11.40
+                prixKwhHP: 16.54,
+                prixKwhHC: 12.46
             },
             rouge: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 12.16
+                prixKwhHP: 73.24,
+                prixKwhHC: 13.28
             }
         },
         {
             puissance: 15,
-            abonnement: 21.27,
+            abonnement: 22.30,
             bleu: {
-                prixKwhHP: 12.49,
-                prixKwhHC: 9.70
+                prixKwhHP: 13.69,
+                prixKwhHC: 10.56
             },
             blanc: {
-                prixKwhHP: 15.08,
-                prixKwhHC: 11.40
+                prixKwhHP: 16.54,
+                prixKwhHC: 12.46
             },
             rouge: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 12.16
+                prixKwhHP: 73.24,
+                prixKwhHC: 13.28
             }
         },
         {
             puissance: 18,
-            abonnement: 23.98,
+            abonnement: 25.29,
             bleu: {
-                prixKwhHP: 12.49,
-                prixKwhHC: 9.70
+                prixKwhHP: 13.69,
+                prixKwhHC: 10.56
             },
             blanc: {
-                prixKwhHP: 15.08,
-                prixKwhHC: 11.40
+                prixKwhHP: 16.54,
+                prixKwhHC: 12.46
             },
             rouge: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 12.16
+                prixKwhHP: 73.24,
+                prixKwhHC: 13.28
             }
         },
         {
             puissance: 30,
-            abonnement: 36.06,
+            abonnement: 38.13,
             bleu: {
-                prixKwhHP: 12.49,
-                prixKwhHC: 9.70
+                prixKwhHP: 13.69,
+                prixKwhHC: 10.56
             },
             blanc: {
-                prixKwhHP: 15.08,
-                prixKwhHC: 11.40
+                prixKwhHP: 16.54,
+                prixKwhHC: 12.46
             },
             rouge: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 12.16
+                prixKwhHP: 73.24,
+                prixKwhHC: 13.28
             }
         },
         {
             puissance: 36,
-            abonnement: 41.90,
+            abonnement: 44.28,
             bleu: {
-                prixKwhHP: 12.49,
-                prixKwhHC: 9.70
+                prixKwhHP: 13.69,
+                prixKwhHC: 10.56
             },
             blanc: {
-                prixKwhHP: 15.08,
-                prixKwhHC: 11.40
+                prixKwhHP: 16.54,
+                prixKwhHC: 12.46
             },
             rouge: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 12.16
+                prixKwhHP: 73.24,
+                prixKwhHC: 13.28
             }
         }],
-    hc: {
+    hc: [{
         start: 22,
+        end: 24
+    },
+    {
+        start: 0,
         end: 6
-    },
-    hp: {
-        start: 6,
-        end: 22
-    },
+    }],
     redDays: {
         numberOfDays: 22,
         monthBegin: 11,
@@ -146,6 +146,8 @@ var tarifTempo = {
             let monthData = {};
             for (let day = 0; day < data.length; day++) {
                 let date = data[day].date.split("/");
+
+
                 if (date[1] != currentMonth) {
                     if (monthData.days) {
                         monthData.conso = monthData.days.reduce((a, b) => a + b.conso, 0);
@@ -162,8 +164,10 @@ var tarifTempo = {
                     date: data[day].date,
                     hours: []
                 };
+                dayData.priceHC = 0;
+                dayData.priceHP = 0;
 
-                dayData.color = getDayColor(dayData);
+                dayData.color = this.getDayColor(dayData);
 
                 for (let hour = 0; hour < data[day].hours.length - 1; hour += 2) {
                     let hourData = {};
@@ -172,34 +176,44 @@ var tarifTempo = {
                     hourData.conso = (parseInt(data[day].hours[hour][1]) + parseInt(data[day].hours[hour + 1][1])) / 2;
 
                     let currentHour = parseInt(data[day].hours[hour][0].split(":")[0]);
-                    if (currentHour >= this.hc.start || currentHour <= this.hc.end) {
+
+                    if (this.hc.some(range => currentHour >= range.start && currentHour < range.end)) {
                         let prixKwhHC = 0;
                         if (dayData.color == "red") {
-                            prixKwhHP = abonnement.rouge.prixKwhHC;
+                            prixKwhHC = abonnement.rouge.prixKwhHC;
+                            hourData.type = "red HC";
                         }
                         else if (dayData.color == "white") {
-                            prixKwhHP = abonnement.blanc.prixKwhHC;
+                            prixKwhHC = abonnement.blanc.prixKwhHC;
+                            hourData.type = "white HC";
                         }
                         else {
-                            prixKwhHP = abonnement.bleu.prixKwhHC;
+                            prixKwhHC = abonnement.bleu.prixKwhHC;
+                            hourData.type = "bleu HC";
                         }
-                        hourData.price = (((hourData.conso / 1000) * parseInt(prixKwhHC)) / 100);
+                        hourData.price = (((hourData.conso / 1000) * prixKwhHC) / 100);                        
+                        dayData.priceHC += hourData.price;
                     }
                     else {
                         let prixKwhHP = 0;
                         if (dayData.color == "red") {
                             prixKwhHP = abonnement.rouge.prixKwhHP;
+                            hourData.type = "red HP";
                         }
                         else if (dayData.color == "white") {
                             prixKwhHP = abonnement.blanc.prixKwhHP;
+                            hourData.type = "white HP";
                         }
                         else {
                             prixKwhHP = abonnement.bleu.prixKwhHP;
+                            hourData.type = "bleu HP";
                         }
-                        hourData.price = (((hourData.conso / 1000) * parseInt(prixKwhHP)) / 100);
-                    }                    
+                        hourData.price = (((hourData.conso / 1000) * prixKwhHP) / 100);
+                        dayData.priceHP += hourData.price;
+                    }
                     dayData.hours.push(hourData);
                 }
+                
                 dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
                 dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0);
                 monthData.days.push(dayData);
@@ -211,34 +225,32 @@ var tarifTempo = {
         }
 
         return yearData;
-    }
-}
-
-function getDayColor(day) {
-    let month = parseInt(day.date.split("/")[1]);
-    let color = "bleu";
-    if (tarifTempo.redDays.numberOfDaysLeft > 0 && (month >= tarifTempo.redDays.monthBegin || month <= tarifTempo.redDays.monthEnd)) {
-        if (Math.random() < calculateRiskForADay(tarifTempo.redDays.monthEnd, tarifTempo.redDays.monthBegin, tarifTempo.redDays.numberOfDays)) {
-            color = "red";
-            tarifTempo.redDays.numberOfDaysLeft--;
+    },
+    getDayColor: function (day) {
+        let month = parseInt(day.date.split("/")[1]);
+        let color = "bleu";
+        if (tarifTempo.redDays.numberOfDaysLeft > 0 && (month >= tarifTempo.redDays.monthBegin || month <= tarifTempo.redDays.monthEnd)) {
+            if (Math.random() < this.calculateRiskForADay(tarifTempo.redDays.monthEnd, tarifTempo.redDays.monthBegin, tarifTempo.redDays.numberOfDays)) {
+                color = "red";
+                tarifTempo.redDays.numberOfDaysLeft--;
+            }
         }
-    }
-    if (tarifTempo.whiteDays.numberOfDaysLeft > 0 && color != "red" && (month >= tarifTempo.whiteDays.monthBegin || month <= tarifTempo.whiteDays.monthEnd)) {
-        if (Math.random() < calculateRiskForADay(tarifTempo.whiteDays.monthEnd, tarifTempo.whiteDays.monthBegin, tarifTempo.whiteDays.numberOfDays)) {
-            color = "white";
-            tarifTempo.whiteDays.numberOfDaysLeft--;
+        if (tarifTempo.whiteDays.numberOfDaysLeft > 0 && color != "red" && (month >= tarifTempo.whiteDays.monthBegin || month <= tarifTempo.whiteDays.monthEnd)) {
+            if (Math.random() < this.calculateRiskForADay(tarifTempo.whiteDays.monthEnd, tarifTempo.whiteDays.monthBegin, tarifTempo.whiteDays.numberOfDays)) {
+                color = "white";
+                tarifTempo.whiteDays.numberOfDaysLeft--;
+            }
         }
+        return color;
+    },
+    calculateRiskForADay: function (monthEnd, monthBegin, numberOfDays) {
+        let riskOfDay = 0;
+        if (monthBegin > monthEnd) {
+            riskOfDay = (((12 - monthBegin) + monthBegin) * 30.5) / numberOfDays;
+        }
+        else {
+            riskOfDay = ((monthEnd - monthBegin) * 30.5) / numberOfDays;
+        }
+        return riskOfDay;
     }
-    return color;
-}
-
-function calculateRiskForADay(monthEnd, monthBegin, numberOfDays) {
-    let riskOfDay = 0;
-    if (monthBegin > monthEnd) {
-        riskOfDay = (((12 - monthBegin) + monthBegin) * 30.5) / numberOfDays;
-    }
-    else {
-        riskOfDay = ((monthEnd - monthBegin) * 30.5) / numberOfDays;
-    }
-    return riskOfDay;
 }

@@ -22,7 +22,7 @@ function onFileImported(e) {
 
 function displayResults() {
     viewManager.displayNextView();
-    
+
     let resultBleu = {};
     resultBleu.tarif = tarifBleu.getTarif(9, data);
     resultBleu.title = "Le tarif Bleu";
@@ -33,10 +33,15 @@ function displayResults() {
     resultBleuHC.title = "Le tarif Bleu Heures Creuses";
     displayTarif(resultBleuHC);
 
-    let resultTempo = {};    
+    let resultTempo = {};
     resultTempo.tarif = tarifTempo.getTarif(9, data);
     resultTempo.title = "Le tarif Tempo";
     displayTarif(resultTempo);
+
+    let resultZenFlex = {};
+    resultZenFlex.tarif = tarifZenFlex.getTarif(9, data);
+    resultZenFlex.title = "Le tarif ZenFlex";
+    displayTarif(resultZenFlex);
 }
 
 function getMonthName(monthNumber) {
@@ -47,7 +52,7 @@ function getMonthName(monthNumber) {
     return monthString.charAt(0).toUpperCase() + monthString.slice(1)
 }
 
-function displayTarif(result){
+function displayTarif(result) {
     const pricesResultRow = document.getElementById("pricesResultRow");
     const pricesTitleRow = document.getElementById("pricesTitleRow");
 
@@ -71,7 +76,7 @@ function displayTarif(result){
     year.classList.add("mb-4");
     resultCol.appendChild(year);
 
-    year.innerHTML = "Consommation : "+(result.tarif.conso / 1000).toFixed(2) + "kWh <br/> " + "Estimation : "+result.tarif.price.toFixed(2) + " € TTC";
+    year.innerHTML = "Consommation : " + (result.tarif.conso / 1000).toFixed(2) + "kWh <br/> " + "Estimation : " + result.tarif.price.toFixed(2) + " € TTC";
 
     const listOfMonths = document.createElement("ul");
     resultCol.appendChild(listOfMonths);
@@ -79,13 +84,13 @@ function displayTarif(result){
     for (let i = 0; i < result.tarif.months.length; i++) {
         const month = document.createElement("li");
         listOfMonths.appendChild(month);
-        month.innerHTML = getMonthName(parseInt(result.tarif.months[i].month)) + " - " + (result.tarif.months[i].conso / 1000).toFixed(2) + "kWh - " + result.tarif.months[i].price.toFixed(2) + "€";
+        month.innerHTML = getMonthName(parseInt(result.tarif.months[i].month)) + "<br/>" + (result.tarif.months[i].conso / 1000).toFixed(2) + "kWh<br/>" + result.tarif.months[i].price.toFixed(2) + "€";
 
         const listOfDays = document.createElement("ul");
         month.appendChild(listOfDays);
         for (let j = result.tarif.months[i].days.length - 1; j >= 0; j--) {
             const day = document.createElement("li");
-            day.innerHTML = result.tarif.months[i].days[j].date + " - " + (result.tarif.months[i].days[j].conso / 1000).toFixed(2) + "kWh - " + result.tarif.months[i].days[j].price.toFixed(2) + "€";
+            day.innerHTML = result.tarif.months[i].days[j].date + "<br/>" + (result.tarif.months[i].days[j].conso / 1000).toFixed(2) + "kWh<br/>HC: " + result.tarif.months[i].days[j].priceHC.toFixed(2) + "€ <br/>HP: " + result.tarif.months[i].days[j].priceHP.toFixed(2) + "€ <br/>" + result.tarif.months[i].days[j].price.toFixed(2) + "€";
             listOfDays.appendChild(day);
         }
     }
