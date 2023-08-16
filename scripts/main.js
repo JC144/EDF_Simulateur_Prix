@@ -10,8 +10,15 @@ function onFileImported(e) {
     e.preventDefault();
     const input = csvFile.files[0];
     const reader = new FileReader();
+    
     reader.onload = function (e) {
+        var parser = edfParser;
         const text = e.target.result;
+
+        if (csvFile.files[0].name.includes("Enedis")) {
+            parser = enedisParser;    
+        }
+        
         let rawCSV = parser.parseCSV(text);
         data = parser.loadData(rawCSV);
 
@@ -24,22 +31,22 @@ function displayResults() {
     viewManager.displayNextView();
 
     let resultBleu = {};
-    resultBleu.tarif = tarifBleu.getTarif(9, data);
+    resultBleu.tarif = calculator.getTarif(9, data, tarifBleu);
     resultBleu.title = "Le tarif Bleu";
     displayTarif(resultBleu);
 
     let resultBleuHC = {};
-    resultBleuHC.tarif = tarifBleuHC.getTarif(9, data);
+    resultBleuHC.tarif = calculator.getTarif(9, data, tarifBleuHC);
     resultBleuHC.title = "Le tarif Bleu Heures Creuses";
     displayTarif(resultBleuHC);
 
     let resultTempo = {};
-    resultTempo.tarif = tarifTempo.getTarif(9, data);
+    resultTempo.tarif = calculator.getTarif(9, data, tarifTempo);
     resultTempo.title = "Le tarif Tempo";
     displayTarif(resultTempo);
 
     let resultZenFlex = {};
-    resultZenFlex.tarif = tarifZenFlex.getTarif(9, data);
+    resultZenFlex.tarif = calculator.getTarif(9, data, tarifZenFlex);
     resultZenFlex.title = "Le tarif ZenFlex";
     displayTarif(resultZenFlex);
 }

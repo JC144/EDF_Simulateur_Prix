@@ -22,9 +22,11 @@
 
             <div id="importView">
                 <h2>Importez vos données</h2>
-                < class="fs-5 col-md-8">Tout est géré en local, aucune donnée n'est transmise.<br /><br />
+                <p class="fs-5 col-md-8">Tout est géré en local, aucune donnée n'est transmise.<br /><br />
                     Choisissez le fichier "mes-puissances-atteintes-30min-XXXX.csv" si vous avez réalisé un export
-                    depuis le site d'EDF.<br />
+                    depuis le site d'EDF.<br /><br />
+                    Ou le fichier "Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv" si vous avez réalisé un export
+                    depuis le site d'Enedis.<br />
                     <br /><br />
                     Assurez-vous de bien avoir un suivi à la demi-heure.
                     <br/><br/>
@@ -48,12 +50,14 @@
         </main>
     </div>
 
+    <script src="./scripts/calculator.js"></script>
     <script src="./scripts/tarifs/bleu.js"></script>
     <script src="./scripts/tarifs/bleuHC.js"></script>
     <script src="./scripts/tarifs/tempo.js"></script>
     <script src="./scripts/tarifs/zenFlex.js"></script>
 
-    <script src="./scripts/parser.js"></script>
+    <script src="./scripts/edfParser.js"></script>
+    <script src="./scripts/enedisParser.js"></script>
     <script src="./scripts/viewManager.js"></script>
     <script src="./scripts/main.js"></script>
 

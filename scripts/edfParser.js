@@ -1,4 +1,4 @@
-var parser = {
+var edfParser = {
     parseCSV: function (csv) {
         const result = [];
 
@@ -10,21 +10,21 @@ var parser = {
         }
         return result;
     },
-    loadData: function (csv) {
+    loadData: function (rows) {
         let data = [];
         let day = {};
 
-        for (let index = 0; index < csv.length; index++) {
-            let line = csv[index];
-            if (csv[index].length > 0) {
-                if (csv[index][0].includes("/")) {
+        for (let index = 0; index < rows.length; index++) {
+            let line = rows[index];
+            if (rows[index].length > 0) {
+                if (rows[index][0].includes("/")) {
                     day = {};
                     data.push(day);
-                    day.date = csv[index][0];
+                    day.date = rows[index][0];
                     day.hours = [];
                 }
-                else if (csv[index][0].includes(":")) {
-                    day.hours.push([csv[index][0], csv[index][1]]);
+                else if (rows[index][0].includes(":")) {
+                    day.hours.push([rows[index][0], rows[index][1]]);
                 }
             }
         }
