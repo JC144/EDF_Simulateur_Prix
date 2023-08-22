@@ -18,9 +18,12 @@ var edfParser = {
             let line = rows[index];
             if (rows[index].length > 0) {
                 if (rows[index][0].includes("/")) {
+                    let date = rows[index][0].split("/");
+                    let isoDate = date[2] + "/" + date[1] + "/" + date[0];
+
                     day = {};
                     data.push(day);
-                    day.date = rows[index][0];
+                    day.date = isoDate;
                     day.hours = [];
                 }
                 else if (rows[index][0].includes(":")) {
