@@ -1,4 +1,5 @@
-var tarifBleuHC = {
+abonnements.push({
+    name: "Bleu Heures Creuses",
     prices: [
         {
             puissance: 6,
@@ -73,4 +74,4 @@ var tarifBleuHC = {
         end: 7
     }],
     specialDays: []
-}
+});

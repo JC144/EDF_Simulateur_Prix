@@ -1,54 +1,53 @@
 viewManager.init();
 
 var data = [];
+
 const formImport = document.getElementById("formImport");
 const csvFile = document.getElementById("csvFile");
+const kvaSelector = document.getElementById("puissanceSouscrite");
+const simulateButton = document.getElementById("simulateButton");
+const importError = document.getElementById("importError");
 
 csvFile.addEventListener("change", onFileImported);
+importError.style.display = "none";
+
+document.getElementById("startButton").onclick = function () { viewManager.displayNextView(); };
+document.getElementById("simulateButton").onclick = function () { displayResults(kvaSelector.value); };
 
 function onFileImported(e) {
     e.preventDefault();
     const input = csvFile.files[0];
     const reader = new FileReader();
-    
+
     reader.onload = function (e) {
+        importError.style.display = "none";
+
         var parser = edfParser;
         const text = e.target.result;
 
         if (csvFile.files[0].name.includes("Enedis")) {
-            parser = enedisParser;    
+            parser = enedisParser;
         }
-        
-        let rawCSV = parser.parseCSV(text);
-        data = parser.loadData(rawCSV);
-
-        displayResults();
+        try {
+            let rawCSV = parser.parseCSV(text);
+            data = parser.loadData(rawCSV);
+            simulateButton.disabled = false;
+        }
+        catch (e) {
+            importError.style.display = "block";
+        }
     };
     reader.readAsText(input);
 }
 
-function displayResults() {
+function displayResults(kva) {
     viewManager.displayNextView();
-
-    let resultBleu = {};
-    resultBleu.tarif = calculator.getTarif(9, data, tarifBleu);
-    resultBleu.title = "Le tarif Bleu";
-    displayTarif(resultBleu);
-
-    let resultBleuHC = {};
-    resultBleuHC.tarif = calculator.getTarif(9, data, tarifBleuHC);
-    resultBleuHC.title = "Le tarif Bleu Heures Creuses";
-    displayTarif(resultBleuHC);
-
-    let resultTempo = {};
-    resultTempo.tarif = calculator.getTarif(9, data, tarifTempo);
-    resultTempo.title = "Le tarif Tempo";
-    displayTarif(resultTempo);
-
-    let resultZenFlex = {};
-    resultZenFlex.tarif = calculator.getTarif(9, data, tarifZenFlex);
-    resultZenFlex.title = "Le tarif ZenFlex";
-    displayTarif(resultZenFlex);
+    abonnements.forEach((abo) => {
+        let result = {};
+        result.tarif = calculator.getTarif(kva, data, abo);
+        result.title = abo.name;
+        displayTarif(result);
+    });
 }
 
 function getMonthName(monthNumber) {
@@ -62,9 +61,13 @@ function getMonthName(monthNumber) {
 function displayTarif(result) {
     const pricesResultRow = document.getElementById("pricesResultRow");
     const pricesTitleRow = document.getElementById("pricesTitleRow");
+    const detailMonthyByMonth = document.getElementById("div-detailPrice");
+    const detailCol = document.createElement("div");
+    detailMonthyByMonth.appendChild(detailCol);
 
     const resultCol = document.createElement("div");
     resultCol.classList.add("col-sm");
+    detailCol.classList.add("col-sm");
     pricesResultRow.appendChild(resultCol);
 
     const titleCol = document.createElement("div");
@@ -83,23 +86,30 @@ function displayTarif(result) {
     year.classList.add("mb-4");
     resultCol.appendChild(year);
 
-    year.innerHTML = "Consommation : " + (result.tarif.conso / 1000).toFixed(2) + "kWh <br/> " + "Estimation : " + result.tarif.price.toFixed(2) + " € TTC";
+    let displayConsommationAndPrice = "";
+    result.tarif.forEach((y) => {
+        displayConsommationAndPrice += "Mars " + (y.year - 1) + " à Mars " + y.year + "<br />";
+        displayConsommationAndPrice += "Consommation : " + (y.conso / 1000).toFixed(2) + "kWh <br/>";
+        displayConsommationAndPrice += "Estimation : " + y.price.toFixed(2) + " € TTC <br/><br/> ";
+    });
+    year.innerHTML = displayConsommationAndPrice;
 
     const listOfMonths = document.createElement("ul");
-    resultCol.appendChild(listOfMonths);
+    detailCol.appendChild(listOfMonths);
 
-    for (let i = 0; i < result.tarif.months.length; i++) {
-        const month = document.createElement("li");
-        listOfMonths.appendChild(month);
-        month.innerHTML = getMonthName(parseInt(result.tarif.months[i].month)) + "<br/>" + (result.tarif.months[i].conso / 1000).toFixed(2) + "kWh<br/>" + result.tarif.months[i].price.toFixed(2) + "€";
+    result.tarif.forEach((y) => {
+        y.months.forEach((m) => {
+            const month = document.createElement("li");
+            listOfMonths.appendChild(month);
+            month.innerHTML = getMonthName(parseInt(m.month)) + "<br/>" + (m.conso / 1000).toFixed(2) + "kWh<br/>" + m.price.toFixed(2) + "€";
 
-        const listOfDays = document.createElement("ul");
-        month.appendChild(listOfDays);
-        for (let j = result.tarif.months[i].days.length - 1; j >= 0; j--) {
-            const day = document.createElement("li");
-            day.innerHTML = result.tarif.months[i].days[j].date + "<br/>" + (result.tarif.months[i].days[j].conso / 1000).toFixed(2) + "kWh<br/>HC: " + result.tarif.months[i].days[j].priceHC.toFixed(2) + "€ <br/>HP: " + result.tarif.months[i].days[j].priceHP.toFixed(2) + "€ <br/>" + result.tarif.months[i].days[j].price.toFixed(2) + "€";
-            listOfDays.appendChild(day);
-        }
-    }
+            const listOfDays = document.createElement("ul");
+            month.appendChild(listOfDays);
+            for (let j = m.days.length - 1; j >= 0; j--) {
+                const day = document.createElement("li");
+                day.innerHTML = m.days[j].date + "<br/>" + (m.days[j].conso / 1000).toFixed(2) + "kWh<br/>HC: " + m.days[j].priceHC.toFixed(2) + "€ <br/>HP: " + m.days[j].priceHP.toFixed(2) + "€ <br/>" + m.days[j].price.toFixed(2) + "€";
+                listOfDays.appendChild(day);
+            }
+        });
+    });
 }
-

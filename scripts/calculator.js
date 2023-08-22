@@ -1,9 +1,7 @@
+const abonnements = [];
 var calculator = {
     getTarif: function (puissance, data, grille) {
-        let yearData = {
-            months: [],
-            price: 0
-        };
+        const yearsData = [];
 
         grille.specialDays.forEach((t) => {
             t.numberOfDaysLeft = t.numberOfDays;
@@ -12,10 +10,12 @@ var calculator = {
         let abonnement = grille.prices.find((t) => t.puissance == puissance);
         if (abonnement) {
             let currentMonth = 0;
+            let currentYear = 0;
 
             let monthData = {};
             for (let day = 0; day < data.length; day++) {
                 let date = data[day].date.split("/");
+                currentYear = date[0];
 
                 if (date[1] != currentMonth) {
                     if (monthData.days) {
@@ -26,6 +26,30 @@ var calculator = {
                     monthData = {};
                     monthData.month = date[1];
                     monthData.days = [];
+
+                    let yearData = {
+                        year: 0,
+                        months: []
+                    };
+                    if (currentMonth < 3) {
+                        if (yearsData.some((y) => y.year == currentYear - 1)) {
+                            yearData = yearsData.find((y) => y.year == currentYear - 1);
+                        }
+                        else {
+                            yearData.year = currentYear - 1;
+                            yearsData.push(yearData);
+                        }
+                    }
+                    else {
+                        if (yearsData.some((y) => y.year == currentYear)) {
+                            yearData = yearsData.find((y) => y.year == currentYear);
+                        }
+                        else {
+                            yearData.year = currentYear;
+                            yearsData.push(yearData);
+                        }
+                    }
+
                     yearData.months.push(monthData);
                 }
 
@@ -69,37 +93,23 @@ var calculator = {
             }
             monthData.conso = monthData.days.filter(d => !isNaN(d.conso)).reduce((a, b) => a + b.conso, 0);
             monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0) + abonnement.abonnement;
-            yearData.conso = yearData.months.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0);
-            yearData.price = yearData.months.filter(m => !isNaN(m.price)).reduce((a, b) => a + b.price, 0);
-        }
-
-        return yearData;
-    },
-    getDayType: function (day, specialDays) {
-        let month = parseInt(day.date.split("/")[1]);
-        let dayType = "bleu";
-
-        if (specialDays.length > 0) {
-            specialDays.forEach((specialDay) => {
-                if (specialDay.numberOfDaysLeft > 0 && (month >= specialDay.monthBegin || month <= specialDay.monthEnd)) {
-                    if (Math.random() < this.calculateRiskForADay(specialDay.monthEnd, specialDay.monthBegin, specialDay.numberOfDays)) {
-                        dayName = specialDay.name;
-                        specialDay.numberOfDaysLeft--;
-                    }
-                }
+            yearsData.forEach((y) => {
+                y.conso = y.months.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0);
+                y.price = y.months.filter(m => !isNaN(m.price)).reduce((a, b) => a + b.price, 0);
             });
         }
 
-        return dayType;
+        return yearsData;
     },
-    calculateRiskForADay: function (monthEnd, monthBegin, numberOfDays) {
-        let riskOfDay = 0;
-        if (monthBegin > monthEnd) {
-            riskOfDay = (((12 - monthBegin) + monthBegin) * 30.5) / numberOfDays;
-        }
-        else {
-            riskOfDay = ((monthEnd - monthBegin) * 30.5) / numberOfDays;
-        }
-        return riskOfDay;
+    getDayType: function (day, specialDays) {
+        let dayType = "bleu";
+
+        specialDays.forEach((specialDay) => {
+            if (specialDay.lastDays.includes(day.date)) {
+                dayType = specialDay.name;
+            }
+        });
+
+        return dayType;
     }
 }

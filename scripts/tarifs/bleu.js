@@ -1,4 +1,5 @@
-var tarifBleu = {
+abonnements.push({
+    name: "Bleu",
     prices: [{
         puissance: 3,
         abonnement: 9.47,
@@ -67,5 +68,5 @@ var tarifBleu = {
         end: 24
     }],
     specialDays: []
-}
+});
 

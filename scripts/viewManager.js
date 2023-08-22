@@ -2,8 +2,10 @@ var viewManager = {
     views: [],
     currentView: 0,
     init: function () {
+        const presentationView = document.getElementById("presentationView");
         const importView = document.getElementById("importView");
         const pricesResultView = document.getElementById("pricesResultView");
+        this.views["presentation"] = presentationView;
         this.views["import"] = importView;
         this.views["prices"] = pricesResultView;
 
