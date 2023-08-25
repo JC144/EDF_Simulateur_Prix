@@ -81,15 +81,45 @@ function displayResults(kva, jourZenPlus) {
         const tableBody = document.createElement("tbody");
         table.appendChild(tableBody);
 
+        let currentRow = 0;
         results.map((r) => ({
-            price: r.tarif
-                .find((t) => t.year == currentYearAndConso.year).price,
+            tarif: r.tarif
+                .find((t) => t.year == currentYearAndConso.year),
             title: r.title
         }))
-            .sort((a, b) => a.price - b.price)
+            .sort((a, b) => a.tarif.price - b.tarif.price)
             .forEach(result => {
                 const tarifRow = document.createElement("tr");
+                const accordionRowId = currentYearAndConso.year + "-" + currentRow;
                 tableBody.appendChild(tarifRow);
+                tarifRow.setAttribute("data-bs-toggle", "collapse");
+                tarifRow.setAttribute("data-bs-target", "#" + accordionRowId);
+
+                const accordionRow = document.createElement("tr");
+                tableBody.appendChild(accordionRow);
+                accordionRow.id = accordionRowId;
+                accordionRow.className = "collapse";
+
+                const accordionCell = document.createElement("td");
+                accordionCell.colSpan = 2;
+                accordionRow.appendChild(accordionCell);
+
+                const dailyDetailTitle = document.createElement("h4");
+                accordionCell.appendChild(dailyDetailTitle);
+                dailyDetailTitle.innerHTML = "Détail journalier : <br/>";
+                result.tarif.months.forEach((m) => {
+                    const month = document.createElement("li");
+                    accordionCell.appendChild(month);
+                    month.innerHTML = getMonthName(parseInt(m.month)) + "<br/>" + (m.conso / 1000).toFixed(2) + "kWh<br/>" + m.price.toFixed(2) + "€";
+
+                    const listOfDays = document.createElement("ul");
+                    month.appendChild(listOfDays);
+                    for (let j = m.days.length - 1; j >= 0; j--) {
+                        const day = document.createElement("li");
+                        day.innerHTML = m.days[j].date + "<br/>" + (m.days[j].conso / 1000).toFixed(2) + "kWh<br/>HC: " + m.days[j].priceHC.toFixed(2) + "€ <br/>HP: " + m.days[j].priceHP.toFixed(2) + "€ <br/>" + m.days[j].price.toFixed(2) + "€";
+                        listOfDays.appendChild(day);
+                    }
+                });
 
                 const cellTarifName = document.createElement("th");
                 tarifRow.appendChild(cellTarifName);
@@ -97,7 +127,16 @@ function displayResults(kva, jourZenPlus) {
 
                 const cellTarifPrice = document.createElement("td");
                 tarifRow.appendChild(cellTarifPrice);
-                cellTarifPrice.innerHTML = result.price.toFixed(2) + " € TTC";
+                cellTarifPrice.innerHTML = result.tarif.price.toFixed(2) + " € TTC";
+                currentRow++;
             });
     });
+}
+
+function getMonthName(monthNumber) {
+    const date = new Date();
+    date.setMonth(monthNumber - 1);
+
+    let monthString = date.toLocaleString('fr-FR', { month: 'long' });
+    return monthString.charAt(0).toUpperCase() + monthString.slice(1)
 }
