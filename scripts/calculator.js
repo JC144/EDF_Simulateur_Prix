@@ -11,7 +11,7 @@ var calculator = {
             let monthData = {};
             for (let day = 0; day < data.length; day++) {
                 let date = data[day].date.split("/");
-                currentYear = date[0];
+                currentYear = parseInt(date[0]);
 
                 if (date[1] != currentMonth) {
                     if (monthData.days) {
@@ -28,20 +28,20 @@ var calculator = {
                         months: []
                     };
                     if (currentMonth < 3) {
-                        if (yearsData.some((y) => y.year == currentYear - 1)) {
-                            yearData = yearsData.find((y) => y.year == currentYear - 1);
-                        }
-                        else {
-                            yearData.year = currentYear - 1;
-                            yearsData.push(yearData);
-                        }
-                    }
-                    else {
                         if (yearsData.some((y) => y.year == currentYear)) {
                             yearData = yearsData.find((y) => y.year == currentYear);
                         }
                         else {
                             yearData.year = currentYear;
+                            yearsData.push(yearData);
+                        }
+                    }
+                    else {
+                        if (yearsData.some((y) => y.year == currentYear + 1)) {
+                            yearData = yearsData.find((y) => y.year == currentYear + 1);
+                        }
+                        else {
+                            yearData.year = currentYear + 1;
                             yearsData.push(yearData);
                         }
                     }
