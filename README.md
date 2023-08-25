@@ -38,13 +38,18 @@ Vous pouvez accéder à l'outil depuis cette url : [http://jc144.github.io/EDF_S
   * Pour Ennedis : "Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv" **(Ne modifiez pas le nom du fichier!)**
 2. A partir de là, vous pouvez choisir les différentes tarifications que vous voulez expérimenter !
 
-## Dernière release
+## Fonctionnalités
 - [X] Support de l'export Enedis
 - [X] Inclusion des vrais jours rouges et blancs (attention, les jours sobriétés sont simulés sur le tarif ZenFlex) sur les 3 dernières années
-- [X] Mise en place Github page
-- [X] Affichage du tarif à l'année
-- [X] Amélioration des explications
+- [X] Intégration des tarifs Zen (attention, les heures creuses sont basées sur celles de Tempo en attendant d'avoir + d'informations)
+- [X] Mise en place d'une version en ligne
+- [X] Affichage des tarifs par ordre croissant et par année
 - [X] Gestion de la puissance souscrite
+- [X] Détail journalier
+- [X] Explication détaillée pour récupérer les tarifs
+
+## Todo
+- [ ] Améliorer affichage détail journalier
 
 ## A propos de l'auteur
 [Jean-Christophe VASSELON](https://www.linkedin.com/in/jvasselon/), responsable produit chez un éditeur de PLM le jour, éditeur [d'un outil pour gérer la patientèle des diététicien(ne)s](https://www.patientailes.com) la nuit.

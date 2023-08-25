@@ -58,14 +58,16 @@ function displayResults(kva, jourZenPlus) {
         pricesResultRow.appendChild(divYear);
         const titleYear = document.createElement("h3");
         divYear.appendChild(titleYear);
+        titleYear.className = "main-title";
         const titleConso = document.createElement("h4");
         divYear.appendChild(titleConso);
+        titleConso.className = "sub-title";
 
         titleYear.innerHTML = "Mars " + (currentYearAndConso.year - 1) + " à Mars " + currentYearAndConso.year;
         titleConso.innerHTML = "Consommation : " + (currentYearAndConso.conso / 1000).toFixed(2) + "kWh";
 
         const table = document.createElement("table");
-        table.className = "table";
+        table.className = "table mt-3";
         divYear.appendChild(table);
         const tableHeader = document.createElement("thead");
         table.appendChild(tableHeader);
@@ -104,20 +106,55 @@ function displayResults(kva, jourZenPlus) {
                 accordionCell.colSpan = 2;
                 accordionRow.appendChild(accordionCell);
 
-                const dailyDetailTitle = document.createElement("h4");
-                accordionCell.appendChild(dailyDetailTitle);
-                dailyDetailTitle.innerHTML = "Détail journalier : <br/>";
                 result.tarif.months.forEach((m) => {
-                    const month = document.createElement("li");
-                    accordionCell.appendChild(month);
-                    month.innerHTML = getMonthName(parseInt(m.month)) + "<br/>" + (m.conso / 1000).toFixed(2) + "kWh<br/>" + m.price.toFixed(2) + "€";
+                    const titleDetail = document.createElement("h3");
+                    accordionCell.appendChild(titleDetail);
+                    titleDetail.className = "main-title";
+                    const subTitleDetail = document.createElement("h4");
+                    accordionCell.appendChild(subTitleDetail);
+                    subTitleDetail.className = "sub-title";
 
-                    const listOfDays = document.createElement("ul");
-                    month.appendChild(listOfDays);
+                    titleDetail.innerHTML = getMonthName(parseInt(m.month));
+                    subTitleDetail.innerHTML = (m.conso / 1000).toFixed(2) + "kWh / " + m.price.toFixed(2) + "€";
+
+                    const tableDailyDetail = document.createElement("table");
+                    tableDailyDetail.className = "table mt-2";
+                    accordionCell.appendChild(tableDailyDetail);
+                    const headerDailyDetail = document.createElement("tr");
+                    tableDailyDetail.appendChild(document.createElement("thead").appendChild(headerDailyDetail));
+                    const cell1HeaderDailyDetail = document.createElement("th");
+                    const cell2HeaderDailyDetail = document.createElement("th");
+                    const cell3HeaderDailyDetail = document.createElement("th");
+                    const cell4HeaderDailyDetail = document.createElement("th");
+                    const cell5HeaderDailyDetail = document.createElement("th");
+                    cell1HeaderDailyDetail.innerHTML = "Jour";
+                    cell2HeaderDailyDetail.innerHTML = "Consommation totale";
+                    cell3HeaderDailyDetail.innerHTML = "Estimation HC (€)";
+                    cell4HeaderDailyDetail.innerHTML = "Estimation HP (€)";
+                    cell5HeaderDailyDetail.innerHTML = "Total (€)";
+                    headerDailyDetail.appendChild(cell1HeaderDailyDetail);
+                    headerDailyDetail.appendChild(cell2HeaderDailyDetail);
+                    headerDailyDetail.appendChild(cell3HeaderDailyDetail);
+                    headerDailyDetail.appendChild(cell4HeaderDailyDetail);
+                    headerDailyDetail.appendChild(cell5HeaderDailyDetail);
                     for (let j = m.days.length - 1; j >= 0; j--) {
-                        const day = document.createElement("li");
-                        day.innerHTML = m.days[j].date + "<br/>" + (m.days[j].conso / 1000).toFixed(2) + "kWh<br/>HC: " + m.days[j].priceHC.toFixed(2) + "€ <br/>HP: " + m.days[j].priceHP.toFixed(2) + "€ <br/>" + m.days[j].price.toFixed(2) + "€";
-                        listOfDays.appendChild(day);
+                        const bodyDailyDetail = document.createElement("tr");
+                        tableDailyDetail.appendChild(document.createElement("tbody").appendChild(bodyDailyDetail));
+                        const cell1BodyDailyDetail = document.createElement("td");
+                        const cell2BodyDailyDetail = document.createElement("td");
+                        const cell3BodyDailyDetail = document.createElement("td");
+                        const cell4BodyDailyDetail = document.createElement("td");
+                        const cell5BodyDailyDetail = document.createElement("td");
+                        cell1BodyDailyDetail.innerHTML = m.days[j].date;
+                        cell2BodyDailyDetail.innerHTML = (m.days[j].conso / 1000).toFixed(2) + "kWh";
+                        cell3BodyDailyDetail.innerHTML = m.days[j].priceHC.toFixed(2) + "€";
+                        cell4BodyDailyDetail.innerHTML = m.days[j].priceHP.toFixed(2) + "€";
+                        cell5BodyDailyDetail.innerHTML = m.days[j].price.toFixed(2) + "€";
+                        bodyDailyDetail.appendChild(cell1BodyDailyDetail);
+                        bodyDailyDetail.appendChild(cell2BodyDailyDetail);
+                        bodyDailyDetail.appendChild(cell3BodyDailyDetail);
+                        bodyDailyDetail.appendChild(cell4BodyDailyDetail);
+                        bodyDailyDetail.appendChild(cell5BodyDailyDetail);
                     }
                 });
 
