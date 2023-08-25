@@ -76,6 +76,19 @@
                     </div>
 
                     <div class="mb-4">
+                        <label for="jourZen" class="form-label">Choix du jour Zen Plus</label>
+                        <select class="form-select form-select-lg" aria-label=".form-select-lg example"
+                            id="jourZenPlus">
+                            <option value="1" selected>Lundi</option>
+                            <option value="3">Mercredi</option>
+                            <option value="5">Vendredi</option>
+                        </select>
+                        <div class="form-text" id="basic-addon4">
+                            Les forfaits Zen Plus ont un jour avantageux supplémentaire dans la semaine. Choisissez celui qui vous convient pour la simulation.
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
                         <label for="csvFile" class="form-label">Votre export Linky</label>
                         <div class="input-group">
                             <input type="file" id="csvFile" accept=".csv" class="form-control form-control-lg" />
@@ -221,6 +234,10 @@
     <script src="./scripts/tarifs/bleuHC.js"></script>
     <script src="./scripts/tarifs/tempo.js"></script>
     <script src="./scripts/tarifs/zenFlex.js"></script>
+    <script src="./scripts/tarifs/zenWeekEnd.js"></script>
+    <script src="./scripts/tarifs/zenWeekEndHC.js"></script>
+    <script src="./scripts/tarifs/zenWeekEndPlus.js"></script>
+    <script src="./scripts/tarifs/zenWeekEndPlusHC.js"></script>
 
     <script src="./scripts/edfParser.js"></script>
     <script src="./scripts/enedisParser.js"></script>

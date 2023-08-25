@@ -73,5 +73,9 @@ abonnements.push({
         start: 0,
         end: 7
     }],
-    specialDays: []
+    specialDays: [],
+    getDayType: function (day) {
+        let dayType = "bleu";
+        return dayType;
+    }
 });

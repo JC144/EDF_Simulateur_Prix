@@ -1,11 +1,7 @@
 const abonnements = [];
 var calculator = {
-    getTarif: function (puissance, data, grille) {
+    getTarif: function (puissance, data, grille, jourZenPlus) {
         const yearsData = [];
-
-        grille.specialDays.forEach((t) => {
-            t.numberOfDaysLeft = t.numberOfDays;
-        });
 
         let abonnement = grille.prices.find((t) => t.puissance == puissance);
         if (abonnement) {
@@ -60,7 +56,7 @@ var calculator = {
                 dayData.priceHC = 0;
                 dayData.priceHP = 0;
 
-                dayData.dayType = this.getDayType(dayData, grille.specialDays);
+                dayData.dayType = grille.getDayType(dayData, jourZenPlus);
 
                 for (let hour = 0; hour < data[day].hours.length - 1; hour += 2) {
                     let hourData = {};
@@ -100,16 +96,5 @@ var calculator = {
         }
 
         return yearsData;
-    },
-    getDayType: function (day, specialDays) {
-        let dayType = "bleu";
-
-        specialDays.forEach((specialDay) => {
-            if (specialDay.lastDays.includes(day.date)) {
-                dayType = specialDay.name;
-            }
-        });
-
-        return dayType;
     }
 }

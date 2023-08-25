@@ -5,6 +5,7 @@ var data = [];
 const formImport = document.getElementById("formImport");
 const csvFile = document.getElementById("csvFile");
 const kvaSelector = document.getElementById("puissanceSouscrite");
+const jourZenPlusSelector = document.getElementById("jourZenPlus");
 const simulateButton = document.getElementById("simulateButton");
 const importError = document.getElementById("importError");
 
@@ -12,7 +13,7 @@ csvFile.addEventListener("change", onFileImported);
 importError.style.display = "none";
 
 document.getElementById("startButton").onclick = function () { viewManager.displayNextView(); };
-document.getElementById("simulateButton").onclick = function () { displayResults(kvaSelector.value); };
+document.getElementById("simulateButton").onclick = function () { displayResults(kvaSelector.value, jourZenPlusSelector.value); };
 
 function onFileImported(e) {
     e.preventDefault();
@@ -40,11 +41,11 @@ function onFileImported(e) {
     reader.readAsText(input);
 }
 
-function displayResults(kva) {
+function displayResults(kva, jourZenPlus) {
     viewManager.displayNextView();
     abonnements.forEach((abo) => {
         let result = {};
-        result.tarif = calculator.getTarif(kva, data, abo);
+        result.tarif = calculator.getTarif(kva, data, abo, jourZenPlus);
         result.title = abo.name;
         displayTarif(result);
     });

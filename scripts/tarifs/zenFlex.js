@@ -3,98 +3,98 @@ abonnements.push({
     prices: [
         {
             puissance: 6,
-            abonnement: 12.62,
+            abonnement: 13.03,
             bleu: {
-                prixKwhHP: 22.28,
-                prixKwhHC: 12.95
+                prixKwhHP: 24.60,
+                prixKwhHC: 14.64
             },
             sobriete: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 22.28
+                prixKwhHP: 73.24,
+                prixKwhHC: 24.60
             }
         },
         {
             puissance: 9,
-            abonnement: 15.99,
+            abonnement: 16.55,
             bleu: {
-                prixKwhHP: 22.28,
-                prixKwhHC: 12.95
+                prixKwhHP: 24.60,
+                prixKwhHC: 14.64
             },
             sobriete: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 22.28
+                prixKwhHP: 73.24,
+                prixKwhHC: 24.60
             }
         },
         {
             puissance: 12,
-            abonnement: 19.27,
+            abonnement: 19.97,
             bleu: {
-                prixKwhHP: 22.28,
-                prixKwhHC: 12.95
+                prixKwhHP: 24.60,
+                prixKwhHC: 14.64
             },
             sobriete: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 22.28
+                prixKwhHP: 73.24,
+                prixKwhHC: 24.60
             }
         },
         {
             puissance: 15,
-            abonnement: 22.40,
+            abonnement: 23.24,
             bleu: {
-                prixKwhHP: 22.28,
-                prixKwhHC: 12.95
+                prixKwhHP: 24.60,
+                prixKwhHC: 14.64
             },
             sobriete: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 22.28
+                prixKwhHP: 73.24,
+                prixKwhHC: 24.60
             }
         },
         {
             puissance: 18,
-            abonnement: 25.46,
+            abonnement: 26.48,
             bleu: {
-                prixKwhHP: 22.28,
-                prixKwhHC: 12.95
+                prixKwhHP: 24.60,
+                prixKwhHC: 14.64
             },
             sobriete: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 22.28
+                prixKwhHP: 73.24,
+                prixKwhHC: 24.60
             }
         },
         {
             puissance: 24,
-            abonnement: 32.01,
+            abonnement: 33.28,
             bleu: {
-                prixKwhHP: 22.28,
-                prixKwhHC: 12.95
+                prixKwhHP: 24.60,
+                prixKwhHC: 14.64
             },
             sobriete: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 22.28
+                prixKwhHP: 73.24,
+                prixKwhHC: 24.60
             }
         },
         {
             puissance: 30,
-            abonnement: 38.07,
+            abonnement: 39.46,
             bleu: {
-                prixKwhHP: 22.28,
-                prixKwhHC: 12.95
+                prixKwhHP: 24.60,
+                prixKwhHC: 14.64
             },
             sobriete: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 22.28
+                prixKwhHP: 73.24,
+                prixKwhHC: 24.60
             }
         },
         {
             puissance: 36,
-            abonnement: 43.88,
+            abonnement: 45.72,
             bleu: {
-                prixKwhHP: 22.28,
-                prixKwhHC: 12.95
+                prixKwhHP: 24.60,
+                prixKwhHC: 14.64
             },
             sobriete: {
-                prixKwhHP: 67.12,
-                prixKwhHC: 22.28
+                prixKwhHP: 73.24,
+                prixKwhHC: 24.60
             }
         }],
     hc: [{
@@ -202,5 +202,16 @@ abonnements.push({
             "2023-02-09",
             "2023-02-10"
         ]
-    }]
+    }],
+    getDayType: function (day) {
+        let dayType = "bleu";
+
+        this.specialDays.forEach((specialDay) => {
+            if (specialDay.lastDays.includes(day.date)) {
+                dayType = specialDay.name;
+            }
+        });
+
+        return dayType;
+    }
 });

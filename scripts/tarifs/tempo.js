@@ -359,5 +359,16 @@ abonnements.push({
             "2023/06/09",
             "2023/06/12"
         ]
-    }]
+    }],
+    getDayType: function (day) {
+        let dayType = "bleu";
+
+        this.specialDays.forEach((specialDay) => {
+            if (specialDay.lastDays.includes(day.date)) {
+                dayType = specialDay.name;
+            }
+        });
+
+        return dayType;
+    }
 });
