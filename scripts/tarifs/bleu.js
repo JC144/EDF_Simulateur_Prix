@@ -1,6 +1,7 @@
 abonnements.push(
     {
         name: "Bleu",
+        lastUpdate: "2023-08-01",
         prices: [{
             puissance: 3,
             abonnement: 9.47,

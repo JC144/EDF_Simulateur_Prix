@@ -1,5 +1,6 @@
 abonnements.push({
     name: "Zen Week-End Plus HC",
+    lastUpdate: "2023-09-14",
     prices: [
         {
             puissance: 6,

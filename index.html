@@ -10,6 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
         .main-title {
             font-size: 24px;
             color: #000;
@@ -64,14 +70,19 @@
         .table tbody .collapse.in {
             display: table-row;
         }
+
+        h1 a {
+            text-decoration: none;
+            color: #000;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="col-lg-8 mx-auto p-4 py-md-5">
+    <div class="col-lg-8 mx-auto p-4 py-md-5 flex-grow-1">
         <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-            <h1>Simulateur des offres EDF</h1>
+            <h1><a href="index.html">Simulateur des offres d'énergies sur une consommation réelle.</a></h1>
             <p></p>
         </header>
 
@@ -253,6 +264,18 @@
             </div>
 
             <div id="pricesResultView" class="container">
+                <p class="text-justify">
+                    <strong>Attention: </strong>
+                <ul>
+                    <li>Ce résultat est une simulation basée sur votre consommation passée avec les tarifs actuels.</li>
+                    <li>Si vous comparez vos résultats avec le site d'EDF, ce comparatif intègre l'abonnement
+                        mensuellement sans prorata journalier.</li>
+                    <li>En l'absence d'historique, les jours sobriétés du tarif ZenFlex sont basés sur les jours
+                        rouges
+                        du tarif Tempo</li>
+                </ul>
+                </p>
+
                 <div id="pricesTitleRow" class="row">
 
                 </div>
@@ -263,6 +286,24 @@
             </div>
         </main>
     </div>
+
+    <!-- Footer fixe -->
+    <footer class="bg-light p-4">
+        <div class="container">
+            <div class="row">
+                <p class="text-muted text-center">Ce site a été conçu par <a
+                        href="https://twitter.com/jcvasselon/">Jean-Christophe VASSELON</a>.<br />
+                    D'après une discussion avec <a href="https://twitter.com/autommen/">Nicolas 'Automnen'</a> et <a
+                        href="https://twitter.com/MaloryBouvier/">Malory Bouvier</a>
+                    <br /><br />
+                    Si comme moi, vous découvrez que vous pouvez économiser plus de 400€ en changeant d'abonnement,
+                    vous pouvez m'offrir une bonne bouteille en faisant un don !<br />
+                </p>
+                <a class="text-center" href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU"><button
+                        class="btn btn-primary">Faire un don</button></a>
+            </div>
+        </div>
+    </footer>
 
     <script src="./scripts/calculator.js"></script>
     <script src="./scripts/tarifs/bleu.js"></script>

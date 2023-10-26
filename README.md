@@ -1,11 +1,12 @@
 # EDF_Simulateur_Prix
-Un outil pour simuler les différents Tarifs EDF depuis un export Linky de la consommation.
+Un outil pour simuler les différents tarifs de fournisseurs d'électricité depuis un export Linky de la consommation.
 
 [Version en ligne.](http://jc144.github.io/EDF_Simulateur_Prix)
 
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
 
-Derniers tarifs: 1 Aout 2023
+Derniers tarifs: 
+* EDF : 14 Septembre 2023
 
 ## Utilisation
 
@@ -47,9 +48,6 @@ Vous pouvez accéder à l'outil depuis cette url : [http://jc144.github.io/EDF_S
 - [X] Gestion de la puissance souscrite
 - [X] Détail journalier
 - [X] Explication détaillée pour récupérer les tarifs
-
-## Todo
-- [ ] Améliorer affichage détail journalier
 
 ## A propos de l'auteur
 [Jean-Christophe VASSELON](https://www.linkedin.com/in/jvasselon/), responsable produit chez un éditeur de PLM le jour, éditeur [d'un outil pour gérer la patientèle des diététicien(ne)s](https://www.patientailes.com) la nuit.

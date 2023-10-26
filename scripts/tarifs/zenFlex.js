@@ -1,5 +1,6 @@
 abonnements.push({
     name: "ZenFlex",
+    lastUpdate: "2023-09-14",
     prices: [
         {
             puissance: 6,
