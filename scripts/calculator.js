@@ -1,7 +1,7 @@
 const abonnements = [];
 var calculator = {
     getTarif: function (puissance, data, grille, jourZenPlus) {
-        const yearsData = [];
+        const monthsData = [];
 
         let abonnement = grille.prices.find((t) => t.puissance == puissance);
         if (abonnement) {
@@ -20,33 +20,12 @@ var calculator = {
                     }
                     currentMonth = date[1];
                     monthData = {};
-                    monthData.month = date[1];
+                    monthData.month = currentMonth;
+                    monthData.year = currentYear;
+                    monthData.firstDayDate = new Date(currentYear, currentMonth, 1);
                     monthData.days = [];
 
-                    let yearData = {
-                        year: 0,
-                        months: []
-                    };
-                    if (currentMonth < 3) {
-                        if (yearsData.some((y) => y.year == currentYear)) {
-                            yearData = yearsData.find((y) => y.year == currentYear);
-                        }
-                        else {
-                            yearData.year = currentYear;
-                            yearsData.push(yearData);
-                        }
-                    }
-                    else {
-                        if (yearsData.some((y) => y.year == currentYear + 1)) {
-                            yearData = yearsData.find((y) => y.year == currentYear + 1);
-                        }
-                        else {
-                            yearData.year = currentYear + 1;
-                            yearsData.push(yearData);
-                        }
-                    }
-
-                    yearData.months.push(monthData);
+                    monthsData.push(monthData);
                 }
 
                 let dayData = {
@@ -89,12 +68,24 @@ var calculator = {
             }
             monthData.conso = monthData.days.filter(d => !isNaN(d.conso)).reduce((a, b) => a + b.conso, 0);
             monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0) + abonnement.abonnement;
-            yearsData.forEach((y) => {
-                y.conso = y.months.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0);
-                y.price = y.months.filter(m => !isNaN(m.price)).reduce((a, b) => a + b.price, 0);
-            });
         }
 
-        return yearsData;
+        return monthsData;
+    },
+    calculateTarifForPeriod: function (monthsData, dateBegin, dateEnd) {
+        let tarifForPeriod = {
+            conso: 0,
+            price: 0,
+            months: []
+        };
+
+        //Take all months between dateBegin and dateEnd
+        let months = monthsData.filter(m => m.firstDayDate >= dateBegin && m.firstDayDate <= dateEnd);
+
+        tarifForPeriod.conso = months.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0);
+        tarifForPeriod.price = months.filter(m => !isNaN(m.price)).reduce((a, b) => a + b.price, 0);
+        tarifForPeriod.months = months;
+
+        return tarifForPeriod;
     }
 }
