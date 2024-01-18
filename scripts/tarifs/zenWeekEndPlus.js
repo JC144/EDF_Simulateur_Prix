@@ -93,7 +93,7 @@ abonnements.push({
         const isoDate = new Date(day.date);
         const dayOfWeek = isoDate.getDay();
     
-        if (this.specialDays.includes(dayOfWeek) || dayOfWeek == jourZenPlus) {            
+        if (this.specialDays.includes(dayOfWeek)) {            
             dayType = "weekend";
         }
 

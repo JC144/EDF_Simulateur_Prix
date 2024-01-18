@@ -85,7 +85,7 @@
             border-radius: 15px;
             text-align: center;
             font-size: 12px;
-            line-height: 1.42857;            
+            line-height: 1.42857;
         }
     </style>
 
@@ -156,7 +156,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="jourZen" class="form-label">Choix du jour Zen Plus</label>
+                        <label for="jourZenPlus" class="form-label">Choix du jour Zen Plus</label>
                         <select class="form-select form-select-lg" aria-label=".form-select-lg example"
                             id="jourZenPlus">
                             <option value="1" selected>Lundi</option>
@@ -166,6 +166,49 @@
                         <div class="form-text" id="basic-addon4">
                             Les forfaits Zen Plus ont un jour avantageux supplémentaire dans la semaine. Choisissez
                             celui qui vous convient pour la simulation.
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="bleuHC" class="form-label">Choix des Heures Creuses pour le tarif Bleu HC</label>
+                        <div id="bleuHC">
+                            <label for="bleuHC-endDay1" class="form-label mt-1 text-muted">Début de soirée (fin du
+                                jour 1)</label>
+                            <div id="bleuHC-endDay1" class="mx-3">
+                                <label for="bleuHC-start-endDay1" class="form-label text-muted">Heure début :</label>
+                                <input type="time" id="bleuHC-start-endDay1" class="form-control"
+                                    name="bleuHC-start-endDay1" min="00:00" max="24:00" value="22:00"/>
+                                <label for="bleuHC-end-endDay1" class="form-label mt-1 text-muted">Heure fin :</label>
+                                <input type="time" id="bleuHC-end-endDay1" class="form-control"
+                                    name="bleuHC-end-endDay1" min="00:00" max="24:00" value="23:59"/>
+                            </div>
+
+                            <label for="bleuHC-beginDay2" class="form-label mt-3 text-muted">Nuit (jour 2)</label>
+                            <div id="bleuHC-beginDay2" class="mx-3">
+                                <label for="bleuHC-start-beginDay2" class="form-label text-muted">Heure début :</label>
+                                <input type="time" id="bleuHC-start-beginDay2" class="form-control"
+                                    name="bleuHC-start-beginDay2" min="00:00" max="24:00" value="00:00"/>
+                                <label for="bleuHC-end-beginDay2" class="form-label mt-1 text-muted">Heure fin :</label>
+                                <input type="time" id="bleuHC-end-beginDay2" class="form-control"
+                                    name="bleuHC-end-beginDay2" min="00:00" max="24:00" value="07:00"/>
+                            </div>
+
+                            <label for="bleuHC-middleDay2" class="form-label mt-3 text-muted">Après-midi (jour
+                                2)</label>
+                            <div id="bleuHC-middleDay2" class="mx-3">
+                                <label for="bleuHC-start-middleDay2" class="form-label text-muted">Heure début :</label>
+                                <input type="time" id="bleuHC-start-middleDay2" class="form-control"
+                                    name="bleuHC-start-middleDay2" min="00:00" max="24:00" value="00:00"/>
+                                <label for="bleuHC-end-middleDay2" class="form-label mt-1 text-muted">Heure fin
+                                    :</label>
+                                <input type="time" id="bleuHC-end-middleDay2" class="form-control"
+                                    name="bleuHC-end-middleDay2" min="00:00" max="24:00" value="00:00"/>
+                            </div>
+                        </div>
+                        <div class="form-text" id="basic-addon4">
+                            Les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les
+                            vôtres ou différents cas.<br/>
+                            ATTENTION : Pour le moment, les minutes ne sont pas prises en compte et sont arrondies à l'heure la plus proche.
                         </div>
                     </div>
 
@@ -290,32 +333,26 @@
 
                 <div class="mt-4 mb-4 d-flex align-items-center">
                     <p class="lead m-2">Du</p>
-                    
-                    <select class="m-1 form-select form-select-lg" 
-                            aria-label=".form-select-lg example"
-                            style="max-width: 100px;"
-                            id="yearBeginSelector">
+
+                    <select class="m-1 form-select form-select-lg" aria-label=".form-select-lg example"
+                        style="max-width: 100px;" id="yearBeginSelector">
                     </select>
 
                     <select class="m-1 form-select form-select-lg" aria-label=".form-select-lg example"
                         id="monthBeginSelector">
                     </select>
-                    
+
                     <p class="lead m-2">au</p>
-                    
-                    <select class="m-1 form-select form-select-lg" 
-                            aria-label=".form-select-lg example"
-                            style="max-width: 100px;"
-                            id="yearEndSelector">
+
+                    <select class="m-1 form-select form-select-lg" aria-label=".form-select-lg example"
+                        style="max-width: 100px;" id="yearEndSelector">
                     </select>
-                    
+
                     <select class="m-1 form-select form-select-lg" aria-label=".form-select-lg example"
                         id="monthEndSelector">
                     </select>
-                    
-                    <button type="button" 
-                            class="m-1 btn btn-primary btn-circle"
-                            id="refreshButton">
+
+                    <button type="button" class="m-1 btn btn-primary btn-circle" id="refreshButton">
                         <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
                             viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                             <path fill="white"

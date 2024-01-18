@@ -66,14 +66,7 @@ abonnements.push({
                 prixKwhHC: 18.28
             }
         }],
-    hc: [{
-        start: 22,
-        end: 24
-    },
-    {
-        start: 0,
-        end: 7
-    }],
+    hc: [],
     specialDays: [],
     getDayType: function (day) {
         let dayType = "bleu";

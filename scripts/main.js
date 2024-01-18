@@ -35,6 +35,19 @@ refreshButton.addEventListener("click", function () {
     refreshResultView(dateBegin, dateEnd);
 });
 
+const bleuHCStartEndDay1 = document.getElementById("bleuHC-start-endDay1");
+const bleuHCEndEndDay1 = document.getElementById("bleuHC-end-endDay1");
+const bleuHCStartBeginDay2 = document.getElementById("bleuHC-start-beginDay2");
+const bleuHCEndBeginDay2 = document.getElementById("bleuHC-end-beginDay2");
+const bleuHCStartMiddleDay2 = document.getElementById("bleuHC-start-middleDay2");
+const bleuHCEndMiddleDay2 = document.getElementById("bleuHC-end-middleDay2");
+bleuHCStartEndDay1.addEventListener("change", bleuHCRangeChanged);
+bleuHCEndEndDay1.addEventListener("change", bleuHCRangeChanged);
+bleuHCStartBeginDay2.addEventListener("change", bleuHCRangeChanged);
+bleuHCEndBeginDay2.addEventListener("change", bleuHCRangeChanged);
+bleuHCStartMiddleDay2.addEventListener("change", bleuHCRangeChanged);
+bleuHCEndMiddleDay2.addEventListener("change", bleuHCRangeChanged);
+
 csvFile.addEventListener("change", onFileImported);
 importError.style.display = "none";
 
@@ -42,6 +55,34 @@ document.getElementById("startButton").onclick = function () { viewManager.displ
 document.getElementById("simulateButton").onclick = function () {
     displayResults();
 };
+
+function bleuHCRangeChanged(e) {
+    //If it's a start, we need to check if the end is after the start
+    if (e.target.id.includes("start")) {
+        const end = document.getElementById(e.target.id.replace("start", "end"));
+        const selectedTime = e.target.value.split(":");
+        const selectedHours = parseInt(selectedTime[0]);
+        const selectedMinutes = parseInt(selectedTime[1]);
+        const endTime = end.value.split(":");
+        const endHours = parseInt(endTime[0]);
+        const endMinutes = parseInt(endTime[1]);
+        if (selectedHours > endHours || (selectedHours == endHours && selectedMinutes > endMinutes)) {
+            end.value = e.target.value;
+        }
+    }
+    else if (e.target.id.includes("end")) {
+        const start = document.getElementById(e.target.id.replace("end", "start"));
+        const selectedTime = e.target.value.split(":");
+        const selectedHours = parseInt(selectedTime[0]);
+        const selectedMinutes = parseInt(selectedTime[1]);
+        const startTime = start.value.split(":");
+        const startHours = parseInt(startTime[0]);
+        const startMinutes = parseInt(startTime[1]);
+        if (selectedHours < startHours || (selectedHours == startHours && selectedMinutes < startMinutes)) {
+            start.value = e.target.value;
+        }
+    }
+}
 
 function onFileImported(e) {
     e.preventDefault();
@@ -80,7 +121,8 @@ function calculateAllMonths(kva, jourZenPlus) {
 }
 
 function displayResults() {
-    calculateAllMonths(kvaSelector.value, jourZenPlusSelector.value);
+    AddCustomisationToAbonnements();
+    calculateAllMonths(kvaSelector.value);
 
     setBeginYearSelector();
     setBeginMonthSelector();
@@ -94,9 +136,78 @@ function displayResults() {
     refreshResultView(dateBegin, dateEnd);
 }
 
+function AddCustomisationToAbonnements() {
+    let aboZenWeekEndPlus = abonnements.find(a => a.name == "Zen Week-End Plus");
+    aboZenWeekEndPlus.specialDays.push(parseInt(jourZenPlusSelector.value));
+
+    let aboZenWeekEndPlusHC = abonnements.find(a => a.name == "Zen Week-End Plus HC");
+    aboZenWeekEndPlusHC.specialDays.push(parseInt(jourZenPlusSelector.value));
+
+    let aboBleuHeuresCreuses = abonnements.find(a => a.name == "Bleu Heures Creuses");
+    aboBleuHeuresCreuses.hc = getBleuHCRange();
+}
+
+function getBleuHCRange() {
+    let rangeHC = [];
+
+    const startEndDay1 = document.getElementById("bleuHC-start-endDay1").value;
+    const endEndDay1 = document.getElementById("bleuHC-end-endDay1").value;
+
+    const startBeginDay2 = document.getElementById("bleuHC-start-beginDay2").value;
+    const endBeginDay2 = document.getElementById("bleuHC-end-beginDay2").value;
+
+    const startMiddleDay2 = document.getElementById("bleuHC-start-middleDay2").value;
+    const endMiddleDay2 = document.getElementById("bleuHC-end-middleDay2").value;
+
+    const rangeEndDay1 = formatHCRange(startEndDay1, endEndDay1);
+    const rangeBeginDay2 = formatHCRange(startBeginDay2, endBeginDay2);
+    const rangeMiddleDay2 = formatHCRange(startMiddleDay2, endMiddleDay2);
+
+    if (rangeEndDay1 != null) {
+        rangeHC.push(rangeEndDay1);
+    }
+    if (rangeBeginDay2 != null) {
+        rangeHC.push(rangeBeginDay2);
+    }
+    if (rangeMiddleDay2 != null) {
+        rangeHC.push(rangeMiddleDay2);
+    }
+    return rangeHC;
+}
+
+function formatHCRange(rawStart, rawEnd) {
+    const startTime = rawStart.split(":");
+    let startHours = parseInt(startTime[0]);
+    let startMinutes = parseInt(startTime[1]);
+    const endTime = rawEnd.split(":");
+    let endHours = parseInt(endTime[0]);
+    let endMinutes = parseInt(endTime[1]);
+
+    //TODO: Gerer à la demi-heure
+    //Permet aussi de gérer le 23:59
+    if (startMinutes > 30) {
+        startHours++;
+    }
+    startMinutes = 0;
+
+    if (endMinutes > 30) {
+        endHours++;
+    }
+    endMinutes = 0;
+
+    if (startHours >= endHours) {
+        return null;
+    } else {
+        return {
+            start: startHours,
+            end: endHours
+        }
+    }
+}
+
 function refreshResultView(dateBegin, dateEnd) {
     pricesResultRow.innerHTML = "";
-    
+
     const resultsForPeriod = calculatedMonths.map((t) => {
         return {
             tarif: calculator.calculateTarifForPeriod(t.allMonths, dateBegin, dateEnd),
@@ -209,9 +320,9 @@ function refreshResultView(dateBegin, dateEnd) {
 
                     cell1BodyDailyDetail.innerHTML = m.days[j].date;
                     cell2BodyDailyDetail.innerHTML = (m.days[j].conso / 1000).toFixed(2) + "kWh";
-                    cell3BodyDailyDetail.innerHTML = (m.days[j].consoHC/1000).toFixed(2) + "kWh";
+                    cell3BodyDailyDetail.innerHTML = (m.days[j].consoHC / 1000).toFixed(2) + "kWh";
                     cell4BodyDailyDetail.innerHTML = m.days[j].priceHC.toFixed(2) + "€";
-                    cell5BodyDailyDetail.innerHTML = (m.days[j].consoHP/1000).toFixed(2) + "kWh";
+                    cell5BodyDailyDetail.innerHTML = (m.days[j].consoHP / 1000).toFixed(2) + "kWh";
                     cell6BodyDailyDetail.innerHTML = m.days[j].priceHP.toFixed(2) + "€";
                     cell7BodyDailyDetail.innerHTML = m.days[j].price.toFixed(2) + "€";
                     bodyDailyDetail.appendChild(cell1BodyDailyDetail);
