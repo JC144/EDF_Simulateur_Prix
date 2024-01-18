@@ -137,14 +137,14 @@ function displayResults() {
 }
 
 function AddCustomisationToAbonnements() {
-    let aboZenWeekEndPlus = abonnements.find(a => a.name == "Zen Week-End Plus");
-    aboZenWeekEndPlus.specialDays.push(parseInt(jourZenPlusSelector.value));
-
-    let aboZenWeekEndPlusHC = abonnements.find(a => a.name == "Zen Week-End Plus HC");
-    aboZenWeekEndPlusHC.specialDays.push(parseInt(jourZenPlusSelector.value));
-
-    let aboBleuHeuresCreuses = abonnements.find(a => a.name == "Bleu Heures Creuses");
-    aboBleuHeuresCreuses.hc = getBleuHCRange();
+    abonnements.forEach((abo) => {
+        if(abo.hasSpecialDaysCustom) {
+            abo.specialDays.push(parseInt(jourZenPlusSelector.value));
+        }
+        if (abo.hasHCCustom) {
+            abo.hc = getBleuHCRange();
+        }
+    });
 }
 
 function getBleuHCRange() {

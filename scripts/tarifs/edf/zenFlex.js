@@ -1,5 +1,5 @@
 abonnements.push({
-    name: "ZenFlex",
+    name: "EDF - ZenFlex",
     lastUpdate: "2023-09-14",
     prices: [
         {
@@ -110,6 +110,8 @@ abonnements.push({
         start: 20,
         end: 24
     }],
+    hasHCCustom: false,
+    hasSpecialDaysCustom: false,
     specialDays: [{
         name: "sobriete",
         numberOfDays: 20,

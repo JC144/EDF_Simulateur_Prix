@@ -1,5 +1,5 @@
 abonnements.push({
-    name: "Zen Week-End HC",
+    name: "EDF - Zen Week-End HC",
     lastUpdate: "2023-09-14",
     prices: [
         {
@@ -106,6 +106,8 @@ abonnements.push({
         start: 0,
         end: 6
     }],
+    hasHCCustom: true,
+    hasSpecialDaysCustom: false,
     specialDays: [0, 6],
     getDayType: function (day) {
         let dayType = "bleu";
