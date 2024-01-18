@@ -178,16 +178,24 @@ function refreshResultView(dateBegin, dateEnd) {
                 const cell3HeaderDailyDetail = document.createElement("th");
                 const cell4HeaderDailyDetail = document.createElement("th");
                 const cell5HeaderDailyDetail = document.createElement("th");
+                const cell6HeaderDailyDetail = document.createElement("th");
+                const cell7HeaderDailyDetail = document.createElement("th");
                 cell1HeaderDailyDetail.innerHTML = "Jour";
                 cell2HeaderDailyDetail.innerHTML = "Consommation totale";
-                cell3HeaderDailyDetail.innerHTML = "Estimation HC (€)";
-                cell4HeaderDailyDetail.innerHTML = "Estimation HP (€)";
-                cell5HeaderDailyDetail.innerHTML = "Total (€)";
+                cell3HeaderDailyDetail.innerHTML = "Conso HC (kWh)";
+                cell4HeaderDailyDetail.innerHTML = "Estimation HC (€)";
+                cell5HeaderDailyDetail.innerHTML = "Conso HP (kWh)";
+                cell6HeaderDailyDetail.innerHTML = "Estimation HP (€)";
+                cell7HeaderDailyDetail.innerHTML = "Total (€)";
+
                 headerDailyDetail.appendChild(cell1HeaderDailyDetail);
                 headerDailyDetail.appendChild(cell2HeaderDailyDetail);
                 headerDailyDetail.appendChild(cell3HeaderDailyDetail);
                 headerDailyDetail.appendChild(cell4HeaderDailyDetail);
                 headerDailyDetail.appendChild(cell5HeaderDailyDetail);
+                headerDailyDetail.appendChild(cell6HeaderDailyDetail);
+                headerDailyDetail.appendChild(cell7HeaderDailyDetail);
+
                 for (let j = m.days.length - 1; j >= 0; j--) {
                     const bodyDailyDetail = document.createElement("tr");
                     tableDailyDetail.appendChild(document.createElement("tbody").appendChild(bodyDailyDetail));
@@ -196,16 +204,23 @@ function refreshResultView(dateBegin, dateEnd) {
                     const cell3BodyDailyDetail = document.createElement("td");
                     const cell4BodyDailyDetail = document.createElement("td");
                     const cell5BodyDailyDetail = document.createElement("td");
+                    const cell6BodyDailyDetail = document.createElement("td");
+                    const cell7BodyDailyDetail = document.createElement("td");
+
                     cell1BodyDailyDetail.innerHTML = m.days[j].date;
                     cell2BodyDailyDetail.innerHTML = (m.days[j].conso / 1000).toFixed(2) + "kWh";
-                    cell3BodyDailyDetail.innerHTML = m.days[j].priceHC.toFixed(2) + "€";
-                    cell4BodyDailyDetail.innerHTML = m.days[j].priceHP.toFixed(2) + "€";
-                    cell5BodyDailyDetail.innerHTML = m.days[j].price.toFixed(2) + "€";
+                    cell3BodyDailyDetail.innerHTML = (m.days[j].consoHC/1000).toFixed(2) + "kWh";
+                    cell4BodyDailyDetail.innerHTML = m.days[j].priceHC.toFixed(2) + "€";
+                    cell5BodyDailyDetail.innerHTML = (m.days[j].consoHP/1000).toFixed(2) + "kWh";
+                    cell6BodyDailyDetail.innerHTML = m.days[j].priceHP.toFixed(2) + "€";
+                    cell7BodyDailyDetail.innerHTML = m.days[j].price.toFixed(2) + "€";
                     bodyDailyDetail.appendChild(cell1BodyDailyDetail);
                     bodyDailyDetail.appendChild(cell2BodyDailyDetail);
                     bodyDailyDetail.appendChild(cell3BodyDailyDetail);
                     bodyDailyDetail.appendChild(cell4BodyDailyDetail);
                     bodyDailyDetail.appendChild(cell5BodyDailyDetail);
+                    bodyDailyDetail.appendChild(cell6BodyDailyDetail);
+                    bodyDailyDetail.appendChild(cell7BodyDailyDetail);
                 }
             });
 

@@ -32,7 +32,9 @@ var calculator = {
                     date: data[day].date,
                     hours: []
                 };
+                dayData.consoHC = 0;
                 dayData.priceHC = 0;
+                dayData.consoHP = 0;
                 dayData.priceHP = 0;
 
                 dayData.dayType = grille.getDayType(dayData, jourZenPlus);
@@ -50,6 +52,7 @@ var calculator = {
 
                         hourData.type = dayData.dayType + " HC";
                         hourData.price = (((hourData.conso / 1000) * prixKwhHC) / 100);
+                        dayData.consoHC += hourData.conso;
                         dayData.priceHC += hourData.price;
                     }
                     else {
@@ -57,6 +60,7 @@ var calculator = {
                         hourData.type = dayData.dayType + " HP";
 
                         hourData.price = (((hourData.conso / 1000) * prixKwhHP) / 100);
+                        dayData.consoHP += hourData.conso;
                         dayData.priceHP += hourData.price;
                     }
                     dayData.hours.push(hourData);
