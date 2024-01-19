@@ -18,7 +18,7 @@ var enedisParser = {
 
         rows.reverse().forEach(row => {
             if (row.length > 1) {
-                const date = new Date(row[0].replace("+01:00", "+00:00"));
+                const date = new Date(row[0].replace(/\+0.:00/g, "+00:00"));
                 const value = row[1];
 
                 //la date dans le CSV est la fin de la tranche 
