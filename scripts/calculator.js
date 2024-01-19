@@ -1,6 +1,6 @@
 const abonnements = [];
 var calculator = {
-    getTarif: function (puissance, data, grille, jourZenPlus) {
+    getTarif: function (puissance, data, grille) {
         const monthsData = [];
 
         let abonnement = grille.prices.find((t) => t.puissance == puissance);
@@ -46,7 +46,7 @@ var calculator = {
                     hourData.conso = (parseInt(data[day].hours[hour][1]) + parseInt(data[day].hours[hour + 1][1])) / 2;
 
                     let currentHour = parseInt(hourPart);
-                    const dayType = grille.getDayType(dayData, jourZenPlus, currentHour);
+                    const dayType = grille.getDayType(dayData, currentHour);
 
                     if (grille.hc.some(range => currentHour >= range.start && currentHour < range.end)) {
                         let prixKwhHC = abonnement[dayType].prixKwhHC;

@@ -110,10 +110,10 @@ function onFileImported(e) {
     reader.readAsText(input);
 }
 
-function calculateAllMonths(kva, jourZenPlus) {
+function calculateAllMonths(kva) {
     calculatedMonths = abonnements.map(abo => {
         return {
-            allMonths: calculator.getTarif(kva, data, abo, jourZenPlus),
+            allMonths: calculator.getTarif(kva, data, abo),
             title: abo.name
         }
     });
@@ -121,7 +121,7 @@ function calculateAllMonths(kva, jourZenPlus) {
 }
 
 function displayResults() {
-    AddCustomisationToAbonnements();
+    addCustomisationToAbonnements();
     calculateAllMonths(kvaSelector.value);
 
     setBeginYearSelector();
@@ -136,7 +136,7 @@ function displayResults() {
     refreshResultView(dateBegin, dateEnd);
 }
 
-function AddCustomisationToAbonnements() {
+function addCustomisationToAbonnements() {
     abonnements.forEach((abo) => {
         if (abo.hasSpecialDaysCustom) {
             abo.specialDays.push(parseInt(jourZenPlusSelector.value));

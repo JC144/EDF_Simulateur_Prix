@@ -89,7 +89,7 @@ abonnements.push({
     hasHCCustom: false,
     hasSpecialDaysCustom: true,
     specialDays: [0, 6],
-    getDayType: function (day, jourZenPlus) {
+    getDayType: function (day) {
         let dayType = "bleu";
 
         const isoDate = new Date(day.date);

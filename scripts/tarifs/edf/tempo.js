@@ -393,7 +393,7 @@ abonnements.push({
             "2024/01/17"
         ]
     }],
-    getDayType: function (day, _, hour) {
+    getDayType: function (day, hour) {
         let dayType = "bleu";
         let date = day.date;
 
