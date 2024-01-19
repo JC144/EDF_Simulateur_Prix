@@ -26,9 +26,16 @@ var edfParser = {
                     day.date = isoDate;
                     day.hours = [];
                 }
-                //On vérifie si on a bien une donnée et si ce n'est pas un doublon
-                else if (rows[index][0].includes(":") && !day.hours.some(hour => hour[0] == rows[index][0])) {
-                    day.hours.push([rows[index][0], rows[index][1]]);
+                //On vérifie si on a bien une donnée
+                else if (rows[index][0].includes(":")) {
+                    let minutes = rows[index][0].split(":")[1];
+                    //Vérification si les minutes sont bien 00 ou 30
+                    if (minutes == "00" || minutes == "30") {
+                        //Vérification si ce n'est pas un doublon
+                        if (!day.hours.some(hour => hour[0] == rows[index][0])) {
+                            day.hours.push([rows[index][0], rows[index][1]]);
+                        }
+                    }
                 }
             }
         }
