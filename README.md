@@ -4,6 +4,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 [Version en ligne.](http://jc144.github.io/EDF_Simulateur_Prix)
 
 ## Derniers tarifs: 
+* Octopus : 19 Janvier 2024
 * EDF : 18 Janvier 2024
 * Engie : 18 Janvier 2024
 * Mint Energie : 18 Janvier 2024
@@ -13,6 +14,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
 
 * [BenoitGoimier](https://github.com/BenoitGoimier)
+* [Tom Niget](https://github.com/zdimension)
 
 ## Utilisation
 
