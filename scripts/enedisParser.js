@@ -20,6 +20,10 @@ var enedisParser = {
             if (row.length > 1) {
                 const date = new Date(row[0].replace("+01:00", "+00:00"));
                 const value = row[1];
+                // Si la valeur est vide, on ne l'ajoute pas
+                if (value === "") {
+                    return;
+                }
 
                 //la date dans le CSV est la fin de la tranche 
                 //(Exemple : 06:00:00 correspond à 5h30 > 6h00)
