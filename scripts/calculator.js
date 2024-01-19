@@ -4,9 +4,6 @@ var calculator = {
         const monthsData = [];
 
         let abonnement = grille.prices.find((t) => t.puissance == puissance);
-        if (!abonnement) {
-            abonnement = grille.prices.find((t) => t.puissance == parseInt(puissance) + 3);
-        }
         if (abonnement) {
             let currentMonth = 0;
             let currentYear = 0;

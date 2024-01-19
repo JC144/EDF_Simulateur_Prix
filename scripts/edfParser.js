@@ -26,7 +26,8 @@ var edfParser = {
                     day.date = isoDate;
                     day.hours = [];
                 }
-                else if (rows[index][0].includes(":")) {
+                //On vérifie si on a bien une donnée et si ce n'est pas un doublon
+                else if (rows[index][0].includes(":") && !day.hours.some(hour => hour[0] == rows[index][0])) {
                     day.hours.push([rows[index][0], rows[index][1]]);
                 }
             }

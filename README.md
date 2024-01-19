@@ -3,13 +3,16 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 
 [Version en ligne.](http://jc144.github.io/EDF_Simulateur_Prix)
 
-Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
-
-Derniers tarifs: 
+## Derniers tarifs: 
 * EDF : 18 Janvier 2024
 * Engie : 18 Janvier 2024
 * Mint Energie : 18 Janvier 2024
 * TotalEnergie : 18 Janvier 2024
+
+## Contributeurs
+Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
+
+* [BenoitGoimier](https://github.com/BenoitGoimier)
 
 ## Utilisation
 
