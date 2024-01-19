@@ -1,7 +1,7 @@
 abonnements.push(
     {
-        name: "Bleu",
-        lastUpdate: "2023-08-01",
+        name: "TotalEnergie - Heures Eco",
+        lastUpdate: "2024-01-01",
         prices: [{
             puissance: 3,
             abonnement: 9.47,
@@ -18,7 +18,7 @@ abonnements.push(
         },
         {
             puissance: 9,
-            abonnement: 15.63,
+            abonnement: 15.89,
             bleu: {
                 prixKwhHC: 22.76
             }
@@ -39,21 +39,21 @@ abonnements.push(
         },
         {
             puissance: 18,
-            abonnement: 24.92,
+            abonnement: 25.25,
             bleu: {
                 prixKwhHC: 22.76
             }
         },
         {
             puissance: 24,
-            abonnement: 31.60,
+            abonnement: 32.05,
             bleu: {
                 prixKwhHC: 22.76
             }
         },
         {
             puissance: 30,
-            abonnement: 37.29,
+            abonnement: 37.84,
             bleu: {
                 prixKwhHC: 22.76
             }
@@ -69,6 +69,8 @@ abonnements.push(
             start: 0,
             end: 24
         }],
+        hasHCCustom: false,
+        hasSpecialDaysCustom: false,
         specialDays: [],
         getDayType: function (day) {
             let dayType = "bleu";

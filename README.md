@@ -6,7 +6,10 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
 
 Derniers tarifs: 
-* EDF : 14 Septembre 2023
+* EDF : 18 Janvier 2024
+* Engie : 18 Janvier 2024
+* Mint Energie : 18 Janvier 2024
+* TotalEnergie : 18 Janvier 2024
 
 ## Utilisation
 

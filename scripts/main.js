@@ -137,14 +137,14 @@ function displayResults() {
 }
 
 function AddCustomisationToAbonnements() {
-    let aboZenWeekEndPlus = abonnements.find(a => a.name == "Zen Week-End Plus");
-    aboZenWeekEndPlus.specialDays.push(parseInt(jourZenPlusSelector.value));
-
-    let aboZenWeekEndPlusHC = abonnements.find(a => a.name == "Zen Week-End Plus HC");
-    aboZenWeekEndPlusHC.specialDays.push(parseInt(jourZenPlusSelector.value));
-
-    let aboBleuHeuresCreuses = abonnements.find(a => a.name == "Bleu Heures Creuses");
-    aboBleuHeuresCreuses.hc = getBleuHCRange();
+    abonnements.forEach((abo) => {
+        if(abo.hasSpecialDaysCustom) {
+            abo.specialDays.push(parseInt(jourZenPlusSelector.value));
+        }
+        if (abo.hasHCCustom) {
+            abo.hc = getBleuHCRange();
+        }
+    });
 }
 
 function getBleuHCRange() {
@@ -242,17 +242,21 @@ function refreshResultView(dateBegin, dateEnd) {
     const headerEstimationName = document.createElement("th");
     headerEstimationName.innerHTML = "Estimation";
     rowHeader.appendChild(headerEstimationName);
+    const headerDifferenceName = document.createElement("th");
+    headerDifferenceName.innerHTML = "Différence";
+    rowHeader.appendChild(headerDifferenceName);
 
     const tableBody = document.createElement("tbody");
     table.appendChild(tableBody);
 
     let currentRow = 0;
-    resultsForPeriod.map((r) => ({
+    const resultsOrdered = resultsForPeriod.map((r) => ({
         tarif: r.tarif,
         title: r.title
     }))
-        .sort((a, b) => a.tarif.price - b.tarif.price)
-        .forEach(result => {
+        .sort((a, b) => a.tarif.price - b.tarif.price);
+
+    resultsOrdered.forEach(result => {
             const tarifRow = document.createElement("tr");
             const accordionRowId = dateBegin.getFullYear() + "-" + currentRow;
             tableBody.appendChild(tarifRow);
@@ -341,7 +345,12 @@ function refreshResultView(dateBegin, dateEnd) {
 
             const cellTarifPrice = document.createElement("td");
             tarifRow.appendChild(cellTarifPrice);
-            cellTarifPrice.innerHTML = result.tarif.price.toFixed(2) + " € TTC";
+            cellTarifPrice.innerHTML = result.tarif.price.toFixed(2) + " € TTC <br>(" + (result.tarif.price / 12).toFixed(2) + " €/mois)";
+            
+            const cellDiffencePrice = document.createElement("td");
+            tarifRow.appendChild(cellDiffencePrice);
+            cellDiffencePrice.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " € TTC <br>(" + ((result.tarif.price - resultsOrdered[0].tarif.price) / 12).toFixed(2) + " €/mois)";
+            
             currentRow++;
         });
 }

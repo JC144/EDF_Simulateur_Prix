@@ -1,6 +1,6 @@
 abonnements.push({
-    name: "Tempo",
-    lastUpdate: "2023-08-01",
+    name: "TotalEnergie - Heures Eco+",
+    lastUpdate: "2024-01-01",
     prices: [
         {
             puissance: 6,
@@ -122,6 +122,8 @@ abonnements.push({
         start: 0,
         end: 6
     }],
+    hasHCCustom: false,
+    hasSpecialDaysCustom: false,
     specialDays: [{
         name: "rouge",
         numberOfDays: 22,

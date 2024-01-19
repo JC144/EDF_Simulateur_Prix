@@ -18,10 +18,15 @@ var enedisParser = {
 
         rows.reverse().forEach(row => {
             if (row.length > 1) {
-                const date = row[0];
+                const date = new Date(row[0].replace("+01:00","+00:00"));
                 const value = row[1];
 
-                const [isoDate, time] = date.split('T');
+                //la date dans le CSV est la fin de la tranche 
+                //(Exemple : 06:00:00 correspond à 5h30 > 6h00)
+                //(Exemple2 : le 2024/01/01 00:00:00 Correspond à la période de consommation du 2023/12/31 23h30m00 au 2023/12/31 23h59m59)
+                date.setMinutes(date.getMinutes() - 30);
+
+                const [isoDate, time] = date.toISOString().split('T');
                 const [hours, minutes, seconds] = time.slice(0, -6).split(':');
 
                 const formattedDate = isoDate.replace(/-/g, '/');
