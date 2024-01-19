@@ -30,8 +30,8 @@ monthEndSelector.addEventListener("change", monthEndSelectorChanged);
 
 const refreshButton = document.getElementById("refreshButton");
 refreshButton.addEventListener("click", function () {
-    let dateBegin = new Date(beginYear, beginMonth, 1);
-    let dateEnd = new Date(endYear, endMonth, 1);
+    let dateBegin = new Date(beginYear, beginMonth - 1, 1);
+    let dateEnd = new Date(endYear, endMonth - 1, 1);
     refreshResultView(dateBegin, dateEnd);
 });
 
@@ -129,8 +129,8 @@ function displayResults() {
     setEndYearSelector(yearsAvailable[yearsAvailable.length - 1]);
     setEndMonthSelector(endYear);
 
-    let dateBegin = new Date(beginYear, beginMonth, 1);
-    let dateEnd = new Date(endYear, endMonth, 1);
+    let dateBegin = new Date(beginYear, beginMonth - 1, 1);
+    let dateEnd = new Date(endYear, endMonth - 1, 1);
 
     viewManager.displayNextView();
     refreshResultView(dateBegin, dateEnd);
