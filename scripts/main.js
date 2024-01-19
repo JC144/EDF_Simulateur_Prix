@@ -316,28 +316,40 @@ function refreshResultView(dateBegin, dateEnd) {
             for (let j = m.days.length - 1; j >= 0; j--) {
                 const bodyDailyDetail = document.createElement("tr");
                 tableDailyDetail.appendChild(document.createElement("tbody").appendChild(bodyDailyDetail));
+                
                 const cell1BodyDailyDetail = document.createElement("td");
-                const cell2BodyDailyDetail = document.createElement("td");
-                const cell3BodyDailyDetail = document.createElement("td");
-                const cell4BodyDailyDetail = document.createElement("td");
-                const cell5BodyDailyDetail = document.createElement("td");
-                const cell6BodyDailyDetail = document.createElement("td");
-                const cell7BodyDailyDetail = document.createElement("td");
-
                 cell1BodyDailyDetail.innerHTML = m.days[j].date;
-                cell2BodyDailyDetail.innerHTML = (m.days[j].conso / 1000).toFixed(2) + "kWh";
-                cell3BodyDailyDetail.innerHTML = (m.days[j].consoHC / 1000).toFixed(2) + "kWh";
-                cell4BodyDailyDetail.innerHTML = m.days[j].priceHC.toFixed(2) + "€";
-                cell5BodyDailyDetail.innerHTML = (m.days[j].consoHP / 1000).toFixed(2) + "kWh";
-                cell6BodyDailyDetail.innerHTML = m.days[j].priceHP.toFixed(2) + "€";
-                cell7BodyDailyDetail.innerHTML = m.days[j].price.toFixed(2) + "€";
                 bodyDailyDetail.appendChild(cell1BodyDailyDetail);
-                bodyDailyDetail.appendChild(cell2BodyDailyDetail);
-                bodyDailyDetail.appendChild(cell3BodyDailyDetail);
-                bodyDailyDetail.appendChild(cell4BodyDailyDetail);
-                bodyDailyDetail.appendChild(cell5BodyDailyDetail);
-                bodyDailyDetail.appendChild(cell6BodyDailyDetail);
-                bodyDailyDetail.appendChild(cell7BodyDailyDetail);
+
+                //S'il n'y a pas d'erreur lors du calcul de la journée, on affiche les informations
+                if (!isNaN(m.days[j].conso) && !isNaN(m.days[j].price)) {
+                    const cell2BodyDailyDetail = document.createElement("td");
+                    const cell3BodyDailyDetail = document.createElement("td");
+                    const cell4BodyDailyDetail = document.createElement("td");
+                    const cell5BodyDailyDetail = document.createElement("td");
+                    const cell6BodyDailyDetail = document.createElement("td");
+                    const cell7BodyDailyDetail = document.createElement("td");
+
+                    cell2BodyDailyDetail.innerHTML = (m.days[j].conso / 1000).toFixed(2) + "kWh";
+                    cell3BodyDailyDetail.innerHTML = (m.days[j].consoHC / 1000).toFixed(2) + "kWh";
+                    cell4BodyDailyDetail.innerHTML = m.days[j].priceHC.toFixed(2) + "€";
+                    cell5BodyDailyDetail.innerHTML = (m.days[j].consoHP / 1000).toFixed(2) + "kWh";
+                    cell6BodyDailyDetail.innerHTML = m.days[j].priceHP.toFixed(2) + "€";
+                    cell7BodyDailyDetail.innerHTML = m.days[j].price.toFixed(2) + "€";
+                    bodyDailyDetail.appendChild(cell2BodyDailyDetail);
+                    bodyDailyDetail.appendChild(cell3BodyDailyDetail);
+                    bodyDailyDetail.appendChild(cell4BodyDailyDetail);
+                    bodyDailyDetail.appendChild(cell5BodyDailyDetail);
+                    bodyDailyDetail.appendChild(cell6BodyDailyDetail);
+                    bodyDailyDetail.appendChild(cell7BodyDailyDetail);
+                }
+                else {
+                    const cellError = document.createElement("td");                    
+                    cellError.className = "text-center align-middle fw-bold";
+                    cellError.colSpan = 7;
+                    cellError.innerHTML = "Erreur lors du calcul de la journée";
+                    bodyDailyDetail.appendChild(cellError);
+                }
             }
         });
 

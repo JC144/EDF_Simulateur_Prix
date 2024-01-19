@@ -15,8 +15,8 @@ var calculator = {
 
                 if (date[1] != currentMonth) {
                     if (monthData.days) {
-                        monthData.conso = monthData.days.reduce((a, b) => a + b.conso, 0);
-                        monthData.price = monthData.days.reduce((a, b) => a + b.price, 0) + abonnement.abonnement;
+                        monthData.conso = monthData.days.filter(d => !isNaN(d.conso)).reduce((a, b) => a + b.conso, 0);
+                        monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0) + abonnement.abonnement;
                     }
                     currentMonth = date[1];
                     monthData = {};
