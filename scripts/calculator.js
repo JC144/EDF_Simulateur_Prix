@@ -8,6 +8,8 @@ var calculator = {
             let currentMonth = 0;
             let currentYear = 0;
 
+            let prixAbo = 0;
+
             let monthData = {};
             for (let day = 0; day < data.length; day++) {
                 let date = data[day].date.split("/");
@@ -16,14 +18,16 @@ var calculator = {
                 if (date[1] != currentMonth) {
                     if (monthData.days) {
                         monthData.conso = monthData.days.filter(d => !isNaN(d.conso)).reduce((a, b) => a + b.conso, 0);
-                        monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0) + abonnement.abonnement;
+                        monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0);
                     }
                     currentMonth = date[1];
                     monthData = {};
                     monthData.month = currentMonth;
                     monthData.year = currentYear;
-                    monthData.firstDayDate = new Date(currentYear, currentMonth, 1);
+                    monthData.firstDayDate = new Date(currentYear, +currentMonth - 1, 1);
                     monthData.days = [];
+
+                    prixAbo = abonnement.abonnement / new Date(currentYear, +currentMonth, 0).getDate();
 
                     monthsData.push(monthData);
                 }
@@ -68,11 +72,11 @@ var calculator = {
                 }
 
                 dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
-                dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0);
+                dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0) + prixAbo;
                 monthData.days.push(dayData);
             }
             monthData.conso = monthData.days.filter(d => !isNaN(d.conso)).reduce((a, b) => a + b.conso, 0);
-            monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0) + abonnement.abonnement;
+            monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0);
         }
 
         return monthsData;
