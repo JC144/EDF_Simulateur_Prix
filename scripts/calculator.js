@@ -37,27 +37,28 @@ var calculator = {
                 dayData.consoHP = 0;
                 dayData.priceHP = 0;
 
-                dayData.dayType = grille.getDayType(dayData, jourZenPlus);
-
                 for (let hour = 0; hour < data[day].hours.length - 1; hour += 2) {
+
                     let hourData = {};
 
-                    hourData.hour = data[day].hours[hour][0].split(":")[0] + ":00:00";
+                    let hourPart = data[day].hours[hour][0].split(":")[0];
+                    hourData.hour = hourPart + ":00:00";
                     hourData.conso = (parseInt(data[day].hours[hour][1]) + parseInt(data[day].hours[hour + 1][1])) / 2;
 
-                    let currentHour = parseInt(data[day].hours[hour][0].split(":")[0]);
+                    let currentHour = parseInt(hourPart);
+                    const dayType = grille.getDayType(dayData, jourZenPlus, currentHour);
 
                     if (grille.hc.some(range => currentHour >= range.start && currentHour < range.end)) {
-                        let prixKwhHC = abonnement[dayData.dayType].prixKwhHC;
+                        let prixKwhHC = abonnement[dayType].prixKwhHC;
 
-                        hourData.type = dayData.dayType + " HC";
+                        hourData.type = dayType + " HC";
                         hourData.price = (((hourData.conso / 1000) * prixKwhHC) / 100);
                         dayData.consoHC += hourData.conso;
                         dayData.priceHC += hourData.price;
                     }
                     else {
-                        let prixKwhHP = abonnement[dayData.dayType].prixKwhHP;
-                        hourData.type = dayData.dayType + " HP";
+                        let prixKwhHP = abonnement[dayType].prixKwhHP;
+                        hourData.type = dayType + " HP";
 
                         hourData.price = (((hourData.conso / 1000) * prixKwhHP) / 100);
                         dayData.consoHP += hourData.conso;

@@ -393,11 +393,19 @@ abonnements.push({
             "2024/01/17"
         ]
     }],
-    getDayType: function (day) {
+    getDayType: function (day, _, hour) {
         let dayType = "bleu";
+        let date = day.date;
+
+        if (hour < 6) {
+            // color is that of previous day
+            let dateObj = new Date(day.date + " 12:00:00"); // JS doesn't have proper parsing routines
+            dateObj.setDate(dateObj.getDate() - 1);
+            date = dateObj.toISOString().split("T")[0].replace(/-/g, "/");
+        }
 
         this.specialDays.forEach((specialDay) => {
-            if (specialDay.lastDays.includes(day.date)) {
+            if (specialDay.lastDays.includes(date)) {
                 dayType = specialDay.name;
             }
         });
