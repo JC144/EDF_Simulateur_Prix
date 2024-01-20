@@ -40,7 +40,7 @@ var calculator = {
                 dayData.priceHP = 0;
 
                 let hourIndex = 0;
-                while (hourIndex < data[day].hours.length - 1) {
+                while (hourIndex <= data[day].hours.length - 1) {
                     let hourData = {};
 
                     let hourPart = data[day].hours[hourIndex][0].split(":")[0];
@@ -48,13 +48,15 @@ var calculator = {
                     hourData.conso = parseInt(data[day].hours[hourIndex][1]);
 
                     let hourStep = 1;
-                    let nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
-                    while (hourPart == nextHourPart && (hourIndex + hourStep) < data[day].hours.length - 1) {
-                        hourData.conso += parseInt(data[day].hours[hourIndex + 1][1]);
-                        hourStep++;
-                        nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
+                    if (hourIndex + hourStep <= data[day].hours.length - 1) {
+                        let nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
+                        while (hourPart == nextHourPart && (hourIndex + hourStep) < data[day].hours.length - 1) {
+                            hourData.conso += parseInt(data[day].hours[hourIndex + hourStep][1]);
+                            hourStep++;
+                            nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
+                        }
                     }
-                    hourData.conso = hourData.conso / hourStep + 1;
+                    hourData.conso = hourData.conso / hourStep;
                     hourIndex += hourStep;
 
                     let currentHour = parseInt(hourPart);
