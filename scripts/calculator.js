@@ -8,8 +8,6 @@ var calculator = {
             let currentMonth = 0;
             let currentYear = 0;
 
-            let prixAbo = 0;
-
             let monthData = {};
             for (let day = 0; day < data.length; day++) {
                 let date = data[day].date.split("/");
@@ -17,8 +15,7 @@ var calculator = {
 
                 if (date[1] != currentMonth) {
                     if (monthData.days) {
-                        monthData.conso = monthData.days.filter(d => !isNaN(d.conso)).reduce((a, b) => a + b.conso, 0);
-                        monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0);
+                        sumMonthData(monthData);
                     }
                     currentMonth = date[1];
                     monthData = {};
@@ -26,8 +23,9 @@ var calculator = {
                     monthData.year = currentYear;
                     monthData.firstDayDate = new Date(currentYear, +currentMonth - 1, 1);
                     monthData.days = [];
-
-                    prixAbo = abonnement.abonnement / new Date(currentYear, +currentMonth, 0).getDate();
+                    monthData.hasErrors = false;
+                    monthData.numberOfDaysInMonth = new Date(currentYear, +currentMonth, 0).getDate();
+                    monthData.aboPriceByDay = abonnement.abonnement / monthData.numberOfDaysInMonth;
 
                     monthsData.push(monthData);
                 }
@@ -72,11 +70,11 @@ var calculator = {
                 }
 
                 dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
-                dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0) + prixAbo;
+                dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0) + monthData.aboPriceByDay;
                 monthData.days.push(dayData);
             }
-            monthData.conso = monthData.days.filter(d => !isNaN(d.conso)).reduce((a, b) => a + b.conso, 0);
-            monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0);
+
+            sumMonthData(monthData);
         }
 
         return monthsData;
@@ -96,5 +94,15 @@ var calculator = {
         tarifForPeriod.months = months;
 
         return tarifForPeriod;
+    }
+}
+
+function sumMonthData(monthData) {
+    monthData.conso = monthData.days.filter(d => !isNaN(d.conso)).reduce((a, b) => a + b.conso, 0);
+    monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0);
+    const diffNumberOfDays = monthData.numberOfDaysInMonth - monthData.days.length;
+    if (diffNumberOfDays > 0) {
+        monthData.hasErrors = true;
+        monthData.price += diffNumberOfDays * monthData.aboPriceByDay;
     }
 }
