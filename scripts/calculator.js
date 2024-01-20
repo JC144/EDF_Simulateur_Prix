@@ -39,13 +39,23 @@ var calculator = {
                 dayData.consoHP = 0;
                 dayData.priceHP = 0;
 
-                for (let hour = 0; hour < data[day].hours.length - 1; hour += 2) {
-
+                let hourIndex = 0;
+                while (hourIndex < data[day].hours.length - 1) {
                     let hourData = {};
 
-                    let hourPart = data[day].hours[hour][0].split(":")[0];
+                    let hourPart = data[day].hours[hourIndex][0].split(":")[0];
                     hourData.hour = hourPart + ":00:00";
-                    hourData.conso = (parseInt(data[day].hours[hour][1]) + parseInt(data[day].hours[hour + 1][1])) / 2;
+                    hourData.conso = parseInt(data[day].hours[hourIndex][1]);
+
+                    let hourStep = 1;
+                    let nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
+                    while (hourPart == nextHourPart && (hourIndex + hourStep) < data[day].hours.length - 1) {
+                        hourData.conso += parseInt(data[day].hours[hourIndex + 1][1]);
+                        hourStep++;
+                        nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
+                    }
+                    hourData.conso = hourData.conso / hourStep + 1;
+                    hourIndex += hourStep;
 
                     let currentHour = parseInt(hourPart);
                     const dayType = grille.getDayType(dayData, currentHour);
