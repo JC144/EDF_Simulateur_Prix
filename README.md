@@ -32,6 +32,12 @@ Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [M
 6. Revenez plus tard sur la page "Mes téléchargements". La génération du fichier n'est pas immédiate
 7. Quand une nouvelle ligne apparaît sur cette page, cliquez sur la flèche pour télécharger
 
+### Depuis le site de TotalEnergies
+1. Depuis le site de TotalEnergies [https://www.totalenergies.fr/clients/ma-conso](https://www.totalenergies.fr/clients/ma-conso)
+2. Cliquez sur "Électricité"
+3. Sélectionnez "Heure", par défaut vous serez sur "Echéancier"
+4. Cliquez sur le bouton Télécharger, cela va télécharger les données depuis la mise en place de votre Linky, dans une limite de 3 ans
+
 ### Accéder à ce comparateur
 Vos données seront traitées en local, aucune donnée ne sera envoyée vers un serveur.
 Vous pouvez accéder à l'outil depuis cette url : [http://jc144.github.io/EDF_Simulateur_Prix](http://jc144.github.io/EDF_Simulateur_Prix)

@@ -220,7 +220,8 @@
                         <div class="form-text" id="basic-addon4">
                             Fichier au format .csv <br />
                             EDF : mes-puissances-atteintes-30min-XXXX.csv <br />
-                            Enedis : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv
+                            Enedis : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv <br/>
+                            TotalEnergies : 0123456789-NOM-PRENOM.csv
                         </div>
                     </div>
 
@@ -255,6 +256,9 @@
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#enedis">Depuis Enedis</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#total">Depuis TotalEnergies</a>
                                             </li>
                                         </ul>
 
@@ -307,6 +311,32 @@
                                                 <img class="mt-4 mb-4" src="./img/Enedis3.png"
                                                     style="width: 100%; height: auto;"
                                                     alt="2ème étape pour télécharger les données sur le site Enedis" />
+
+                                            </div>
+
+                                            <div class="tab-pane fade" id="total">
+                                                <ol>
+                                                    <li>Rendez-vous sur <a
+                                                            href="https://www.totalenergies.fr/clients/ma-conso">le
+                                                            site
+                                                            de TotalEnergies</a> votre consommation. <br />
+                                                    </li>
+                                                    <li>Cliquez sur "Électricité"</li>
+                                                    <li>Sélectionnez "Heure"</li>
+                                                    <li>Cliquez sur le bouton Télécharger, cela va télécharger les données depuis la mise en place de votre Linky, dans une limite de 3 ans</li>
+                                                    <li>Utilisez le fichier <span
+                                                            class="font-weight-bold">"0123456789-NOM-PRENOM.csv"</span>
+                                                    </li>
+                                                </ol>
+                                                <img class="mt-4 mb-4" src="./img/TOTAL2.png"
+                                                    style="width: 100%; height: auto;"
+                                                    alt="1ère étape pour télécharger les données sur le site TotalEnergies" />
+                                                <img class="mt-4 mb-4" src="./img/TOTAL3.png"
+                                                    style="width: 100%; height: auto;"
+                                                    alt="2ème étape pour télécharger les données sur le site TotalEnergies" />
+                                                <img class="mt-4 mb-4" src="./img/TOTAL4.png"
+                                                    style="width: 100%; height: auto;"
+                                                    alt="2ème étape pour télécharger les données sur le site TotalEnergies" />
 
                                             </div>
                                         </div>
@@ -420,6 +450,7 @@
 
     <script src="./scripts/edfParser.js"></script>
     <script src="./scripts/enedisParser.js"></script>
+    <script src="./scripts/totalParser.js"></script>
     <script src="./scripts/viewManager.js"></script>
     <script src="./scripts/main.js"></script>
 
