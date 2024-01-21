@@ -40,45 +40,62 @@ var calculator = {
                 dayData.priceHP = 0;
 
                 let hourIndex = 0;
+                let firstHourData = {};
                 while (hourIndex <= data[day].hours.length - 1) {
                     let hourData = {};
 
                     let hourPart = data[day].hours[hourIndex][0].split(":")[0];
-                    hourData.hour = hourPart + ":00:00";
-                    hourData.conso = parseInt(data[day].hours[hourIndex][1]);
-
-                    let hourStep = 1;
-                    if (hourIndex + hourStep <= data[day].hours.length - 1) {
-                        let nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
-                        while (hourPart == nextHourPart && (hourIndex + hourStep) < data[day].hours.length - 1) {
-                            hourData.conso += parseInt(data[day].hours[hourIndex + hourStep][1]);
-                            hourStep++;
-                            nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
-                        }
-                    }
-                    hourData.conso = hourData.conso / hourStep;
-                    hourIndex += hourStep;
-
-                    let currentHour = parseInt(hourPart);
-                    const dayType = grille.getDayType(dayData, currentHour);
-
-                    if (grille.hc.some(range => currentHour >= range.start && currentHour < range.end)) {
-                        let prixKwhHC = abonnement[dayType].prixKwhHC;
-
-                        hourData.type = dayType + " HC";
-                        hourData.price = (((hourData.conso / 1000) * prixKwhHC) / 100);
-                        dayData.consoHC += hourData.conso;
-                        dayData.priceHC += hourData.price;
+                    //Si c'est la première heure, on la met de côté pour l'additionner avec le dernier pas
+                    if (hourIndex == 0 && hourPart == "00") {
+                        firstHourData.hour = hourPart + ":00:00";
+                        firstHourData.conso = parseInt(data[day].hours[hourIndex][1]);
+                        hourIndex++;
                     }
                     else {
-                        let prixKwhHP = abonnement[dayType].prixKwhHP;
-                        hourData.type = dayType + " HP";
+                        hourData.hour = hourPart + ":00:00";
+                        hourData.conso = parseInt(data[day].hours[hourIndex][1]);
 
-                        hourData.price = (((hourData.conso / 1000) * prixKwhHP) / 100);
-                        dayData.consoHP += hourData.conso;
-                        dayData.priceHP += hourData.price;
+                        let hourStep = 1;
+                        if (hourIndex + hourStep <= data[day].hours.length - 1) {
+                            let nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
+                            while (hourPart == nextHourPart && (hourIndex + hourStep) < data[day].hours.length - 1) {
+                                hourData.conso += parseInt(data[day].hours[hourIndex + hourStep][1]);
+                                hourStep++;
+                                nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
+                            }
+                        }
+
+                        //Si c'est la dernière heure, on ajoute la première heure
+                        if(hourPart == "00") {
+                            hourData.conso += firstHourData.conso;
+                            firstHourData = {};
+                            hourStep++;
+                        }
+
+                        hourData.conso = hourData.conso / hourStep;
+                        hourIndex += hourStep;
+
+                        let currentHour = parseInt(hourPart);
+                        const dayType = grille.getDayType(dayData, currentHour);
+
+                        if (grille.hc.some(range => currentHour >= range.start && currentHour < range.end)) {
+                            let prixKwhHC = abonnement[dayType].prixKwhHC;
+
+                            hourData.type = dayType + " HC";
+                            hourData.price = (((hourData.conso / 1000) * prixKwhHC) / 100);
+                            dayData.consoHC += hourData.conso;
+                            dayData.priceHC += hourData.price;
+                        }
+                        else {
+                            let prixKwhHP = abonnement[dayType].prixKwhHP;
+                            hourData.type = dayType + " HP";
+
+                            hourData.price = (((hourData.conso / 1000) * prixKwhHP) / 100);
+                            dayData.consoHP += hourData.conso;
+                            dayData.priceHP += hourData.price;
+                        }
+                        dayData.hours.push(hourData);
                     }
-                    dayData.hours.push(hourData);
                 }
 
                 dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
