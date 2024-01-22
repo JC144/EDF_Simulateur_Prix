@@ -2,6 +2,7 @@ abonnements.push(
     {
         name: "EDF - Vert Electrique",
         lastUpdate: "2023-09-14",
+        shiftTime: 30,        
         prices: [{
             puissance: 3,
             abonnement: 9.47,

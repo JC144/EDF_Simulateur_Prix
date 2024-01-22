@@ -1,6 +1,7 @@
 abonnements.push({
     name: "EDF - Vert Electrique Heures Creuses",
     lastUpdate: "2023-08-01",
+    shiftTime: 30,    
     prices: [
         {
             puissance: 6,

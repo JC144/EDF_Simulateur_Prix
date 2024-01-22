@@ -2,6 +2,7 @@ abonnements.push(
     {
         name: "EDF - Bleu",
         lastUpdate: "2023-08-01",
+        shiftTime: 30,        
         prices: [{
             puissance: 3,
             abonnement: 9.47,

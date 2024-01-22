@@ -1,6 +1,7 @@
 abonnements.push({
     name: "EDF - ZenFlex",
     lastUpdate: "2023-09-14",
+    shiftTime: 30,    
     prices: [
         {
             puissance: 6,
@@ -111,6 +112,7 @@ abonnements.push({
         end: 24
     }],
     hasHCCustom: false,
+    shiftTime: 30,
     hasSpecialDaysCustom: false,
     specialDays: [{
         name: "sobriete",

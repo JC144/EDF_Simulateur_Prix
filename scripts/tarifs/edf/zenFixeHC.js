@@ -1,6 +1,7 @@
 abonnements.push({
     name: "EDF - Zen Fixe Heures Creuses",
     lastUpdate: "2024-01-19",
+    shiftTime: 30,    
     prices: [
         {
             puissance: 6,

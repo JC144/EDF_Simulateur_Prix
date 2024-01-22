@@ -2,6 +2,7 @@ abonnements.push({
     name: "EDF - ZenFlex Week-End",
     hasSpecialDaysCustom: false,
     lastUpdate: "2023-09-14",
+    shiftTime: 30,    
     prices: [
         {
             puissance: 3,

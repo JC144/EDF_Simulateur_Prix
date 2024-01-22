@@ -1,6 +1,7 @@
 abonnements.push({
     name: "EDF - Zen Week-End HC",
     lastUpdate: "2023-09-14",
+    shiftTime: 30,    
     prices: [
         {
             puissance: 6,
