@@ -30,7 +30,7 @@ var enedisParser = {
                 const [hours, minutes, seconds] = time.slice(0, -6).split(':');
 
                 const formattedDate = isoDate.replace(/-/g, '/');
-                const formattedTime = `${hours}:${minutes}:${seconds}`;
+                const formattedTime = `${hours}:${minutes}:00`;
 
                 const day = data.find(d => d.date === formattedDate);
                 if (day) {
