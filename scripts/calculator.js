@@ -140,11 +140,7 @@ function getShiftedHour(hourLine, shiftTime) {
 
     let shiftedTime = new Date(time - shift * 60000);
 
-    shiftedTime = shiftedTime.getHours().toString() + ":" +
-           shiftedTime.getMinutes().toString() + ":" +
-           shiftedTime.getSeconds().toString();
-
-    return parseInt(shiftedTime);
+    return parseInt(shiftedTime.getHours());
 }
 
 function getHourData(dayData, hourKey) {
