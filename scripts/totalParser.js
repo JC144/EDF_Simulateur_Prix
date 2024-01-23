@@ -23,35 +23,22 @@ var totalParser = {
                     let date = line[1].replace('"', '').split("/");
                     let tmpHoursDate = date[2].replace('"', '').split(" ");
                     let isoDate = tmpHoursDate[0] + "/" + date[1] + "/" + date[0];
-                    let hour = tmpHoursDate[1].split(":");
-                    let consoRegex = /(kWh)|(\s+)|(\")/ig;
+                    const [hours, minutes] = tmpHoursDate[1].split(':');
                     // on remplace ce dont on a pas besoin, pour uniquement garder le nombre
                     // on transforme notre string en Number pour pouvoir additionner la conso plus tard, et le transformons en Wh au lieu du kWh
-                    let conso = Number(line[2].replace(consoRegex, "")) * 1000;
+                    let conso = Number(line[2].split(' ')[0]) * 1000;
 
                     // si date pas encore traitée
-                    if(!dates.find((elm) => elm == isoDate)) {
-                        console.log(isoDate);
+                    if (!dates.find((elm) => elm == isoDate)) {
+                        dates.push(isoDate);
+
                         day = {};
                         data.push(day);
                         day.date = isoDate;
                         day.hours = [];
                     }
 
-                    // on regarde si l'heure a déjà été utilisée
-                    if(!day.hours.find((elm) => elm[0] == hour[0])) {
-                        day.hours.push([hour[0], conso]);
-                    } else {
-                        // on recherche pour calculer le total sur l'heure
-                        let hourIndex = day.hours.findIndex((elm) => elm[0] == hour[0]);
-
-                        // on s'assure tout de même qu'on a bien réussi à trouver le résultat, même si on est pas censé avoir un résultat négatif là-dessus
-                        if(hourIndex !== -1) {
-                            day.hours[hourIndex][1] += conso;
-                        }
-                    }
-
-                    dates.push(isoDate);
+                    day.hours.push([`${hours}:${minutes}:00`, conso]);
                 }
             }
         }

@@ -41,42 +41,53 @@ var calculator = {
                 dayData.consoHP = 0;
                 dayData.priceHP = 0;
 
-                // pour une journée donnée, parcours la listes heures et consommations 
-                data[day].hours.forEach((hourLine) => {
-                    const step = Math.floor(data[day].hours.length / 24);
+                //On définit le pas de consommation pour chaque jour.
+                //Si on a 48 valeurs, on est à la demi-heure, 96 pour le quart d'heure, etc...
+                const step = Math.floor(data[day].hours.length / 24);
 
-                    const splittedHour = hourLine[0].split(":");
-                    
-                    let hourData = {
-                        time: { hour: parseInt(splittedHour[0]), minute: parseInt(splittedHour[1]) },
-                        conso: parseInt(hourLine[1]) / step
-                    };
+                //Si on a un pas de 0 on a sûrement moins de 24 tranches de remontées
+                //La journée sera faussée, on la marque en erreur
+                if (step == 0) {
+                    dayData.conso = NaN;
+                    dayData.price = NaN;
+                }
+                else {
+                    // pour une journée donnée, parcours la listes heures et consommations 
+                    data[day].hours.forEach((hourLine) => {
 
-                    const dayType = grille.getDayType(dayData, hourData.time);
-                    // 00:00:00 est converti en 24:00:00 pour le calcul du type de jour
-                    // On reconverti à une heure réelle pour le calcul des HC/HP
-                    const realHour = hourData.time.hour == 24 ? 0 : hourData.time.hour;
-                    const realTime = { hour: realHour, minute: hourData.time.minute };
-                    if (grille.hc.some(range => isHC(realTime, range.start, range.end))) {
-                        hourData.type = dayType + " HC";
-                        const prixKwh = abonnement[dayType].prixKwhHC;
-                        hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
-                        dayData.consoHC += hourData.conso;
-                        dayData.priceHC += hourData.price;
-                    }
-                    else {
-                        hourData.type = dayType + " HP";
-                        const prixKwh = abonnement[dayType].prixKwhHP;
-                        hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
-                        dayData.consoHP += hourData.conso;
-                        dayData.priceHP += hourData.price;
-                    }
+                        const splittedHour = hourLine[0].split(":");
 
-                    dayData.hours.push(hourData);
-                });
+                        let hourData = {
+                            time: { hour: parseInt(splittedHour[0]), minute: parseInt(splittedHour[1]) },
+                            conso: parseInt(hourLine[1]) / step
+                        };
 
-                dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
-                dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0) + monthData.aboPriceByDay;
+                        const dayType = grille.getDayType(dayData, hourData.time);
+                        // 00:00:00 est converti en 24:00:00 pour le calcul du type de jour
+                        // On reconverti à une heure réelle pour le calcul des HC/HP
+                        const realHour = hourData.time.hour == 24 ? 0 : hourData.time.hour;
+                        const realTime = { hour: realHour, minute: hourData.time.minute };
+                        if (grille.hc.some(range => isHC(realTime, range.start, range.end))) {
+                            hourData.type = dayType + " HC";
+                            const prixKwh = abonnement[dayType].prixKwhHC;
+                            hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
+                            dayData.consoHC += hourData.conso;
+                            dayData.priceHC += hourData.price;
+                        }
+                        else {
+                            hourData.type = dayType + " HP";
+                            const prixKwh = abonnement[dayType].prixKwhHP;
+                            hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
+                            dayData.consoHP += hourData.conso;
+                            dayData.priceHP += hourData.price;
+                        }
+
+                        dayData.hours.push(hourData);
+                    });
+
+                    dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
+                    dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0) + monthData.aboPriceByDay;
+                }
                 monthData.days.push(dayData);
             }
 

@@ -15,7 +15,6 @@ var edfParser = {
         let day = {};
 
         for (let index = 0; index < rows.length; index++) {
-            let line = rows[index];
             if (rows[index].length > 0) {
                 if (rows[index][0].includes("/")) {
                     let date = rows[index][0].split("/");
