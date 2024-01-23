@@ -115,12 +115,12 @@ abonnements.push({
             }
         }],
     hc: [{
-        start: 22,
-        end: 24
+        start: {hour:22, minute:0},
+        end: {hour:24, minute:0}
     },
     {
-        start: 0,
-        end: 6
+        start: {hour:0, minute:0},
+        end: {hour:6, minute:0}
     }],
     hasHCCustom: false,
     hasSpecialDaysCustom: false,
@@ -393,11 +393,11 @@ abonnements.push({
             "2024/01/17"
         ]
     }],
-    getDayType: function (day, hour) {
+    getDayType: function (day, time) {
         let dayType = "bleu";
         let date = day.date;
 
-        if (hour < 6) {
+        if (time.hour < 6) {
             // color is that of previous day
             let dateObj = new Date(day.date + " 12:00:00"); // JS doesn't have proper parsing routines
             dateObj.setDate(dateObj.getDate() - 1);

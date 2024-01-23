@@ -68,12 +68,12 @@ abonnements.push(
             }
         }],
         hc: [{
-            start: 22,
-            end: 24
+            start: {hour:22, minute:0},
+            end: {hour:24, minute:0}
         },
         {
-            start: 0,
-            end: 6
+            start: {hour:0, minute:0},
+            end: {hour:6, minute:0}
         }],
         hasHCCustom: false,
         hasSpecialDaysCustom: false,

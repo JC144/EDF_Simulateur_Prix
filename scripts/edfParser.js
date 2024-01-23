@@ -33,7 +33,11 @@ var edfParser = {
                     if (minutes == "00" || minutes == "30") {
                         //Vérification si ce n'est pas un doublon
                         if (!day.hours.some(hour => hour[0] == rows[index][0])) {
-                            day.hours.push([rows[index][0], rows[index][1]]);
+                            let hours = rows[index][0].split(":")[0];
+                            if (hours == "00" && minutes == "00") {
+                                hours = "24";
+                            }
+                            day.hours.push([`${hours}:${minutes}:00`, rows[index][1]]);
                         }
                     }
                 }

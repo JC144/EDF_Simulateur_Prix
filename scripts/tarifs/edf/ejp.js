@@ -63,8 +63,8 @@ abonnements.push({
             }
         }],
     hc: [{
-        start: 1,
-        end: 7
+        start: {hour:1, minute:0},
+        end: {hour:7, minute:0}
     }],
     specialDays: [{
         name: "rouge",

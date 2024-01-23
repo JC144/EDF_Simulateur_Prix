@@ -365,7 +365,7 @@ function refreshResultView(dateBegin, dateEnd) {
         const cellTarifPrice = document.createElement("td");
         cellTarifPrice.className = "text-center align-middle";
         tarifRow.appendChild(cellTarifPrice);
-        cellTarifPrice.innerHTML = result.tarif.price.toFixed(2) + " € TTC <br>(" + (result.tarif.price / 12).toFixed(2) + " €/mois)";
+        cellTarifPrice.innerHTML = result.tarif.price.toFixed(2) + " € TTC <br>(" + (result.tarif.price / result.tarif.months.length).toFixed(2) + " €/mois)";
 
         const cellDiffencePrice = document.createElement("td");
         cellDiffencePrice.className = "text-center align-middle";

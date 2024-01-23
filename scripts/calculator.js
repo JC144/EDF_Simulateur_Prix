@@ -45,23 +45,28 @@ var calculator = {
                 data[day].hours.forEach((hourLine) => {
                     const step = Math.floor(data[day].hours.length / 24);
 
+                    const splittedHour = hourLine[0].split(":");
+                    
                     let hourData = {
-                        hour: parseInt(hourLine[0]),
+                        time: { hour: parseInt(splittedHour[0]), minute: parseInt(splittedHour[1]) },
                         conso: parseInt(hourLine[1]) / step
                     };
 
-                    const dayType = grille.getDayType(dayData, hourData);
-
-                    if (grille.hc.some(range => hourData.hour >= range.start && hourData.hour < range.end)) {
+                    const dayType = grille.getDayType(dayData, hourData.time);
+                    // 00:00:00 est converti en 24:00:00 pour le calcul du type de jour
+                    // On reconverti à une heure réelle pour le calcul des HC/HP
+                    const realHour = hourData.time.hour == 24 ? 0 : hourData.time.hour;
+                    const realTime = { hour: realHour, minute: hourData.time.minute };
+                    if (grille.hc.some(range => isHC(realTime, range.start, range.end))) {
                         hourData.type = dayType + " HC";
-                        prixKwh = abonnement[dayType].prixKwhHC;
+                        const prixKwh = abonnement[dayType].prixKwhHC;
                         hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
                         dayData.consoHC += hourData.conso;
                         dayData.priceHC += hourData.price;
                     }
                     else {
                         hourData.type = dayType + " HP";
-                        prixKwh = abonnement[dayType].prixKwhHP;
+                        const prixKwh = abonnement[dayType].prixKwhHP;
                         hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
                         dayData.consoHP += hourData.conso;
                         dayData.priceHP += hourData.price;
@@ -134,4 +139,9 @@ function getHourData(dayData, hourKey) {
     }
 
     return dayData._hours[hourKey];
+}
+
+function isHC(timeInformation, hcTimeBegin, hcTimeEnd) {
+    return (timeInformation.hour > hcTimeBegin.hour || timeInformation.hour == hcTimeBegin.hour && timeInformation.minute >= hcTimeBegin.minute)
+        && (timeInformation.hour < hcTimeEnd.hour);
 }

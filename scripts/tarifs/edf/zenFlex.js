@@ -99,16 +99,16 @@ abonnements.push({
             }
         }],
     hc: [{
-        start: 0,
-        end: 8
+        start: {hour:0, minute:0},
+        end: {hour:8, minute:0}
     },
     {
         start: 13,
         end: 18
     },
     {
-        start: 20,
-        end: 24
+        start: {hour:20, minute:0},
+        end: {hour:24, minute:0}
     }],
     hasHCCustom: false,
     hasSpecialDaysCustom: false,
