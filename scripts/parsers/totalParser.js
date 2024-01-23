@@ -26,7 +26,7 @@ var totalParser = {
                     const [hours, minutes] = tmpHoursDate[1].split(':');
                     // on remplace ce dont on a pas besoin, pour uniquement garder le nombre
                     // on transforme notre string en Number pour pouvoir additionner la conso plus tard, et le transformons en Wh au lieu du kWh
-                    let conso = Number(line[2].split(' ')[0]) * 1000;
+                    let conso = Number(line[2].replace('"', '').split(' ')[0]) * 1000;
 
                     // si date pas encore traitée
                     if (!dates.find((elm) => elm == isoDate)) {
