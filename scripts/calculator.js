@@ -34,8 +34,7 @@ var calculator = {
 
                 let dayData = {
                     date: data[day].date,
-                    hours: [],
-                    _hours: {}
+                    hours: []
                 };
                 dayData.consoHC = 0;
                 dayData.priceHC = 0;
@@ -45,24 +44,13 @@ var calculator = {
                 // pour une journée donnée, parcours la listes heures et consommations 
                 data[day].hours.forEach((hourLine) => {
                     const step = Math.floor(data[day].hours.length / 24);
-                    const shiftTime = 60 / step;
-                    // fix décalage tranche horaire EDF 
-                    // ex: 00:00:00 donne en vérité la consommation pour la tranche 23:00 -> 00:00
-                    let hourPart = getShiftedHour(hourLine, shiftTime);
-                    let hourData = getHourData(dayData, hourPart);
-                    hourData.conso += parseInt(hourLine[1]);
-                    hourData.step += 1;
 
-                    dayData._hours[hourPart] = hourData
-                });
+                    let hourData = {
+                        hour: parseInt(hourLine[0]),
+                        conso: parseInt(hourLine[1]) / step
+                    };
 
-                // pour éviter des erreurs de décimal, on effectue la conversion une fois toute la journée traitée
-
-                Object.values(dayData._hours).forEach(hourData => {
                     const dayType = grille.getDayType(dayData, hourData);
-
-                    // consolidation consommations
-                    hourData.conso = hourData.conso / hourData.step
 
                     if (grille.hc.some(range => hourData.hour >= range.start && hourData.hour < range.end)) {
                         hourData.type = dayType + " HC";
@@ -81,8 +69,6 @@ var calculator = {
 
                     dayData.hours.push(hourData);
                 });
-
-                dayData._hours = null;
 
                 dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
                 dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0) + monthData.aboPriceByDay;
