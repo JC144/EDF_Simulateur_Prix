@@ -99,7 +99,7 @@ function onFileImported(e) {
 
         if (csvFile.files[0].name.includes("Enedis")) {
             parser = enedisParser;
-        } else if(csvFile.files[0].name.match(regexTotalEnergies)) {
+        } else if (csvFile.files[0].name.match(regexTotalEnergies)) {
             parser = totalParser;
         }
         try {
@@ -187,13 +187,12 @@ function formatHCRange(rawStart, rawEnd) {
     let endHours = parseInt(endTime[0]);
     let endMinutes = parseInt(endTime[1]);
 
-    //TODO: Gerer à la demi-heure
-    //Permet aussi de gérer le 23:59
     if (startMinutes > 30) {
         startHours++;
     }
     startMinutes = 0;
-
+    
+    //Permet de gérer le 23:59
     if (endMinutes > 30) {
         endHours++;
     }
@@ -203,8 +202,8 @@ function formatHCRange(rawStart, rawEnd) {
         return null;
     } else {
         return {
-            start: startHours,
-            end: endHours
+            start: { hour: startHours, minute: startMinutes },
+            end: { hour: endHours, minute: endMinutes }
         }
     }
 }
@@ -320,7 +319,7 @@ function refreshResultView(dateBegin, dateEnd) {
             for (let j = m.days.length - 1; j >= 0; j--) {
                 const bodyDailyDetail = document.createElement("tr");
                 tableDailyDetail.appendChild(document.createElement("tbody").appendChild(bodyDailyDetail));
-                
+
                 const cell1BodyDailyDetail = document.createElement("td");
                 cell1BodyDailyDetail.innerHTML = m.days[j].date;
                 bodyDailyDetail.appendChild(cell1BodyDailyDetail);
@@ -348,7 +347,7 @@ function refreshResultView(dateBegin, dateEnd) {
                     bodyDailyDetail.appendChild(cell7BodyDailyDetail);
                 }
                 else {
-                    const cellError = document.createElement("td");                    
+                    const cellError = document.createElement("td");
                     cellError.className = "text-center align-middle fw-bold";
                     cellError.colSpan = 7;
                     cellError.innerHTML = "Erreur lors du calcul de la journée";
