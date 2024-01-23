@@ -125,33 +125,6 @@ function sumMonthData(monthData) {
     }
 }
 
-function getShiftedHour(hourLine, shiftTime) {
-    const shift = shiftTime || 0;
-
-    // get hour of line
-    const hour = hourLine[0]
-
-    // convert it to real time (allow to substract minutes)
-    const time = new Date("1970-01-01T" + hour);
-
-    let shiftedTime = new Date(time - shift * 60000);
-
-    return parseInt(shiftedTime.getHours());
-}
-
-function getHourData(dayData, hourKey) {
-
-    if (!dayData._hours[hourKey]) {
-        dayData._hours[hourKey] = {
-            hour: hourKey,
-            conso: 0,
-            step: 0
-        }
-    }
-
-    return dayData._hours[hourKey];
-}
-
 function isHC(timeInformation, hcTimeBegin, hcTimeEnd) {
     return (timeInformation.hour > hcTimeBegin.hour || timeInformation.hour == hcTimeBegin.hour && timeInformation.minute >= hcTimeBegin.minute)
         && (timeInformation.hour < hcTimeEnd.hour);
