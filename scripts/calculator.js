@@ -4,6 +4,7 @@ var calculator = {
         const monthsData = [];
 
         let abonnement = grille.prices.find((t) => t.puissance == puissance);
+
         if (abonnement) {
             let currentMonth = 0;
             let currentYear = 0;
@@ -30,73 +31,58 @@ var calculator = {
                     monthsData.push(monthData);
                 }
 
+
                 let dayData = {
                     date: data[day].date,
-                    hours: []
+                    hours: [],
+                    _hours: {}
                 };
                 dayData.consoHC = 0;
                 dayData.priceHC = 0;
                 dayData.consoHP = 0;
                 dayData.priceHP = 0;
 
-                let hourIndex = 0;
-                let firstHourData = {};
-                while (hourIndex <= data[day].hours.length - 1) {
-                    let hourData = {};
+                // pour une journée donnée, parcours la listes heures et consommations 
+                data[day].hours.forEach((hourLine) => {
+                    const step = Math.floor(data[day].hours.length / 24);
+                    const shiftTime = 60 / step;
+                    // fix décalage tranche horaire EDF 
+                    // ex: 00:00:00 donne en vérité la consommation pour la tranche 23:00 -> 00:00
+                    let hourPart = getShiftedHour(hourLine, shiftTime);
+                    let hourData = getHourData(dayData, hourPart);
+                    hourData.conso += parseInt(hourLine[1]);
+                    hourData.step += 1;
 
-                    let hourPart = data[day].hours[hourIndex][0].split(":")[0];
-                    //Si c'est la première heure, on la met de côté pour l'additionner avec le dernier pas
-                    if (hourIndex == 0 && hourPart == "00") {
-                        firstHourData.hour = hourPart + ":00:00";
-                        firstHourData.conso = parseInt(data[day].hours[hourIndex][1]);
-                        hourIndex++;
+                    dayData._hours[hourPart] = hourData
+                });
+
+                // pour éviter des erreurs de décimal, on effectue la conversion une fois toute la journée traitée
+
+                Object.values(dayData._hours).forEach(hourData => {
+                    const dayType = grille.getDayType(dayData, hourData);
+
+                    // consolidation consommations
+                    hourData.conso = hourData.conso / hourData.step
+
+                    if (grille.hc.some(range => hourData.hour >= range.start && hourData.hour < range.end)) {
+                        hourData.type = dayType + " HC";
+                        prixKwh = abonnement[dayType].prixKwhHC;
+                        hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
+                        dayData.consoHC += hourData.conso;
+                        dayData.priceHC += hourData.price;
                     }
                     else {
-                        hourData.hour = hourPart + ":00:00";
-                        hourData.conso = parseInt(data[day].hours[hourIndex][1]);
-
-                        let hourStep = 1;
-                        if (hourIndex + hourStep <= data[day].hours.length - 1) {
-                            let nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
-                            while (hourPart == nextHourPart && (hourIndex + hourStep) < data[day].hours.length - 1) {
-                                hourData.conso += parseInt(data[day].hours[hourIndex + hourStep][1]);
-                                hourStep++;
-                                nextHourPart = data[day].hours[hourIndex + hourStep][0].split(":")[0];
-                            }
-                        }
-
-                        //Si c'est la dernière heure, on ajoute la première heure
-                        if(hourPart == "00") {
-                            hourData.conso += firstHourData.conso;
-                            firstHourData = {};
-                            hourStep++;
-                        }
-
-                        hourData.conso = hourData.conso / hourStep;
-                        hourIndex += hourStep;
-
-                        let currentHour = parseInt(hourPart);
-                        const dayType = grille.getDayType(dayData, currentHour);
-
-                        if (grille.hc.some(range => currentHour >= range.start && currentHour < range.end)) {
-                            let prixKwhHC = abonnement[dayType].prixKwhHC;
-
-                            hourData.type = dayType + " HC";
-                            hourData.price = (((hourData.conso / 1000) * prixKwhHC) / 100);
-                            dayData.consoHC += hourData.conso;
-                            dayData.priceHC += hourData.price;
-                        }
-                        else {
-                            let prixKwhHP = abonnement[dayType].prixKwhHP;
-                            hourData.type = dayType + " HP";
-
-                            hourData.price = (((hourData.conso / 1000) * prixKwhHP) / 100);
-                            dayData.consoHP += hourData.conso;
-                            dayData.priceHP += hourData.price;
-                        }
-                        dayData.hours.push(hourData);
+                        hourData.type = dayType + " HP";
+                        prixKwh = abonnement[dayType].prixKwhHP;
+                        hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
+                        dayData.consoHP += hourData.conso;
+                        dayData.priceHP += hourData.price;
                     }
-                }
+
+                    dayData.hours.push(hourData);
+                });
+
+                dayData._hours = null;
 
                 dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
                 dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0) + monthData.aboPriceByDay;
@@ -108,6 +94,7 @@ var calculator = {
 
         return monthsData;
     },
+
     calculateTarifForPeriod: function (monthsData, dateBegin, dateEnd) {
         let tarifForPeriod = {
             conso: 0,
@@ -115,7 +102,7 @@ var calculator = {
             months: []
         };
 
-        //Take all months between dateBegin and dateEnd
+        //On prend tous les mois entre la date de début et de fin
         let months = monthsData.filter(m => m.firstDayDate >= dateBegin && m.firstDayDate <= dateEnd);
 
         tarifForPeriod.conso = months.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0);
@@ -134,4 +121,31 @@ function sumMonthData(monthData) {
         monthData.hasErrors = true;
         monthData.price += diffNumberOfDays * monthData.aboPriceByDay;
     }
+}
+
+function getShiftedHour(hourLine, shiftTime) {
+    const shift = shiftTime || 0;
+
+    // get hour of line
+    const hour = hourLine[0]
+
+    // convert it to real time (allow to substract minutes)
+    const time = new Date("1970-01-01T" + hour);
+
+    let shiftedTime = new Date(time - shift * 60000);
+
+    return parseInt(shiftedTime.getHours());
+}
+
+function getHourData(dayData, hourKey) {
+
+    if (!dayData._hours[hourKey]) {
+        dayData._hours[hourKey] = {
+            hour: hourKey,
+            conso: 0,
+            step: 0
+        }
+    }
+
+    return dayData._hours[hourKey];
 }
