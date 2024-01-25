@@ -118,11 +118,17 @@
                     <p class="text-justify">
                         <strong>Notes: </strong>
                     <ul>
-                        <li>Si vous comparez vos résultats avec le site d'EDF, ce comparatif intègre l'abonnement
-                            mensuellement sans prorata journalier.</li>
-                        <li>En l'absence d'historique, les jours sobriétés du tarif ZenFlex sont basés sur les jours
-                            rouges
-                            du tarif Tempo</li>
+                        <li><strong>Nous appliquons les tarifs en cours sur une consommation passée.</strong> Cela veut
+                            dire que vous pouvez constater une différence avec ce que vous avez payé si le tarif a
+                            changé entre temps.</li>
+                        <li>L'outil est là pour savoir quel tarif aurait été le moins cher sans changer votre
+                            consommation. Vous pourrez peut-être économiser encore plus en jouant sur les heures
+                            creuses.</li>
+                        <li>Nous faisons des tests réguliers mais nous n'excluons pas de légères différences. Nous
+                            restons assez réactif à <a href="https://github.com/JC144/EDF_Simulateur_Prix/issues">vos
+                                retours</a> pour affiner nos résultats.</li>
+                        <li>En l'absence d'historique, une partie des jours sobriétés du tarif ZenFlex est basée sur
+                            les jours rouges du tarif Tempo</li>
                     </ul>
                     </p>
                 </div>
@@ -177,20 +183,20 @@
                             <div id="bleuHC-endDay1" class="mx-3">
                                 <label for="bleuHC-start-endDay1" class="form-label text-muted">Heure début :</label>
                                 <input type="time" id="bleuHC-start-endDay1" class="form-control"
-                                    name="bleuHC-start-endDay1" min="00:00" max="24:00" value="22:00"/>
+                                    name="bleuHC-start-endDay1" min="00:00" max="24:00" value="22:00" />
                                 <label for="bleuHC-end-endDay1" class="form-label mt-1 text-muted">Heure fin :</label>
                                 <input type="time" id="bleuHC-end-endDay1" class="form-control"
-                                    name="bleuHC-end-endDay1" min="00:00" max="24:00" value="23:59"/>
+                                    name="bleuHC-end-endDay1" min="00:00" max="24:00" value="23:59" />
                             </div>
 
                             <label for="bleuHC-beginDay2" class="form-label mt-3 text-muted">Nuit (jour 2)</label>
                             <div id="bleuHC-beginDay2" class="mx-3">
                                 <label for="bleuHC-start-beginDay2" class="form-label text-muted">Heure début :</label>
                                 <input type="time" id="bleuHC-start-beginDay2" class="form-control"
-                                    name="bleuHC-start-beginDay2" min="00:00" max="24:00" value="00:00"/>
+                                    name="bleuHC-start-beginDay2" min="00:00" max="24:00" value="00:00" />
                                 <label for="bleuHC-end-beginDay2" class="form-label mt-1 text-muted">Heure fin :</label>
                                 <input type="time" id="bleuHC-end-beginDay2" class="form-control"
-                                    name="bleuHC-end-beginDay2" min="00:00" max="24:00" value="07:00"/>
+                                    name="bleuHC-end-beginDay2" min="00:00" max="24:00" value="07:00" />
                             </div>
 
                             <label for="bleuHC-middleDay2" class="form-label mt-3 text-muted">Après-midi (jour
@@ -198,17 +204,18 @@
                             <div id="bleuHC-middleDay2" class="mx-3">
                                 <label for="bleuHC-start-middleDay2" class="form-label text-muted">Heure début :</label>
                                 <input type="time" id="bleuHC-start-middleDay2" class="form-control"
-                                    name="bleuHC-start-middleDay2" min="00:00" max="24:00" value="00:00"/>
+                                    name="bleuHC-start-middleDay2" min="00:00" max="24:00" value="00:00" />
                                 <label for="bleuHC-end-middleDay2" class="form-label mt-1 text-muted">Heure fin
                                     :</label>
                                 <input type="time" id="bleuHC-end-middleDay2" class="form-control"
-                                    name="bleuHC-end-middleDay2" min="00:00" max="24:00" value="00:00"/>
+                                    name="bleuHC-end-middleDay2" min="00:00" max="24:00" value="00:00" />
                             </div>
                         </div>
                         <div class="form-text" id="basic-addon4">
                             Les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les
-                            vôtres ou différents cas.<br/>
-                            ATTENTION : Pour le moment, les minutes ne sont pas prises en compte et sont arrondies à l'heure la plus proche.
+                            vôtres ou différents cas.<br />
+                            ATTENTION : Pour le moment, les minutes ne sont pas prises en compte et sont arrondies à
+                            l'heure la plus proche.
                         </div>
                     </div>
 
@@ -220,7 +227,7 @@
                         <div class="form-text" id="basic-addon4">
                             Fichier au format .csv <br />
                             EDF : mes-puissances-atteintes-30min-XXXX.csv <br />
-                            Enedis : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv <br/>
+                            Enedis : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv <br />
                             TotalEnergies : 0123456789-NOM-PRENOM.csv
                         </div>
                     </div>
@@ -323,7 +330,9 @@
                                                     </li>
                                                     <li>Cliquez sur "Électricité"</li>
                                                     <li>Sélectionnez "Heure"</li>
-                                                    <li>Cliquez sur le bouton Télécharger, cela va télécharger les données depuis la mise en place de votre Linky, dans une limite de 3 ans</li>
+                                                    <li>Cliquez sur le bouton Télécharger, cela va télécharger les
+                                                        données depuis la mise en place de votre Linky, dans une limite
+                                                        de 3 ans</li>
                                                     <li>Utilisez le fichier <span
                                                             class="font-weight-bold">"0123456789-NOM-PRENOM.csv"</span>
                                                     </li>
@@ -357,7 +366,8 @@
                         mensuellement sans prorata journalier.</li>
                     <li>En l'absence d'historique, les jours sobriétés du tarif ZenFlex sont basés sur les jours
                         rouges du tarif Tempo sur les années avant 2023.</li>
-                    <li>Nous faisons de notre mieux pour garder les tarifs à jour, mais pensez à les vérifier avec vos fournisseurs avant de souscrire un contrat.</li>
+                    <li>Nous faisons de notre mieux pour garder les tarifs à jour, mais pensez à les vérifier avec vos
+                        fournisseurs avant de souscrire un contrat.</li>
                 </ul>
                 </p>
 
@@ -434,7 +444,7 @@
     <script src="./scripts/tarifs/edf/zenWeekEndHC.js"></script>
     <script src="./scripts/tarifs/edf/zenWeekEndPlus.js"></script>
     <script src="./scripts/tarifs/edf/zenWeekEndPlusHC.js"></script>
-    
+
     <script src="./scripts/tarifs/engie/electTranquilite1an.js"></script>
     <script src="./scripts/tarifs/engie/electTranquilite1anHC.js"></script>
 
@@ -448,7 +458,7 @@
     <script src="./scripts/tarifs/ohm/maxiEco.js"></script>
     <script src="./scripts/tarifs/ohm/maxiEcoHC.js"></script>
     <script src="./scripts/tarifs/ohm/soirWeekEndHC.js"></script>
-    
+
     <script src="./scripts/tarifs/total/heuresEco.js"></script>
     <script src="./scripts/tarifs/total/heuresEcoHC.js"></script>
     <script src="./scripts/tarifs/total/offreVerteFixe.js"></script>
