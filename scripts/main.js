@@ -115,7 +115,8 @@ function onFileImported(e) {
 }
 
 function calculateAllMonths(kva) {
-    calculatedMonths = abonnements.map(abo => {
+    //On filtre sur les abonnements qui correspondent à la puissance souscrite
+    calculatedMonths = abonnements.filter(a => a.prices.some(p => p.puissance == kva)).map(abo => {
         return {
             allMonths: calculator.getTarif(kva, data, abo),
             title: abo.name
@@ -191,7 +192,7 @@ function formatHCRange(rawStart, rawEnd) {
         startHours++;
     }
     startMinutes = 0;
-    
+
     //Permet de gérer le 23:59
     if (endMinutes > 30) {
         endHours++;
