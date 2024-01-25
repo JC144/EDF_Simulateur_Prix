@@ -1,7 +1,7 @@
 # EDF_Simulateur_Prix
 Un outil pour simuler les différents tarifs de fournisseurs d'électricité depuis un export Linky de la consommation.
 
-[Version en ligne.](http://jc144.github.io/EDF_Simulateur_Prix)
+[Version en ligne: https://www.comparateur-abonnements-electricite.fr](https://www.comparateur-abonnements-electricite.fr)
 
 ## Derniers tarifs: 
 * Octopus : 19 Janvier 2024
@@ -11,11 +11,17 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 * TotalEnergie : 18 Janvier 2024
 * OHM Energie : 25 Janvier 2024
 
-## Contributeurs
+## Remerciements
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
 
-* [BenoitGoimier](https://github.com/BenoitGoimier)
+### Contributeurs
 * [Tom Niget](https://github.com/zdimension)
+* [Benoit Goimier](https://github.com/BenoitGoimier)
+* [Jonathan Sarrazin](https://github.com/jo-sarrazin)
+* [nviallatte](https://github.com/nviallatte)
+
+## Comment contribuer
+Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simulateur_Prix/wiki).
 
 ## Utilisation
 
@@ -54,15 +60,6 @@ Vous pouvez accéder à l'outil depuis cette url : [http://jc144.github.io/EDF_S
   * Pour Ennedis : "Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv" **(Ne modifiez pas le nom du fichier!)**
 2. A partir de là, vous pouvez choisir les différentes tarifications que vous voulez expérimenter !
 
-## Fonctionnalités
-- [X] Support de l'export Enedis
-- [X] Inclusion des vrais jours rouges et blancs (attention, les jours sobriétés sont simulés sur le tarif ZenFlex) sur les 3 dernières années
-- [X] Intégration des tarifs Zen (attention, les heures creuses sont basées sur celles de Tempo en attendant d'avoir + d'informations)
-- [X] Mise en place d'une version en ligne
-- [X] Affichage des tarifs par ordre croissant et par année
-- [X] Gestion de la puissance souscrite
-- [X] Détail journalier
-- [X] Explication détaillée pour récupérer les tarifs
-
 ## A propos de l'auteur
-[Jean-Christophe VASSELON](https://www.linkedin.com/in/jvasselon/), responsable produit chez un éditeur de PLM le jour, éditeur [d'un outil pour gérer la patientèle des diététicien(ne)s](https://www.patientailes.com) la nuit.
+[Jean-Christophe VASSELON](https://www.linkedin.com/in/jvasselon/), 
+Aussi éditeur [d'un outil de gestion de patientèle pour diététicien(ne)s](https://www.patientailes.com).
