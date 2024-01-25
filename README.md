@@ -9,6 +9,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 * Engie : 18 Janvier 2024
 * Mint Energie : 18 Janvier 2024
 * TotalEnergie : 18 Janvier 2024
+* OHM Energie : 25 Janvier 2024
 
 ## Contributeurs
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
