@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="jcvasselon">
-    <title>Comparatif tarifs EDF</title>
+    <title>Comparateur d'abonnements d'éléctricité | Un outil pour simuler les différents abonnements d'électricité
+        depuis un export Linky de la consommation.</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             display: flex;
@@ -39,31 +43,29 @@
 
         /* Style table header */
         .table thead th {
-            background-color: #2196F3;
+            background-color: #353535;
             /* Material Design Blue */
             color: #fff;
             font-weight: bold;
             text-align: left;
             padding: 12px 16px;
-            border-bottom: 2px solid #1976D2;
+            border-bottom: 2px solid #353535;
             /* Slightly darker shade of blue */
         }
 
         /* Style table rows */
         .table tbody td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #ddd;
-            /* Light gray border */
+            padding: 10px;
         }
 
         /* Hover effect on table rows */
         .table tbody tr:hover {
             background-color: #f5f5f5;
-            /* Light gray on hover */
+            color: black;
         }
 
         /* cursor for expandable table rows*/
-        .table tbody tr[data-bs-toggle="collapse"] {
+        .table tbody tr th[data-bs-toggle="collapse"] {
             cursor: pointer;
         }
 
@@ -71,9 +73,30 @@
             display: table-row;
         }
 
+        tbody.table-group-divider tr:first-child td,
+        tbody.table-group-divider tr:first-child th {
+            background: #63a91e !important;
+            color: white;
+        }
+
+        th[aria-expanded="false"] i.fa-solid {
+            transition: all .25s ease;
+        }
+
+        th[aria-expanded="true"] i.fa-solid {
+            transform: rotate(90deg);
+            transition: all .25s ease;
+        }
+
+
         h1 a {
             text-decoration: none;
             color: #000;
+        }
+
+        .toast-icon {
+            margin-left: -6px;
+            margin-right: 3px;
         }
 
         .btn-circle {
@@ -87,97 +110,200 @@
             font-size: 12px;
             line-height: 1.42857;
         }
+
+        h5.conso-tt {
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .custom-file-button input[type=file] {
+            margin-left: -2px !important;
+        }
+
+        .custom-file-button input[type=file]::-webkit-file-upload-button {
+            display: none;
+        }
+
+        .custom-file-button input[type=file]::file-selector-button {
+            display: none;
+        }
+
+        .custom-file-button:hover label {
+            background-color: #dde0e3;
+            cursor: pointer;
+        }
+
+        .maxinput {
+            max-width: 690px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .maxcard {
+            max-width: 890px;
+            margin: auto;
+        }
+
+        .table-group-divider tr .badge {
+            position: relative;
+            padding: 10px;
+        }
+
+        .table-group-divider tr .badge:hover {
+            z-index: 1000;
+        }
+
+        .table-group-divider tr span.bulle-mounth {
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            transform: scale(0.125);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .table-group-divider tr:hover .badge:hover>span.bulle-mounth {
+            position: absolute;
+            top: 50%;
+            right: -20%;
+            transition: all .5s ease;
+            transform: scale(0.85);
+            opacity: 1;
+            z-index: 1000;
+            border-top-left-radius: 0 !important;
+            box-shadow: 0 1px 4px 0px rgb(70 70 70);
+        }
+
+        select#monthBeginSelector,
+        select#monthEndSelector {
+            min-width: 115px;
+        }
+
+        select#yearBeginSelector,
+        select#yearEndSelector {
+            min-width: 80px;
+        }
     </style>
 
 </head>
 
 <body>
     <div class="col-lg-8 mx-auto p-4 py-md-5 flex-grow-1">
-        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-            <h1><a href="index.html">Simulateur des offres d'énergies sur une consommation réelle.</a></h1>
-            <p></p>
+        <header class="d-flex flex-column align-items-center pb-3 mb-3 border-bottom">
+            <h1 class="display-5"><a href="index.html">Comparateur d'abonnements d'éléctricité</a></h1>
         </header>
-
         <main>
             <div id="presentationView">
-                <p class="fs-5 col text-justify">
-                    Cet outil va vous permettre de comparer les différents abonnements EDF en se basant sur l'historique
-                    de votre consommation.<br /><br />
-                    Le projet est en accès libre sur <a href="https://github.com/JC144/EDF_Simulateur_Prix">Github</a>
-                    si vous voulez savoir comment il fonctionne.<br />
-                    <strong>Tout est géré en local, aucune donnée n'est
-                        transmise.</strong><br /><br />
-                    Pour un résultat précis, il vous faudra<br />
-                <ul>
-                    <li>Avoir activé le suivi à la demi-heure sur votre compteur Linky</li>
-                    <li>Avoir au moins un an de données (de Mars à Mars)</li>
-                </ul>
-                </p>
+                <h5 class="text-center mt-4 mb-5">
+                    Cet outil permet de <strong>simuler les différents abonnements</strong> de fournisseurs
+                    d'électricité,<br /> en se basant sur <strong>l'historique de votre consommation Linky</strong>.
+                </h5>
 
-                <div class="border p-2 mt-4">
-                    <p class="text-justify">
-                        <strong>Notes: </strong>
-                    <ul>
-                        <li><strong>Nous appliquons les tarifs en cours sur une consommation passée.</strong> Cela veut
-                            dire que vous pouvez constater une différence avec ce que vous avez payé si le tarif a
-                            changé entre temps.</li>
-                        <li>L'outil est là pour savoir quel tarif aurait été le moins cher sans changer votre
-                            consommation. Vous pourrez peut-être économiser encore plus en jouant sur les heures
-                            creuses.</li>
-                        <li>Nous faisons des tests réguliers mais nous n'excluons pas de légères différences. Nous
-                            restons assez réactif à <a href="https://github.com/JC144/EDF_Simulateur_Prix/issues">vos
-                                retours</a> pour affiner nos résultats.</li>
-                        <li>En l'absence d'historique, une partie des jours sobriétés du tarif ZenFlex est basée sur
-                            les jours rouges du tarif Tempo</li>
-                    </ul>
-                    </p>
+                <div class="alert alert-success fade show" role="alert">
+                    <div class="text-justify">
+                        <strong class="alert-heading"><i class="fa-solid fa-circle-check toast-icon"></i> Notes:
+                        </strong>
+                        <ul>
+                            <li><strong>Nous appliquons les tarifs en cours sur une consommation passée.</strong> Cela
+                                veut
+                                dire que vous pouvez constater une différence avec ce que vous avez payé si le tarif a
+                                changé entre temps.</li>
+                            <li>L'outil est là pour savoir quel tarif aurait été le moins cher sans changer votre
+                                consommation. Vous pourrez peut-être économiser encore plus en jouant sur les heures
+                                creuses.</li>
+                            <li>Nous faisons des tests réguliers mais nous n'excluons pas de légères différences. Nous
+                                restons assez réactif à <a
+                                    href="https://github.com/JC144/EDF_Simulateur_Prix/issues">vos
+                                    retours</a> pour affiner nos résultats.</li>
+                            <li>En l'absence d'historique, une partie des jours sobriétés du tarif ZenFlex est basée sur
+                                les jours rouges du tarif Tempo</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-primary mt-4" id="startButton">Démarrer</button>
+                <div class="d-block text-center m-4">
+                    <button type="button" class="btn btn-success " id="startButton">Démarrer <i
+                            class="fa-solid fa-play ms-2"></i></button>
+                </div>
+                <div class="text-justify alert alert-info fade show" role="alert">
+                    <strong class="alert-heading"><i class="fa-solid fa-circle-info toast-icon"></i> Infos:
+                    </strong><br />
+                    <ul>
+                        <li>Ce projet est en accès libre sur <a
+                                href="https://github.com/JC144/EDF_Simulateur_Prix">Github</a><br />
+                            <small>(si vous voulez savoir comment il fonctionne.)</small><br />
+                        </li>
+                    </ul>
+
+                    <hr>
+
+                    <ul>
+                        <li><small><b>Tout est géré en local, aucune donnée n'est transmise sur les réseaux. Pas de
+                                    cookies, pas de trackers. </b></small><br /></li>
+                    </ul>
+
+                    <hr>
+
+                    <ul>
+                        <li>Pour un résultat précis, il vous faudra</li>
+                        <ul>
+                            <li>Avoir activé le suivi à la demi-heure sur votre compteur Linky</li>
+                            <li>Avoir au moins un an de données (de Mars à Mars)</li>
+                        </ul>
+                    </ul>
                 </div>
             </div>
-
-            <div id="importView">
-
-                <div class="row mt-2 mb-4">
-
-                    <div class="mb-4">
-                        <label for="puissanceSouscrite" class="form-label">Votre puissance souscrite</label>
-                        <select class="form-select form-select-lg" aria-label=".form-select-lg example"
-                            id="puissanceSouscrite">
-                            <option value="3">3 kVA</option>
-                            <option value="6">6 kVA</option>
-                            <option value="9" selected>9 kVA</option>
-                            <option value="12">12 kVA</option>
-                            <option value="15">15 kVA</option>
-                            <option value="18">18 kVA</option>
-                            <option value="24">24 kVA</option>
-                            <option value="30">30 kVA</option>
-                            <option value="36">36 kVA</option>
-                        </select>
-                        <div class="form-text" id="basic-addon4">
-                            L'information est disponible sur votre compteur Linky, sur votre facture ou sur le site de
-                            votre fournisseur.
+            <div id="importView" class="card maxcard">
+                <div class="card-body d-flex flex-column p-0">
+                    <div class="card-header">
+                        <h2 class="card-title text-center">Vos réglages</h2>
+                    </div>
+                    <div class="container-sm">
+                        <h4 class="d-block text-center mt-3">Puissance souscrite
+                            <i class="fa-solid fa-circle-info fa-lg text-primary" data-bs-toggle="tooltip"
+                                data-bs-placement="left"
+                                data-bs-title="Cette information est disponible sur votre compteur Linky, sur votre facture ou sur le site de votre fournisseur."></i>
+                        </h4>
+                        <div class="input-group mt-3 mb-3 maxinput">
+                            <select class="form-select form-control" aria-label=".form-select" id="puissanceSouscrite">
+                                <option value="3">3 kVA</option>
+                                <option value="6" selected>6 kVA</option>
+                                <option value="9">9 kVA</option>
+                                <option value="12">12 kVA</option>
+                                <option value="15">15 kVA</option>
+                                <option value="18">18 kVA</option>
+                                <option value="24">24 kVA</option>
+                                <option value="30">30 kVA</option>
+                                <option value="36">36 kVA</option>
+                            </select>
                         </div>
                     </div>
-
-                    <div class="mb-4">
-                        <label for="jourZenPlus" class="form-label">Choix du jour Zen Plus</label>
-                        <select class="form-select form-select-lg" aria-label=".form-select-lg example"
-                            id="jourZenPlus">
-                            <option value="1" selected>Lundi</option>
-                            <option value="3">Mercredi</option>
-                            <option value="5">Vendredi</option>
-                        </select>
-                        <div class="form-text" id="basic-addon4">
-                            Les forfaits Zen Plus ont un jour avantageux supplémentaire dans la semaine. Choisissez
-                            celui qui vous convient pour la simulation.
+                    <hr />
+                    <div class="container-sm">
+                        <h4 class="d-block text-center mt-3">Choix du jour Zen Plus
+                            <i class="fa-solid fa-circle-info fa-lg text-primary" data-bs-toggle="tooltip"
+                                data-bs-html="true"
+                                data-bs-placement="left"
+                                data-bs-title="Les forfaits Zen Plus ont un jour avantageux supplémentaire dans la semaine. <br/> Choisissez celui qui vous convient pour la simulation."></i>
+                        </h4>
+                        <div class="input-group mt-3 mb-3 maxinput">
+                            <select class="form-select form-control" aria-label=".form-select" id="jourZenPlus">
+                                <option value="1" selected>Lundi</option>
+                                <option value="3">Mercredi</option>
+                                <option value="5">Vendredi</option>
+                            </select>
                         </div>
-                    </div>
 
-                    <div class="mb-4">
-                        <label for="bleuHC" class="form-label">Choix des Heures Creuses pour le tarif Bleu HC</label>
-                        <div id="bleuHC" class="container">
+                    </div>
+                    <hr />
+                    <div class="container-sm">
+                        <h4 class="d-block text-center mt-3 position-relative">Choix des Heures Creuses pour le tarif
+                            Bleu HC <i class="fa-solid fa-circle-info fa-lg text-primary" data-bs-toggle="tooltip"
+                                data-bs-placement="left"
+                                data-bs-title="Les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les vôtres ou différents cas.
+                            ATTENTION : Pour le moment, les minutes ne sont pas prises en compte et sont arrondies à l'heure la plus proche."></i>
+                        </h4>
+
+                        <div id="bleuHC" class="mt-3 mb-3 container">
                             <div class="row mt-1">
                                 <div class="col-sm mx-3">
                                     <label for="bleuHC-endDay1" class="form-label text-muted fw-bold">Début de soirée
@@ -228,143 +354,149 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-text text-justify" id="basic-addon4">
-                            Les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les
-                            vôtres ou différents cas.<br /><br />
-                            Laissez les heures à 00:00 pour ne pas prendre en compte la plage.<br /><br />
-                            ATTENTION : Pour le moment, les minutes ne sont pas prises en compte et sont arrondies à
-                            la demi-heure la plus proche.<br />
-                        </div>
+
                     </div>
+                    <hr />
+                    <div class="container-sm">
+                        <h4 class="d-block text-center mt-3 position-relative">Vos données Linky <i class="fa-solid fa-circle-info fa-lg text-primary"
+                            data-bs-toggle="tooltip" 
+                            data-bs-placement="left" 
+                            data-bs-title="EDF : mes-puissances-atteintes-30min-XXXX.csv
+                     Enedis : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv"></i>
+                        </h4>
+                        <div class="mt-3 mb-3 form-group maxinput" x-data="{ fileName: '' }">
+                            <div class="input-group">
+                                <span class="input-group-text px-3 text-muted"><i
+                                        class="fa-solid fa-file-csv"></i></span>
+                                <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name"
+                                    name="csv[]" class="d-none form-control" id="csvFile" accept=".csv">
+                                <input type="text" class="form-control form-control-lg"
+                                    placeholder="Fichier au format .csv" x-model="fileName">
+                                <button class="browse btn btn-primary px-4" type="button"
+                                    x-on:click.prevent="$refs.file.click()"><i class="fa-solid fa-file-csv"></i>
+                                    Importer</button>
+                            </div>
 
-                    <div class="mb-4">
-                        <label for="csvFile" class="form-label">Votre export Linky</label>
-                        <div class="input-group">
-                            <input type="file" id="csvFile" accept=".csv" class="form-control form-control-lg" />
                         </div>
-                        <div class="form-text" id="basic-addon4">
-                            Fichier au format .csv <br />
-                            EDF : mes-puissances-atteintes-30min-XXXX.csv <br />
-                            Enedis : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv <br />
-                            TotalEnergies : 0123456789-NOM-PRENOM.csv
-                        </div>
-                    </div>
 
-                    <div id="importError" class="alert alert-danger" role="alert">
-                        Les données importées ne sont pas valides.
-                    </div>
+                        <hr />
 
-                    <button type="button" class="btn btn-primary mt-4" id="simulateButton" disabled>
-                        Simuler les différents tarifs</button>
-                </div>
+                        <div class="card text-bg-light mb-3">
+                            <div class="card-body">
+                                <div class="accordion accordion-flush" id="accordionHelper">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-accordionHelper">
+                                            <button class="accordion-button bg-onfo collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#accordionHelperContainer"
+                                                aria-expanded="true" aria-controls="accordionHelperContainer">
+                                                Comment récupérer les données sur le site de votre fournisseur <i
+                                                    class="fa-regular fa-circle-question fa-lg text-primary ms-1"></i>
+                                            </button>
+                                        </h2>
+                                        <div id="accordionHelperContainer" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-accordionHelper" data-bs-parent="#accordionHelper">
+                                            <div class="accordion-body m-0 p-1">
+                                                <div class="mt-1">
+                                                    <ul class="nav nav-pills nav-fill nav-justified" id="exportTabs"
+                                                        role="tablist">
+                                                        <li class="nav-item" role="presentation">
+                                                            <a class="nav-link active" aria-current="page" href="#edf"
+                                                                aria-selected="true" role="tab">Depuis
+                                                                EDF</a>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <a class="nav-link" href="#enedis" aria-selected="false"
+                                                                role="tab" tabindex="-1">Depuis Enedis</a>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <a class="nav-link" href="#total" aria-selected="false"
+                                                                role="tab" tabindex="-1">Depuis TotalEnergies</a>
+                                                        </li>
+                                                    </ul>
 
-                <hr />
+                                                    <div class="tab-content mt-4">
 
-                <div class="panel">
-                    <div class="accordion accordion-flush" id="accordionHelper">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-accordionHelper">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#accordionHelperContainer" aria-expanded="false"
-                                    aria-controls="accordionHelperContainer">
-                                    Comment récupérer les données sur le site de votre fournisseur ?
-                                </button>
-                            </h2>
-                            <div id="accordionHelperContainer" class="accordion-collapse collapse"
-                                aria-labelledby="flush-accordionHelper" data-bs-parent="#accordionHelper">
-                                <div class="accordion-body row">
-                                    <div class="row mt-2">
-                                        <ul class="nav nav-pills nav-fill mt-2" id="exportTabs">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" aria-current="page" href="#edf">Depuis
-                                                    EDF</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#enedis">Depuis Enedis</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#total">Depuis TotalEnergies</a>
-                                            </li>
-                                        </ul>
+                                                        <div class="tab-pane fade active show" id="edf" role="tabpanel">
+                                                            <p>
+                                                            </p>
+                                                            <ol>
+                                                                <li>Récupérez sur <a
+                                                                        href="https://equilibre.edf.fr/comprendre?dashboardOpenRequired=true">le
+                                                                        site
+                                                                        d'EDF</a> votre consommation. <br>
+                                                                </li>
+                                                                <li>Dézippez ce répertoire</li>
+                                                                <li>Utilisez le fichier <span
+                                                                        class="font-weight-bold">"mes-puissances-atteintes-30min-XXXX.csv"</span>
+                                                                </li>
+                                                            </ol>
+                                                            <p></p>
+                                                            <img class="mt-4 mb-4" src="./img/EDF1.png"
+                                                                style="width: 100%; height: auto;"
+                                                                alt="1ère étape pour télécharger les données sur le site EDF">
+                                                            <img class="mt-4 mb-4" src="./img/EDF21.png"
+                                                                style="width: 100%; height: auto;"
+                                                                alt="2ème étape pour télécharger les données sur le site EDF">
+                                                        </div>
 
-                                        <div class="tab-content mt-4">
+                                                        <div class="tab-pane fade" id="enedis" role="tabpanel">
+                                                            <ol>
+                                                                <li>Rendez-vous sur <a
+                                                                        href="https://mon-compte-particulier.enedis.fr/mes-telechargements-mesures/">le
+                                                                        site
+                                                                        d'Enedis</a> votre consommation. <br>
+                                                                </li>
+                                                                <li>Cliquez sur "Nouveau Téléchargement"</li>
+                                                                <li>Cliquez sur date de début et naviguez antérieurement
+                                                                    jusqu'à la
+                                                                    plus vieille date
+                                                                    disponible</li>
+                                                                <li>Cliquez sur "Télécharger mes données"</li>
+                                                                <li>Utilisez le fichier <span
+                                                                        class="font-weight-bold">"Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv"</span>
+                                                                </li>
+                                                            </ol>
+                                                            <img class="mt-4 mb-4" src="./img/Enedis1.png"
+                                                                style="width: 100%; height: auto;"
+                                                                alt="1ère étape pour télécharger les données sur le site Enedis">
+                                                            <img class="mt-4 mb-4" src="./img/Enedis2.png"
+                                                                style="width: 100%; height: auto;"
+                                                                alt="2ème étape pour télécharger les données sur le site Enedis">
+                                                            <img class="mt-4 mb-4" src="./img/Enedis3.png"
+                                                                style="width: 100%; height: auto;"
+                                                                alt="2ème étape pour télécharger les données sur le site Enedis">
 
-                                            <div class="tab-pane fade show active" id="edf">
-                                                <p>
-                                                <ol>
-                                                    <li>Récupérez sur <a
-                                                            href="https://equilibre.edf.fr/comprendre?dashboardOpenRequired=true">le
-                                                            site
-                                                            d'EDF</a> votre consommation. <br />
-                                                    </li>
-                                                    <li>Dézippez ce répertoire</li>
-                                                    <li>Utilisez le fichier <span
-                                                            class="font-weight-bold">"mes-puissances-atteintes-30min-XXXX.csv"</span>
-                                                    </li>
-                                                </ol>
-                                                </p>
-                                                <img class="mt-4 mb-4" src="./img/EDF1.png"
-                                                    style="width: 100%; height: auto;"
-                                                    alt="1ère étape pour télécharger les données sur le site EDF" />
-                                                <img class="mt-4 mb-4" src="./img/EDF21.png"
-                                                    style="width: 100%; height: auto;"
-                                                    alt="2ème étape pour télécharger les données sur le site EDF" />
-                                            </div>
+                                                        </div>
 
-                                            <div class="tab-pane fade" id="enedis">
-                                                <ol>
-                                                    <li>Rendez-vous sur <a
-                                                            href="https://mon-compte-particulier.enedis.fr/mes-telechargements-mesures/">le
-                                                            site
-                                                            d'Enedis</a> votre consommation. <br />
-                                                    </li>
-                                                    <li>Cliquez sur "Nouveau Téléchargement"</li>
-                                                    <li>Cliquez sur date de début et naviguez antérieurement jusqu'à la
-                                                        plus vieille date
-                                                        disponible</li>
-                                                    <li>Cliquez sur "Télécharger mes données"</li>
-                                                    <li>Utilisez le fichier <span
-                                                            class="font-weight-bold">"Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv"</span>
-                                                    </li>
-                                                </ol>
-                                                <img class="mt-4 mb-4" src="./img/Enedis1.png"
-                                                    style="width: 100%; height: auto;"
-                                                    alt="1ère étape pour télécharger les données sur le site Enedis" />
-                                                <img class="mt-4 mb-4" src="./img/Enedis2.png"
-                                                    style="width: 100%; height: auto;"
-                                                    alt="2ème étape pour télécharger les données sur le site Enedis" />
-                                                <img class="mt-4 mb-4" src="./img/Enedis3.png"
-                                                    style="width: 100%; height: auto;"
-                                                    alt="2ème étape pour télécharger les données sur le site Enedis" />
+                                                        <div class="tab-pane fade" id="total" role="tabpanel">
+                                                            <ol>
+                                                                <li>Rendez-vous sur <a
+                                                                        href="https://www.totalenergies.fr/clients/ma-conso">le
+                                                                        site
+                                                                        de TotalEnergies</a> votre consommation. <br>
+                                                                </li>
+                                                                <li>Cliquez sur "Électricité"</li>
+                                                                <li>Sélectionnez "Heure"</li>
+                                                                <li>Cliquez sur le bouton Télécharger, cela va
+                                                                    télécharger les données depuis la mise en place de
+                                                                    votre Linky, dans une limite de 3 ans</li>
+                                                                <li>Utilisez le fichier <span
+                                                                        class="font-weight-bold">"0123456789-NOM-PRENOM.csv"</span>
+                                                                </li>
+                                                            </ol>
+                                                            <img class="mt-4 mb-4" src="./img/TOTAL2.png"
+                                                                style="width: 100%; height: auto;"
+                                                                alt="1ère étape pour télécharger les données sur le site TotalEnergies">
+                                                            <img class="mt-4 mb-4" src="./img/TOTAL3.png"
+                                                                style="width: 100%; height: auto;"
+                                                                alt="2ème étape pour télécharger les données sur le site TotalEnergies">
+                                                            <img class="mt-4 mb-4" src="./img/TOTAL4.png"
+                                                                style="width: 100%; height: auto;"
+                                                                alt="2ème étape pour télécharger les données sur le site TotalEnergies">
 
-                                            </div>
-
-                                            <div class="tab-pane fade" id="total">
-                                                <ol>
-                                                    <li>Rendez-vous sur <a
-                                                            href="https://www.totalenergies.fr/clients/ma-conso">le
-                                                            site
-                                                            de TotalEnergies</a> votre consommation. <br />
-                                                    </li>
-                                                    <li>Cliquez sur "Électricité"</li>
-                                                    <li>Sélectionnez "Heure"</li>
-                                                    <li>Cliquez sur le bouton Télécharger, cela va télécharger les
-                                                        données depuis la mise en place de votre Linky, dans une limite
-                                                        de 3 ans</li>
-                                                    <li>Utilisez le fichier <span
-                                                            class="font-weight-bold">"0123456789-NOM-PRENOM.csv"</span>
-                                                    </li>
-                                                </ol>
-                                                <img class="mt-4 mb-4" src="./img/TOTAL2.png"
-                                                    style="width: 100%; height: auto;"
-                                                    alt="1ère étape pour télécharger les données sur le site TotalEnergies" />
-                                                <img class="mt-4 mb-4" src="./img/TOTAL3.png"
-                                                    style="width: 100%; height: auto;"
-                                                    alt="2ème étape pour télécharger les données sur le site TotalEnergies" />
-                                                <img class="mt-4 mb-4" src="./img/TOTAL4.png"
-                                                    style="width: 100%; height: auto;"
-                                                    alt="2ème étape pour télécharger les données sur le site TotalEnergies" />
-
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -373,84 +505,87 @@
                         </div>
                     </div>
                 </div>
+                <div id="importError" class="alert alert-danger" role="alert">
+                    Les données importées ne sont pas valides.
+                </div>
+                <div class="card-footer text-body-secondary">
+                    <button type="button" class="mt-3 mb-3 btn btn-success m-auto d-block" id="simulateButton" disabled>
+                        Simuler les différents tarifs <i class="fa-solid fa-play ms-2"></i></button>
+                </div>
             </div>
-
-            <div id="pricesResultView" class="container">
-                <p class="text-justify">
-                    <strong>Attention: </strong>
-                <ul>
-                    <li>Ce résultat est une simulation basée sur votre consommation passée avec les tarifs actuels.</li>
-                    <li>Le coût de l'abonnement est intégré au prorata journalier.</li>
-                    <li>En l'absence d'historique, les jours sobriétés du tarif ZenFlex sont basés sur les jours
+            <div id="pricesResultView" class="card maxcard">
+                <div class="card-body">
+                    <div class="alert alert-warning fade show" role="alert">
+                        <strong class="alert-heading"><i class="fa-solid fa-triangle-exclamation toast-icon"></i> Attention:
+                        </strong>
+                        <ul>
+                            <li>Ce résultat est une simulation basée sur votre consommation passée avec les tarifs
+                                actuels.</li>
+                            <li>Le coût de l'abonnement est intégré au prorata journalier.</li>
+                            <li>En l'absence d'historique, les jours sobriétés du tarif ZenFlex sont basés sur les jours
                         rouges du tarif Tempo sur les années avant 2023.</li>
                     <li>Nous faisons de notre mieux pour garder les tarifs à jour, mais pensez à les vérifier avec vos
                         fournisseurs avant de souscrire un contrat.</li>
-                </ul>
-                </p>
+                        </ul>
+                    </div>
+                    <div class="mt-4 mb-1 d-flex align-items-center ">
+                        <div class="d-flex maxinput justify-content-between">
+                            <div class="input-group me-2">
+                                <span class="input-group-text">De</span>
+                                <select class="form-select form-control" aria-label=".form-select "
+                                    id="monthBeginSelector">
+                                </select>
+                                <select class="form-select form-control" aria-label=".form-select"
+                                    id="yearBeginSelector">
+                                </select>
+                            </div>
+                            <div class="input-group me-2">
+                                <span class="input-group-text">à</span>
+                                <select class="form-select  form-control" aria-label=".form-select"
+                                    id="monthEndSelector">
+                                </select>
+                                <select class="form-select  form-control" aria-label=".form-select"
+                                    id="yearEndSelector">
+                                </select>
+                            </div>
+                            <button type="button" class="m-1 btn btn-primary btn-circle" id="refreshButton" disabled>
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                            </button>
+                        </div>
 
-                <div class="mt-4 mb-4 d-flex align-items-center">
-                    <p class="lead m-2">Du</p>
-
-                    <select class="m-1 form-select form-select-lg" aria-label=".form-select-lg example"
-                        style="max-width: 100px;" id="yearBeginSelector">
-                    </select>
-
-                    <select class="m-1 form-select form-select-lg" aria-label=".form-select-lg example"
-                        id="monthBeginSelector">
-                    </select>
-
-                    <p class="lead m-2">au</p>
-
-                    <select class="m-1 form-select form-select-lg" aria-label=".form-select-lg example"
-                        style="max-width: 100px;" id="yearEndSelector">
-                    </select>
-
-                    <select class="m-1 form-select form-select-lg" aria-label=".form-select-lg example"
-                        id="monthEndSelector">
-                    </select>
-
-                    <button type="button" class="m-1 btn btn-primary btn-circle" id="refreshButton">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                            viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                            <path fill="white"
-                                d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160H352c-17.7 0-32 14.3-32 32s14.3 32 32 32H463.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V80c0-17.7-14.3-32-32-32s-32 14.3-32 32v35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V432c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352H160c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z" />
-                        </svg>
-                    </button>
-                </div>
-
-                <div id="pricesTitleRow" class="row">
-
-                </div>
-
-                <div id="pricesResultRow" class="row">
-
+                    </div>
+                    <div id="pricesTitleRow" class="row"></div>
+                    <div id="pricesResultRow" class="row"></div>
                 </div>
             </div>
         </main>
     </div>
 
     <!-- Footer fixe -->
-    <footer class="bg-light p-4">
+    <footer class="bg-dark-subtle p-4 fs-6">
         <div class="container">
-            <div class="row">
-                <p class="text-muted text-center">Ce site a été conçu par <a
+            <div class="text-center">
+                <p class="text-muted small text-center">Ce site a été conçu par <a
                         href="https://twitter.com/jcvasselon/">Jean-Christophe VASSELON</a>.<br />
                     D'après une discussion avec <a href="https://twitter.com/autommen/">Nicolas 'Automnen'</a> et <a
                         href="https://twitter.com/MaloryBouvier/">Malory Bouvier</a></p>
 
-                <p>
+                <p class="text-muted small text-center">
                     Merci à <a href="https://github.com/zdimension">Tom Niget</a>, <a
                         href="https://github.com/BenoitGoimier">Benoit Goimier</a>, <a
-                        href="https://github.com/jo-sarrazin">Jonathan Sarrazin</a> et <a
-                        href="https://github.com/nviallatte">nviallatte</a> pour leurs contributions.
+                        href="https://github.com/jo-sarrazin">Jonathan Sarrazin</a>, <a
+                        href="https://github.com/nviallatte">nviallatte</a> et <a
+                        href="https://github.com/10tribu">10tribu</a> pour leurs contributions.
                 </p>
-                <p>
+
+                <p class="text-muted small text-center">
                     Merci à tous les anonymes pour leurs gentils mots, leurs retours et leurs marques d'appréciation qui
                     ont fait grossir ce projet !
                 </p>
-                <p>
-                    Si comme moi, vous découvrez que vous pouvez économiser plus de 400€ en changeant d'abonnement,
-                    vous pouvez m'offrir une bonne bouteille en faisant un don !<br />
+
+                <p class="text-muted small text-center">
+                    Si comme nous, vous faites une belle économie, n'hésitez pas à convertir mon temps en bon café en
+                    faisant un don !<br />
                 </p>
                 <a class="text-center" href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU"><button
                         class="btn btn-primary">Faire un don</button></a>
@@ -472,13 +607,10 @@
     <script src="./scripts/tarifs/edf/zenWeekEndHC.js"></script>
     <script src="./scripts/tarifs/edf/zenWeekEndPlus.js"></script>
     <script src="./scripts/tarifs/edf/zenWeekEndPlusHC.js"></script>
-
     <script src="./scripts/tarifs/engie/electTranquilite1an.js"></script>
     <script src="./scripts/tarifs/engie/electTranquilite1anHC.js"></script>
-
     <script src="./scripts/tarifs/octopus/base.js"></script>
     <script src="./scripts/tarifs/octopus/baseHC.js"></script>
-
     <script src="./scripts/tarifs/ohm/classique.js"></script>
     <script src="./scripts/tarifs/ohm/classiqueHC.js"></script>
     <script src="./scripts/tarifs/ohm/fixe.js"></script>
@@ -486,19 +618,20 @@
     <script src="./scripts/tarifs/ohm/maxiEco.js"></script>
     <script src="./scripts/tarifs/ohm/maxiEcoHC.js"></script>
     <script src="./scripts/tarifs/ohm/soirWeekEndHC.js"></script>
-
     <script src="./scripts/tarifs/total/heuresEco.js"></script>
     <script src="./scripts/tarifs/total/heuresEcoHC.js"></script>
     <script src="./scripts/tarifs/total/offreVerteFixe.js"></script>
     <script src="./scripts/tarifs/total/offreVerteFixeHC.js"></script>
     <script src="./scripts/tarifs/total/offreStandardFixe.js"></script>
     <script src="./scripts/tarifs/total/offreStandardFixeHC.js"></script>
-
     <script src="./scripts/parsers/edfParser.js"></script>
     <script src="./scripts/parsers/enedisParser.js"></script>
     <script src="./scripts/parsers/totalParser.js"></script>
     <script src="./scripts/viewManager.js"></script>
     <script src="./scripts/main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"
+        crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -517,7 +650,22 @@
                 e.preventDefault();
                 $(this).tab('show');
             });
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         });
+        // au changement de mois/année de debut ou de fin activation du bouton refresh
+        document.getElementById("monthBeginSelector").onchange = function (e) {
+            document.getElementById("refreshButton").disabled = false;
+        };
+        document.getElementById("yearBeginSelector").onchange = function (e) {
+            document.getElementById("refreshButton").disabled = false;
+        };
+        document.getElementById("monthEndSelector").onchange = function (e) {
+            document.getElementById("refreshButton").disabled = false;
+        };
+        document.getElementById("yearEndSelector").onchange = function (e) {
+            document.getElementById("refreshButton").disabled = false;
+        };
     </script>
 </body>
 
