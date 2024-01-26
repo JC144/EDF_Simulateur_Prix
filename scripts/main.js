@@ -33,6 +33,7 @@ refreshButton.addEventListener("click", function () {
     let dateBegin = new Date(beginYear, beginMonth - 1, 1);
     let dateEnd = new Date(endYear, endMonth - 1, 1);
     refreshResultView(dateBegin, dateEnd);
+    document.getElementById("refreshButton").disabled = true;
 });
 
 const bleuHCStartEndDay1 = document.getElementById("bleuHC-start-endDay1");
@@ -222,37 +223,50 @@ function refreshResultView(dateBegin, dateEnd) {
     const consoForPeriod = resultsForPeriod[0].tarif.conso;
 
     const divYear = document.createElement("div");
-    divYear.className = "mb-4";
+    divYear.className = "mb-4 p-0";
     pricesResultRow.appendChild(divYear);
     const titleYear = document.createElement("h3");
     divYear.appendChild(titleYear);
     titleYear.className = "main-title";
-    const titleConso = document.createElement("h4");
+    const titleConso = document.createElement("h5");
     divYear.appendChild(titleConso);
-    titleConso.className = "sub-title";
+    titleConso.className = "conso-tt";
 
-    titleConso.innerHTML = "Consommation : " + (consoForPeriod / 1000).toFixed(2) + "kWh";
+    //ajout de la table responsive
+    const divResponsive = document.createElement('div');
+    divResponsive.className = "table-responsive";
+
+
+    titleConso.innerHTML = "<div class='position-relative py-2 px-4 text-center border border-info rounded-pill'> " + "Consommation  totale pour cette période : " + (consoForPeriod / 1000).toFixed(2) + "kWh" + "<svg width='1em' height='1em' viewBox='0 0 16 16' class='position-absolute top-0 start-50 translate-middle mb-1' fill='var(--bs-info)' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z' style='transform-box: fill-box; transform-origin: 50% 40%;' transform='matrix(-1, 0, 0, -1, 0, 0)'></path></svg>";
+
 
     const table = document.createElement("table");
-    table.className = "table mt-3";
-    divYear.appendChild(table);
+    table.className = "resultable table mt-3 align-middle table-striped-columns table-hover table-borderless table-sm";
+    // Attacher le tableau à la div
+    divResponsive.appendChild(table);
+    divYear.appendChild(divResponsive);
+
+
     const tableHeader = document.createElement("thead");
     table.appendChild(tableHeader);
     const rowHeader = document.createElement("tr");
     tableHeader.appendChild(rowHeader);
     const headerTarifName = document.createElement("th");
-    headerTarifName.innerHTML = "Tarif";
+    headerTarifName.innerHTML = "Abonnement électrique";
+    headerTarifName.className = "align-middle";
+    headerTarifName.style = "padding-left: 20px";
     rowHeader.appendChild(headerTarifName);
     const headerEstimationName = document.createElement("th");
-    headerEstimationName.innerHTML = "Estimation";
+    headerEstimationName.innerHTML = "Estimation de coût";
     headerEstimationName.className = "text-center";
     rowHeader.appendChild(headerEstimationName);
     const headerDifferenceName = document.createElement("th");
-    headerDifferenceName.innerHTML = "Différence";
+    headerDifferenceName.innerHTML = "Diff. avec le plus avantageux";
     headerDifferenceName.className = "text-center";
     rowHeader.appendChild(headerDifferenceName);
 
     const tableBody = document.createElement("tbody");
+    tableBody.className = "table-group-divider";
     table.appendChild(tableBody);
 
     let currentRow = 0;
@@ -267,12 +281,12 @@ function refreshResultView(dateBegin, dateEnd) {
         const accordionRowId = dateBegin.getFullYear() + "-" + currentRow;
         tableBody.appendChild(tarifRow);
         tarifRow.setAttribute("data-bs-toggle", "collapse");
+        tarifRow.setAttribute("aria-expanded", "false");
         tarifRow.setAttribute("data-bs-target", "#" + accordionRowId);
-
         const accordionRow = document.createElement("tr");
         tableBody.appendChild(accordionRow);
         accordionRow.id = accordionRowId;
-        accordionRow.className = "collapse";
+        accordionRow.className = "collapse table-secondary";
 
         const accordionCell = document.createElement("td");
         accordionCell.colSpan = 3;
@@ -281,19 +295,20 @@ function refreshResultView(dateBegin, dateEnd) {
         result.tarif.months.forEach((m) => {
             const titleDetail = document.createElement("h3");
             accordionCell.appendChild(titleDetail);
-            titleDetail.className = "main-title";
+            titleDetail.className = "main-title d-inline ms-2";
             const subTitleDetail = document.createElement("h4");
             accordionCell.appendChild(subTitleDetail);
-            subTitleDetail.className = "sub-title";
+            subTitleDetail.className = "sub-title float-end";
 
             titleDetail.innerHTML = getMonthName(parseInt(m.month));
             subTitleDetail.innerHTML = (m.conso / 1000).toFixed(2) + "kWh / " + m.price.toFixed(2) + "€";
 
             const tableDailyDetail = document.createElement("table");
-            tableDailyDetail.className = "table mt-2";
+            tableDailyDetail.className = "mt-2 ms-2 table table-striped table-sm align-middle";
             accordionCell.appendChild(tableDailyDetail);
-            const headerDailyDetail = document.createElement("tr");
+            const headerDailyDetail = document.createElement("thead");
             tableDailyDetail.appendChild(document.createElement("thead").appendChild(headerDailyDetail));
+            headerDailyDetail.className = "align-middle";
             const cell1HeaderDailyDetail = document.createElement("th");
             const cell2HeaderDailyDetail = document.createElement("th");
             const cell3HeaderDailyDetail = document.createElement("th");
@@ -302,12 +317,25 @@ function refreshResultView(dateBegin, dateEnd) {
             const cell6HeaderDailyDetail = document.createElement("th");
             const cell7HeaderDailyDetail = document.createElement("th");
             cell1HeaderDailyDetail.innerHTML = "Jour";
-            cell2HeaderDailyDetail.innerHTML = "Consommation totale";
-            cell3HeaderDailyDetail.innerHTML = "Conso HC (kWh)";
-            cell4HeaderDailyDetail.innerHTML = "Estimation HC (€)";
-            cell5HeaderDailyDetail.innerHTML = "Conso HP (kWh)";
-            cell6HeaderDailyDetail.innerHTML = "Estimation HP (€)";
+            cell1HeaderDailyDetail.className = "text-start";
+
+            cell2HeaderDailyDetail.innerHTML = "Conso totale";
+            cell2HeaderDailyDetail.className = "text-center";
+
+            cell3HeaderDailyDetail.innerHTML = "Conso HC";
+            cell3HeaderDailyDetail.className = "text-center";
+
+            cell4HeaderDailyDetail.innerHTML = "Esti. HC (€)";
+            cell4HeaderDailyDetail.className = "text-center";
+
+            cell5HeaderDailyDetail.innerHTML = "Conso HP";
+            cell5HeaderDailyDetail.className = "text-center";
+
+            cell6HeaderDailyDetail.innerHTML = "Esti. HP (€)";
+            cell6HeaderDailyDetail.className = "text-center";
+
             cell7HeaderDailyDetail.innerHTML = "Total (€)";
+            cell7HeaderDailyDetail.className = "text-end";
 
             headerDailyDetail.appendChild(cell1HeaderDailyDetail);
             headerDailyDetail.appendChild(cell2HeaderDailyDetail);
@@ -323,16 +351,29 @@ function refreshResultView(dateBegin, dateEnd) {
 
                 const cell1BodyDailyDetail = document.createElement("td");
                 cell1BodyDailyDetail.innerHTML = m.days[j].date;
+                cell1BodyDailyDetail.className = "text-start";
+
                 bodyDailyDetail.appendChild(cell1BodyDailyDetail);
 
                 //S'il n'y a pas d'erreur lors du calcul de la journée, on affiche les informations
                 if (!isNaN(m.days[j].conso) && !isNaN(m.days[j].price)) {
                     const cell2BodyDailyDetail = document.createElement("td");
+                    cell2BodyDailyDetail.className = "text-center align-middle";
+
                     const cell3BodyDailyDetail = document.createElement("td");
+                    cell3BodyDailyDetail.className = "text-center align-middle";
+
                     const cell4BodyDailyDetail = document.createElement("td");
+                    cell4BodyDailyDetail.className = "text-center align-middle";
+
                     const cell5BodyDailyDetail = document.createElement("td");
+                    cell5BodyDailyDetail.className = "text-center align-middle";
+
                     const cell6BodyDailyDetail = document.createElement("td");
+                    cell6BodyDailyDetail.className = "text-center align-middle";
+
                     const cell7BodyDailyDetail = document.createElement("td");
+                    cell7BodyDailyDetail.className = "text-end align-middle";
 
                     cell2BodyDailyDetail.innerHTML = (m.days[j].conso / 1000).toFixed(2) + "kWh";
                     cell3BodyDailyDetail.innerHTML = (m.days[j].consoHC / 1000).toFixed(2) + "kWh";
@@ -360,25 +401,80 @@ function refreshResultView(dateBegin, dateEnd) {
         const cellTarifName = document.createElement("th");
         cellTarifName.className = "align-middle";
         tarifRow.appendChild(cellTarifName);
-        cellTarifName.innerHTML = result.title;
+
+        const tarifIcon = document.createElement("i");
+        tarifIcon.className = "fa-solid fa-square-caret-right ms-3";
+
+        const tarifName = document.createElement("span");
+        tarifName.className = "ms-2";
+        tarifName.innerHTML = result.title;
+
+        cellTarifName.appendChild(tarifIcon);
+        cellTarifName.appendChild(tarifName);
+
+        cellTarifName.setAttribute("data-bs-toggle", "collapse");
+        cellTarifName.setAttribute("data-bs-target", "#" + accordionRowId);
 
         const cellTarifPrice = document.createElement("td");
         cellTarifPrice.className = "text-center align-middle";
         tarifRow.appendChild(cellTarifPrice);
-        cellTarifPrice.innerHTML = result.tarif.price.toFixed(2) + " € TTC <br>(" + (result.tarif.price / result.tarif.months.length).toFixed(2) + " €/mois)";
+
+
+        const containerTarifPrice = document.createElement("div");
+        containerTarifPrice.className = "container justify-content-center";
+
+        const titleMonthlyTarifPrice = document.createElement("div");
+        titleMonthlyTarifPrice.className = "h4 row";
+        spanMonthlyTarifPrice = document.createElement("span");
+        spanMonthlyTarifPrice.className = "badge fw-bold text-bg-info";
+        spanMonthlyTarifPrice.innerHTML = (result.tarif.price / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup>";
+        titleMonthlyTarifPrice.appendChild(spanMonthlyTarifPrice);
+        containerTarifPrice.appendChild(titleMonthlyTarifPrice);
+
+        const titleTotalTarifPrice = document.createElement("div");
+        titleTotalTarifPrice.className = "h5 row";
+        spanTotalTarifPrice = document.createElement("span");
+        spanTotalTarifPrice.className = "badge fw-bold text-muted";
+        spanTotalTarifPrice.innerHTML = "soit " + result.tarif.price.toFixed(2) + " €<br/> pour la période.";
+        titleTotalTarifPrice.appendChild(spanTotalTarifPrice);
+        containerTarifPrice.appendChild(titleTotalTarifPrice);
+
+        cellTarifPrice.appendChild(containerTarifPrice);
 
         const cellDiffencePrice = document.createElement("td");
         cellDiffencePrice.className = "text-center align-middle";
         tarifRow.appendChild(cellDiffencePrice);
+
+        const containerDifferenceTarifPrice = document.createElement("div");
+        containerDifferenceTarifPrice.className = "container justify-content-center";
+        
+        const titleLessExpensive = document.createElement("div");
+        titleLessExpensive.className = "h4 row fw-bold";
+        containerDifferenceTarifPrice.appendChild(titleLessExpensive);
+
+        const subSpanTitleLessExpensive = document.createElement("span");
+        titleLessExpensive.appendChild(subSpanTitleLessExpensive);
+
         if (currentRow == 0) {
-            const spanLessExpensive = document.createElement("span");
-            spanLessExpensive.className = "fw-bold";
-            spanLessExpensive.innerHTML = "Tarif le moins cher";
-            cellDiffencePrice.appendChild(spanLessExpensive);
+            subSpanTitleLessExpensive.className = "badge p-1";
+            subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-medal fa-lg'></i> Tarif le plus avantageux<br/><small>(selon vos données)</small>";
         }
         else {
-            cellDiffencePrice.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " € TTC <br>(" + ((result.tarif.price - resultsOrdered[0].tarif.price) / 12).toFixed(2) + " €/mois)";
+            subSpanTitleLessExpensive.className = "badge fw-bold text-bg-warning text-white";
+            subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-circle-plus'></i> " + ((result.tarif.price - resultsOrdered[0].tarif.price) / 12).toFixed(2) + "<sup> €/mois</sup>";
+
+            const titleTotalLessExpensive = document.createElement("div");
+            titleTotalLessExpensive.className = "h5 row";
+
+            const spanTotalLessExpensive = document.createElement("span");
+            spanTotalLessExpensive.className = "badge fw-bold text-muted";
+            spanTotalLessExpensive.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " €<br/> pour la période.";
+            titleTotalLessExpensive.appendChild(spanTotalLessExpensive);
+            containerDifferenceTarifPrice.appendChild(titleTotalLessExpensive);
         }
+
+        cellDiffencePrice.appendChild(containerDifferenceTarifPrice);
+
         currentRow++;
     });
 }
