@@ -177,45 +177,63 @@
 
                     <div class="mb-4">
                         <label for="bleuHC" class="form-label">Choix des Heures Creuses pour le tarif Bleu HC</label>
-                        <div id="bleuHC">
-                            <label for="bleuHC-endDay1" class="form-label mt-1 text-muted">Début de soirée (fin du
-                                jour 1)</label>
-                            <div id="bleuHC-endDay1" class="mx-3">
-                                <label for="bleuHC-start-endDay1" class="form-label text-muted">Heure début :</label>
-                                <input type="time" id="bleuHC-start-endDay1" class="form-control"
-                                    name="bleuHC-start-endDay1" min="00:00" max="24:00" value="22:00" />
-                                <label for="bleuHC-end-endDay1" class="form-label mt-1 text-muted">Heure fin :</label>
-                                <input type="time" id="bleuHC-end-endDay1" class="form-control"
-                                    name="bleuHC-end-endDay1" min="00:00" max="24:00" value="23:59" />
-                            </div>
+                        <div id="bleuHC" class="container">
+                            <div class="row mt-1">
+                                <div class="col-sm mx-3">
+                                    <label for="bleuHC-endDay1" class="form-label text-muted fw-bold">Début de soirée
+                                        (fin
+                                        du
+                                        jour 1)</label>
+                                    <div id="bleuHC-endDay1">
+                                        <label for="bleuHC-start-endDay1" class="form-label text-muted">Heure début
+                                            :</label>
+                                        <input type="time" id="bleuHC-start-endDay1" class="form-control"
+                                            name="bleuHC-start-endDay1" min="00:00" max="24:00" value="22:00" />
+                                        <label for="bleuHC-end-endDay1" class="form-label mt-1 text-muted">Heure fin
+                                            :</label>
+                                        <input type="time" id="bleuHC-end-endDay1" class="form-control"
+                                            name="bleuHC-end-endDay1" min="00:00" max="24:00" value="23:59" />
+                                    </div>
+                                </div>
 
-                            <label for="bleuHC-beginDay2" class="form-label mt-3 text-muted">Nuit (jour 2)</label>
-                            <div id="bleuHC-beginDay2" class="mx-3">
-                                <label for="bleuHC-start-beginDay2" class="form-label text-muted">Heure début :</label>
-                                <input type="time" id="bleuHC-start-beginDay2" class="form-control"
-                                    name="bleuHC-start-beginDay2" min="00:00" max="24:00" value="00:00" />
-                                <label for="bleuHC-end-beginDay2" class="form-label mt-1 text-muted">Heure fin :</label>
-                                <input type="time" id="bleuHC-end-beginDay2" class="form-control"
-                                    name="bleuHC-end-beginDay2" min="00:00" max="24:00" value="07:00" />
-                            </div>
+                                <div class="col-sm mx-3">
+                                    <label for="bleuHC-beginDay2" class="form-label text-muted fw-bold">Nuit (jour
+                                        2)</label>
+                                    <div id="bleuHC-beginDay2">
+                                        <label for="bleuHC-start-beginDay2" class="form-label text-muted">Heure début
+                                            :</label>
+                                        <input type="time" id="bleuHC-start-beginDay2" class="form-control"
+                                            name="bleuHC-start-beginDay2" min="00:00" max="24:00" value="00:00" />
+                                        <label for="bleuHC-end-beginDay2" class="form-label mt-1 text-muted">Heure fin
+                                            :</label>
+                                        <input type="time" id="bleuHC-end-beginDay2" class="form-control"
+                                            name="bleuHC-end-beginDay2" min="00:00" max="24:00" value="07:00" />
+                                    </div>
+                                </div>
 
-                            <label for="bleuHC-middleDay2" class="form-label mt-3 text-muted">Après-midi (jour
-                                2)</label>
-                            <div id="bleuHC-middleDay2" class="mx-3">
-                                <label for="bleuHC-start-middleDay2" class="form-label text-muted">Heure début :</label>
-                                <input type="time" id="bleuHC-start-middleDay2" class="form-control"
-                                    name="bleuHC-start-middleDay2" min="00:00" max="24:00" value="00:00" />
-                                <label for="bleuHC-end-middleDay2" class="form-label mt-1 text-muted">Heure fin
-                                    :</label>
-                                <input type="time" id="bleuHC-end-middleDay2" class="form-control"
-                                    name="bleuHC-end-middleDay2" min="00:00" max="24:00" value="00:00" />
+                                <div class="col-sm mx-3">
+                                    <label for="bleuHC-middleDay2" class="form-label text-muted fw-bold">Après-midi
+                                        (jour
+                                        2)</label>
+                                    <div id="bleuHC-middleDay2">
+                                        <label for="bleuHC-start-middleDay2" class="form-label text-muted">Heure début
+                                            :</label>
+                                        <input type="time" id="bleuHC-start-middleDay2" class="form-control"
+                                            name="bleuHC-start-middleDay2" min="00:00" max="24:00" value="00:00" />
+                                        <label for="bleuHC-end-middleDay2" class="form-label mt-1 text-muted">Heure fin
+                                            :</label>
+                                        <input type="time" id="bleuHC-end-middleDay2" class="form-control"
+                                            name="bleuHC-end-middleDay2" min="00:00" max="24:00" value="00:00" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-text" id="basic-addon4">
+                        <div class="form-text text-justify" id="basic-addon4">
                             Les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les
-                            vôtres ou différents cas.<br />
+                            vôtres ou différents cas.<br /><br />
+                            Laissez les heures à 00:00 pour ne pas prendre en compte la plage.<br /><br />
                             ATTENTION : Pour le moment, les minutes ne sont pas prises en compte et sont arrondies à
-                            l'heure la plus proche.
+                            la demi-heure la plus proche.<br />
                         </div>
                     </div>
 
@@ -362,8 +380,7 @@
                     <strong>Attention: </strong>
                 <ul>
                     <li>Ce résultat est une simulation basée sur votre consommation passée avec les tarifs actuels.</li>
-                    <li>Si vous comparez vos résultats avec le site d'EDF, ce comparatif intègre l'abonnement
-                        mensuellement sans prorata journalier.</li>
+                    <li>Le coût de l'abonnement est intégré au prorata journalier.</li>
                     <li>En l'absence d'historique, les jours sobriétés du tarif ZenFlex sont basés sur les jours
                         rouges du tarif Tempo sur les années avant 2023.</li>
                     <li>Nous faisons de notre mieux pour garder les tarifs à jour, mais pensez à les vérifier avec vos
@@ -419,8 +436,19 @@
                 <p class="text-muted text-center">Ce site a été conçu par <a
                         href="https://twitter.com/jcvasselon/">Jean-Christophe VASSELON</a>.<br />
                     D'après une discussion avec <a href="https://twitter.com/autommen/">Nicolas 'Automnen'</a> et <a
-                        href="https://twitter.com/MaloryBouvier/">Malory Bouvier</a>
-                    <br /><br />
+                        href="https://twitter.com/MaloryBouvier/">Malory Bouvier</a></p>
+
+                <p>
+                    Merci à <a href="https://github.com/zdimension">Tom Niget</a>, <a
+                        href="https://github.com/BenoitGoimier">Benoit Goimier</a>, <a
+                        href="https://github.com/jo-sarrazin">Jonathan Sarrazin</a> et <a
+                        href="https://github.com/nviallatte">nviallatte</a> pour leurs contributions.
+                </p>
+                <p>
+                    Merci à tous les anonymes pour leurs gentils mots, leurs retours et leurs marques d'appréciation qui
+                    ont fait grossir ce projet !
+                </p>
+                <p>
                     Si comme moi, vous découvrez que vous pouvez économiser plus de 400€ en changeant d'abonnement,
                     vous pouvez m'offrir une bonne bouteille en faisant un don !<br />
                 </p>
