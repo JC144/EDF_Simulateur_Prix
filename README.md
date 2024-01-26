@@ -1,7 +1,7 @@
 # EDF_Simulateur_Prix
 Un outil pour simuler les différents tarifs de fournisseurs d'électricité depuis un export Linky de la consommation.
 
-[Version en ligne: https://www.comparateur-abonnements-electricite.fr](https://www.comparateur-abonnements-electricite.fr)
+Version en ligne: [jc.vasselon.com/EDF_Simulateur_Prix](https://jc.vasselon.com/EDF_Simulateur_Prix)
 
 ## Derniers tarifs: 
 * Octopus : 19 Janvier 2024
@@ -47,7 +47,7 @@ Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simu
 
 ### Accéder à ce comparateur
 Vos données seront traitées en local, aucune donnée ne sera envoyée vers un serveur.
-Vous pouvez accéder à l'outil depuis cette url : [http://jc144.github.io/EDF_Simulateur_Prix](http://jc144.github.io/EDF_Simulateur_Prix)
+Vous pouvez accéder à l'outil depuis cette url : [jc.vasselon.com/EDF_Simulateur_Prix](https://jc.vasselon.com/EDF_Simulateur_Prix)
 **Ou** vous pouvez le télécharger pour une utilisation hors ligne :
 1. Téléchargez ce projet en cliquant sur le bouton code puis "Download zip"
 ![Comment récupérer le projet](https://user-images.githubusercontent.com/1168432/216541398-0d862d3f-30d6-4b08-9e79-7e3d5a1cdfef.png)
