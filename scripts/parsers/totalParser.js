@@ -4,7 +4,8 @@ var totalParser = {
 
         const lines = csv.split("\n");
 
-        for (let i = 0; i < lines.length; i++) {
+        //On part de la fin, TotalEnergies fournit les données les plus récentes en dernier
+        for (let i = lines.length - 1; i > 0; i--) {
             const currentline = lines[i].split(";");
             result.push(currentline);
         }
@@ -26,7 +27,8 @@ var totalParser = {
                     const [hours, minutes] = tmpHoursDate[1].split(':');
                     // on remplace ce dont on a pas besoin, pour uniquement garder le nombre
                     // on transforme notre string en Number pour pouvoir additionner la conso plus tard, et le transformons en Wh au lieu du kWh
-                    let conso = Number(line[2].replace('"', '').split(' ')[0]) * 1000;
+                    // On multiplie par 2 car l'unité a l'air différente des autres exports...
+                    let conso = Number(line[2].replace('"', '').split(' ')[0]) * 1000 * 2;
 
                     // si date pas encore traitée
                     if (!dates.find((elm) => elm == isoDate)) {
