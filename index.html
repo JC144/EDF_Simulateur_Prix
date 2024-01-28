@@ -13,177 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .main-title {
-            font-size: 24px;
-            color: #000;
-            font-weight: bold;
-            line-height: 1.2;
-        }
-
-        .sub-title {
-            font-size: 18px;
-            color: #333;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            background-color: #fff;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-        }
-
-        /* Style table header */
-        .table thead th {
-            background-color: #353535;
-            /* Material Design Blue */
-            color: #fff;
-            font-weight: bold;
-            text-align: left;
-            padding: 12px 16px;
-            border-bottom: 2px solid #353535;
-            /* Slightly darker shade of blue */
-        }
-
-        /* Style table rows */
-        .table tbody td {
-            padding: 10px;
-        }
-
-        /* Hover effect on table rows */
-        .table tbody tr:hover {
-            background-color: #f5f5f5;
-            color: black;
-        }
-
-        /* cursor for expandable table rows*/
-        .table tbody tr th[data-bs-toggle="collapse"] {
-            cursor: pointer;
-        }
-
-        .table tbody .collapse.in {
-            display: table-row;
-        }
-
-        tbody.table-group-divider tr:first-child td,
-        tbody.table-group-divider tr:first-child th {
-            background: #63a91e !important;
-            color: white;
-        }
-
-        th[aria-expanded="false"] i.fa-solid {
-            transition: all .25s ease;
-        }
-
-        th[aria-expanded="true"] i.fa-solid {
-            transform: rotate(90deg);
-            transition: all .25s ease;
-        }
-
-
-        h1 a {
-            text-decoration: none;
-            color: #000;
-        }
-
-        .toast-icon {
-            margin-left: -6px;
-            margin-right: 3px;
-        }
-
-        .btn-circle {
-            width: 30px;
-            height: 30px;
-            min-width: 30px;
-            min-height: 30px;
-            padding: 0px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: 12px;
-            line-height: 1.42857;
-        }
-
-        h5.conso-tt {
-            width: fit-content;
-            margin: 0 auto;
-        }
-
-        .custom-file-button input[type=file] {
-            margin-left: -2px !important;
-        }
-
-        .custom-file-button input[type=file]::-webkit-file-upload-button {
-            display: none;
-        }
-
-        .custom-file-button input[type=file]::file-selector-button {
-            display: none;
-        }
-
-        .custom-file-button:hover label {
-            background-color: #dde0e3;
-            cursor: pointer;
-        }
-
-        .maxinput {
-            max-width: 690px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .maxcard {
-            max-width: 890px;
-            margin: auto;
-        }
-
-        .table-group-divider tr .badge {
-            position: relative;
-            padding: 10px;
-        }
-
-        .table-group-divider tr .badge:hover {
-            z-index: 1000;
-        }
-
-        .table-group-divider tr span.bulle-mounth {
-            position: absolute;
-            top: 0%;
-            right: 0%;
-            transform: scale(0.125);
-            opacity: 0;
-            z-index: 1;
-        }
-
-        .table-group-divider tr:hover .badge:hover>span.bulle-mounth {
-            position: absolute;
-            top: 50%;
-            right: -20%;
-            transition: all .5s ease;
-            transform: scale(0.85);
-            opacity: 1;
-            z-index: 1000;
-            border-top-left-radius: 0 !important;
-            box-shadow: 0 1px 4px 0px rgb(70 70 70);
-        }
-
-        select#monthBeginSelector,
-        select#monthEndSelector {
-            min-width: 115px;
-        }
-
-        select#yearBeginSelector,
-        select#yearEndSelector {
-            min-width: 80px;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
 
 </head>
 
@@ -370,13 +200,7 @@
                             <div class="input-group">
                                 <span class="input-group-text px-3 text-muted"><i
                                         class="fa-solid fa-file-csv"></i></span>
-                                <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name"
-                                    name="csv[]" class="d-none form-control" id="csvFile" accept=".csv">
-                                <input type="text" class="form-control form-control-lg"
-                                    placeholder="Fichier au format .csv" x-model="fileName">
-                                <button class="browse btn btn-primary px-4" type="button"
-                                    x-on:click.prevent="$refs.file.click()"><i class="fa-solid fa-file-csv"></i>
-                                    Importer</button>
+                                <input type="file" id="csvFile" accept=".csv" class="form-control form-control-lg" />
                             </div>
 
                         </div>
@@ -638,9 +462,6 @@
     <script src="./scripts/parsers/totalParser.js"></script>
     <script src="./scripts/viewManager.js"></script>
     <script src="./scripts/main.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"
-        crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
