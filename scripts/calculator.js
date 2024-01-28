@@ -61,6 +61,9 @@ var calculator = {
                             time: { hour: parseInt(splittedHour[0]), minute: parseInt(splittedHour[1]) },
                             conso: parseInt(hourLine[1]) / step
                         };
+                        if (isNaN(hourData.conso)) {
+                            hourData.hasErrors = true;
+                        }
 
                         const dayType = grille.getDayType(dayData, hourData.time);
                         // 00:00:00 est converti en 24:00:00 pour le calcul du type de jour
@@ -71,22 +74,30 @@ var calculator = {
                             hourData.type = dayType + " HC";
                             const prixKwh = abonnement[dayType].prixKwhHC;
                             hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
-                            dayData.consoHC += hourData.conso;
-                            dayData.priceHC += hourData.price;
+                            if (!isNaN(hourData.price)) {
+                                dayData.priceHC += hourData.price;
+                            }
+                            if (!isNaN(hourData.conso)) {
+                                dayData.consoHC += hourData.conso;
+                            }
                         }
                         else {
                             hourData.type = dayType + " HP";
                             const prixKwh = abonnement[dayType].prixKwhHP;
                             hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
-                            dayData.consoHP += hourData.conso;
-                            dayData.priceHP += hourData.price;
+                            if (!isNaN(hourData.price)) {
+                                dayData.priceHP += hourData.price;
+                            }
+                            if (!isNaN(hourData.conso)) {
+                                dayData.consoHP += hourData.conso;
+                            }
                         }
 
                         dayData.hours.push(hourData);
                     });
 
-                    dayData.conso = dayData.hours.reduce((a, b) => a + b.conso, 0);
-                    dayData.price = dayData.hours.reduce((a, b) => a + b.price, 0) + monthData.aboPriceByDay;
+                    dayData.conso = dayData.hours.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0);
+                    dayData.price = dayData.hours.filter(m => !isNaN(m.price)).reduce((a, b) => a + b.price, 0) + monthData.aboPriceByDay;
                 }
                 monthData.days.push(dayData);
             }
