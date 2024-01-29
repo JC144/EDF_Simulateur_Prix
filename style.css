@@ -167,3 +167,24 @@ select#yearBeginSelector,
 select#yearEndSelector {
     min-width: 80px;
 }
+/* Ajout de fix responsive  */
+@media (max-width: 590px) {
+        
+        .maxinput {max-width: 320px;}
+        span.input-group-text {font-size: 10px;}
+        #pricesResultView div.d-flex.maxinput{
+        display: flex!important;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+            
+        }
+        .table tbody th,.table tbody tr{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 320px;
+        }
+}
