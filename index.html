@@ -175,13 +175,7 @@
                             <div class="input-group">
                                 <span class="input-group-text px-3 text-muted"><i
                                         class="fa-solid fa-file-csv"></i></span>
-                                <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name"
-                                    name="csv[]" class="d-none form-control" id="csvFile" accept=".csv">
-                                <input type="text" class="form-control form-control-lg"
-                                    placeholder="Fichier au format .csv" x-model="fileName">
-                                <button class="browse btn btn-primary px-4" type="button"
-                                    x-on:click.prevent="$refs.file.click()"><i class="fa-solid fa-file-csv"></i>
-                                    Importer</button>
+                                <input type="file" id="csvFile" accept=".csv" class="form-control form-control-lg" />
                             </div>
 
                         </div>
@@ -416,6 +410,13 @@
     <script src="./scripts/tarifs/edf/zenWeekEndPlusHC.js"></script>
     <script src="./scripts/tarifs/engie/electTranquilite1an.js"></script>
     <script src="./scripts/tarifs/engie/electTranquilite1anHC.js"></script>
+
+    <script src="./scripts/tarifs/labelleenergie/prudence.js"></script>
+    <script src="./scripts/tarifs/labelleenergie/prudenceHC.js"></script>
+
+    <script src="./scripts/tarifs/mint/classicEtGreen.js"></script>
+    <script src="./scripts/tarifs/mint/classicEtGreenHC.js"></script>
+
     <script src="./scripts/tarifs/octopus/base.js"></script>
     <script src="./scripts/tarifs/octopus/baseHC.js"></script>
     <script src="./scripts/tarifs/ohm/classique.js"></script>
@@ -436,9 +437,6 @@
     <script src="./scripts/parsers/totalParser.js"></script>
     <script src="./scripts/viewManager.js"></script>
     <script src="./scripts/main.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"
-        crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
