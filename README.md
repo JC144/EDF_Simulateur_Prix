@@ -4,13 +4,13 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 [Version en ligne: https://www.comparateur-abonnements-electricite.fr](https://www.comparateur-abonnements-electricite.fr)
 
 ## Derniers tarifs: 
-* Octopus : 19 Janvier 2024
 * EDF : 1 Février 2024
+* Mint Energie : 1 Février 2024
 * Ekwateur : 30 janvier 2024
-* Engie : 18 Janvier 2024
-* Mint Energie : 18 Janvier 2024
-* TotalEnergie : 18 Janvier 2024
 * OHM Energie : 25 Janvier 2024
+* Octopus : 19 Janvier 2024
+* Engie : 18 Janvier 2024
+* TotalEnergie : 18 Janvier 2024
 
 ## Remerciements
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).

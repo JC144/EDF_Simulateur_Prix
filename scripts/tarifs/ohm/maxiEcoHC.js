@@ -2,6 +2,8 @@ abonnements.push(
     {
         name: "OHM Energie - Offre Maxi Eco HC",
         lastUpdate: "2024-01-17",
+        subscription_url: "https://ohm-energie.com/offre/electricite",
+        price_url: "https://ohm-energie.com/grilles/elec/2024/02/ELEC_S%26WE.pdf",
         prices: [
         {
             puissance: 6,

@@ -2,6 +2,8 @@ abonnements.push(
     {
         name: "OHM Energie - Offre Classique",
         lastUpdate: "2023-08-01",
+        subscription_url: "https://ohm-energie.com/offre/electricite",
+        price_url: "https://ohm-energie.com/grilles/elec/2023Octobre/ELEC-Classique_202310.pdf",
         prices: [{
             puissance: 3,
             abonnement: 8.70,
