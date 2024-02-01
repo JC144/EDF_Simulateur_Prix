@@ -468,7 +468,7 @@ function refreshResultView(dateBegin, dateEnd) {
 
             const spanTotalLessExpensive = document.createElement("span");
             spanTotalLessExpensive.className = "badge fw-bold text-muted";
-            spanTotalLessExpensive.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " €<br/> pour la période.";
+            spanTotalLessExpensive.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " €<br/> sur ces "+result.tarif.months.length+" mois.";
             titleTotalLessExpensive.appendChild(spanTotalLessExpensive);
             containerDifferenceTarifPrice.appendChild(titleTotalLessExpensive);
         }
