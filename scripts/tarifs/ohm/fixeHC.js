@@ -2,6 +2,8 @@ abonnements.push(
     {
         name: "OHM Energie - Offre Fixe 1 an HC",
         lastUpdate: "2024-01-02",
+        subscription_url: "https://ohm-energie.com/offre/electricite",
+        price_url: "",
         prices: [
         {
             puissance: 6,

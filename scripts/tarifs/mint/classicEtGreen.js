@@ -1,73 +1,75 @@
 abonnements.push(
     {
         name: "Mint Energie - Classic & Green",
-        lastUpdate: "2023-12-12",
+        lastUpdate: "2024-02-01",
+        subscription_url: "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
+        price_url: "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_14624_CLASSIC_GREEN.pdf",
         prices: [{
             puissance: 3,
-            abonnement: 9.53,
+            abonnement: 10.11,
             bleu: {
-                prixKwhHC: 19.14
+                prixKwhHC: 22.90
             }
         },
         {
             puissance: 6,
-            abonnement: 12.55,
+            abonnement: 13.25,
             bleu: {
-                prixKwhHC: 19.14
+                prixKwhHC: 22.90
             }
         },
         {
             puissance: 9,
-            abonnement: 15.80,
+            abonnement: 16.63,
             bleu: {
-                prixKwhHC: 19.14
+                prixKwhHC: 22.90
             }
         },
         {
             puissance: 12,
-            abonnement: 19.11,
+            abonnement: 20.08,
             bleu: {
-                prixKwhHC: 19.14
+                prixKwhHC: 22.90
             }
         },
         {
             puissance: 15,
-            abonnement: 22.19,
+            abonnement: 23.29,
             bleu: {
-                prixKwhHC: 19.14
+                prixKwhHC: 22.90
             }
         },
         {
             puissance: 18,
-            abonnement: 25.25,
+            abonnement: 26.48,
             bleu: {
-                prixKwhHC: 19.14
+                prixKwhHC: 22.90
             }
         },
         {
             puissance: 24,
-            abonnement: 32.04,
+            abonnement: 33.55,
             bleu: {
-                prixKwhHC: 19.14
+                prixKwhHC: 22.90
             }
         },
         {
             puissance: 30,
-            abonnement: 37.84,
+            abonnement: 39.58,
             bleu: {
-                prixKwhHC: 19.14
+                prixKwhHC: 22.90
             }
         },
         {
             puissance: 36,
-            abonnement: 44.66,
+            abonnement: 46.68,
             bleu: {
-                prixKwhHC: 19.14
+                prixKwhHC: 22.90
             }
         }],
         hc: [{
-            start: {hour:0, minute:0},
-            end: {hour:24, minute:0}
+            start: { hour: 0, minute: 0 },
+            end: { hour: 24, minute: 0 }
         }],
         hasHCCustom: false,
         specialDays: [],

@@ -461,14 +461,14 @@ function refreshResultView(dateBegin, dateEnd) {
         }
         else {
             subSpanTitleLessExpensive.className = "badge fw-bold text-bg-warning text-white";
-            subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-circle-plus'></i> " + ((result.tarif.price - resultsOrdered[0].tarif.price) / 12).toFixed(2) + "<sup> €/mois</sup>";
+            subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-circle-plus'></i> " + ((result.tarif.price - resultsOrdered[0].tarif.price) / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup>";
 
             const titleTotalLessExpensive = document.createElement("div");
             titleTotalLessExpensive.className = "h5 row";
 
             const spanTotalLessExpensive = document.createElement("span");
             spanTotalLessExpensive.className = "badge fw-bold text-muted";
-            spanTotalLessExpensive.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " €<br/> pour la période.";
+            spanTotalLessExpensive.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " €<br/> sur ces "+result.tarif.months.length+" mois.";
             titleTotalLessExpensive.appendChild(spanTotalLessExpensive);
             containerDifferenceTarifPrice.appendChild(titleTotalLessExpensive);
         }

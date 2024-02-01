@@ -1,70 +1,70 @@
 abonnements.push(
     {
-        name: "OHM Energie - Offre Classique",
-        lastUpdate: "2023-08-01",
-        subscription_url: "https://ohm-energie.com/offre/electricite",
-        price_url: "https://ohm-energie.com/grilles/elec/2023Octobre/ELEC-Classique_202310.pdf",
+        name: "Alpiq - Base",
+        lastUpdate: "2024-02-01",
+        subscription_url: "https://particuliers.alpiq.fr/electricite/nos-tarifs",
+        price_url: "https://particuliers.alpiq.fr/grille-tarifaire/particuliers/gtr_elec_part.pdf",
         prices: [{
             puissance: 3,
-            abonnement: 8.70,
+            abonnement: 9.63,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.7674
             }
         },
         {
             puissance: 6,
-            abonnement: 11.48,
+            abonnement: 12.60,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.7674
             }
         },
         {
             puissance: 9,
-            abonnement: 14.46,
+            abonnement: 15.79,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.7674
             }
         },
         {
             puissance: 12,
-            abonnement: 17.49,
+            abonnement: 19.04,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.7674
             }
         },
         {
             puissance: 15,
-            abonnement: 20.33,
+            abonnement: 22.07,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.7674
             }
         },
         {
             puissance: 18,
-            abonnement: 23.14,
+            abonnement: 25.08,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.7674
             }
         },
         {
             puissance: 24,
-            abonnement: 29.37,
+            abonnement: 31.76,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.7674
             }
         },
         {
             puissance: 30,
-            abonnement: 34.70,
+            abonnement: 37.44,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.7674
             }
         },
         {
             puissance: 36,
-            abonnement: 40.95,
+            abonnement: 44.81,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.7674
             }
         }],
         hc: [{
@@ -72,6 +72,7 @@ abonnements.push(
             end: {hour:24, minute:0}
         }],
         hasHCCustom: false,
+        hasSpecialDaysCustom: false,
         specialDays: [],
         getDayType: function (day) {
             let dayType = "bleu";

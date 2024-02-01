@@ -1,7 +1,9 @@
 abonnements.push(
     {
         name: "TotalEnergie - Offre standard fixe HC",
-        lastUpdate: "2024-01-19",
+        lastUpdate: "2024-01-17",
+        subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite",
+        price_url: "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-standard-fixe-particuliers.pdf",
         prices: [
         {
             puissance: 6,

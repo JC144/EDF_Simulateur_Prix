@@ -1,70 +1,68 @@
 abonnements.push(
     {
-        name: "OHM Energie - Offre Classique",
-        lastUpdate: "2023-08-01",
-        subscription_url: "https://ohm-energie.com/offre/electricite",
-        price_url: "https://ohm-energie.com/grilles/elec/2023Octobre/ELEC-Classique_202310.pdf",
+        name: "Ekwateur - Electricité verte variable",
+        lastUpdate: "2024-01-30",
         prices: [{
             puissance: 3,
-            abonnement: 8.70,
+            abonnement: 13.29,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 19.4
             }
         },
         {
             puissance: 6,
-            abonnement: 11.48,
+            abonnement: 16.54,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 20.96
             }
         },
         {
             puissance: 9,
-            abonnement: 14.46,
+            abonnement: 19.95,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.2
             }
         },
         {
             puissance: 12,
-            abonnement: 17.49,
+            abonnement: 23.29,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.8
             }
         },
         {
             puissance: 15,
-            abonnement: 20.33,
+            abonnement: 26.43,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.8
             }
         },
         {
             puissance: 18,
-            abonnement: 23.14,
+            abonnement: 29.69,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.8
             }
         },
         {
             puissance: 24,
-            abonnement: 29.37,
+            abonnement: 36.31,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.876
             }
         },
         {
             puissance: 30,
-            abonnement: 34.70,
+            abonnement: 45.04,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.8
             }
         },
         {
             puissance: 36,
-            abonnement: 40.95,
+            abonnement: 52.8,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 21.8
             }
         }],
         hc: [{
@@ -72,6 +70,7 @@ abonnements.push(
             end: {hour:24, minute:0}
         }],
         hasHCCustom: false,
+        hasSpecialDaysCustom: false,
         specialDays: [],
         getDayType: function (day) {
             let dayType = "bleu";

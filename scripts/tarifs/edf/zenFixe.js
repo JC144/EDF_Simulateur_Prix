@@ -1,68 +1,70 @@
 abonnements.push(
     {
         name: "EDF - Zen Fixe",
-        lastUpdate: "2024-01-19",
+        lastUpdate: "2024-02-01",
+        subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend.html",
+        price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique.pdf",
         prices: [{
             puissance: 3,
             abonnement: 9.47,
             bleu: {
-                prixKwhHC: 20.26
+                prixKwhHC: 22.66
             }
         },
         {
             puissance: 6,
             abonnement: 12.44,
             bleu: {
-                prixKwhHC: 20.26
+                prixKwhHC: 22.66
             }
         },
         {
             puissance: 9,
             abonnement: 15.63,
             bleu: {
-                prixKwhHC: 20.26
+                prixKwhHC: 22.66
             }
         },
         {
             puissance: 12,
             abonnement: 18.89,
             bleu: {
-                prixKwhHC: 20.26
+                prixKwhHC: 22.66
             }
         },
         {
             puissance: 15,
             abonnement: 21.92,
             bleu: {
-                prixKwhHC: 20.26
+                prixKwhHC: 22.66
             }
         },
         {
             puissance: 18,
             abonnement: 24.92,
             bleu: {
-                prixKwhHC: 20.26
+                prixKwhHC: 22.66
             }
         },
         {
             puissance: 24,
             abonnement: 31.60,
             bleu: {
-                prixKwhHC: 20.26
+                prixKwhHC: 22.66
             }
         },
         {
             puissance: 30,
             abonnement: 37.28,
             bleu: {
-                prixKwhHC: 20.26
+                prixKwhHC: 22.66
             }
         },
         {
             puissance: 36,
             abonnement: 43.99,
             bleu: {
-                prixKwhHC: 20.26
+                prixKwhHC: 22.66
             }
         }],
         hc: [{
