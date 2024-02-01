@@ -1,5 +1,6 @@
 viewManager.init();
 
+
 var data = [];
 let calculatedMonths = {};
 
@@ -422,6 +423,8 @@ function refreshResultView(dateBegin, dateEnd) {
                     bodyDailyDetail.appendChild(cellError);
                 }
             }
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         });
 
         const cellTarifName = document.createElement("th");
@@ -453,7 +456,7 @@ function refreshResultView(dateBegin, dateEnd) {
         spanMonthlyTarifPrice = document.createElement("i");
         spanMonthlyTarifPrice.className = "badge text-bg-info fw-help";
         spanMonthlyTarifPrice.setAttribute("data-bs-toggle", "tooltip");
-        spanMonthlyTarifPrice.setAttribute("data-bs-placement", "left");
+        spanMonthlyTarifPrice.setAttribute("data-bs-placement", "bottom");
         spanMonthlyTarifPrice.setAttribute("data-bs-toggle", "tooltip");
         spanMonthlyTarifPrice.setAttribute("title", "Soit " + result.tarif.price.toFixed(2) + " € sur ces "+result.tarif.months.length+" mois");
         spanMonthlyTarifPrice.innerHTML = (result.tarif.price / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup></button>";
@@ -483,7 +486,7 @@ function refreshResultView(dateBegin, dateEnd) {
         else {
             subSpanTitleLessExpensive.className = "badge fw-bold text-bg-warning text-white fw-help";
             subSpanTitleLessExpensive.setAttribute("data-bs-toggle", "tooltip");
-            subSpanTitleLessExpensive.setAttribute("data-bs-placement", "left");
+            subSpanTitleLessExpensive.setAttribute("data-bs-placement", "bottom");
             subSpanTitleLessExpensive.setAttribute("data-bs-toggle", "tooltip");
             subSpanTitleLessExpensive.setAttribute("title", "Soit + " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " € sur ces "+result.tarif.months.length+" mois.");
             subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-circle-plus'></i> " + ((result.tarif.price - resultsOrdered[0].tarif.price) / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup>";
