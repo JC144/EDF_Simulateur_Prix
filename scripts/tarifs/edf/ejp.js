@@ -1,10 +1,10 @@
 abonnements.push({
     name: "EDF - EJP",
     lastUpdate: "2024-02-01",
+    subscription_url: "",
+    price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
     prices: [
         {
-            subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
-            price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
             puissance: 9,
             abonnement: 15.80,
             bleu: {
