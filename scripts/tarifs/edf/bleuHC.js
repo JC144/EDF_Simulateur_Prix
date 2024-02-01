@@ -1,6 +1,6 @@
 abonnements.push({
     name: "EDF - Bleu Heures Creuses",
-    lastUpdate: "2023-08-01",
+    lastUpdate: "2024-02-01",
     prices: [
         {
             puissance: 6,
