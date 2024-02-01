@@ -191,14 +191,14 @@ function formatHCRange(rawStart, rawEnd) {
 
     if (startMinutes > 30) {
         startHours++;
+        startMinutes = 0;
     }
-    startMinutes = 0;
 
     //Permet de gérer le 23:59
     if (endMinutes > 30) {
         endHours++;
+        endMinutes = 0;
     }
-    endMinutes = 0;
 
     if (startHours >= endHours) {
         return null;
