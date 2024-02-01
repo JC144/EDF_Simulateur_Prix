@@ -1,13 +1,13 @@
 abonnements.push(
     {
-        name: "Mint Energie - Online & Green HC",
+        name: "La Belle Energie - Constance HC",
         lastUpdate: "2024-02-01",
-        subscription_url: "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
-        price_url: "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_14512_ONLINE_GREEN.pdf",
+        subscription_url: "https://labellenergie.fr/offre-electricite-verte/",
+        price_url: "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
         prices: [
         {
             puissance: 6,
-            abonnement: 13.39,
+            abonnement: 15.38,
             bleu: {
                 prixKwhHP: 22.10,
                 prixKwhHC: 17.04
@@ -15,7 +15,7 @@ abonnements.push(
         },
         {
             puissance: 9,
-            abonnement: 17.00,
+            abonnement: 18.99,
             bleu: {
                 prixKwhHP: 22.10,
                 prixKwhHC: 17.04
@@ -23,7 +23,7 @@ abonnements.push(
         },
         {
             puissance: 12,
-            abonnement: 20.52,
+            abonnement: 22.52,
             bleu: {
                 prixKwhHP: 22.10,
                 prixKwhHC: 17.04
@@ -31,7 +31,7 @@ abonnements.push(
         },
         {
             puissance: 15,
-            abonnement: 23.89,
+            abonnement: 25.88,
             bleu: {
                 prixKwhHP: 22.10,
                 prixKwhHC: 17.04
@@ -39,7 +39,7 @@ abonnements.push(
         },
         {
             puissance: 18,
-            abonnement: 27.22,
+            abonnement: 29.22,
             bleu: {
                 prixKwhHP: 22.10,
                 prixKwhHC: 17.04
@@ -47,7 +47,7 @@ abonnements.push(
         },
         {
             puissance: 24,
-            abonnement: 34.22,
+            abonnement: 36.22,
             bleu: {
                 prixKwhHP: 22.10,
                 prixKwhHC: 17.04
@@ -55,7 +55,7 @@ abonnements.push(
         },
         {
             puissance: 30,
-            abonnement: 40.60,
+            abonnement: 42.60,
             bleu: {
                 prixKwhHP: 22.10,
                 prixKwhHC: 17.04
@@ -63,7 +63,7 @@ abonnements.push(
         },
         {
             puissance: 36,
-            abonnement: 47.04,
+            abonnement: 49.04,
             bleu: {
                 prixKwhHP: 22.10,
                 prixKwhHC: 17.04

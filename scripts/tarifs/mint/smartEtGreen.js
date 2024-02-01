@@ -1,6 +1,6 @@
 abonnements.push(
     {
-        name: "Mint Energie - Classic & Green",
+        name: "Mint Energie - Smart & Green",
         lastUpdate: "2024-02-01",
         subscription_url: "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
         price_url: "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_14712_SMART_GREEN.pdf",

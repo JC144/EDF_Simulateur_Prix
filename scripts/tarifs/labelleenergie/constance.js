@@ -1,75 +1,75 @@
 abonnements.push(
     {
-        name: "Mint Energie - Online & Green",
+        name: "La Belle Energie - Constance",
         lastUpdate: "2024-02-01",
-        subscription_url: "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
-        price_url: "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_14512_ONLINE_GREEN.pdf",
+        subscription_url: "https://labellenergie.fr/offre-electricite-verte/",
+        price_url: "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
         prices: [{
             puissance: 3,
-            abonnement: 9.69,
+            abonnement: 11.68,
             bleu: {
                 prixKwhHC: 20.64
             }
         },
         {
             puissance: 6,
-            abonnement: 12.71,
+            abonnement: 14.71,
             bleu: {
                 prixKwhHC: 20.64
             }
         },
         {
             puissance: 9,
-            abonnement: 15.96,
+            abonnement: 17.95,
             bleu: {
                 prixKwhHC: 20.64
             }
         },
         {
             puissance: 12,
-            abonnement: 19.26,
+            abonnement: 21.26,
             bleu: {
                 prixKwhHC: 20.64
             }
         },
         {
             puissance: 15,
-            abonnement: 22.35,
+            abonnement: 24.35,
             bleu: {
                 prixKwhHC: 20.64
             }
         },
         {
             puissance: 18,
-            abonnement: 25.42,
+            abonnement: 27.41,
             bleu: {
                 prixKwhHC: 20.64
             }
         },
         {
             puissance: 24,
-            abonnement: 32.20,
+            abonnement: 34.20,
             bleu: {
                 prixKwhHC: 20.64
             }
         },
         {
             puissance: 30,
-            abonnement: 38.00,
+            abonnement: 39.99,
             bleu: {
                 prixKwhHC: 20.64
             }
         },
         {
             puissance: 36,
-            abonnement: 44.81,
+            abonnement: 46.81,
             bleu: {
                 prixKwhHC: 20.64
             }
         }],
         hc: [{
-            start: { hour: 0, minute: 0 },
-            end: { hour: 24, minute: 0 }
+            start: {hour:0, minute:0},
+            end: {hour:24, minute:0}
         }],
         hasHCCustom: false,
         specialDays: [],
