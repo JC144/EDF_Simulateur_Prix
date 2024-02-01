@@ -461,7 +461,7 @@ function refreshResultView(dateBegin, dateEnd) {
         }
         else {
             subSpanTitleLessExpensive.className = "badge fw-bold text-bg-warning text-white";
-            subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-circle-plus'></i> " + ((result.tarif.price - resultsOrdered[0].tarif.price) / 12).toFixed(2) + "<sup> €/mois</sup>";
+            subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-circle-plus'></i> " + ((result.tarif.price - resultsOrdered[0].tarif.price) / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup>";
 
             const titleTotalLessExpensive = document.createElement("div");
             titleTotalLessExpensive.className = "h5 row";
