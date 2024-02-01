@@ -280,9 +280,9 @@ function refreshResultView(dateBegin, dateEnd) {
         const tarifRow = document.createElement("tr");
         const accordionRowId = dateBegin.getFullYear() + "-" + currentRow;
         tableBody.appendChild(tarifRow);
-        tarifRow.setAttribute("data-bs-toggle", "collapse");
-        tarifRow.setAttribute("aria-expanded", "false");
-        tarifRow.setAttribute("data-bs-target", "#" + accordionRowId);
+        //tarifRow.setAttribute("data-bs-toggle", "collapse");
+        //tarifRow.setAttribute("aria-expanded", "false");
+        //tarifRow.setAttribute("data-bs-target", "#" + accordionRowId);
         const accordionRow = document.createElement("tr");
         tableBody.appendChild(accordionRow);
         accordionRow.id = accordionRowId;
@@ -450,20 +450,15 @@ function refreshResultView(dateBegin, dateEnd) {
         containerTarifPrice.className = "container justify-content-center";
 
         const titleMonthlyTarifPrice = document.createElement("div");
-        titleMonthlyTarifPrice.className = "h4 row";
-        spanMonthlyTarifPrice = document.createElement("span");
-        spanMonthlyTarifPrice.className = "badge fw-bold text-bg-info";
-        spanMonthlyTarifPrice.innerHTML = (result.tarif.price / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup>";
+        spanMonthlyTarifPrice = document.createElement("i");
+        spanMonthlyTarifPrice.className = "badge text-bg-info fw-help";
+        spanMonthlyTarifPrice.setAttribute("data-bs-toggle", "tooltip");
+        spanMonthlyTarifPrice.setAttribute("data-bs-placement", "left");
+        spanMonthlyTarifPrice.setAttribute("data-bs-toggle", "tooltip");
+        spanMonthlyTarifPrice.setAttribute("title", "Soit " + result.tarif.price.toFixed(2) + " € sur ces "+result.tarif.months.length+" mois");
+        spanMonthlyTarifPrice.innerHTML = (result.tarif.price / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup></button>";
         titleMonthlyTarifPrice.appendChild(spanMonthlyTarifPrice);
         containerTarifPrice.appendChild(titleMonthlyTarifPrice);
-
-        const titleTotalTarifPrice = document.createElement("div");
-        titleTotalTarifPrice.className = "h5 row";
-        spanTotalTarifPrice = document.createElement("span");
-        spanTotalTarifPrice.className = "badge fw-bold text-muted";
-        spanTotalTarifPrice.innerHTML = "soit " + result.tarif.price.toFixed(2) + " €<br/> pour la période.";
-        titleTotalTarifPrice.appendChild(spanTotalTarifPrice);
-        containerTarifPrice.appendChild(titleTotalTarifPrice);
 
         cellTarifPrice.appendChild(containerTarifPrice);
 
@@ -475,10 +470,10 @@ function refreshResultView(dateBegin, dateEnd) {
         containerDifferenceTarifPrice.className = "container justify-content-center";
         
         const titleLessExpensive = document.createElement("div");
-        titleLessExpensive.className = "h4 row fw-bold";
+        //titleLessExpensive.className = "h4 row fw-bold";
         containerDifferenceTarifPrice.appendChild(titleLessExpensive);
 
-        const subSpanTitleLessExpensive = document.createElement("span");
+        const subSpanTitleLessExpensive = document.createElement("i");
         titleLessExpensive.appendChild(subSpanTitleLessExpensive);
 
         if (currentRow == 0) {
@@ -486,16 +481,20 @@ function refreshResultView(dateBegin, dateEnd) {
             subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-medal fa-lg'></i> Tarif le plus avantageux<br/><small>(selon vos données)</small>";
         }
         else {
-            subSpanTitleLessExpensive.className = "badge fw-bold text-bg-warning text-white";
+            subSpanTitleLessExpensive.className = "badge fw-bold text-bg-warning text-white fw-help";
+            subSpanTitleLessExpensive.setAttribute("data-bs-toggle", "tooltip");
+            subSpanTitleLessExpensive.setAttribute("data-bs-placement", "left");
+            subSpanTitleLessExpensive.setAttribute("data-bs-toggle", "tooltip");
+            subSpanTitleLessExpensive.setAttribute("title", "Soit + " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " € sur ces "+result.tarif.months.length+" mois.");
             subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-circle-plus'></i> " + ((result.tarif.price - resultsOrdered[0].tarif.price) / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup>";
 
             const titleTotalLessExpensive = document.createElement("div");
-            titleTotalLessExpensive.className = "h5 row";
+            //titleTotalLessExpensive.className = "h5 row";
 
-            const spanTotalLessExpensive = document.createElement("span");
-            spanTotalLessExpensive.className = "badge fw-bold text-muted";
-            spanTotalLessExpensive.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " €<br/> sur ces "+result.tarif.months.length+" mois.";
-            titleTotalLessExpensive.appendChild(spanTotalLessExpensive);
+            //const spanTotalLessExpensive = document.createElement("span");
+            //spanTotalLessExpensive.className = "badge fw-bold text-muted";
+            //spanTotalLessExpensive.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " €<br/> sur ces "+result.tarif.months.length+" mois.";
+            //titleTotalLessExpensive.appendChild(spanTotalLessExpensive);
             containerDifferenceTarifPrice.appendChild(titleTotalLessExpensive);
         }
 

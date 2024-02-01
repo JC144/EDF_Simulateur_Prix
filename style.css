@@ -87,6 +87,10 @@ h1 a {
     text-decoration: none;
     color: #000;
 }
+i.badge.fw-help {
+    cursor: help;
+}
+
 
 .toast-icon {
     margin-left: -6px;
