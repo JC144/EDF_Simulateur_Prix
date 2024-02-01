@@ -290,21 +290,47 @@ function refreshResultView(dateBegin, dateEnd) {
 
         const accordionCell = document.createElement("td");
         accordionCell.colSpan = 3;
+        accordionCell.className = "p-0";
         accordionRow.appendChild(accordionCell);
 
         result.tarif.months.forEach((m) => {
-            const titleDetail = document.createElement("h3");
+            const monthTitle = document.createElement("th");
+            accordionCell.appendChild(monthTitle);
+            monthTitle.className = "month-title d-flex justify-content-start bg-dark text-white align-items-stretch";
+            
+            const tarifIcon = document.createElement("td");
+            tarifIcon.className = "fa-solid fa-square-caret-right m-2";
+            monthTitle.appendChild(tarifIcon);
+            
+            const titleDetail = document.createElement("td");
             accordionCell.appendChild(titleDetail);
-            titleDetail.className = "main-title d-inline ms-2";
-            const subTitleDetail = document.createElement("h4");
-            accordionCell.appendChild(subTitleDetail);
-            subTitleDetail.className = "sub-title float-end";
-
+            titleDetail.className = "main-title text-white flex-fill";
+            
+            const subPriceDetail = document.createElement("td");
+            accordionCell.appendChild(subPriceDetail);
+            subPriceDetail.className = "sub-title text-white flex-fill";
+            
+            const subConsoDetail = document.createElement("td");
+            accordionCell.appendChild(subConsoDetail);
+            subConsoDetail.className = "sub-title text-white flex-fill";
+            
             titleDetail.innerHTML = getMonthName(parseInt(m.month));
-            subTitleDetail.innerHTML = (m.conso / 1000).toFixed(2) + "kWh / " + m.price.toFixed(2) + "€";
+            subConsoDetail.innerHTML = "<i class='fa-solid fa-plug-circle-bolt'></i> : "+ (m.conso / 1000).toFixed(2) + "kWh";
+            subPriceDetail.innerHTML = "<i class='fa-solid fa-sack-dollar'></i> : " + m.price.toFixed(2) + "€";
+            
+            monthTitle.appendChild(titleDetail);
+            monthTitle.appendChild(subConsoDetail);
+            monthTitle.appendChild(subPriceDetail);
+            
+            monthTitle.setAttribute("data-bs-toggle", "collapse");
+            monthTitle.setAttribute("aria-expanded", "false");
+            const accordionMonthId = getMonthName(parseInt(m.month)) + "-" + currentRow;
+            monthTitle.setAttribute("data-bs-target", "#" + accordionMonthId);
+            
 
             const tableDailyDetail = document.createElement("table");
-            tableDailyDetail.className = "mt-2 ms-2 table table-striped table-sm align-middle";
+            tableDailyDetail.className = "table table-month table-success table-striped-columns table-sm align-middle collapse";
+            tableDailyDetail.id = accordionMonthId;
             accordionCell.appendChild(tableDailyDetail);
             const headerDailyDetail = document.createElement("thead");
             tableDailyDetail.appendChild(document.createElement("thead").appendChild(headerDailyDetail));
@@ -325,16 +351,16 @@ function refreshResultView(dateBegin, dateEnd) {
             cell3HeaderDailyDetail.innerHTML = "Conso HC";
             cell3HeaderDailyDetail.className = "text-center";
 
-            cell4HeaderDailyDetail.innerHTML = "Esti. HC (€)";
+            cell4HeaderDailyDetail.innerHTML = "Estim. HC";
             cell4HeaderDailyDetail.className = "text-center";
 
             cell5HeaderDailyDetail.innerHTML = "Conso HP";
             cell5HeaderDailyDetail.className = "text-center";
 
-            cell6HeaderDailyDetail.innerHTML = "Esti. HP (€)";
+            cell6HeaderDailyDetail.innerHTML = "Estim. HP";
             cell6HeaderDailyDetail.className = "text-center";
 
-            cell7HeaderDailyDetail.innerHTML = "Total (€)";
+            cell7HeaderDailyDetail.innerHTML = "Total";
             cell7HeaderDailyDetail.className = "text-end";
 
             headerDailyDetail.appendChild(cell1HeaderDailyDetail);
