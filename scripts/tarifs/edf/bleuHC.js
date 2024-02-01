@@ -3,6 +3,8 @@ abonnements.push({
     lastUpdate: "2024-02-01",
     prices: [
         {
+            subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
+            price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
             puissance: 6,
             abonnement: 13.01,
             bleu: {

@@ -1,70 +1,72 @@
 abonnements.push({
     name: "EDF - EJP",
-    lastUpdate: "2024-01-19",
+    lastUpdate: "2024-02-01",
     prices: [
         {
+            subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
+            price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
             puissance: 9,
-            abonnement: 15.63,
+            abonnement: 15.80,
             bleu: {
-                prixKwhHP: 15.18,
-                prixKwhHC: 15.18
+                prixKwhHP: 17.58,
+                prixKwhHC: 17.58
             },
             rouge: {
-                prixKwhHP: 149.58,
-                prixKwhHC: 15.18
+                prixKwhHP: 151.97,
+                prixKwhHC: 17.58
             }
         },
         {
             puissance: 12,
-            abonnement: 18.60,
+            abonnement: 18.76,
             bleu: {
-                prixKwhHP: 15.18,
-                prixKwhHC: 15.18
+                prixKwhHP: 17.58,
+                prixKwhHC: 17.58
             },
             rouge: {
-                prixKwhHP: 149.58,
-                prixKwhHC: 15.18
+                prixKwhHP: 151.97,
+                prixKwhHC: 17.58
             }
         },
         {
             puissance: 15,
-            abonnement: 21.62,
+            abonnement: 21.78,
             bleu: {
-                prixKwhHP: 15.18,
-                prixKwhHC: 15.18
+                prixKwhHP: 17.58,
+                prixKwhHC: 17.58
             },
             rouge: {
-                prixKwhHP: 149.58,
-                prixKwhHC: 15.18
+                prixKwhHP: 151.97,
+                prixKwhHC: 17.58
             }
         },
         {
             puissance: 18,
-            abonnement: 24.55,
+            abonnement: 24.71,
             bleu: {
-                prixKwhHP: 15.18,
-                prixKwhHC: 15.18
+                prixKwhHP: 17.58,
+                prixKwhHC: 17.58
             },
             rouge: {
-                prixKwhHP: 149.58,
-                prixKwhHC: 15.18
+                prixKwhHP: 151.97,
+                prixKwhHC: 17.58
             }
         },
         {
             puissance: 36,
-            abonnement: 42.96,
+            abonnement: 43.13,
             bleu: {
-                prixKwhHP: 15.18,
-                prixKwhHC: 15.18
+                prixKwhHP: 17.58,
+                prixKwhHC: 17.58
             },
             rouge: {
-                prixKwhHP: 149.58,
-                prixKwhHC: 15.18
+                prixKwhHP: 151.97,
+                prixKwhHC: 17.58
             }
         }],
     hc: [{
-        start: {hour:1, minute:0},
-        end: {hour:7, minute:0}
+        start: { hour: 1, minute: 0 },
+        end: { hour: 7, minute: 0 }
     }],
     specialDays: [{
         name: "rouge",
