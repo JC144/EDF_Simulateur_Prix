@@ -1,68 +1,68 @@
 abonnements.push(
     {
         name: "EDF - Bleu",
-        lastUpdate: "2023-08-01",
+        lastUpdate: "2024-02-01",
         prices: [{
             puissance: 3,
-            abonnement: 9.47,
+            abonnement: 9.63,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 25.16
             }
         },
         {
             puissance: 6,
-            abonnement: 12.44,
+            abonnement: 12.60,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 25.16
             }
         },
         {
             puissance: 9,
-            abonnement: 15.63,
+            abonnement: 15.79,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 25.16
             }
         },
         {
             puissance: 12,
-            abonnement: 18.89,
+            abonnement: 19.04,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 25.16
             }
         },
         {
             puissance: 15,
-            abonnement: 21.92,
+            abonnement: 22.07,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 25.16
             }
         },
         {
             puissance: 18,
-            abonnement: 24.92,
+            abonnement: 25.09,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 25.16
             }
         },
         {
             puissance: 24,
-            abonnement: 31.60,
+            abonnement: 31.76,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 25.16
             }
         },
         {
             puissance: 30,
-            abonnement: 37.29,
+            abonnement: 37.44,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 25.16
             }
         },
         {
             puissance: 36,
-            abonnement: 44.66,
+            abonnement: 44.82,
             bleu: {
-                prixKwhHC: 22.76
+                prixKwhHC: 25.16
             }
         }],
         hc: [{

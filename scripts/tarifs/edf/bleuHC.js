@@ -1,69 +1,69 @@
 abonnements.push({
     name: "EDF - Bleu Heures Creuses",
-    lastUpdate: "2023-08-01",
+    lastUpdate: "2024-02-01",
     prices: [
         {
             puissance: 6,
-            abonnement: 12.85,
+            abonnement: 13.01,
             bleu: {
-                prixKwhHP: 24.60,
-                prixKwhHC: 18.28
+                prixKwhHP: 27.00,
+                prixKwhHC: 20.68
             }
         },
         {
             puissance: 9,
-            abonnement: 16.55,
+            abonnement: 16.70,
             bleu: {
-                prixKwhHP: 24.60,
-                prixKwhHC: 18.28
+                prixKwhHP: 27.00,
+                prixKwhHC: 20.68
             }
         },
         {
             puissance: 12,
-            abonnement: 19.97,
+            abonnement: 20.13,
             bleu: {
-                prixKwhHP: 24.60,
-                prixKwhHC: 18.28
+                prixKwhHP: 27.00,
+                prixKwhHC: 20.68
             }
         },
         {
             puissance: 15,
-            abonnement: 23.24,
+            abonnement: 23.40,
             bleu: {
-                prixKwhHP: 24.60,
-                prixKwhHC: 18.28
+                prixKwhHP: 27.00,
+                prixKwhHC: 20.68
             }
         },
         {
             puissance: 18,
-            abonnement: 26.48,
+            abonnement: 26.64,
             bleu: {
-                prixKwhHP: 24.60,
-                prixKwhHC: 18.28
+                prixKwhHP: 27.00,
+                prixKwhHC: 20.68
             }
         },
         {
             puissance: 24,
-            abonnement: 33.28,
+            abonnement: 33.44,
             bleu: {
-                prixKwhHP: 24.60,
-                prixKwhHC: 18.28
+                prixKwhHP: 27.00,
+                prixKwhHC: 20.68
             }
         },
         {
             puissance: 30,
-            abonnement: 39.46,
+            abonnement: 39.63,
             bleu: {
-                prixKwhHP: 24.60,
-                prixKwhHC: 18.28
+                prixKwhHP: 27.00,
+                prixKwhHC: 20.68
             }
         },
         {
             puissance: 36,
-            abonnement: 44.64,
+            abonnement: 44.79,
             bleu: {
-                prixKwhHP: 24.60,
-                prixKwhHC: 18.28
+                prixKwhHP: 27.00,
+                prixKwhHC: 20.68
             }
         }],
     hc: [],

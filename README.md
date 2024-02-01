@@ -5,7 +5,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 
 ## Derniers tarifs: 
 * Octopus : 19 Janvier 2024
-* EDF : 18 Janvier 2024
+* EDF : 1 Février 2024
 * Ekwateur : 30 janvier 2024
 * Engie : 18 Janvier 2024
 * Mint Energie : 18 Janvier 2024
