@@ -137,6 +137,15 @@ function sumMonthData(monthData) {
 }
 
 function isHC(timeInformation, hcTimeBegin, hcTimeEnd) {
-    return (timeInformation.hour > hcTimeBegin.hour || timeInformation.hour == hcTimeBegin.hour && timeInformation.minute >= hcTimeBegin.minute)
-        && (timeInformation.hour < hcTimeEnd.hour);
+  begin = hcTimeBegin.hour + (hcTimeBegin.minute === 30 ? 0.5 : 0);
+  end = hcTimeEnd.hour + (hcTimeEnd.minute === 30 ? 0.5 : 0);
+  time = timeInformation.hour + (timeInformation.minute === 30 ? 0.5 : 0);
+
+  if (timeInformation.hour === 0 && timeInformation.minute === 0) {
+    time = 24;
+  }
+
+  const isHC = time > begin && time <= end;
+
+  return isHC;
 }
