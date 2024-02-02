@@ -1,5 +1,6 @@
 abonnements.push({
     name: "ES - Tempo",
+    offer_type: "TRV",
     lastUpdate: "2024-02-01",
     subscription_url: "https://particuliers.es.fr/Offres-energies-services/Electricite-Gaz/Les-offres-electricite-d-ES/Tarif-Reglemente-electricite",
         price_url: "https://particuliers.es.fr/Media/Files/Part/Documentation-electricite/Tarif-reglemente-Fiche-descriptive-de-l-offre",
