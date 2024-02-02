@@ -119,7 +119,7 @@ abonnements.push({
         }],
     hc: [{
         start: {hour:22, minute:0},
-        end: {hour:6, minute:0}
+        end: {hour:24, minute:0}
     },
     {
         start: {hour:0, minute:0},
