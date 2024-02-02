@@ -6,10 +6,8 @@ var enedisParser = {
 
         //Les données débutent à partir de la 3ème ligne
         for (let i = 3; i < lines.length; i++) {
-            if (lines.length > 0) {
-                const currentline = lines[i].split(";");
-                result.push(currentline);
-            }
+            const currentline = lines[i].split(";");
+            result.push(currentline);
         }
         return result;
     },
@@ -18,18 +16,19 @@ var enedisParser = {
 
         rows.reverse().forEach(row => {
             if (row.length > 1) {
-                const date = new Date(row[0].replace(/\+0.:00/g, "+00:00"));
+                const [date, time] = row[0].replace(/\+0.:00/g, "").split("T");
                 const value = row[1];
 
-                //la date dans le CSV est la fin de la tranche 
-                //(Exemple : 06:00:00 correspond à 5h30 > 6h00)
-                //(Exemple2 : le 2024/01/01 00:00:00 Correspond à la période de consommation du 2023/12/31 23h30m00 au 2023/12/31 23h59m59)
-                date.setMinutes(date.getMinutes() - 30);
+                let formattedDate = date.replace(/-/g, "/");
 
-                const [isoDate, time] = date.toISOString().split('T');
-                const [hours, minutes, seconds] = time.slice(0, -6).split(':');
+                let [hours, minutes, seconds] = time.split(':');
 
-                const formattedDate = isoDate.replace(/-/g, '/');
+                if (hours == "00" && minutes == "00") {
+                    hours = "24";
+                    let isoDate = new Date(date);
+                    isoDate.setDate(isoDate.getDate() - 1);
+                    formattedDate = isoDate.toISOString().split("T")[0].replace(/-/g, "/");
+                }
                 const formattedTime = `${hours}:${minutes}:00`;
 
                 const day = data.find(d => d.date === formattedDate);
