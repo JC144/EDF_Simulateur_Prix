@@ -102,6 +102,8 @@ function onFileImported(e) {
             parser = enedisParser;
         } else if (csvFile.files[0].name.match(regexTotalEnergies)) {
             parser = totalParser;
+        } else if (csvFile.files[0].name.includes("export_courbe_charges")) {
+            parser = serParser;
         }
         try {
             let rawCSV = parser.parseCSV(text);
