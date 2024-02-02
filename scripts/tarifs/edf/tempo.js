@@ -1,5 +1,6 @@
 abonnements.push({
     name: "EDF - Tempo",
+    offer_type: "TRV",
     lastUpdate: "2024-02-01",
     subscription_url: "https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",

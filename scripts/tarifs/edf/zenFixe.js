@@ -1,6 +1,7 @@
 abonnements.push(
     {
         name: "EDF - Zen Fixe",
+        offer_type: "TRV",
         lastUpdate: "2024-02-01",
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique.pdf",

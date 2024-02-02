@@ -1,6 +1,7 @@
 abonnements.push(
     {
         name: "EDF - Bleu",
+        offer_type: "TRV",
         lastUpdate: "2024-02-01",
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
@@ -68,8 +69,8 @@ abonnements.push(
             }
         }],
         hc: [{
-            start: {hour:0, minute:0},
-            end: {hour:24, minute:0}
+            start: { hour: 0, minute: 0 },
+            end: { hour: 24, minute: 0 }
         }],
         hasHCCustom: false,
         hasSpecialDaysCustom: false,
