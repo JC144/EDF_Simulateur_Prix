@@ -1,7 +1,7 @@
 # EDF_Simulateur_Prix
 Un outil pour simuler les différents tarifs de fournisseurs d'électricité depuis un export Linky de la consommation.
 
-[Version en ligne: [https://jc.vasselon.com/EDF_Simulateur_Prix/](https://jc.vasselon.com/EDF_Simulateur_Prix/)
+[Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
 ## Derniers tarifs: 
 * EDF : 01 Février 2024
