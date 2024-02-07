@@ -1,68 +1,70 @@
 abonnements.push(
     {
         name: "Engie - Elec Tranquillité 1 an",
-        lastUpdate: "2024-01-01",
+        lastUpdate: "2024-02-01",
+        subscription_url: "https://particuliers.engie.fr/electricite.html",
+        price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-tranquillite.pdf",
         prices: [{
             puissance: 3,
-            abonnement: 9.53,
+            abonnement: 9.69,
             bleu: {
-                prixKwhHC: 22.764
+                prixKwhHC: 25.164
             }
         },
         {
             puissance: 6,
-            abonnement: 12.55,
+            abonnement: 12.71,
             bleu: {
-                prixKwhHC: 22.764
+                prixKwhHC: 25.164
             }
         },
         {
             puissance: 9,
-            abonnement: 15.80,
+            abonnement: 15.95,
             bleu: {
-                prixKwhHC: 22.764
+                prixKwhHC: 25.164
             }
         },
         {
             puissance: 12,
-            abonnement: 19.11,
+            abonnement: 19.26,
             bleu: {
-                prixKwhHC: 22.764
+                prixKwhHC: 25.164
             }
         },
         {
             puissance: 15,
-            abonnement: 22.20,
+            abonnement: 22.35,
             bleu: {
-                prixKwhHC: 22.764
+                prixKwhHC: 25.164
             }
         },
         {
             puissance: 18,
-            abonnement: 25.25,
+            abonnement: 25.41,
             bleu: {
-                prixKwhHC: 22.764
+                prixKwhHC: 25.164
             }
         },
         {
             puissance: 24,
-            abonnement: 32.05,
+            abonnement: 32.20,
             bleu: {
-                prixKwhHC: 22.764
+                prixKwhHC: 25.164
             }
         },
         {
             puissance: 30,
-            abonnement: 37.84,
+            abonnement: 38.00,
             bleu: {
-                prixKwhHC: 22.764
+                prixKwhHC: 25.164
             }
         },
         {
             puissance: 36,
-            abonnement: 44.66,
+            abonnement: 44.82,
             bleu: {
-                prixKwhHC: 22.764
+                prixKwhHC: 25.164
             }
         }],
         hc: [{

@@ -1,116 +1,117 @@
 abonnements.push(
     {
         name: "OHM Energie - Offre soir et Week-End",
+        offer_type: "Marché",
         lastUpdate: "2024-02-01",
         subscription_url: "https://ohm-energie.com/offre/electricite",
         price_url: "https://ohm-energie.com/grilles/elec/2024/02/ELEC_S%26WE.pdf",
         prices: [
         {
             puissance: 3,
-            abonnement: 9.95,
+            abonnement: 10.11,
             bleu: {
                 prixKwhHP: 27.29,
-                prixKwhHC: 17.43
+                prixKwhHC: 17.38
             },
             weekend: {
-                prixKwhHP: 17.43,
-                prixKwhHC: 17.43
+                prixKwhHP: 17.38,
+                prixKwhHC: 17.38
             }
         },
         {
             puissance: 6,
-            abonnement: 13.62,
+            abonnement: 13.78,
             bleu: {
                 prixKwhHP: 27.29,
-                prixKwhHC: 17.43
+                prixKwhHC: 17.38
             },
             weekend: {
-                prixKwhHP: 17.43,
-                prixKwhHC: 17.43
+                prixKwhHP: 17.38,
+                prixKwhHC: 17.38
             }
         },
         {
             puissance: 9,
-            abonnement: 17.33,
+            abonnement: 17.49,
             bleu: {
                 prixKwhHP: 27.29,
-                prixKwhHC: 17.43
+                prixKwhHC: 17.38
             },
             weekend: {
-                prixKwhHP: 17.43,
-                prixKwhHC: 17.43
+                prixKwhHP: 17.38,
+                prixKwhHC: 17.38
             }
         },
         {
             puissance: 12,
-            abonnement: 20.95,
+            abonnement: 21.12,
             bleu: {
                 prixKwhHP: 27.29,
-                prixKwhHC: 17.43
+                prixKwhHC: 17.38
             },
             weekend: {
-                prixKwhHP: 17.43,
-                prixKwhHC: 17.43
+                prixKwhHP: 17.38,
+                prixKwhHC: 17.38
             }
         },
         {
             puissance: 15,
-            abonnement: 24.41,
+            abonnement: 24.57,
             bleu: {
                 prixKwhHP: 27.29,
-                prixKwhHC: 17.43
+                prixKwhHC: 17.38
             },
             weekend: {
-                prixKwhHP: 17.43,
-                prixKwhHC: 17.43
+                prixKwhHP: 17.38,
+                prixKwhHC: 17.38
             }
         },
         {
             puissance: 18,
-            abonnement: 27.84,
+            abonnement: 28.00,
             bleu: {
                 prixKwhHP: 27.29,
-                prixKwhHC: 17.43
+                prixKwhHC: 17.38
             },
             weekend: {
-                prixKwhHP: 17.43,
-                prixKwhHC: 17.43
+                prixKwhHP: 17.38,
+                prixKwhHC: 17.38
             }
         },
         {
             puissance: 24,
-            abonnement: 35.03,
+            abonnement: 35.19,
             bleu: {
                 prixKwhHP: 27.29,
-                prixKwhHC: 17.43
+                prixKwhHC: 17.38
             },
             weekend: {
-                prixKwhHP: 17.43,
-                prixKwhHC: 17.43
+                prixKwhHP: 17.38,
+                prixKwhHC: 17.38
             }
         },
         {
             puissance: 30,
-            abonnement: 40.43,
+            abonnement: 41.75,
             bleu: {
                 prixKwhHP: 27.29,
-                prixKwhHC: 17.43
+                prixKwhHC: 17.38
             },
             weekend: {
-                prixKwhHP: 17.43,
-                prixKwhHC: 17.43
+                prixKwhHP: 17.38,
+                prixKwhHC: 17.38
             }
         },
         {
             puissance: 36,
-            abonnement: 46.88,
+            abonnement: 48.37,
             bleu: {
                 prixKwhHP: 27.29,
-                prixKwhHC: 17.43
+                prixKwhHC: 17.38
             },
             weekend: {
-                prixKwhHP: 17.43,
-                prixKwhHC: 17.43
+                prixKwhHP: 17.38,
+                prixKwhHC: 17.38
             }
         }],
     hc: [{
