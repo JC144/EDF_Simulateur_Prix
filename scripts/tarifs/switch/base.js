@@ -1,7 +1,10 @@
 abonnements.push(
     {
         name: "Switch - Base",
-        lastUpdate: "2024-02-08",
+        offer_type: "Marché",
+        lastUpdate: "2024-02-01",
+        subscription_url: "https://www.chezswitch.fr/offre-energie/#/",
+        price_url: "https://api.chezswitch.fr/docs/2024.02.01_Grille_tarifaire_des_offres_delectricite.pdf?v=30",
         prices: [{
             puissance: 3,
             abonnement: 9.38,
@@ -66,8 +69,8 @@ abonnements.push(
             }
         }],
         hc: [{
-            start: {hour:0, minute:0},
-            end: {hour:24, minute:0}
+            start: { hour: 0, minute: 0 },
+            end: { hour: 24, minute: 0 }
         }],
         hasHCCustom: false,
         hasSpecialDaysCustom: false,

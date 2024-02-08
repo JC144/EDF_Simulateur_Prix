@@ -1,6 +1,9 @@
 abonnements.push({
     name: "Alterna - Heures Creuses Locale",
-    lastUpdate: "2024-02-08",
+    offer_type: "Marché",
+    lastUpdate: "2024-02-01",
+    subscription_url: "https://www.alterna-energie.fr",
+    price_url: "https://www.alterna-energie.fr/tarifs-electricite-locale",
     prices: [
         {
             puissance: 6,

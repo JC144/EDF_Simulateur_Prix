@@ -1,6 +1,9 @@
 abonnements.push({
     name: "Switch - Heures Creuses",
-    lastUpdate: "2024-02-08",
+    offer_type: "Marché",
+    lastUpdate: "2024-02-01",
+    subscription_url: "https://www.chezswitch.fr/offre-energie/",
+    price_url: "https://api.chezswitch.fr/docs/2024.02.01_Grille_tarifaire_des_offres_delectricite.pdf?v=30",
     prices: [
         {
             puissance: 6,

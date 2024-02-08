@@ -1,6 +1,9 @@
 abonnements.push({
     name: "Octopus - Heures Creuses",
-    lastUpdate: "2024-01-19",
+    offer_type: "Marché",
+    lastUpdate: "2024-02-01",
+    subscription_url: "https://www.alterna-energie.fr",
+    price_url: "https://www.alterna-energie.fr/tarifs-electricite-francaise",
     prices: [
         {
             puissance: 6,
