@@ -12,8 +12,8 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 * Alpiq : 01 Février 2024
 * Ilek : 01 Février 2024
 * OHM Energie : 01 Février 2024
+* Octopus : 01 Février 2024
 * ~~Ekwateur : 30 janvier 2024~~
-* ~~Octopus : 19 Janvier 2024~~
 
 ## Remerciements
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
@@ -23,6 +23,12 @@ Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [M
 * [Benoit Goimier](https://github.com/BenoitGoimier)
 * [Jonathan Sarrazin](https://github.com/jo-sarrazin)
 * [nviallatte](https://github.com/nviallatte)
+* [Benoit Deldicque](https://github.com/bddq)
+* [DuchkPy](https://github.com/DuchkPy)
+* [J0hnMatrix](https://github.com/J0hnMatrix)
+* [csailly](https://github.com/csailly)
+* [10tribu](https://github.com/10tribu)
+* [chatainsim](https://github.com/chatainsim)
 
 ## Comment contribuer
 Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simulateur_Prix/wiki).
