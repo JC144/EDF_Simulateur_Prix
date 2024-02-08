@@ -1,69 +1,69 @@
 abonnements.push({
     name: "Octopus - Heures Creuses",
-    lastUpdate: "2024-01-19",
+    lastUpdate: "2024-02-08",
     prices: [
         {
             puissance: 6,
-            abonnement: 12.85,
+            abonnement: 13.01,
             bleu: {
-                prixKwhHP: 22.15,
-                prixKwhHC: 16.46
+                prixKwhHP: 23.33,
+                prixKwhHC: 17.95
             }
         },
         {
             puissance: 9,
-            abonnement: 16.55,
+            abonnement: 16.70,
             bleu: {
-                prixKwhHP: 22.15,
-                prixKwhHC: 16.46
+                prixKwhHP: 23.33,
+                prixKwhHC: 17.95
             }
         },
         {
             puissance: 12,
-            abonnement: 19.97,
+            abonnement: 20.13,
             bleu: {
-                prixKwhHP: 22.15,
-                prixKwhHC: 16.46
+                prixKwhHP: 23.33,
+                prixKwhHC: 17.95
             }
         },
         {
             puissance: 15,
-            abonnement: 23.24,
+            abonnement: 23.40,
             bleu: {
-                prixKwhHP: 22.15,
-                prixKwhHC: 16.46
+                prixKwhHP: 23.33,
+                prixKwhHC: 17.95
             }
         },
         {
             puissance: 18,
-            abonnement: 26.48,
+            abonnement: 26.64,
             bleu: {
-                prixKwhHP: 22.15,
-                prixKwhHC: 16.46
+                prixKwhHP: 23.33,
+                prixKwhHC: 17.95
             }
         },
         {
             puissance: 24,
-            abonnement: 33.28,
+            abonnement: 33.44,
             bleu: {
-                prixKwhHP: 22.15,
-                prixKwhHC: 16.46
+                prixKwhHP: 23.33,
+                prixKwhHC: 17.95
             }
         },
         {
             puissance: 30,
-            abonnement: 39.46,
+            abonnement: 39.63,
             bleu: {
-                prixKwhHP: 22.15,
-                prixKwhHC: 16.46
+                prixKwhHP: 23.33,
+                prixKwhHC: 17.95
             }
         },
         {
             puissance: 36,
-            abonnement: 44.63,
+            abonnement: 44.79,
             bleu: {
-                prixKwhHP: 22.15,
-                prixKwhHC: 16.46
+                prixKwhHP: 23.33,
+                prixKwhHC: 17.95
             }
         }],
     hc: [],
