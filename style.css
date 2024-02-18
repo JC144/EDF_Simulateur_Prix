@@ -63,20 +63,34 @@ tbody.table-group-divider tr:first-child th {
     color: white;
 }
 
-th[aria-expanded="false"] i.fa-solid {
+th[aria-expanded="false"] i.fa-solid.fa-square-caret-right,
+th[aria-expanded="false"] td.fa-solid.fa-square-caret-right {
     transition: all .25s ease;
 }
 
-th[aria-expanded="true"] i.fa-solid {
+th[aria-expanded="true"] i.fa-solid.fa-square-caret-right,
+th[aria-expanded="true"] td.fa-solid.fa-square-caret-right {
     transform: rotate(90deg);
     transition: all .25s ease;
 }
+table.table-month {
+    font-size: 0.75rem;
+}
 
-
+td.main-title {
+    max-width: 190px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
 h1 a {
     text-decoration: none;
     color: #000;
 }
+i.badge.fw-help {
+    cursor: help;
+}
+
 
 .toast-icon {
     margin-left: -6px;
@@ -166,4 +180,25 @@ select#monthEndSelector {
 select#yearBeginSelector,
 select#yearEndSelector {
     min-width: 80px;
+}
+/* Ajout de fix responsive  */
+@media (max-width: 590px) {
+        
+        .maxinput {max-width: 320px;}
+        span.input-group-text {font-size: 10px;}
+        #pricesResultView div.d-flex.maxinput{
+        display: flex!important;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+            
+        }
+        .table tbody th,.table tbody tr{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 320px;
+        }
 }
