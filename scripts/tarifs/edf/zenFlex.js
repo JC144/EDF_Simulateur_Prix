@@ -102,16 +102,16 @@ abonnements.push({
             }
         }],
     hc: [{
-        start: {hour:0, minute:0},
-        end: {hour:8, minute:0}
+        start: { hour: 0, minute: 0 },
+        end: { hour: 8, minute: 0 }
     },
     {
-        start: 13,
-        end: 18
+        start: { hour: 13, minute: 0 },
+        end: { hour: 18, minute: 0 }
     },
     {
-        start: {hour:20, minute:0},
-        end: {hour:24, minute:0}
+        start: { hour: 20, minute: 0 },
+        end: { hour: 24, minute: 0 }
     }],
     hasHCCustom: false,
     hasSpecialDaysCustom: false,
@@ -120,7 +120,7 @@ abonnements.push({
         numberOfDays: 20,
         monthBegin: 10,
         monthEnd: 4,
-        lastDays:[
+        lastDays: [
             "2020/12/02",
             "2020/12/07",
             "2020/12/08",
