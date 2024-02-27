@@ -1,9 +1,9 @@
 abonnements.push({
-    name: "Octopus - Heures Creuses",
+    name: "Sowee - Elec Prix Fixe 3 ans - Heures Creuses",
     offer_type: "Marché",
     lastUpdate: "2024-02-01",
-    subscription_url: "https://www.octopusenergy.fr/offre-electricite-tarifs",
-    price_url: "https://a.storyblok.com/f/151412/x/88a1a21fb7/grille-tarifaire-eco-conso-fixe-202402.pdf",
+    subscription_url: "https://www.sowee.fr/tarifs-contrats-energies-gaz-electricite",
+    price_url: "https://www.sowee.fr/s3fs-public/Grille_de_prix_Elec_Prix_fixe_3_ans_Fevrier_2024.pdf",
     prices: [
         {
             puissance: 6,

@@ -1,10 +1,10 @@
 abonnements.push(
     {
-        name: "Sowee - Elec'Optim",
+        name: "Sowee - Elec'Prix Fixe 3 ans",
         offer_type: "Marché",
         lastUpdate: "2024-02-01",
         subscription_url: "https://www.sowee.fr/tarifs-contrats-energies-gaz-electricite",
-        price_url: "ihttps://www.sowee.fr/s3fs-public/Grille_de_prix_Elec_Optim_Fevrier_2024.pdf",
+        price_url: "https://www.sowee.fr/s3fs-public/Grille_de_prix_Elec_Prix_fixe_3_ans_Fevrier_2024.pdf",
         prices: [{
             puissance: 3,
             abonnement: 9.69,
