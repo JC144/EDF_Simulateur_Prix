@@ -16,7 +16,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 * Mint Energie : 01 Février 2024
 * Octopus : 01 Février 2024
 * OHM Energie : 01 Février 2024
-* Switch : 01 Février 2024
+* ~~Switch : 01 Février 2024~~ [Voir ici](https://www.jechange.fr/energie/chez-switch/)
 * TotalEnergie : 01 Février 2024
 
 ## Remerciements
