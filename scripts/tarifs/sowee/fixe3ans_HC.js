@@ -7,7 +7,7 @@ abonnements.push({
     prices: [
         {
             puissance: 6,
-            abonnement: 14.46,
+            abonnement: 13.39,
             bleu: {
                 prixKwhHP: 23.57,
                 prixKwhHC: 18.13
@@ -15,7 +15,7 @@ abonnements.push({
         },
         {
             puissance: 9,
-            abonnement: 18.35,
+            abonnement: 17.00,
             bleu: {
                 prixKwhHP: 23.57,
                 prixKwhHC: 18.13
@@ -23,7 +23,7 @@ abonnements.push({
         },
         {
             puissance: 12,
-            abonnement: 22.13,
+            abonnement: 20.52,
             bleu: {
                 prixKwhHP: 23.57,
                 prixKwhHC: 18.13
@@ -31,7 +31,7 @@ abonnements.push({
         },
         {
             puissance: 15,
-            abonnement: 25.75,
+            abonnement: 23.89,
             bleu: {
                 prixKwhHP: 23.57,
                 prixKwhHC: 18.13
@@ -39,7 +39,7 @@ abonnements.push({
         },
         {
             puissance: 18,
-            abonnement: 29.34,
+            abonnement: 27.22,
             bleu: {
                 prixKwhHP: 23.57,
                 prixKwhHC: 18.13
@@ -47,7 +47,7 @@ abonnements.push({
         },
         {
             puissance: 24,
-            abonnement: 36.86,
+            abonnement: 34.21,
             bleu: {
                 prixKwhHP: 23.57,
                 prixKwhHC: 18.13
@@ -55,7 +55,7 @@ abonnements.push({
         },
         {
             puissance: 30,
-            abonnement: 43.72,
+            abonnement: 40.60,
             bleu: {
                 prixKwhHP: 23.57,
                 prixKwhHC: 18.13
@@ -63,7 +63,7 @@ abonnements.push({
         },
         {
             puissance: 36,
-            abonnement: 50.64,
+            abonnement: 47.04,
             bleu: {
                 prixKwhHP: 23.57,
                 prixKwhHC: 18.13
