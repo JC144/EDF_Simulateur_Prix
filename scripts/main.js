@@ -96,7 +96,7 @@ function onFileImported(e) {
         var parser = edfParser;
         const text = e.target.result;
 
-        const regexTotalEnergies = /^[0-9]{9}\-[A-Z]+\-[A-Z]+\.csv$/;
+        const regexTotalEnergies = /^\d{10}-.+-.+\.csv$/;
 
         if (csvFile.files[0].name.includes("Enedis")) {
             parser = enedisParser;
