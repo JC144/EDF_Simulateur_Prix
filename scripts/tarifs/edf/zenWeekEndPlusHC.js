@@ -1,104 +1,105 @@
 abonnements.push({
     name: "EDF - Zen Week-End Plus HC",
     offer_type: "TRV",
-    lastUpdate: "2024-02-01",
+    lastUpdate: "2024-03-19",
+    isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end-plus.pdf",
     prices: [
         {
             puissance: 6,
-            abonnement: 13.03,
+            abonnement: 13.19,
             bleu: {
-                prixKwhHP: 30.17,
-                prixKwhHC: 21.87
+                prixKwhHP: 28.74,
+                prixKwhHC: 20.88
             },
             weekend: {
-                prixKwhHP: 21.87,
-                prixKwhHC: 21.87,
+                prixKwhHP: 20.88,
+                prixKwhHC: 20.88,
             }
         },
         {
             puissance: 9,
-            abonnement: 16.55,
+            abonnement: 16.71,
             bleu: {
-                prixKwhHP: 30.17,
-                prixKwhHC: 21.87
+                prixKwhHP: 28.74,
+                prixKwhHC: 20.88
             },
             weekend: {
-                prixKwhHP: 21.87,
-                prixKwhHC: 21.87,
+                prixKwhHP: 20.88,
+                prixKwhHC: 20.88,
             }
         },
         {
             puissance: 12,
-            abonnement: 19.97,
+            abonnement: 20.13,
             bleu: {
-                prixKwhHP: 30.17,
-                prixKwhHC: 21.87
+                prixKwhHP: 28.74,
+                prixKwhHC: 20.88
             },
             weekend: {
-                prixKwhHP: 21.87,
-                prixKwhHC: 21.87,
+                prixKwhHP: 20.88,
+                prixKwhHC: 20.88,
             }
         },
         {
             puissance: 15,
-            abonnement: 23.24,
+            abonnement: 23.40,
             bleu: {
-                prixKwhHP: 30.17,
-                prixKwhHC: 21.87
+                prixKwhHP: 28.74,
+                prixKwhHC: 20.88
             },
             weekend: {
-                prixKwhHP: 21.87,
-                prixKwhHC: 21.87,
+                prixKwhHP: 20.88,
+                prixKwhHC: 20.88,
             }
         },
         {
             puissance: 18,
-            abonnement: 26.48,
+            abonnement: 26.64,
             bleu: {
-                prixKwhHP: 30.17,
-                prixKwhHC: 21.87
+                prixKwhHP: 28.74,
+                prixKwhHC: 20.88
             },
             weekend: {
-                prixKwhHP: 21.87,
-                prixKwhHC: 21.87,
+                prixKwhHP: 20.88,
+                prixKwhHC: 20.88,
             }
         },
         {
             puissance: 24,
-            abonnement: 33.28,
+            abonnement: 33.44,
             bleu: {
-                prixKwhHP: 30.17,
-                prixKwhHC: 21.87
+                prixKwhHP: 28.74,
+                prixKwhHC: 20.88
             },
             weekend: {
-                prixKwhHP: 21.87,
-                prixKwhHC: 21.87,
+                prixKwhHP: 20.88,
+                prixKwhHC: 20.88,
             }
         },
         {
             puissance: 30,
-            abonnement: 39.46,
+            abonnement: 39.63,
             bleu: {
-                prixKwhHP: 30.17,
-                prixKwhHC: 21.87
+                prixKwhHP: 28.74,
+                prixKwhHC: 20.88
             },
             weekend: {
-                prixKwhHP: 21.87,
-                prixKwhHC: 21.87,
+                prixKwhHP: 20.88,
+                prixKwhHC: 20.88,
             }
         },
         {
             puissance: 36,
-            abonnement: 45.72,
+            abonnement: 45.88,
             bleu: {
-                prixKwhHP: 30.17,
-                prixKwhHC: 21.87
+                prixKwhHP: 28.74,
+                prixKwhHC: 20.88
             },
             weekend: {
-                prixKwhHP: 21.87,
-                prixKwhHC: 21.87,
+                prixKwhHP: 20.88,
+                prixKwhHC: 20.88,
             }
         }],
     hc: [{

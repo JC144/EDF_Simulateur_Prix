@@ -2,6 +2,7 @@ abonnements.push({
     name: "EDF - EJP",
     offer_type: "TRV",
     lastUpdate: "2024-02-01",
+    isCommunity: false,
     subscription_url: "",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
     prices: [

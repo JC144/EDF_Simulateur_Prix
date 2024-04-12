@@ -2,98 +2,99 @@ abonnements.push({
     name: "EDF - ZenFlex Week-End",
     offer_type: "TRV",
     hasSpecialDaysCustom: false,
-    lastUpdate: "2024-02-01",
+    lastUpdate: "2024-03-19",
+    isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
     prices: [
         {
             puissance: 3,
-            abonnement: 9.47,
+            abonnement: 9.63,
             bleu: {
-                prixKwhHC: 27.65
+                prixKwhHC: 26.29
             },
             weekend: {
-                prixKwhHC: 20.11
+                prixKwhHC: 19.16
             }
         },
         {
             puissance: 6,
-            abonnement: 12.44,
+            abonnement: 12.60,
             bleu: {
-                prixKwhHC: 27.65
+                prixKwhHC: 26.29
             },
             weekend: {
-                prixKwhHC: 20.11
+                prixKwhHC: 19.16
             }
         },
         {
             puissance: 9,
-            abonnement: 15.63,
+            abonnement: 15.79,
             bleu: {
-                prixKwhHC: 27.65
+                prixKwhHC: 26.29
             },
             weekend: {
-                prixKwhHC: 20.11
+                prixKwhHC: 19.16
             }
         },
         {
             puissance: 12,
-            abonnement: 19.25,
+            abonnement: 19.40,
             bleu: {
-                prixKwhHC: 27.65
+                prixKwhHC: 26.29
             },
             weekend: {
-                prixKwhHC: 20.11
+                prixKwhHC: 19.16
             }
         },
         {
             puissance: 15,
-            abonnement: 22.37,
+            abonnement: 22.53,
             bleu: {
-                prixKwhHC: 27.65
+                prixKwhHC: 26.29
             },
             weekend: {
-                prixKwhHC: 20.11
+                prixKwhHC: 19.16
             }
         },
         {
             puissance: 18,
-            abonnement: 25.46,
+            abonnement: 25.63,
             bleu: {
-                prixKwhHC: 27.65
+                prixKwhHC: 26.29
             },
             weekend: {
-                prixKwhHC: 20.11
+                prixKwhHC: 19.16
             }
         },
         {
             puissance: 24,
-            abonnement: 32.32,
+            abonnement: 32.48,
             bleu: {
-                prixKwhHC: 27.65
+                prixKwhHC: 26.29
             },
             weekend: {
-                prixKwhHC: 20.11
+                prixKwhHC: 19.16
             }
         },
         {
             puissance: 30,
-            abonnement: 37.29,
+            abonnement: 37.44,
             bleu: {
-                prixKwhHC: 27.65
+                prixKwhHC: 26.29
             },
             weekend: {
-                prixKwhHC: 20.11
+                prixKwhHC: 19.16
             }
         },
         {
             puissance: 36,
-            abonnement: 43.99,
+            abonnement: 44.15,
             bleu: {
-                prixKwhHC: 27.65
+                prixKwhHC: 26.29
             },
             weekend: {
-                prixKwhHC: 20.11
+                prixKwhHC: 19.16
             }
         }],
     hc: [{
