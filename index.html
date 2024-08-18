@@ -13,15 +13,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
 
 </head>
 
 <body>
     <div class="col-lg-8 mx-auto p-4 py-md-5 flex-grow-1">
-        <header class="d-flex flex-column align-items-center pb-3 mb-3 border-bottom">
+        <header class="d-flex flex-column align-items-center pb-3 mb-3">
             <h1 class="display-5"><a href="index.html">Comparateur d'abonnements d'électricité</a></h1>
         </header>
+
         <main>
             <div id="presentationView">
                 <h5 class="text-center mt-4 mb-5">
@@ -51,7 +53,7 @@
                     </div>
                 </div>
                 <div class="d-block text-center m-4">
-                    <button type="button" class="btn btn-success " id="startButton">Démarrer <i
+                    <button type="button" class="btn btn-success mt-4 mb-4" id="startButton">Démarrer <i
                             class="fa-solid fa-play ms-2"></i></button>
                 </div>
                 <div class="text-justify alert alert-info fade show" role="alert">
@@ -75,152 +77,208 @@
 
                     <ul>
                         <li>Pour un résultat précis, il vous faudra</li>
-                        <li>
-                            <ul>
-                                <li>Avoir activé le suivi à la demi-heure sur votre compteur Linky</li>
-                                <li>Avoir au moins un an de données (de Mars à Mars)</li>
-                            </ul>
-                        </li>
+                        <ul>
+                            <li>Avoir activé le suivi à la demi-heure sur votre compteur Linky</li>
+                            <li>Avoir au moins un an de données (de Mars à Mars)</li>
+                        </ul>
                     </ul>
                 </div>
             </div>
-            <div id="importView" class="card maxcard">
-                <div class="card-body d-flex flex-column p-0">
-                    <div class="card-header">
-                        <h2 class="card-title text-center">Vos réglages</h2>
-                    </div>
-                    <div class="container-sm">
-                        <h4 class="d-block text-center mt-3">Puissance souscrite
-                            <i class="fa-solid fa-circle-info fa-lg text-primary" data-bs-toggle="tooltip"
-                                data-bs-placement="left"
-                                data-bs-title="Cette information est disponible sur votre compteur Linky, sur votre facture ou sur le site de votre fournisseur."></i>
-                        </h4>
-                        <div class="input-group mt-3 mb-3 maxinput">
-                            <select class="form-select form-control" aria-label=".form-select" id="puissanceSouscrite">
-                                <option value="3">3 kVA</option>
-                                <option value="6" selected>6 kVA</option>
-                                <option value="9">9 kVA</option>
-                                <option value="12">12 kVA</option>
-                                <option value="15">15 kVA</option>
-                                <option value="18">18 kVA</option>
-                                <option value="24">24 kVA</option>
-                                <option value="30">30 kVA</option>
-                                <option value="36">36 kVA</option>
-                            </select>
+            <div id="importView">
+                <div class="card maxcard">
+                    <div class="card-body d-flex flex-column p-0">
+                        <div>
+                            <h2 class="text-center">Vos réglages</h2>
+                            <hr />
                         </div>
-                    </div>
-                    <hr />
-                    <div class="container-sm">
-                        <h4 class="d-block text-center mt-3">Choix du jour Zen Plus
-                            <i class="fa-solid fa-circle-info fa-lg text-primary" data-bs-toggle="tooltip"
-                                data-bs-html="true" data-bs-placement="left"
-                                data-bs-title="Les forfaits Zen Plus ont un jour avantageux supplémentaire dans la semaine. <br/> Choisissez celui qui vous convient pour la simulation."></i>
-                        </h4>
-                        <div class="input-group mt-3 mb-3 maxinput">
-                            <select class="form-select form-control" aria-label=".form-select" id="jourZenPlus">
-                                <option value="1" selected>Lundi</option>
-                                <option value="3">Mercredi</option>
-                                <option value="5">Vendredi</option>
-                            </select>
+                        <div class="container-sm">
+                            <h4 class="mt-3">Puissance souscrite</h4>
+                            <p>Cette information est disponible sur votre compteur Linky, sur votre facture ou sur le
+                                site
+                                de votre fournisseur.</p>
+
+                            <div class="input-group mt-3 mb-3 maxinput">
+                                <select class="form-select form-control" aria-label=".form-select"
+                                    id="puissanceSouscrite">
+                                    <option value="3">3 kVA</option>
+                                    <option value="6" selected>6 kVA</option>
+                                    <option value="9">9 kVA</option>
+                                    <option value="12">12 kVA</option>
+                                    <option value="15">15 kVA</option>
+                                    <option value="18">18 kVA</option>
+                                    <option value="24">24 kVA</option>
+                                    <option value="30">30 kVA</option>
+                                    <option value="36">36 kVA</option>
+                                </select>
+                            </div>
                         </div>
+                        <hr />
+                        <div class="container-sm">
+                            <h4 class="mt-3">Choix du jour Zen Plus</h4>
+                            <p>Les forfaits Zen Plus ont un jour avantageux supplémentaire dans la semaine. <br />
+                                Choisissez celui qui vous convient pour la simulation.</p>
+                            <div class="input-group mt-3 mb-3 maxinput">
+                                <select class="form-select form-control" aria-label=".form-select" id="jourZenPlus">
+                                    <option value="1" selected>Lundi</option>
+                                    <option value="3">Mercredi</option>
+                                    <option value="5">Vendredi</option>
+                                </select>
+                            </div>
 
-                    </div>
-                    <hr />
-                    <div class="container-sm">
-                        <h4 class="d-block text-center mt-3 position-relative">Choix des Heures Creuses pour le tarif
-                            Bleu HC <i class="fa-solid fa-circle-info fa-lg text-primary" data-bs-toggle="tooltip"
-                                data-bs-placement="left"
-                                data-bs-title="Les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les vôtres ou différents cas.
-                            ATTENTION : Pour le moment, les minutes ne sont pas prises en compte et sont arrondies à l'heure la plus proche."></i>
-                        </h4>
+                        </div>
+                        <hr />
+                        <div class="container-sm">
+                            <h4 class="mt-3">Choix des Heures Creuses pour le tarif
+                                Bleu HC </h4>
+                            <p>Les plages d'Heures Creuses sont attribuées aléatoirement. Vous pouvez ici simuler les
+                                vôtres ou différents cas.
+                                <br /><br />
+                                <strong>ATTENTION :</strong> Pour le moment, les minutes ne sont pas prises en compte et
+                                sont arrondies à l'heure la plus proche.
+                            </p>
 
-                        <div id="bleuHC" class="mt-3 mb-3 container">
-                            <div class="row mt-1">
-                                <div class="col-sm mx-3">
-                                    <label for="bleuHC-endDay1" class="form-label text-muted fw-bold">Début de soirée
-                                        (fin
-                                        du
-                                        jour 1)</label>
-                                    <div id="bleuHC-endDay1">
-                                        <label for="bleuHC-start-endDay1" class="form-label text-muted">Heure début
+                            <div id="bleuHC" class="mt-3 mb-3 container">
+                                <div class="row mt-1">
+                                    <div class="col-sm">
+                                        <label class="form-label text-muted fw-bold">Début de
+                                            soirée
+                                            (fin
+                                            du
+                                            jour 1)</label>
+                                    </div>
+
+                                    <div class="col-sm">
+                                        <label class="form-label text-muted fw-bold">Nuit
+                                            (jour
+                                            2)</label>
+                                    </div>
+
+                                    <div class="col-sm">
+                                        <label class="form-label text-muted fw-bold">Après-midi
+                                            (jour
+                                            2)</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <label for="bleuHC-start-endDay1" class="form-label text-muted">Heure
+                                            début
                                             :</label>
+                                    </div>
+                                    <div class="col-sm">
+                                        <label for="bleuHC-start-beginDay2" class="form-label text-muted">Heure
+                                            début
+                                            :</label>
+                                    </div>
+                                    <div class="col-sm">
+                                        <label for="bleuHC-start-middleDay2" class="form-label text-muted">Heure
+                                            début
+                                            :</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm">
                                         <input type="time" id="bleuHC-start-endDay1" class="form-control"
                                             name="bleuHC-start-endDay1" min="00:00" max="23:59" value="22:00" />
-                                        <label for="bleuHC-end-endDay1" class="form-label mt-1 text-muted">Heure fin
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="time" id="bleuHC-start-beginDay2" class="form-control"
+                                            name="bleuHC-start-beginDay2" min="00:00" max="23:59" value="00:00" />
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="time" id="bleuHC-start-middleDay2" class="form-control"
+                                            name="bleuHC-start-middleDay2" min="00:00" max="23:59" value="00:00" />
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <label for="bleuHC-end-endDay1" class="form-label mt-1 text-muted">Heure
+                                            fin
                                             :</label>
+                                    </div>
+                                    <div class="col-sm">
+                                        <label for="bleuHC-end-beginDay2" class="form-label mt-1 text-muted">Heure
+                                            fin
+                                            :</label>
+                                    </div>
+                                    <div class="col-sm">
+                                        <label for="bleuHC-end-middleDay2" class="form-label mt-1 text-muted">Heure
+                                            fin
+                                            :</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm">
                                         <input type="time" id="bleuHC-end-endDay1" class="form-control"
                                             name="bleuHC-end-endDay1" min="00:00" max="23:59" value="23:59" />
                                     </div>
-                                </div>
-
-                                <div class="col-sm mx-3">
-                                    <label for="bleuHC-beginDay2" class="form-label text-muted fw-bold">Nuit (jour
-                                        2)</label>
-                                    <div id="bleuHC-beginDay2">
-                                        <label for="bleuHC-start-beginDay2" class="form-label text-muted">Heure début
-                                            :</label>
-                                        <input type="time" id="bleuHC-start-beginDay2" class="form-control"
-                                            name="bleuHC-start-beginDay2" min="00:00" max="23:59" value="00:00" />
-                                        <label for="bleuHC-end-beginDay2" class="form-label mt-1 text-muted">Heure fin
-                                            :</label>
+                                    <div class="col-sm">
                                         <input type="time" id="bleuHC-end-beginDay2" class="form-control"
                                             name="bleuHC-end-beginDay2" min="00:00" max="23:59" value="07:00" />
                                     </div>
-                                </div>
-
-                                <div class="col-sm mx-3">
-                                    <label for="bleuHC-middleDay2" class="form-label text-muted fw-bold">Après-midi
-                                        (jour
-                                        2)</label>
-                                    <div id="bleuHC-middleDay2">
-                                        <label for="bleuHC-start-middleDay2" class="form-label text-muted">Heure début
-                                            :</label>
-                                        <input type="time" id="bleuHC-start-middleDay2" class="form-control"
-                                            name="bleuHC-start-middleDay2" min="00:00" max="23:59" value="00:00" />
-                                        <label for="bleuHC-end-middleDay2" class="form-label mt-1 text-muted">Heure fin
-                                            :</label>
+                                    <div class="col-sm">
                                         <input type="time" id="bleuHC-end-middleDay2" class="form-control"
                                             name="bleuHC-end-middleDay2" min="00:00" max="23:59" value="00:00" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <hr />
-                    <div class="container-sm">
-                        <h4 class="d-block text-center mt-3 position-relative">
-                            Vos données Linky
-                        </h4>
-                        
-                        <div class="mt-3 mb-3 form-group maxinput" x-data="{ fileName: '' }">
-                            <div class="input-group">
-                                <span class="input-group-text px-3 text-muted"><i
-                                        class="fa-solid fa-file-csv"></i></span>
-                                <input type="file" id="csvFile" accept=".csv" class="form-control form-control-lg" />
+                        <hr />
+                        <div class="container-sm">
+                            <h4 class="d-block mt-3">
+                                Tarifs communautaires
+                            </h4>
+                            <p>Les tarifs communautaires correspondent aux tarifs qui ne nous parviennent pas
+                                directement et qui sont maintenus par la communauté.
+                                <br /><br />
+                                Cela veut dire <strong>qu'ils peuvent ne pas être à jour et qu'il est fortement
+                                    conseillé de les vérifier sur le site du fournisseur.</strong>
+                            </p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="communityPricesCheckbox">
+                                <label class="form-check-label" for="communityPricesCheckbox">
+                                    Je veux comparer avec les tarifs communautaires
+                                </label>
                             </div>
                         </div>
-
-                        <div>
-                            <p class="text-muted">
-                                EDF : mes-puissances-atteintes-30min-XXXX.csv<br/>
-                                Enedis : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv<br/>
-                                TotalEnergies : 0123456789-NOM-PRENOM.csv (si vous avez des espaces ou tirets dans votre nom, retirez les)
-                            </p>
-                        </div>
-
                         <hr />
+                        <div class="container-sm">
+                            <h4 class="d-block mt-3">
+                                Vos données Linky
+                            </h4>
 
-                        <div class="card text-bg-light mb-3">
-                            <div class="card-body">
+                            <div class="mt-3 mb-3 form-group maxinput" x-data="{ fileName: '' }">
+                                <div class="input-group">
+                                    <span class="input-group-text px-3 text-muted"><i
+                                            class="fa-solid fa-file-csv"></i></span>
+                                    <input type="file" id="csvFile" accept=".csv"
+                                        class="form-control form-control-lg" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="text-muted">
+                                    EDF : mes-puissances-atteintes-30min-XXXX.csv<br />
+                                    Enedis : Enedis_Conso_Heure_DATEDEBUT-DATEFIN_XXXXX.csv<br />
+                                    TotalEnergies : 0123456789-NOM-PRENOM.csv (si vous avez des espaces ou tirets
+                                    dans
+                                    votre
+                                    nom, retirez les)
+                                </p>
+                            </div>
+
+                            <div class="text-bg-light mb-3">
                                 <div class="accordion accordion-flush" id="accordionHelper">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-accordionHelper">
                                             <button class="accordion-button bg-onfo collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#accordionHelperContainer"
                                                 aria-expanded="true" aria-controls="accordionHelperContainer">
-                                                Comment récupérer les données sur le site de votre fournisseur <i
-                                                    class="fa-regular fa-circle-question fa-lg text-primary ms-1"></i>
+                                                Comment récupérer les données sur le site de votre fournisseur
                                             </button>
                                         </h2>
                                         <div id="accordionHelperContainer" class="accordion-collapse collapse"
@@ -244,7 +302,8 @@
                                                         </li>
                                                         <li class="nav-item" role="presentation">
                                                             <a class="nav-link" href="#ser" aria-selected="false"
-                                                                role="tab" tabindex="-1">Depuis Strasbourg Electricité
+                                                                role="tab" tabindex="-1">Depuis Strasbourg
+                                                                Electricité
                                                                 Réseaux</a>
                                                         </li>
                                                     </ul>
@@ -282,7 +341,8 @@
                                                                         d'Enedis</a> votre consommation. <br>
                                                                 </li>
                                                                 <li>Cliquez sur "Nouveau Téléchargement"</li>
-                                                                <li>Cliquez sur date de début et naviguez antérieurement
+                                                                <li>Cliquez sur date de début et naviguez
+                                                                    antérieurement
                                                                     jusqu'à la
                                                                     plus vieille date
                                                                     disponible</li>
@@ -308,12 +368,14 @@
                                                                 <li>Rendez-vous sur <a
                                                                         href="https://www.totalenergies.fr/clients/ma-conso">le
                                                                         site
-                                                                        de TotalEnergies</a> votre consommation. <br>
+                                                                        de TotalEnergies</a> votre consommation.
+                                                                    <br>
                                                                 </li>
                                                                 <li>Cliquez sur "Électricité"</li>
                                                                 <li>Sélectionnez "Heure"</li>
                                                                 <li>Cliquez sur le bouton Télécharger, cela va
-                                                                    télécharger les données depuis la mise en place de
+                                                                    télécharger les données depuis la mise en place
+                                                                    de
                                                                     votre Linky, dans une limite de 3 ans</li>
                                                                 <li>Utilisez le fichier <span
                                                                         class="font-weight-bold">"0123456789-NOM-PRENOM.csv"</span>
@@ -339,7 +401,8 @@
                                                                         Strasbourg Electricité Réseaux</a>. <br>
                                                                 </li>
                                                                 <li>Cliquez sur "Courbe de charge".</li>
-                                                                <li>Choisissez, si possible, une période d'au moins 1 an
+                                                                <li>Choisissez, si possible, une période d'au moins
+                                                                    1 an
                                                                     via le bouton "Personnalisé".</li>
                                                                 <li>Cliquez sur "Exporter les données"</li>
                                                                 <li>Utilisez le fichier (sans le renommer) <span
@@ -359,15 +422,19 @@
                             </div>
                         </div>
                     </div>
+                    <div id="importError" class="alert alert-danger" role="alert">
+                        Les données importées ne sont pas valides.
+                    </div>
                 </div>
-                <div id="importError" class="alert alert-danger" role="alert">
-                    Les données importées ne sont pas valides.
-                </div>
-                <div class="card-footer text-body-secondary">
-                    <button type="button" class="mt-3 mb-3 btn btn-success m-auto d-block" id="simulateButton" disabled>
-                        Simuler les différents tarifs <i class="fa-solid fa-play ms-2"></i></button>
+
+                <div class="d-block text-center m-4">
+                    <button type="button" class="btn btn-success mt-4 mb-4" id="startButton">Simuler les différents
+                        tarifs <i class="fa-solid fa-play ms-2"></i></button>
                 </div>
             </div>
+
+
+
             <div id="pricesResultView" class="card maxcard">
                 <div class="card-body">
                     <div class="alert alert-warning fade show" role="alert">
@@ -378,12 +445,16 @@
                             <li>Ce résultat est une simulation basée sur votre consommation passée avec les tarifs
                                 actuels.</li>
                             <li>Le coût de l'abonnement est intégré au prorata journalier.</li>
-                            <li>Il existe des subtilités contractuelles entre les offres dites "de marché" (à la main de
-                                l'opérateur) et les offres TRV (règlementées) qui doivent être étudiées au cas par cas
+                            <li>Il existe des subtilités contractuelles entre les offres dites "de marché" (à la
+                                main de
+                                l'opérateur) et les offres TRV (règlementées) qui doivent être étudiées au cas par
+                                cas
                                 suite au classement des résultats obtenus ci-dessous.</li>
-                            <li>En l'absence d'historique, les jours sobriétés du tarif ZenFlex sont basés sur les jours
+                            <li>En l'absence d'historique, les jours sobriétés du tarif ZenFlex sont basés sur les
+                                jours
                                 rouges du tarif Tempo sur les années avant 2023.</li>
-                            <li>Nous faisons de notre mieux pour garder les tarifs à jour, mais pensez à les vérifier
+                            <li>Nous faisons de notre mieux pour garder les tarifs à jour, mais pensez à les
+                                vérifier
                                 avec vos
                                 fournisseurs avant de souscrire un contrat.</li>
                         </ul>

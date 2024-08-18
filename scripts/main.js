@@ -49,6 +49,8 @@ bleuHCEndBeginDay2.addEventListener("change", bleuHCRangeChanged);
 bleuHCStartMiddleDay2.addEventListener("change", bleuHCRangeChanged);
 bleuHCEndMiddleDay2.addEventListener("change", bleuHCRangeChanged);
 
+const communityPricesCheckbox = document.getElementById("communityPricesCheckbox");
+
 csvFile.addEventListener("change", onFileImported);
 importError.style.display = "none";
 
@@ -117,9 +119,13 @@ function onFileImported(e) {
     reader.readAsText(input);
 }
 
-function calculateAllMonths(kva) {
+function calculateAllMonths(kva, includesCommunityPrices) {
+    let filteredAbonnements = abonnements.filter(a => a.prices.some(p => p.puissance == kva));
+    if (includesCommunityPrices) {
+        filteredAbonnements = filteredAbonnements.filter(a => a.name.includes("EDF"));
+    }
     //On filtre sur les abonnements qui correspondent à la puissance souscrite
-    calculatedMonths = abonnements.filter(a => a.prices.some(p => p.puissance == kva)).map(abo => {
+    calculatedMonths = filteredAbonnements.filter(a => a.prices.some(p => p.puissance == kva)).map(abo => {
         return {
             allMonths: calculator.getTarif(kva, data, abo),
             title: abo.name
@@ -130,7 +136,7 @@ function calculateAllMonths(kva) {
 
 function displayResults() {
     addCustomisationToAbonnements();
-    calculateAllMonths(kvaSelector.value);
+    calculateAllMonths(kvaSelector.value, communityPricesCheckbox.checked);
 
     setBeginYearSelector();
     setBeginMonthSelector();
@@ -449,7 +455,7 @@ function refreshResultView(dateBegin, dateEnd) {
 
         const containerDifferenceTarifPrice = document.createElement("div");
         containerDifferenceTarifPrice.className = "container justify-content-center";
-        
+
         const titleLessExpensive = document.createElement("div");
         titleLessExpensive.className = "h4 row fw-bold";
         containerDifferenceTarifPrice.appendChild(titleLessExpensive);
@@ -470,7 +476,7 @@ function refreshResultView(dateBegin, dateEnd) {
 
             const spanTotalLessExpensive = document.createElement("span");
             spanTotalLessExpensive.className = "badge fw-bold text-muted";
-            spanTotalLessExpensive.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " €<br/> sur ces "+result.tarif.months.length+" mois.";
+            spanTotalLessExpensive.innerHTML = "+ " + (result.tarif.price - resultsOrdered[0].tarif.price).toFixed(2) + " €<br/> sur ces " + result.tarif.months.length + " mois.";
             titleTotalLessExpensive.appendChild(spanTotalLessExpensive);
             containerDifferenceTarifPrice.appendChild(titleTotalLessExpensive);
         }
