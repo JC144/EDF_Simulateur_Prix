@@ -121,7 +121,7 @@ function onFileImported(e) {
 
 function calculateAllMonths(kva, includesCommunityPrices) {
     let filteredAbonnements = abonnements.filter(a => a.prices.some(p => p.puissance == kva));
-    if (includesCommunityPrices) {
+    if (!includesCommunityPrices) {
         filteredAbonnements = filteredAbonnements.filter(a => a.name.includes("EDF"));
     }
     //On filtre sur les abonnements qui correspondent à la puissance souscrite
