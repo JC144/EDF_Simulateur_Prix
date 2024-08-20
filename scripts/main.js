@@ -233,20 +233,17 @@ function refreshResultView(dateBegin, dateEnd) {
     const divYear = document.createElement("div");
     divYear.className = "mb-4 p-0";
     pricesResultRow.appendChild(divYear);
-    const titleYear = document.createElement("h3");
-    divYear.appendChild(titleYear);
-    titleYear.className = "main-title";
+    const titleConsoContainer = document.createElement("div");
+    titleConsoContainer.className = "position-relative py-2 px-4 text-center border border-info rounded-pill";
     const titleConso = document.createElement("h5");
-    divYear.appendChild(titleConso);
-    titleConso.className = "conso-tt";
+    titleConso.innerText = "Consommation  totale pour cette période : " + (consoForPeriod / 1000).toFixed(2) + "kWh";
+    titleConsoContainer.appendChild(titleConso);
+    divYear.appendChild(titleConsoContainer);
+    titleConso.className = "mt-1 mb-1";
 
     //ajout de la table responsive
     const divResponsive = document.createElement('div');
-    divResponsive.className = "table-responsive";
-
-
-    titleConso.innerHTML = "<div class='position-relative py-2 px-4 text-center border border-info rounded-pill'> " + "Consommation  totale pour cette période : " + (consoForPeriod / 1000).toFixed(2) + "kWh" + "<svg width='1em' height='1em' viewBox='0 0 16 16' class='position-absolute top-0 start-50 translate-middle mb-1' fill='var(--bs-info)' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z' style='transform-box: fill-box; transform-origin: 50% 40%;' transform='matrix(-1, 0, 0, -1, 0, 0)'></path></svg>";
-
+    divResponsive.className = "mt-2 table-responsive";
 
     const table = document.createElement("table");
     table.className = "resultable table mt-3 align-middle table-striped-columns table-hover table-borderless table-sm";
@@ -464,7 +461,7 @@ function refreshResultView(dateBegin, dateEnd) {
         titleLessExpensive.appendChild(subSpanTitleLessExpensive);
 
         if (currentRow == 0) {
-            subSpanTitleLessExpensive.className = "badge p-1";
+            subSpanTitleLessExpensive.className = "badge p-1 text-dark";
             subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-medal fa-lg'></i> Tarif le plus avantageux<br/><small>(selon vos données)</small>";
         }
         else {

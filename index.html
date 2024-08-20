@@ -457,9 +457,9 @@
                                 fournisseurs avant de souscrire un contrat.</li>
                         </ul>
                     </div>
-                    <div class="mt-4 mb-1 d-flex align-items-center ">
-                        <div class="d-flex maxinput justify-content-between">
-                            <div class="input-group me-2">
+                    <div class="mt-4 mb-4">
+                        <div class="row">
+                            <div class="input-group col">
                                 <span class="input-group-text">De</span>
                                 <select class="form-select form-control" aria-label=".form-select "
                                     id="monthBeginSelector">
@@ -468,7 +468,8 @@
                                     id="yearBeginSelector">
                                 </select>
                             </div>
-                            <div class="input-group me-2">
+
+                            <div class="input-group col">
                                 <span class="input-group-text">à</span>
                                 <select class="form-select  form-control" aria-label=".form-select"
                                     id="monthEndSelector">
@@ -477,14 +478,18 @@
                                     id="yearEndSelector">
                                 </select>
                             </div>
-                            <button type="button" class="m-1 btn btn-primary btn-circle" id="refreshButton" disabled>
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                        </div>
 
+                            <div class="col-sm">
+                                <button type="button" class="btn btn-primary btn-circle" id="refreshButton"
+                                    disabled>
+                                    <i class="fa-solid fa-arrows-rotate"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
+
                     <div id="pricesTitleRow" class="row"></div>
-                    <div id="pricesResultRow" class="row"></div>
+                    <div id="pricesResultRow" class="m-0 row"></div>
                 </div>
             </div>
         </main>
