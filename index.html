@@ -239,10 +239,22 @@
                                     conseillé de les vérifier sur le site du fournisseur.</strong>
                             </p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="communityPricesCheckbox">
-                                <label class="form-check-label" for="communityPricesCheckbox">
-                                    Je veux comparer avec les tarifs communautaires
+                                <input class="form-check-input" type="radio" name="communityPricesRadio"
+                                    value="isNotCommunity">
+                                <label class="form-check-label" for="isNotCommunity">
+                                    Je souhaite uniquement les tarifs suivis par le développeur.
                                 </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="communityPricesRadio"
+                                    value="isCommunity">
+                                <label class="form-check-label" for="isCommunity">
+                                    Je veux comparer avec les tarifs communautaires, je comprends que je devrais
+                                    vérifier sur leur site s'ils sont à jour.
+                                </label>
+                            </div>
+                            <div class="d-none alert alert-danger" role="alert" id="community-alert">
+                                Vous devez choisir le type de tarif que vous souhaitez visualiser.
                             </div>
                         </div>
                         <hr />
@@ -426,7 +438,8 @@
                 </div>
 
                 <div class="d-block text-center m-4">
-                    <button type="button" class="btn btn-success mt-4 mb-4" id="simulateButton">Simuler les différents
+                    <button type="button" class="btn btn-success mt-4 mb-4" id="simulateButton">Simuler les
+                        différents
                         tarifs <i class="fa-solid fa-play ms-2"></i></button>
                 </div>
             </div>
@@ -480,8 +493,7 @@
                             </div>
 
                             <div class="col-sm">
-                                <button type="button" class="btn btn-primary btn-circle" id="refreshButton"
-                                    disabled>
+                                <button type="button" class="btn btn-primary btn-circle" id="refreshButton" disabled>
                                     <i class="fa-solid fa-arrows-rotate"></i>
                                 </button>
                             </div>

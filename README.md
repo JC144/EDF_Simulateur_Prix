@@ -6,7 +6,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 ## Derniers tarifs: 
 * Alpiq : 01 Février 2024
 * Alterna : 01 Février 2024
-* EDF : 01 Février 2024
+* EDF : 2024-07-01
 * ~~Ekwateur : 30 janvier 2024~~
 * Enercoop : 01 Février 2024
 * Engie : 01 Février 2024
@@ -14,7 +14,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 * Ilek : 01 Février 2024
 * La belle énergie : 01 Février 2024
 * Mint Energie : 01 Février 2024
-* Octopus : 01 Février 2024
+* Octopus : 2024-05-13
 * OHM Energie : 01 Février 2024
 * ~~Switch : 01 Février 2024~~ [Voir ici](https://www.jechange.fr/energie/chez-switch/)
 * TotalEnergie : 01 Février 2024

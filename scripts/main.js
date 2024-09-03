@@ -36,6 +36,14 @@ refreshButton.addEventListener("click", function () {
     document.getElementById("refreshButton").disabled = true;
 });
 
+const communityRadios = document.querySelectorAll('input[name="communityPricesRadio"]');
+const communityAlert = document.getElementById("community-alert");
+communityRadios.forEach(radio => {
+    radio.addEventListener('change', function () {
+        communityAlert.classList.add("d-none");
+    });
+});
+
 const bleuHCStartEndDay1 = document.getElementById("bleuHC-start-endDay1");
 const bleuHCEndEndDay1 = document.getElementById("bleuHC-end-endDay1");
 const bleuHCStartBeginDay2 = document.getElementById("bleuHC-start-beginDay2");
@@ -48,8 +56,6 @@ bleuHCStartBeginDay2.addEventListener("change", bleuHCRangeChanged);
 bleuHCEndBeginDay2.addEventListener("change", bleuHCRangeChanged);
 bleuHCStartMiddleDay2.addEventListener("change", bleuHCRangeChanged);
 bleuHCEndMiddleDay2.addEventListener("change", bleuHCRangeChanged);
-
-const communityPricesCheckbox = document.getElementById("communityPricesCheckbox");
 
 csvFile.addEventListener("change", onFileImported);
 importError.style.display = "none";
@@ -128,15 +134,31 @@ function calculateAllMonths(kva, includesCommunityPrices) {
     calculatedMonths = filteredAbonnements.filter(a => a.prices.some(p => p.puissance == kva)).map(abo => {
         return {
             allMonths: calculator.getTarif(kva, data, abo),
-            title: abo.name
+            title: abo.name,
+            lastUpdate: abo.lastUpdate,
+            subscription_url: abo.subscription_url
         }
     });
     yearsAvailable = [...new Set(calculatedMonths[0].allMonths.map(m => m.year))].sort((a, b) => a - b);
 }
 
+function getSelectedTypeOfPrice() {
+    const selectedRadio = document.querySelector('input[name="communityPricesRadio"]:checked');
+    if (selectedRadio) {
+        return selectedRadio.value == 'isCommunity';
+    }
+    return null;
+}
+
 function displayResults() {
+    let isCommunity = getSelectedTypeOfPrice();
+    if (isCommunity === null) {
+        communityAlert.classList.remove("d-none");
+        return;
+    }
+
     addCustomisationToAbonnements();
-    calculateAllMonths(kvaSelector.value, communityPricesCheckbox.checked);
+    calculateAllMonths(kvaSelector.value, isCommunity);
 
     setBeginYearSelector();
     setBeginMonthSelector();
@@ -224,7 +246,9 @@ function refreshResultView(dateBegin, dateEnd) {
     const resultsForPeriod = calculatedMonths.map((t) => {
         return {
             tarif: calculator.calculateTarifForPeriod(t.allMonths, dateBegin, dateEnd),
-            title: t.title
+            title: t.title,
+            lastUpdate: t.lastUpdate,
+            subscription_url: t.subscription_url
         }
     });
 
@@ -277,7 +301,9 @@ function refreshResultView(dateBegin, dateEnd) {
     let currentRow = 0;
     const resultsOrdered = resultsForPeriod.map((r) => ({
         tarif: r.tarif,
-        title: r.title
+        title: r.title,
+        lastUpdate: r.lastUpdate,
+        subscription_url: r.subscription_url
     }))
         .sort((a, b) => a.tarif.price - b.tarif.price);
 
@@ -414,8 +440,27 @@ function refreshResultView(dateBegin, dateEnd) {
         tarifName.className = "ms-2";
         tarifName.innerHTML = result.title;
 
+        const moreInfoContainer = document.createElement("div");
+        moreInfoContainer.className = "fw-normal";
+
+        const tarifLastUpdate = document.createElement("span");
+        tarifLastUpdate.className = "ms-2";
+        tarifLastUpdate.innerHTML = `Dernière mise à jour : ${result.lastUpdate}`;
+        moreInfoContainer.appendChild(tarifLastUpdate);
+
+        if (result.subscription_url) {
+            const lineReturn = document.createElement("br");
+            moreInfoContainer.appendChild(lineReturn);
+            const tarifUrl = document.createElement("a");
+            tarifUrl.className = "ms-2";
+            tarifUrl.href = result.subscription_url;
+            tarifUrl.textContent = "Site du fournisseur";
+            moreInfoContainer.appendChild(tarifUrl);
+        }
+
         cellTarifName.appendChild(tarifIcon);
         cellTarifName.appendChild(tarifName);
+        cellTarifName.appendChild(moreInfoContainer);
 
         cellTarifName.setAttribute("data-bs-toggle", "collapse");
         cellTarifName.setAttribute("data-bs-target", "#" + accordionRowId);
