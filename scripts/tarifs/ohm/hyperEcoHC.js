@@ -10,7 +10,7 @@ abonnements.push(
             puissance: 6,
             abonnement: 13.19,
             bleu: {
-                prixKwhHP: 22;10,
+                prixKwhHP: 22.10,
                 prixKwhHC: 17.04
             }
         },
