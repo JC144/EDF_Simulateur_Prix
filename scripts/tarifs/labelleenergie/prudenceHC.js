@@ -7,66 +7,66 @@ abonnements.push(
         prices: [
         {
             puissance: 6,
-            abonnement: 13.39,
+            abonnement: 12.83,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 20.10,
+                prixKwhHC: 15.55
             }
         },
         {
             puissance: 9,
-            abonnement: 17.00,
+            abonnement: 16.53,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 20.10,
+                prixKwhHC: 15.55
             }
         },
         {
             puissance: 12,
-            abonnement: 20.52,
+            abonnement: 19.95,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 20.10,
+                prixKwhHC: 15.55
             }
         },
         {
             puissance: 15,
-            abonnement: 23.89,
+            abonnement: 23.22,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 20.10,
+                prixKwhHC: 15.55
             }
         },
         {
             puissance: 18,
-            abonnement: 27.22,
+            abonnement: 26.46,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 20.10,
+                prixKwhHC: 15.55
             }
         },
         {
             puissance: 24,
-            abonnement: 34.22,
+            abonnement: 33.26,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 20.10,
+                prixKwhHC: 15.55
             }
         },
         {
             puissance: 30,
-            abonnement: 40.61,
+            abonnement: 39.45,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 20.10,
+                prixKwhHC: 15.55
             }
         },
         {
             puissance: 36,
-            abonnement: 47.04,
+            abonnement: 45.70,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 20.10,
+                prixKwhHC: 15.55
             }
         }],
         hc: [{
