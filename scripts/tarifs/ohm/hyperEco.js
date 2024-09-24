@@ -7,65 +7,65 @@ abonnements.push(
         price_url: "https://ohm-energie.com/grilles/elec/2024/06/HYPER-ECO-FIXE.pdf",
         prices: [{
             puissance: 3,
-            abonnement: 10.56,
+            abonnement: 9.63,
             bleu: {
-                prixKwhHC: 18.82
+                prixKwhHC: 20.64
             }
             },
             {
                 puissance: 6,
-                abonnement: 13.80,
+                abonnement: 12.60,
                 bleu: {
-                    prixKwhHC: 18.82
+                    prixKwhHC: 20.64
                 }
             },
             {
                 puissance: 9,
-                abonnement: 16.33,
+                abonnement: 15.79,
                 bleu: {
-                    prixKwhHC: 19.05
+                    prixKwhHC: 20.64
                 }
             },
             {
                 puissance: 12,
-                abonnement: 19.69,
+                abonnement: 19.04,
                 bleu: {
-                    prixKwhHC: 19.05
+                    prixKwhHC: 20.64
                 }
             },
             {
                 puissance: 15,
-                abonnement: 22.83,
+                abonnement: 22.07,
                 bleu: {
-                    prixKwhHC: 19.05
+                    prixKwhHC: 20.64
                 }
             },
             {
                 puissance: 18,
-                abonnement: 25.94,
+                abonnement: 25.08,
                 bleu: {
-                    prixKwhHC: 19.05
+                    prixKwhHC: 20.64
                 }
             },
             {
                 puissance: 24,
-                abonnement: 32.84,
+                abonnement: 31.76,
                 bleu: {
-                    prixKwhHC: 19.05
+                    prixKwhHC: 20.64
                 }
             },
             {
                 puissance: 30,
-                abonnement: 38.70,
+                abonnement: 37.44,
                 bleu: {
-                    prixKwhHC: 19.05
+                    prixKwhHC: 20.64
                 }
             },
             {
                 puissance: 36,
-                abonnement: 45.64,
+                abonnement: 44.15,
                 bleu: {
-                    prixKwhHC: 19.05
+                    prixKwhHC: 20.64
                 }
             }],
         hc: [{
