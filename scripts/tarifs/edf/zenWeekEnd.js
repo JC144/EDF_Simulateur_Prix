@@ -1,6 +1,6 @@
 abonnements.push({
     name: "EDF - ZenFlex Week-End",
-    offer_type: "TRV",
+    offer_type: "Marché",
     hasSpecialDaysCustom: false,
     lastUpdate: "2024-11-01",
     isCommunity: false,

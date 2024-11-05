@@ -1,7 +1,7 @@
 abonnements.push(
     {
         name: "EDF - Zen Fixe",
-        offer_type: "TRV",
+        offer_type: "Marché",
         lastUpdate: "2024-11-01",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-fixe.html",
