@@ -1,14 +1,14 @@
 abonnements.push({
     name: "EDF - Zen Week-End Plus",
     offer_type: "TRV",
-    lastUpdate: "2024-03-19",
+    lastUpdate: "2024-11-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end-plus.pdf",
     prices: [
         {
             puissance: 6,
-            abonnement: 12.60,
+            abonnement: 12.68,
             bleu: {
                 prixKwhHC: 27.64
             },
@@ -18,7 +18,7 @@ abonnements.push({
         },
         {
             puissance: 9,
-            abonnement: 16.06,
+            abonnement: 16.18,
             bleu: {
                 prixKwhHC: 27.64
             },
@@ -28,7 +28,7 @@ abonnements.push({
         },
         {
             puissance: 12,
-            abonnement: 19.40,
+            abonnement: 19.55,
             bleu: {
                 prixKwhHC: 27.64
             },
@@ -38,7 +38,7 @@ abonnements.push({
         },
         {
             puissance: 15,
-            abonnement: 22.53,
+            abonnement: 22.21,
             bleu: {
                 prixKwhHC: 27.64
             },
@@ -48,7 +48,7 @@ abonnements.push({
         },
         {
             puissance: 18,
-            abonnement: 25.63,
+            abonnement: 25.24,
             bleu: {
                 prixKwhHC: 27.64
             },
@@ -58,7 +58,7 @@ abonnements.push({
         },
         {
             puissance: 24,
-            abonnement: 32.48,
+            abonnement: 31.96,
             bleu: {
                 prixKwhHC: 27.64
             },
@@ -68,7 +68,7 @@ abonnements.push({
         },
         {
             puissance: 30,
-            abonnement: 38.35,
+            abonnement: 37.68,
             bleu: {
                 prixKwhHC: 27.64
             },
@@ -78,7 +78,7 @@ abonnements.push({
         },
         {
             puissance: 36,
-            abonnement: 44.15,
+            abonnement: 44.43,
             bleu: {
                 prixKwhHC: 27.64
             },
@@ -87,8 +87,8 @@ abonnements.push({
             }
         }],
     hc: [{
-        start: {hour:0, minute:0},
-        end: {hour:24, minute:0}
+        start: { hour: 0, minute: 0 },
+        end: { hour: 24, minute: 0 }
     }],
     hasHCCustom: false,
     hasSpecialDaysCustom: true,
@@ -98,8 +98,8 @@ abonnements.push({
 
         const isoDate = new Date(day.date);
         const dayOfWeek = isoDate.getDay();
-    
-        if (this.specialDays.includes(dayOfWeek)) {            
+
+        if (this.specialDays.includes(dayOfWeek)) {
             dayType = "weekend";
         }
 
