@@ -4,9 +4,9 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 [Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
 ## Derniers tarifs: 
+* EDF : 2024-11-01
 * Alpiq : 01 Février 2024
 * Alterna : 01 Février 2024
-* EDF : 2024-07-01
 * ~~Ekwateur : 30 janvier 2024~~
 * Enercoop : 01 Février 2024
 * Engie : 01 Février 2024
@@ -33,6 +33,7 @@ Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [M
 * [csailly](https://github.com/csailly)
 * [10tribu](https://github.com/10tribu)
 * [chatainsim](https://github.com/chatainsim)
+* [Daweyy](https://github.com/Daweyy)
 
 ## Comment contribuer
 Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simulateur_Prix/wiki).
