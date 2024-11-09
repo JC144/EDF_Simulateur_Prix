@@ -1,14 +1,14 @@
 abonnements.push({
-    name: "EDF - ZenFlex",
+    name: "EDF - Zen Week-End Option Flex",
     offer_type: "Marché",
     lastUpdate: "2024-03-19",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-flex.html",
-    price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-flex.pdf",
+    price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
     prices: [
         {
             puissance: 6,
-            abonnement: 13.19,
+            abonnement: 13.09,
             bleu: {
                 prixKwhHP: 27.00,
                 prixKwhHC: 17.95
@@ -20,7 +20,7 @@ abonnements.push({
         },
         {
             puissance: 9,
-            abonnement: 16.71,
+            abonnement: 16.82,
             bleu: {
                 prixKwhHP: 27.00,
                 prixKwhHC: 17.95
@@ -32,7 +32,7 @@ abonnements.push({
         },
         {
             puissance: 12,
-            abonnement: 20.13,
+            abonnement: 20.28,
             bleu: {
                 prixKwhHP: 27.00,
                 prixKwhHC: 17.95
@@ -44,7 +44,7 @@ abonnements.push({
         },
         {
             puissance: 15,
-            abonnement: 23.40,
+            abonnement: 23.57,
             bleu: {
                 prixKwhHP: 27.00,
                 prixKwhHC: 17.95
@@ -56,7 +56,7 @@ abonnements.push({
         },
         {
             puissance: 18,
-            abonnement: 26.64,
+            abonnement: 26.84,
             bleu: {
                 prixKwhHP: 27.00,
                 prixKwhHC: 17.95
@@ -68,7 +68,7 @@ abonnements.push({
         },
         {
             puissance: 24,
-            abonnement: 33.44,
+            abonnement: 33.70,
             bleu: {
                 prixKwhHP: 27.00,
                 prixKwhHC: 17.95
@@ -80,7 +80,7 @@ abonnements.push({
         },
         {
             puissance: 30,
-            abonnement: 39.63,
+            abonnement: 39.94,
             bleu: {
                 prixKwhHP: 27.00,
                 prixKwhHC: 17.95
@@ -92,7 +92,7 @@ abonnements.push({
         },
         {
             puissance: 36,
-            abonnement: 45.88,
+            abonnement: 46.24,
             bleu: {
                 prixKwhHP: 27.00,
                 prixKwhHC: 17.95
