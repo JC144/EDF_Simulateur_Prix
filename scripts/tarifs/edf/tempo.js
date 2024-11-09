@@ -2,13 +2,13 @@ abonnements.push({
     name: "EDF - Tempo",
     offer_type: "TRV",
     isCommunity: false,
-    lastUpdate: "2024-02-01",
+    lastUpdate: "2024-11-01",
     subscription_url: "https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
     prices: [
         {
             puissance: 6,
-            abonnement: 12.96,
+            abonnement: 13.03,
             bleu: {
                 prixKwhHP: 16.09,
                 prixKwhHC: 12.96
@@ -24,7 +24,7 @@ abonnements.push({
         },
         {
             puissance: 9,
-            abonnement: 16.16,
+            abonnement: 16.25,
             bleu: {
                 prixKwhHP: 16.09,
                 prixKwhHC: 12.96
@@ -40,7 +40,7 @@ abonnements.push({
         },
         {
             puissance: 12,
-            abonnement: 19.44,
+            abonnement: 19.56,
             bleu: {
                 prixKwhHP: 16.09,
                 prixKwhHC: 12.96
@@ -72,7 +72,7 @@ abonnements.push({
         },
         {
             puissance: 18,
-            abonnement: 25.44,
+            abonnement: 25.60,
             bleu: {
                 prixKwhHP: 16.09,
                 prixKwhHC: 12.96
@@ -88,7 +88,7 @@ abonnements.push({
         },
         {
             puissance: 30,
-            abonnement: 38.29,
+            abonnement: 38.53,
             bleu: {
                 prixKwhHP: 16.09,
                 prixKwhHC: 12.96
@@ -104,7 +104,7 @@ abonnements.push({
         },
         {
             puissance: 36,
-            abonnement: 44.42,
+            abonnement: 44.71,
             bleu: {
                 prixKwhHP: 16.09,
                 prixKwhHC: 12.96
