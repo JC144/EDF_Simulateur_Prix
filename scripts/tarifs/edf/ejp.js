@@ -1,14 +1,14 @@
 abonnements.push({
     name: "EDF - EJP",
     offer_type: "TRV",
-    lastUpdate: "2024-02-01",
+    lastUpdate: "2024-11-01",
     isCommunity: false,
     subscription_url: "",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
     prices: [
         {
             puissance: 9,
-            abonnement: 15.80,
+            abonnement: 15.90,
             bleu: {
                 prixKwhHP: 17.58,
                 prixKwhHC: 17.58
@@ -20,7 +20,7 @@ abonnements.push({
         },
         {
             puissance: 12,
-            abonnement: 18.76,
+            abonnement: 18.87,
             bleu: {
                 prixKwhHP: 17.58,
                 prixKwhHC: 17.58
@@ -32,7 +32,7 @@ abonnements.push({
         },
         {
             puissance: 15,
-            abonnement: 21.78,
+            abonnement: 21.92,
             bleu: {
                 prixKwhHP: 17.58,
                 prixKwhHC: 17.58
@@ -44,7 +44,7 @@ abonnements.push({
         },
         {
             puissance: 18,
-            abonnement: 24.71,
+            abonnement: 24.86,
             bleu: {
                 prixKwhHP: 17.58,
                 prixKwhHC: 17.58
@@ -56,7 +56,7 @@ abonnements.push({
         },
         {
             puissance: 36,
-            abonnement: 43.13,
+            abonnement: 43.41,
             bleu: {
                 prixKwhHP: 17.58,
                 prixKwhHC: 17.58
