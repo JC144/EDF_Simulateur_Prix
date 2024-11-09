@@ -1,6 +1,6 @@
 abonnements.push({
     name: "EDF - ZenFlex",
-    offer_type: "TRV",
+    offer_type: "Marché",
     lastUpdate: "2024-03-19",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-flex.html",
