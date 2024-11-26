@@ -102,14 +102,7 @@ abonnements.push({
                 prixKwhHC: 20.47
             }
         }],
-    hc: [{
-        start: { hour: 22, minute: 0 },
-        end: { hour: 24, minute: 0 }
-    },
-    {
-        start: { hour: 0, minute: 0 },
-        end: { hour: 6, minute: 0 }
-    }],
+    hc: [],
     hasHCCustom: true,
     hasSpecialDaysCustom: false,
     specialDays: [0, 6],
