@@ -452,7 +452,7 @@ function refreshResultView(dateBegin, dateEnd) {
             const lineReturn = document.createElement("br");
             moreInfoContainer.appendChild(lineReturn);
             const tarifUrl = document.createElement("a");
-            tarifUrl.className = "ms-2";
+            tarifUrl.className = "ms-2 providerLink";
             tarifUrl.href = result.subscription_url;
             tarifUrl.textContent = "Site du fournisseur";
             moreInfoContainer.appendChild(tarifUrl);
@@ -528,23 +528,23 @@ function refreshResultView(dateBegin, dateEnd) {
         currentRow++;
     });
 
-        // Emulate link click to force browser to open the energy provider's website when clicked
-        document.querySelectorAll('.no-prop').forEach(el => {
-            el.addEventListener('click', event => {
-                if (event.shiftKey) {
-                    // Shift + Click
-                    window.open(event.currentTarget.href);
-                } else {
-                    // CTRL + Click or normal click
-                    window.open(event.currentTarget.href, '_blank');
-                } 
-                // Do not propagate to parent to prevent details showing - not working properly
-                // https://github.com/thednp/bootstrap.native/issues/398#issuecomment-737493055
-                event.stopImmediatePropagation();
-                // Prevent emulated behavior to execute if bootstrap is fixed
-                event.preventDefault();
-            })
-        });
+    // Emulate link click to force browser to open the energy provider's website when clicked
+    document.querySelectorAll('.providerLink').forEach(el => {
+        el.addEventListener('click', event => {
+            if (event.shiftKey) {
+                // Shift + Click
+                window.open(event.currentTarget.href);
+            } else {
+                // CTRL + Click or normal click
+                window.open(event.currentTarget.href, '_blank');
+            }
+            // Do not propagate to parent to prevent details showing - not working properly
+            // https://github.com/thednp/bootstrap.native/issues/398#issuecomment-737493055
+            event.stopImmediatePropagation();
+            // Prevent emulated behavior to execute if bootstrap is fixed
+            event.preventDefault();
+        })
+    });
 }
 
 function getMonthName(monthNumber) {
