@@ -1,7 +1,7 @@
 abonnements.push({
     name: "EDF - Zen Week-End Option Flex",
     offer_type: "Marché",
-    lastUpdate: "2024-03-19",
+    lastUpdate: "2024-12-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-flex.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
@@ -199,7 +199,17 @@ abonnements.push({
             "2024/01/19",
             "2024/03/04",
             "2024/03/06",
-            "2024/03/07"
+            "2024/03/07",
+            "2024/12/03",
+            "2024/12/09",
+            "2024/12/10",
+            "2024/12/11",
+            "2024/12/12",
+            "2024/12/13",
+            "2024/12/16",
+            "2024/12/17",
+            "2024/12/20",
+            "2025/01/02"
         ]
     }],
     getDayType: function (day) {
