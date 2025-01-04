@@ -112,6 +112,8 @@ function onFileImported(e) {
             parser = totalParser;
         } else if (csvFile.files[0].name.includes("export_courbe_charges")) {
             parser = serParser;
+        } else if (csvFile.files[0].name.includes("history")) {
+            parser = homeAssistantParser;
         }
         try {
             let rawCSV = parser.parseCSV(text);
