@@ -23,17 +23,25 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
 
 ### Contributeurs
+* [Dawey](https://github.com/Daweyy)
+* [DuchkPy](https://github.com/DuchkPy)
+* [Zarwinch](https://github.com/zarwinch)
+* [Benoit Deldicque](https://github.com/bddq)
 * [Tom Niget](https://github.com/zdimension)
 * [Benoit Goimier](https://github.com/BenoitGoimier)
-* [Jonathan Sarrazin](https://github.com/jo-sarrazin)
-* [nviallatte](https://github.com/nviallatte)
-* [Benoit Deldicque](https://github.com/bddq)
-* [DuchkPy](https://github.com/DuchkPy)
 * [J0hnMatrix](https://github.com/J0hnMatrix)
-* [csailly](https://github.com/csailly)
-* [10tribu](https://github.com/10tribu)
+* [fdonv](https://github.com/fdonv)
 * [chatainsim](https://github.com/chatainsim)
-* [Daweyy](https://github.com/Daweyy)
+* [csailly](https://github.com/csailly)
+* [nviallatte](https://github.com/nviallatte)
+* [Jonathan Sarrazi](https://github.com/jo-sarrazin)
+* [Szepeviktor](https://github.com/szepeviktor)
+* [Jason Marechal](https://github.com/JasonMarechal)
+* [Lucas Duval](https://github.com/LucasDuval)
+* [Pierre Pinon](https://github.com/pierrepinon)
+* [Abauzac](https://github.com/abauzac)
+* [Ponsifiax](https://github.com/ponsifiax)
+* [10tribu](https://github.com/10tribu)
 
 ## Comment contribuer
 Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simulateur_Prix/wiki).
@@ -59,6 +67,18 @@ Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simu
 2. Cliquez sur "Électricité"
 3. Sélectionnez "Heure", par défaut vous serez sur "Echéancier"
 4. Cliquez sur le bouton Télécharger, cela va télécharger les données depuis la mise en place de votre Linky, dans une limite de 3 ans
+
+### Depuis le site de Strasbourg Electricité
+1. Depuis le site de [Strasbourg Electricité Réseaux](https://maconsolinky.strasbourg-electricite-reseaux.fr)
+2. Cliquez sur "Courbe de charge".
+3. Choisissez, si possible, une période d'au moins 1 an via le bouton "Personnalisé".
+4. Cliquez sur "Exporter les données"
+5. Utilisez le fichier (sans le renommer) : "export_courbe_charges.csv"
+
+### Depuis votre export HomeAssistant
+HomeAssistant est une plateforme de domotique Open-Source.
+Certains outils permettent un export de la consommation au quart d'heure.
+Vérifiez que votre export s'appelle bien history.csv.
 
 ### Accéder à ce comparateur
 Vos données seront traitées en local, aucune donnée ne sera envoyée vers un serveur.
