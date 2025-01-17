@@ -8,114 +8,114 @@ abonnements.push({
     prices: [
         {
             puissance: 6,
-            abonnement: 13.03,
+            abonnement: 14.40,
             bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
+                prixKwhHP: 15.52,
+                prixKwhHC: 12.88
             },
             blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
+                prixKwhHP: 17.92,
+                prixKwhHC: 14.47
             },
             rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
+                prixKwhHP: 68.86,
+                prixKwhHC: 15.18
             }
         },
         {
             puissance: 9,
-            abonnement: 16.25,
+            abonnement: 18.09,
             bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
+                prixKwhHP: 15.52,
+                prixKwhHC: 12.88
             },
             blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
+                prixKwhHP: 17.92,
+                prixKwhHC: 14.47
             },
             rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
+                prixKwhHP: 68.86,
+                prixKwhHC: 15.18
             }
         },
         {
             puissance: 12,
-            abonnement: 19.56,
+            abonnement: 21.82,
             bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
+                prixKwhHP: 15.52,
+                prixKwhHC: 12.88
             },
             blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
+                prixKwhHP: 17.92,
+                prixKwhHC: 14.47
             },
             rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
+                prixKwhHP: 68.86,
+                prixKwhHC: 15.18
             }
         },
         {
             puissance: 15,
-            abonnement: 22.45,
+            abonnement: 25.30,
             bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
+                prixKwhHP: 15.52,
+                prixKwhHC: 12.88
             },
             blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
+                prixKwhHP: 17.92,
+                prixKwhHC: 14.47
             },
             rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
+                prixKwhHP: 68.86,
+                prixKwhHC: 15.18
             }
         },
         {
             puissance: 18,
-            abonnement: 25.60,
+            abonnement: 28.79,
             bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
+                prixKwhHP: 15.52,
+                prixKwhHC: 12.88
             },
             blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
+                prixKwhHP: 17.92,
+                prixKwhHC: 14.47
             },
             rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
+                prixKwhHP: 68.86,
+                prixKwhHC: 15.18
             }
         },
         {
             puissance: 30,
-            abonnement: 38.53,
+            abonnement: 43.42,
             bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
+                prixKwhHP: 15.52,
+                prixKwhHC: 12.88
             },
             blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
+                prixKwhHP: 17.92,
+                prixKwhHC: 14.47
             },
             rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
+                prixKwhHP: 68.86,
+                prixKwhHC: 15.18
             }
         },
         {
             puissance: 36,
-            abonnement: 44.71,
+            abonnement: 51.03,
             bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
+                prixKwhHP: 15.52,
+                prixKwhHC: 12.88
             },
             blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
+                prixKwhHP: 17.92,
+                prixKwhHC: 14.47
             },
             rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
+                prixKwhHP: 68.86,
+                prixKwhHC: 15.18
             }
         }],
     hc: [{
@@ -257,7 +257,15 @@ abonnements.push({
             "2024/12/13",
             "2024/12/16",
             "2024/12/27",
-            "2024/12/30"
+            "2024/12/30",
+            "2025/01/02",
+	        "2025/01/03",
+	        "2025/01/10",
+	        "2025/01/13",
+	        "2025/01/14",
+	        "2025/01/15",
+	        "2025/01/16",
+	        "2025/01/17"
         ]
     },
     {
@@ -447,7 +455,13 @@ abonnements.push({
             "2024/12/24",
             "2024/12/26",
             "2024/12/28",
-            "2024/12/31"
+            "2024/12/31",
+	        "2025/01/04",
+	        "2025/01/07",
+	        "2025/01/08",
+	        "2025/01/09",
+	        "2025/01/11",
+	        "2025/01/18"
         ]
     }],
     getDayType: function (day, time) {
