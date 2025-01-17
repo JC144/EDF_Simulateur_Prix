@@ -49,7 +49,7 @@ Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simu
 ## Utilisation
 
 ### Depuis le site d'EDF
-1. Récupérez sur le site d'EDF votre consommation [https://equilibre.edf.fr/comprendre?dashboardOpenRequired=true](https://equilibre.edf.fr/comprendre?dashboardOpenRequired=true)
+1. Récupérez sur le site d'EDF votre consommation [https://suiviconso.edf.fr/comprendre](https://suiviconso.edf.fr/comprendre)
 ![Bouton télécharger](https://user-images.githubusercontent.com/1168432/216930725-d3af991d-7761-40bc-892f-285d11390fd8.png)
 2. Dézippez ce répertoire
 
