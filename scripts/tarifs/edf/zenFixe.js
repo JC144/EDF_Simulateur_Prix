@@ -2,7 +2,7 @@ abonnements.push(
     {
         name: "EDF - Zen Fixe",
         offer_type: "Marché",
-        lastUpdate: "2025-01-01",
+        lastUpdate: "2025-02-01",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-fixe.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-fixe.pdf",
