@@ -6,114 +6,20 @@ abonnements.push(
         subscription_url: "https://ohm-energie.com/offre/electricite",
         price_url: "https://ohm-energie.com/grilles/elec/2024/02/ELEC_S%26WE.pdf",
         prices: [
-        {
-            puissance: 3,
-            abonnement: 10.11,
-            bleu: {
-                prixKwhHP: 27.29,
-                prixKwhHC: 17.38
-            },
-            weekend: {
-                prixKwhHP: 17.38,
-                prixKwhHC: 17.38
-            }
-        },
-        {
-            puissance: 6,
-            abonnement: 13.78,
-            bleu: {
-                prixKwhHP: 27.29,
-                prixKwhHC: 17.38
-            },
-            weekend: {
-                prixKwhHP: 17.38,
-                prixKwhHC: 17.38
-            }
-        },
-        {
-            puissance: 9,
-            abonnement: 17.49,
-            bleu: {
-                prixKwhHP: 27.29,
-                prixKwhHC: 17.38
-            },
-            weekend: {
-                prixKwhHP: 17.38,
-                prixKwhHC: 17.38
-            }
-        },
-        {
-            puissance: 12,
-            abonnement: 21.12,
-            bleu: {
-                prixKwhHP: 27.29,
-                prixKwhHC: 17.38
-            },
-            weekend: {
-                prixKwhHP: 17.38,
-                prixKwhHC: 17.38
-            }
-        },
-        {
-            puissance: 15,
-            abonnement: 24.57,
-            bleu: {
-                prixKwhHP: 27.29,
-                prixKwhHC: 17.38
-            },
-            weekend: {
-                prixKwhHP: 17.38,
-                prixKwhHC: 17.38
-            }
-        },
-        {
-            puissance: 18,
-            abonnement: 28.00,
-            bleu: {
-                prixKwhHP: 27.29,
-                prixKwhHC: 17.38
-            },
-            weekend: {
-                prixKwhHP: 17.38,
-                prixKwhHC: 17.38
-            }
-        },
-        {
-            puissance: 24,
-            abonnement: 35.19,
-            bleu: {
-                prixKwhHP: 27.29,
-                prixKwhHC: 17.38
-            },
-            weekend: {
-                prixKwhHP: 17.38,
-                prixKwhHC: 17.38
-            }
-        },
-        {
-            puissance: 30,
-            abonnement: 41.75,
-            bleu: {
-                prixKwhHP: 27.29,
-                prixKwhHC: 17.38
-            },
-            weekend: {
-                prixKwhHP: 17.38,
-                prixKwhHC: 17.38
-            }
-        },
-        {
-            puissance: 36,
-            abonnement: 48.37,
-            bleu: {
-                prixKwhHP: 27.29,
-                prixKwhHC: 17.38
-            },
-            weekend: {
-                prixKwhHP: 17.38,
-                prixKwhHC: 17.38
-            }
-        }],
+    { puissance: 3, abonnement: 10.11 },
+    { puissance: 6, abonnement: 13.78 },
+    { puissance: 9, abonnement: 17.49 },
+    { puissance: 12, abonnement: 21.12 },
+    { puissance: 15, abonnement: 24.57 },
+    { puissance: 18, abonnement: 28.00 },
+    { puissance: 24, abonnement: 35.19 },
+    { puissance: 30, abonnement: 41.75 },
+    { puissance: 36, abonnement: 48.37 },
+].map(item => ({
+    ...item,
+    bleu: { prixKwhHP: 27.29, prixKwhHC: 17.38 }
+})),
+
     hc: [{
         start: {hour:22, minute:0},
         end: {hour:24, minute:0}
