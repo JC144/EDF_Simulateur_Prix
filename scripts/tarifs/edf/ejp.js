@@ -6,66 +6,16 @@ abonnements.push({
     subscription_url: "",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
     prices: [
-        {
-            puissance: 9,
-            abonnement: 15.90,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
-        },
-        {
-            puissance: 12,
-            abonnement: 18.87,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
-        },
-        {
-            puissance: 15,
-            abonnement: 21.92,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
-        },
-        {
-            puissance: 18,
-            abonnement: 24.86,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
-        },
-        {
-            puissance: 36,
-            abonnement: 43.41,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
-        }],
+        { puissance: 9, abonnement: 15.90 },
+        { puissance: 12, abonnement: 18.87 },
+        { puissance: 15, abonnement: 21.92 },
+        { puissance: 18, abonnement: 24.86 },
+        { puissance: 36, abonnement: 43.41 }
+    ].map(item => ({
+        ...item,
+        bleu: { prixKwhHP: 17.58, prixKwhHC: 17.58 },
+        rouge: { prixKwhHP: 151.97, prixKwhHC: 17.58 }
+    })),
     hc: [{
         start: { hour: 1, minute: 0 },
         end: { hour: 7, minute: 0 }

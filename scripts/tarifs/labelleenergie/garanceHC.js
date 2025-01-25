@@ -5,70 +5,19 @@ abonnements.push(
         subscription_url: "https://labellenergie.fr/offre-electricite-verte/",
         price_url: "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
         prices: [
-        {
-            puissance: 6,
-            abonnement: 18.38,
-            bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
-            }
-        },
-        {
-            puissance: 9,
-            abonnement: 21.99,
-            bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
-            }
-        },
-        {
-            puissance: 12,
-            abonnement: 25.51,
-            bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
-            }
-        },
-        {
-            puissance: 15,
-            abonnement: 28.88,
-            bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
-            }
-        },
-        {
-            puissance: 18,
-            abonnement: 32.21,
-            bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
-            }
-        },
-        {
-            puissance: 24,
-            abonnement: 39.21,
-            bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
-            }
-        },
-        {
-            puissance: 30,
-            abonnement: 45.60,
-            bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
-            }
-        },
-        {
-            puissance: 36,
-            abonnement: 52.03,
-            bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
-            }
-        }],
+    { puissance: 6, abonnement: 18.38 },
+    { puissance: 9, abonnement: 21.99 },
+    { puissance: 12, abonnement: 25.51 },
+    { puissance: 15, abonnement: 28.88 },
+    { puissance: 18, abonnement: 32.21 },
+    { puissance: 24, abonnement: 39.21 },
+    { puissance: 30, abonnement: 45.60 },
+    { puissance: 36, abonnement: 52.03 },
+].map(item => ({
+    ...item,
+    bleu: { prixKwhHP: 22.10, prixKwhHC: 17.04 }
+})),
+
         hc: [{
             start: {hour:22, minute:0},
             end: {hour:24, minute:0}

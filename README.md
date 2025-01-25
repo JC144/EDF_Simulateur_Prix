@@ -4,7 +4,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 [Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
 ## Derniers tarifs: 
-* EDF : 2024-11-01
+* EDF : 2025-02-01
 * Alpiq : 01 Février 2024
 * Alterna : 01 Février 2024
 * ~~Ekwateur : 30 janvier 2024~~

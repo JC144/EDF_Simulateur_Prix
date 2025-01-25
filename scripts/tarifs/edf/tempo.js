@@ -6,118 +6,19 @@ abonnements.push({
     subscription_url: "https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
     prices: [
-        {
-            puissance: 6,
-            abonnement: 13.03,
-            bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
-            },
-            blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
-            },
-            rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
-            }
-        },
-        {
-            puissance: 9,
-            abonnement: 16.25,
-            bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
-            },
-            blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
-            },
-            rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
-            }
-        },
-        {
-            puissance: 12,
-            abonnement: 19.56,
-            bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
-            },
-            blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
-            },
-            rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
-            }
-        },
-        {
-            puissance: 15,
-            abonnement: 22.45,
-            bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
-            },
-            blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
-            },
-            rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
-            }
-        },
-        {
-            puissance: 18,
-            abonnement: 25.60,
-            bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
-            },
-            blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
-            },
-            rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
-            }
-        },
-        {
-            puissance: 30,
-            abonnement: 38.53,
-            bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
-            },
-            blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
-            },
-            rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
-            }
-        },
-        {
-            puissance: 36,
-            abonnement: 44.71,
-            bleu: {
-                prixKwhHP: 16.09,
-                prixKwhHC: 12.96
-            },
-            blanc: {
-                prixKwhHP: 18.94,
-                prixKwhHC: 14.86
-            },
-            rouge: {
-                prixKwhHP: 75.62,
-                prixKwhHC: 15.68
-            }
-        }],
+        { puissance: 6, abonnement: 13.03 },
+        { puissance: 9, abonnement: 16.25 },
+        { puissance: 12, abonnement: 19.56 },
+        { puissance: 15, abonnement: 22.45 },
+        { puissance: 18, abonnement: 25.60 },
+        { puissance: 30, abonnement: 38.53 },
+        { puissance: 36, abonnement: 44.71 }
+    ].map(item => ({
+        ...item,
+        bleu: { prixKwhHP: 16.09, prixKwhHC: 12.96 },
+        blanc: { prixKwhHP: 18.94, prixKwhHC: 14.86 },
+        rouge: { prixKwhHP: 75.62, prixKwhHC: 15.68 }
+    })),
     hc: [{
         start: { hour: 22, minute: 0 },
         end: { hour: 24, minute: 0 }

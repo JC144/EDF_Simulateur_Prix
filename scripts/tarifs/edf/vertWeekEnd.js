@@ -6,86 +6,19 @@ abonnements.push({
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-week-end.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-weekend.pdf",
     prices: [
-        {
-            puissance: 6,
-            abonnement: 12.68,
-            bleu: {
-                prixKwhHC: 26.58
-            },
-            weekend: {
-                prixKwhHC: 19.37
-            }
-        },
-        {
-            puissance: 9,
-            abonnement: 15.89,
-            bleu: {
-                prixKwhHC: 26.58
-            },
-            weekend: {
-                prixKwhHC: 19.37
-            }
-        },
-        {
-            puissance: 12,
-            abonnement: 19.16,
-            bleu: {
-                prixKwhHC: 26.58
-            },
-            weekend: {
-                prixKwhHC: 19.37
-            }
-        },
-        {
-            puissance: 15,
-            abonnement: 22.21,
-            bleu: {
-                prixKwhHC: 26.58
-            },
-            weekend: {
-                prixKwhHC: 19.37
-            }
-        },
-        {
-            puissance: 18,
-            abonnement: 25.24,
-            bleu: {
-                prixKwhHC: 26.58
-            },
-            weekend: {
-                prixKwhHC: 19.37
-            }
-        },
-        {
-            puissance: 24,
-            abonnement: 31.96,
-            bleu: {
-                prixKwhHC: 26.58
-            },
-            weekend: {
-                prixKwhHC: 19.37
-            }
-        },
-        {
-            puissance: 30,
-            abonnement: 38.66,
-            bleu: {
-                prixKwhHC: 26.58
-            },
-            weekend: {
-                prixKwhHC: 19.37
-            }
-        },
-        {
-            puissance: 36,
-            abonnement: 44.43,
-            bleu: {
-                prixKwhHC: 26.58
-            },
-            weekend: {
-                prixKwhHC: 19.37
-            }
-        }],
+        { puissance: 6, abonnement: 12.68 },
+        { puissance: 9, abonnement: 15.89 },
+        { puissance: 12, abonnement: 19.16 },
+        { puissance: 15, abonnement: 22.21 },
+        { puissance: 18, abonnement: 25.24 },
+        { puissance: 24, abonnement: 31.96 },
+        { puissance: 30, abonnement: 38.66 },
+        { puissance: 36, abonnement: 44.43 }
+    ].map(item => ({
+        ...item,
+        bleu: { prixKwhHC: 26.58 },
+        weekend: { prixKwhHC: 19.37 }
+    })),
     hc: [{
         start: { hour: 0, minute: 0 },
         end: { hour: 24, minute: 0 }
