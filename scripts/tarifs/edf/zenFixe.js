@@ -8,65 +8,65 @@ abonnements.push(
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-fixe.pdf",
         prices: [{
             puissance: 3,
-            abonnement: 9.69,
+            abonnement: 10.49,
             bleu: {
-                prixKwhHC: 17.53
+                prixKwhHC: 19.06
             }
         },
         {
             puissance: 6,
-            abonnement: 12.67,
+            abonnement: 14.07,
             bleu: {
-                prixKwhHC: 17.53
+                prixKwhHC: 19.06
             }
         },
         {
             puissance: 9,
-            abonnement: 15.89,
+            abonnement: 18.47,
             bleu: {
-                prixKwhHC: 17.53
+                prixKwhHC: 19.06
             }
         },
         {
             puissance: 12,
-            abonnement: 19.16,
+            abonnement: 22.66,
             bleu: {
-                prixKwhHC: 17.53
+                prixKwhHC: 19.06
             }
         },
         {
             puissance: 15,
-            abonnement: 22.21,
+            abonnement: 26.22,
             bleu: {
-                prixKwhHC: 17.53
+                prixKwhHC: 19.06
             }
         },
         {
             puissance: 18,
-            abonnement: 25.24,
+            abonnement: 30.00,
             bleu: {
-                prixKwhHC: 17.53
+                prixKwhHC: 19.06
             }
         },
         {
             puissance: 24,
-            abonnement: 31.96,
+            abonnement: 38.71,
             bleu: {
-                prixKwhHC: 17.53
+                prixKwhHC: 19.06
             }
         },
         {
             puissance: 30,
-            abonnement: 37.68,
+            abonnement: 45.18,
             bleu: {
-                prixKwhHC: 17.53
+                prixKwhHC: 19.06
             }
         },
         {
             puissance: 36,
-            abonnement: 44.43,
+            abonnement: 53.06,
             bleu: {
-                prixKwhHC: 17.53
+                prixKwhHC: 19.06
             }
         }],
         hc: [{
