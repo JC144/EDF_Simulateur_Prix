@@ -1,71 +1,27 @@
 abonnements.push({
     name: "EDF - EJP",
     offer_type: "TRV",
-    lastUpdate: "2024-11-01",
+    lastUpdate: "2025-02-01",
     isCommunity: false,
     subscription_url: "",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
     prices: [
-        {
-            puissance: 9,
-            abonnement: 15.90,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
+        { puissance: 9, abonnement: 17.20 },
+        { puissance: 12, abonnement: 20.50 },
+        { puissance: 15, abonnement: 23.88 },
+        { puissance: 18, abonnement: 27.08 },
+        { puissance: 36, abonnement: 47.42 }
+    ].map(item => ({
+        ...item,
+        bleu: {
+            prixKwhHP: 14.76,
+            prixKwhHC: 14.76
         },
-        {
-            puissance: 12,
-            abonnement: 18.87,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
-        },
-        {
-            puissance: 15,
-            abonnement: 21.92,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
-        },
-        {
-            puissance: 18,
-            abonnement: 24.86,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
-        },
-        {
-            puissance: 36,
-            abonnement: 43.41,
-            bleu: {
-                prixKwhHP: 17.58,
-                prixKwhHC: 17.58
-            },
-            rouge: {
-                prixKwhHP: 151.97,
-                prixKwhHC: 17.58
-            }
-        }],
+        rouge: {
+            prixKwhHP: 110.38,
+            prixKwhHC: 14.76
+        }
+    })),
     hc: [{
         start: { hour: 1, minute: 0 },
         end: { hour: 7, minute: 0 }
@@ -179,7 +135,8 @@ abonnements.push({
             "2025/01/16",
             "2025/01/17",
             "2025/01/20",
-            "2025/01/21"
+            "2025/01/21",
+            "2025/01/22"
         ]
     }],
     getDayType: function (day) {
