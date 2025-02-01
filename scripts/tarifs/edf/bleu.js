@@ -8,63 +8,63 @@ abonnements.push(
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
         prices: [{
             puissance: 3,
-            abonnement: 10.48,
+            abonnement: 10.41,
             bleu: {
                 prixKwhHC: 20.16
             }
         },
         {
             puissance: 6,
-            abonnement: 13.86,
+            abonnement: 13.72,
             bleu: {
                 prixKwhHC: 20.16
             }
         },
         {
             puissance: 9,
-            abonnement: 17.48,
+            abonnement: 17.27,
             bleu: {
                 prixKwhHC: 20.16
             }
         },
         {
             puissance: 12,
-            abonnement: 21.14,
+            abonnement: 20.86,
             bleu: {
                 prixKwhHC: 20.16
             }
         },
         {
             puissance: 15,
-            abonnement: 24.55,
+            abonnement: 24.20,
             bleu: {
                 prixKwhHC: 20.16
             }
         },
         {
             puissance: 18,
-            abonnement: 27.81,
+            abonnement: 27.39,
             bleu: {
                 prixKwhHC: 20.16
             }
         },
         {
             puissance: 24,
-            abonnement: 35.23,
+            abonnement: 34.68,
             bleu: {
                 prixKwhHC: 20.16
             }
         },
         {
             puissance: 30,
-            abonnement: 42.69,
+            abonnement: 41.99,
             bleu: {
                 prixKwhHC: 20.16
             }
         },
         {
             puissance: 36,
-            abonnement: 49.23,
+            abonnement: 48.39,
             bleu: {
                 prixKwhHC: 20.16
             }
