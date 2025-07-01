@@ -2,9 +2,9 @@ abonnements.push(
     {
         name: "EDF - Zen Fixe",
         offer_type: "Marché",
-        lastUpdate: "2025-04-01",
+        lastUpdate: "2025-07-01",
         isCommunity: false,
-        subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-fixe.html",
+        subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-fixe.pdf",
         prices: [
             { puissance: 3, abonnement: 10.41 },
@@ -18,7 +18,7 @@ abonnements.push(
             { puissance: 36, abonnement: 48.39 }
         ].map(item => ({
             ...item,
-            bleu: { prixKwhHC: 19.44 }
+            bleu: { prixKwhHC: 19.20 }
         })),
         hc: [{
             start: { hour: 0, minute: 0 },
@@ -37,9 +37,9 @@ abonnements.push(
 abonnements.push({
     name: "EDF - Zen Fixe Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-04-01",
+    lastUpdate: "2025-07-01",
     isCommunity: false,
-    subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-fixe.html",
+    subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-fixe.pdf",
     prices: [
         { puissance: 6, abonnement: 14.04 },
@@ -53,8 +53,8 @@ abonnements.push({
     ].map(item => ({
         ...item,
         bleu: {
-            prixKwhHP: 20.69,
-            prixKwhHC: 16.38
+            prixKwhHP: 20.41,
+            prixKwhHC: 16.19
         }
     })),
     hc: [],
