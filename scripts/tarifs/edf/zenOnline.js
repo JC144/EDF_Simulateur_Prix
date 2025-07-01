@@ -45,7 +45,7 @@ abonnements.push({
         { puissance: 6, abonnement: 14.04 },
         { puissance: 9, abonnement: 18.01 },
         { puissance: 12, abonnement: 21.69 },
-        { puissance: 15, abonnement: 25.15 },
+        { puissance: 15, abonnement: 25.16 },
         { puissance: 18, abonnement: 28.74 },
         { puissance: 24, abonnement: 35.40 },
         { puissance: 30, abonnement: 41.96 },
