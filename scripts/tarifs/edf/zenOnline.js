@@ -2,23 +2,23 @@ abonnements.push(
     {
         name: "EDF - Zen Online",
         offer_type: "Marché",
-        lastUpdate: "2025-03-14",
+        lastUpdate: "2025-08-01",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",
         prices: [
-            { puissance: 3, abonnement: 10.41 },
-            { puissance: 6, abonnement: 13.72 },
-            { puissance: 9, abonnement: 17.58 },
-            { puissance: 12, abonnement: 21.27 },
-            { puissance: 15, abonnement: 24.72 },
-            { puissance: 18, abonnement: 28.02 },
-            { puissance: 24, abonnement: 35.51 },
-            { puissance: 30, abonnement: 43.04 },
-            { puissance: 36, abonnement: 48.39 }
+            { puissance: 3, abonnement: 11.73 },
+            { puissance: 6, abonnement: 15.47 },
+            { puissance: 9, abonnement: 19.39 },
+            { puissance: 12, abonnement: 23.32 },
+            { puissance: 15, abonnement: 27.06 },
+            { puissance: 18, abonnement: 30.76 },
+            { puissance: 24, abonnement: 38.79 },
+            { puissance: 30, abonnement: 46.44 },
+            { puissance: 36, abonnement: 54.29 }
         ].map(item => ({
             ...item,
-            bleu: { prixKwhHC: 19.19 }
+            bleu: { prixKwhHC: 18.56 }
         })),
         hc: [{
             start: { hour: 0, minute: 0 },
@@ -37,24 +37,24 @@ abonnements.push(
 abonnements.push({
     name: "EDF - Zen Online Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-03-14",
+    lastUpdate: "2025-08-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",
     prices: [
-        { puissance: 6, abonnement: 14.04 },
-        { puissance: 9, abonnement: 18.01 },
-        { puissance: 12, abonnement: 21.69 },
-        { puissance: 15, abonnement: 25.16 },
-        { puissance: 18, abonnement: 28.74 },
-        { puissance: 24, abonnement: 35.40 },
-        { puissance: 30, abonnement: 41.96 },
-        { puissance: 36, abonnement: 48.72 }
+        { puissance: 6, abonnement: 15.74 },
+        { puissance: 9, abonnement: 19.81 },
+        { puissance: 12, abonnement: 23.76 },
+        { puissance: 15, abonnement: 27.49 },
+        { puissance: 18, abonnement: 31.34 },
+        { puissance: 24, abonnement: 39.47 },
+        { puissance: 30, abonnement: 47.02 },
+        { puissance: 36, abonnement: 54.61 }
     ].map(item => ({
         ...item,
         bleu: {
-            prixKwhHP: 20.41,
-            prixKwhHC: 16.18
+            prixKwhHP: 19.77,
+            prixKwhHC: 15.59
         }
     })),
     hc: [],

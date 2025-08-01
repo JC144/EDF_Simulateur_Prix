@@ -2,20 +2,20 @@ abonnements.push(
     {
         name: "EDF - Bleu",
         offer_type: "TRV",
-        lastUpdate: "2025-02-01",
+        lastUpdate: "2025-08-01",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
         prices: [
-            { puissance: 3, abonnement: 10.41 },
-            { puissance: 6, abonnement: 13.72 },
-            { puissance: 9, abonnement: 17.27 },
-            { puissance: 12, abonnement: 20.86 },
-            { puissance: 15, abonnement: 24.20 },
-            { puissance: 18, abonnement: 27.39 },
-            { puissance: 24, abonnement: 34.68 },
-            { puissance: 30, abonnement: 41.99 },
-            { puissance: 36, abonnement: 48.39 }
+            { puissance: 3, abonnement: 11.73 },
+            { puissance: 6, abonnement: 15.47 },
+            { puissance: 9, abonnement: 19.39 },
+            { puissance: 12, abonnement: 23.32 },
+            { puissance: 15, abonnement: 27.06 },
+            { puissance: 18, abonnement: 30.76 },
+            { puissance: 24, abonnement: 38.79 },
+            { puissance: 30, abonnement: 46.44 },
+            { puissance: 36, abonnement: 54.29 }
         ].map(item => ({
             ...item,
             bleu: { prixKwhHC: 20.16 }
@@ -38,22 +38,22 @@ abonnements.push(
     {
         name: "EDF - Bleu Heures Creuses",
         offer_type: "TRV",
-        lastUpdate: "2025-02-01",
+        lastUpdate: "2025-08-01",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
         prices: [
-            { puissance: 6, abonnement: 14.04 },
-            { puissance: 9, abonnement: 18.01 },
-            { puissance: 12, abonnement: 21.69 },
-            { puissance: 15, abonnement: 25.16 },
-            { puissance: 18, abonnement: 28.74 },
-            { puissance: 24, abonnement: 36.23 },
-            { puissance: 30, abonnement: 41.96 },
-            { puissance: 36, abonnement: 48.72 }
+            { puissance: 6, abonnement: 15.74 },
+            { puissance: 9, abonnement: 19.81 },
+            { puissance: 12, abonnement: 23.76 },
+            { puissance: 15, abonnement: 27.49 },
+            { puissance: 18, abonnement: 31.34 },
+            { puissance: 24, abonnement: 39.47 },
+            { puissance: 30, abonnement: 47.02 },
+            { puissance: 36, abonnement: 54.61 }
         ].map(item => ({
             ...item,
-            bleu: { prixKwhHP: 21.46, prixKwhHC: 16.96 }
+            bleu: { prixKwhHP: 20.81, prixKwhHC: 16.35 }
         })),
         hc: [],
         hasHCCustom: true,
@@ -69,30 +69,30 @@ abonnements.push(
         name: "EDF - Tempo",
         offer_type: "TRV",
         isCommunity: false,
-        lastUpdate: "2025-02-01",
+        lastUpdate: "2025-08-01",
         subscription_url: "https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
         prices: [
-            { puissance: 6, abonnement: 13.97 },
-            { puissance: 9, abonnement: 17.45 },
-            { puissance: 12, abonnement: 20.96 },
-            { puissance: 15, abonnement: 24.23 },
-            { puissance: 18, abonnement: 27.50 },            
-            { puissance: 30, abonnement: 41.27 },
-            { puissance: 36, abonnement: 48.45 }
+            { puissance: 6, abonnement: 15.50 },
+            { puissance: 9, abonnement: 19.49 },
+            { puissance: 12, abonnement: 23.38 },
+            { puissance: 15, abonnement: 27.01 },
+            { puissance: 18, abonnement: 30.79 },            
+            { puissance: 30, abonnement: 46.31 },
+            { puissance: 36, abonnement: 54.43 }
         ].map(item => ({
             ...item,
             bleu: {
-                prixKwhHC: 12.88,
-                prixKwhHP: 15.52
+                prixKwhHC: 12.32,
+                prixKwhHP: 14.94
             },
             blanc: {
-                prixKwhHC: 14.47,
-                prixKwhHP: 17.92
+                prixKwhHC: 13.91,
+                prixKwhHP: 17.30
             },
             rouge: {
-                prixKwhHC: 15.18,
-                prixKwhHP: 65.86
+                prixKwhHC: 14.60,
+                prixKwhHP: 64.68
             }
         })),
         hc: [{

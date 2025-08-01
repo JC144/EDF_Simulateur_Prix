@@ -1,62 +1,24 @@
 abonnements.push({
     name: "EDF - Vert Electrique Régional",
     offer_type: "Marché",
-    lastUpdate: "2025-03-14",
+    lastUpdate: "2025-08-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-regional.pdf",
     prices: [
-        {
-            puissance: 6, abonnement: 13.72,
-            bleu: {
-                prixKwhHC: 19.61
-            }
-        },
-        {
-            puissance: 9, abonnement: 17.27,
-            bleu: {
-                prixKwhHC: 19.68
-            }
-        },
-        {
-            puissance: 12, abonnement: 20.86,
-            bleu: {
-                prixKwhHC: 19.68
-            }
-        },
-        {
-            puissance: 15, abonnement: 24.20,
-            bleu: {
-                prixKwhHC: 19.68
-            }
-        },
-        {
-            puissance: 18, abonnement: 27.39,
-            bleu: {
-                prixKwhHC: 19.68
-            }
-        },
-        {
-            puissance: 24, abonnement: 34.68,
-            bleu: {
-                prixKwhHC: 19.68
-            }
-        },
-        {
-            puissance: 30, abonnement: 41.99,
-            bleu: {
-                prixKwhHC: 19.68
-            }
-        },
-        {
-            puissance: 36, abonnement: 49.64,
-            bleu: {
-                prixKwhHC: 19.68
-            }
-        }
+        { puissance: 6, abonnement: 15.60 },
+        { puissance: 9, abonnement: 19.63 },
+        { puissance: 12, abonnement: 23.72 },
+        { puissance: 15, abonnement: 27.53 },
+        { puissance: 18, abonnement: 31.16 },
+        { puissance: 24, abonnement: 39.45 },
+        { puissance: 30, abonnement: 47.77 },
+        { puissance: 36, abonnement: 55.06 }
     ].map(item => ({
         ...item,
-
+        bleu: {
+            prixKwhHC: 19.23
+        }
     })),
     hc: [{
         start: { hour: 0, minute: 0 },
@@ -74,24 +36,24 @@ abonnements.push({
 abonnements.push({
     name: "EDF - Vert Electrique Régional Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-03-14",
+    lastUpdate: "2025-08-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-regional.pdf",
     prices: [
-        { puissance: 6, abonnement: 14.04 },
-        { puissance: 9, abonnement: 18.01 },
-        { puissance: 12, abonnement: 21.69 },
-        { puissance: 15, abonnement: 25.16 },
-        { puissance: 18, abonnement: 28.11 },
-        { puissance: 24, abonnement: 35.40 },
-        { puissance: 30, abonnement: 41.96 },
-        { puissance: 36, abonnement: 48.72 }
+        { puissance: 6, abonnement: 15.96 },
+        { puissance: 9, abonnement: 20.13 },
+        { puissance: 12, abonnement: 24.19 },
+        { puissance: 15, abonnement: 28.02 },
+        { puissance: 18, abonnement: 31.97 },
+        { puissance: 24, abonnement: 40.26 },
+        { puissance: 30, abonnement: 47.74 },
+        { puissance: 36, abonnement: 55.43 }
     ].map(item => ({
         ...item,
         bleu: {
-            prixKwhHP: 21.30,
-            prixKwhHC: 16.07
+            prixKwhHP: 20.85,
+            prixKwhHC: 15.62
         }
     })),
     hc: [],

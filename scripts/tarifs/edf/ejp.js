@@ -1,25 +1,25 @@
 abonnements.push({
     name: "EDF - EJP",
     offer_type: "TRV",
-    lastUpdate: "2025-02-01",
+    lastUpdate: "2025-08-01",
     isCommunity: false,
     subscription_url: "",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
     prices: [
-        { puissance: 9, abonnement: 17.20 },
-        { puissance: 12, abonnement: 20.50 },
-        { puissance: 15, abonnement: 23.88 },
-        { puissance: 18, abonnement: 27.08 },
-        { puissance: 36, abonnement: 47.42 }
+        { puissance: 9, abonnement: 19.32 },
+        { puissance: 12, abonnement: 23.04 },
+        { puissance: 15, abonnement: 26.81 },
+        { puissance: 18, abonnement: 30.47 },
+        { puissance: 36, abonnement: 53.32 }
     ].map(item => ({
         ...item,
         bleu: {
-            prixKwhHP: 14.76,
-            prixKwhHC: 14.76
+            prixKwhHP: 14.18,
+            prixKwhHC: 14.18
         },
         rouge: {
-            prixKwhHP: 110.38,
-            prixKwhHC: 14.76
+            prixKwhHP: 108.67,
+            prixKwhHC: 14.18
         }
     })),
     hc: [{
@@ -136,7 +136,12 @@ abonnements.push({
             "2025/01/17",
             "2025/01/20",
             "2025/01/21",
-            "2025/01/22"
+            "2025/01/22",
+            "2025/02/03",
+            "2025/02/04",
+            "2025/02/07",
+            "2025/02/12",
+            "2025/03/14"
         ]
     }],
     getDayType: function (day) {
