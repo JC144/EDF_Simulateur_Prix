@@ -17,7 +17,7 @@ abonnements.push({
     ].map(item => ({
         ...item,
         bleu: {
-            prixKwhHC: 20.63
+            prixKwhHC: 20.42
         },
         weekend: {
             prixKwhHC: 15.37
