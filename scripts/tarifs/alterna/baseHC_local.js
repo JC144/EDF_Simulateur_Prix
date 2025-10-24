@@ -1,74 +1,22 @@
 abonnements.push({
     name: "Alterna - Heures Creuses Locale",
     offer_type: "Marché",
-    lastUpdate: "2024-02-01",
+    lastUpdate: "2025-10-24",
     subscription_url: "https://www.alterna-energie.fr",
     price_url: "https://www.alterna-energie.fr/tarifs-electricite-locale",
     prices: [
-        {
-            puissance: 6,
-            abonnement: 14.32,
-            bleu: {
-                prixKwhHP: 24.06,
-                prixKwhHC: 18.49
-            }
-        },
-        {
-            puissance: 9,
-            abonnement: 18.12,
-            bleu: {
-                prixKwhHP: 24.06,
-                prixKwhHC: 18.49
-            }
-        },
-        {
-            puissance: 12,
-            abonnement: 21.83,
-            bleu: {
-                prixKwhHP: 24.06,
-                prixKwhHC: 18.49
-            }
-        },
-        {
-            puissance: 15,
-            abonnement: 25.37,
-            bleu: {
-                prixKwhHP: 24.06,
-                prixKwhHC: 18.49
-            }
-        },
-        {
-            puissance: 18,
-            abonnement: 28.87,
-            bleu: {
-                prixKwhHP: 24.06,
-                prixKwhHC: 18.49
-            }
-        },
-        {
-            puissance: 24,
-            abonnement: 36.23,
-            bleu: {
-                prixKwhHP: 24.06,
-                prixKwhHC: 18.49
-            }
-        },
-        {
-            puissance: 30,
-            abonnement: 42.92,
-            bleu: {
-                prixKwhHP: 24.06,
-                prixKwhHC: 18.49
-            }
-        },
-        {
-            puissance: 36,
-            abonnement: 49.66,
-            bleu: {
-                prixKwhHP: 24.06,
-                prixKwhHC: 18.49
-            }
-        }],
+        { puissance: 6, abonnement: 11.30 },
+        { puissance: 9, abonnement: 14.14 },
+        { puissance: 12, abonnement: 16.87 },
+        { puissance: 15, abonnement: 19.43 },
+        { puissance: 18, abonnement: 22.08 },
+        { puissance: 24, abonnement: 27.75 },
+        { puissance: 30, abonnement: 32.93 },
+        { puissance: 36, abonnement: 38.15 }
+    ].map(item => ({
+        ...item,
+        bleu: { prixKwhHC: 9.99,  prixKwhHP: 13.48 }
+    })),
     hc: [],
     hasHCCustom: true,
     hasSpecialDaysCustom: false,

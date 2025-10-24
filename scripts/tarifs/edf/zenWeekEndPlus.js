@@ -1,7 +1,7 @@
 abonnements.push({
     name: "EDF - Zen Week-End Plus",
     offer_type: "Marché",
-    lastUpdate: "2025-09-15",
+    lastUpdate: "2025-10-24",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end-plus.pdf",
@@ -47,7 +47,7 @@ abonnements.push({
 abonnements.push({
     name: "EDF - Zen Week-End Plus HC",
     offer_type: "Marché",
-    lastUpdate: "2025-09-15",
+    lastUpdate: "2025-10-24",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end-plus.pdf",

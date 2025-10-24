@@ -1,23 +1,23 @@
 abonnements.push(
     {
         name: "Alpiq - Base",
-        lastUpdate: "2025-02-01",
+        lastUpdate: "2025-10-24",
         isCommunity: true,
         subscription_url: "https://particuliers.alpiq.fr/electricite/nos-tarifs",
         price_url: "https://particuliers.alpiq.fr/grille-tarifaire/particuliers/gtr_elec_part.pdf",
         prices: [
-            { puissance: 3, abonnement: 10.41 },
-            { puissance: 6, abonnement: 13.72 },
-            { puissance: 9, abonnement: 17.27 },
-            { puissance: 12, abonnement: 20.86 },
-            { puissance: 15, abonnement: 24.2 },
-            { puissance: 18, abonnement: 27.39 },
-            { puissance: 24, abonnement: 34.68 },
-            { puissance: 30, abonnement: 41.99 },
-            { puissance: 36, abonnement: 48.39 }
+            { puissance: 3, abonnement: 11.73 },
+            { puissance: 6, abonnement: 15.47 },
+            { puissance: 9, abonnement: 19.39 },
+            { puissance: 12, abonnement: 23.32 },
+            { puissance: 15, abonnement: 27.06 },
+            { puissance: 18, abonnement: 30.76 },
+            { puissance: 24, abonnement: 38.79 },
+            { puissance: 30, abonnement: 46.44 },
+            { puissance: 36, abonnement: 54.29 }
         ].map(item => ({
             ...item,
-            bleu: { prixKwhHC: 19.5154,  prixKwhHP: 19.5154 }
+            bleu: { prixKwhHC: 17.9292,  prixKwhHP: 17.9292 }
         })),
         hc: [],
         hasHCCustom: true,
@@ -32,22 +32,22 @@ abonnements.push(
     abonnements.push(
         {
             name: "Alpiq - Heures Creuses",
-            lastUpdate: "2025-02-01",
+            lastUpdate: "2025-10-24",
             isCommunity: true,
             subscription_url: "https://particuliers.alpiq.fr/electricite/nos-tarifs",
             price_url: "https://particuliers.alpiq.fr/grille-tarifaire/particuliers/gtr_elec_part.pdf",
             prices: [
-                { puissance: 6, abonnement: 14.04 },
-                { puissance: 9, abonnement: 18.01 },
-                { puissance: 12, abonnement: 21.69 },
-                { puissance: 15, abonnement: 25.16 },
-                { puissance: 18, abonnement: 28.74 },
-                { puissance: 24, abonnement: 36.23 },
-                { puissance: 30, abonnement: 41.96 },
-                { puissance: 36, abonnement: 48.72 }
+                { puissance: 6, abonnement: 15.74 },
+                { puissance: 9, abonnement: 19.81 },
+                { puissance: 12, abonnement: 23.76 },
+                { puissance: 15, abonnement: 27.49 },
+                { puissance: 18, abonnement: 31.34 },
+                { puissance: 24, abonnement: 39.47 },
+                { puissance: 30, abonnement: 47.02 },
+                { puissance: 36, abonnement: 54.61 }
             ].map(item => ({
                 ...item,
-                bleu: { prixKwhHP: 20.7595, prixKwhHC: 16.4395 }
+                bleu: { prixKwhHP: 19.0848, prixKwhHC: 15.0780 }
             })),
             hc: [],
             hasHCCustom: true,
