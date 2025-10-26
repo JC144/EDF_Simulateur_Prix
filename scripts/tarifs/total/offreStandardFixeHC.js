@@ -1,74 +1,22 @@
 abonnements.push(
     {
         name: "TotalEnergie - Offre standard fixe HC",
-        lastUpdate: "2024-03-26",
+        lastUpdate: "2025-10-24",
         subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite",
         price_url: "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-standard-fixe-particuliers.pdf",
         prices: [
-        {
-            puissance: 6,
-            abonnement: 13.00,
-            bleu: {
-                prixKwhHP: 22.88,
-                prixKwhHC: 17.51
-            }
-        },
-        {
-            puissance: 9,
-            abonnement: 16.54,
-            bleu: {
-                prixKwhHP: 22.88,
-                prixKwhHC: 17.51
-            }
-        },
-        {
-            puissance: 12,
-            abonnement: 19.97,
-            bleu: {
-                prixKwhHP: 22.88,
-                prixKwhHC: 17.51
-            }
-        },
-        {
-            puissance: 15,
-            abonnement: 23.21,
-            bleu: {
-                prixKwhHP: 22.88,
-                prixKwhHC: 17.51
-            }
-        },
-        {
-            puissance: 18,
-            abonnement: 26.41,
-            bleu: {
-                prixKwhHP: 22.88,
-                prixKwhHC: 17.51
-            }
-        },
-        {
-            puissance: 24,
-            abonnement: 33.22,
-            bleu: {
-                prixKwhHP: 22.88,
-                prixKwhHC: 17.51
-            }
-        },
-        {
-            puissance: 30,
-            abonnement: 39.27,
-            bleu: {
-                prixKwhHP: 22.88,
-                prixKwhHC: 17.51
-            }
-        },
-        {
-            puissance: 36,
-            abonnement: 45.40,
-            bleu: {
-                prixKwhHP: 22.88,
-                prixKwhHC: 17.51
-            }
-        }],
+            { puissance: 6, abonnement: 18.47 },
+            { puissance: 9, abonnement: 23.39 },
+            { puissance: 12, abonnement: 28.17 },
+            { puissance: 15, abonnement: 32.14 },
+            { puissance: 18, abonnement: 37.38 },
+            { puissance: 24, abonnement: 47.15 },
+            { puissance: 30, abonnement: 56.00 },
+            { puissance: 36, abonnement: 65.08 }
+        ].map(item => ({
+            ...item,
+            bleu: { prixKwhHC: 15.86,  prixKwhHP: 20.14 }
+        })),
         hc: [{
             start: {hour:22, minute:0},
             end: {hour:24, minute:0}

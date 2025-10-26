@@ -2,7 +2,7 @@ abonnements.push(
     {
         name: "EDF - Zen Online",
         offer_type: "Marché",
-        lastUpdate: "2025-08-01",
+        lastUpdate: "2025-10-24",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",
@@ -37,7 +37,7 @@ abonnements.push(
 abonnements.push({
     name: "EDF - Zen Online Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-08-01",
+    lastUpdate: "2025-10-24",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",

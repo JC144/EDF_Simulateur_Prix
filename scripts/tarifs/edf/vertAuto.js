@@ -1,7 +1,7 @@
 abonnements.push({
     name: "EDF - Vert Electrique Auto",
     offer_type: "Marché",
-    lastUpdate: "2025-09-15",
+    lastUpdate: "2025-10-24",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-auto.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-auto.pdf",

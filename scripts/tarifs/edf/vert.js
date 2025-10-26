@@ -2,7 +2,7 @@ abonnements.push(
     {
         name: "EDF - Vert Electrique",
         offer_type: "Marché",
-        lastUpdate: "2025-09-15",
+        lastUpdate: "2025-10-24",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique.pdf",
@@ -39,7 +39,7 @@ abonnements.push(
 abonnements.push({
     name: "EDF - Vert Electrique Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-09-15",
+    lastUpdate: "2025-10-24",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique.pdf",

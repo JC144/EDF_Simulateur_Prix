@@ -1,74 +1,22 @@
 abonnements.push(
     {
         name: "Mint Energie - Classic & Green HC",
-        lastUpdate: "2024-02-01",
+        lastUpdate: "2025-10-24",
         subscription_url: "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
-        price_url: "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_14624_CLASSIC_GREEN.pdf",
+        price_url: "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_23012_CLASSIC_GREEN.pdf",
         prices: [
-        {
-            puissance: 6,
-            abonnement: 13.95,
-            bleu: {
-                prixKwhHP: 24.55,
-                prixKwhHC: 18.86
-            }
-        },
-        {
-            puissance: 9,
-            abonnement: 17.70,
-            bleu: {
-                prixKwhHP: 24.55,
-                prixKwhHC: 18.86
-            }
-        },
-        {
-            puissance: 12,
-            abonnement: 21.37,
-            bleu: {
-                prixKwhHP: 24.55,
-                prixKwhHC: 18.86
-            }
-        },
-        {
-            puissance: 15,
-            abonnement: 24.87,
-            bleu: {
-                prixKwhHP: 24.55,
-                prixKwhHC: 18.86
-            }
-        },
-        {
-            puissance: 18,
-            abonnement: 28.34,
-            bleu: {
-                prixKwhHP: 24.55,
-                prixKwhHC: 18.86
-            }
-        },
-        {
-            puissance: 24,
-            abonnement: 35.61,
-            bleu: {
-                prixKwhHP: 24.55,
-                prixKwhHC: 18.86
-            }
-        },
-        {
-            puissance: 30,
-            abonnement: 42.25,
-            bleu: {
-                prixKwhHP: 24.55,
-                prixKwhHC: 18.86
-            }
-        },
-        {
-            puissance: 36,
-            abonnement: 48.93,
-            bleu: {
-                prixKwhHP: 24.55,
-                prixKwhHC: 18.86
-            }
-        }],
+            { puissance: 6, abonnement: 16.25 },
+            { puissance: 9, abonnement: 17.64 },
+            { puissance: 12, abonnement: 22.64 },
+            { puissance: 15, abonnement: 26.44 },
+            { puissance: 18, abonnement: 30.24 },
+            { puissance: 24, abonnement: 39.03 },
+            { puissance: 30, abonnement: 47.23 },
+            { puissance: 36, abonnement: 54.82 }
+        ].map(item => ({
+            ...item,
+            bleu: { prixKwhHC: 16.35,  prixKwhHP: 20.81 }
+        })),
         hc: [{
             start: {hour:22, minute:0},
             end: {hour:24, minute:0}
