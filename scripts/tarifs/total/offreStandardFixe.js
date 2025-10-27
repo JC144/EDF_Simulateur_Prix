@@ -1,7 +1,7 @@
 abonnements.push(
     {
         name: "TotalEnergie - Offre standard fixe",
-        lastUpdate: "2025-10-24",
+        lastUpdate: "2025-08-05",
         subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite",
         price_url: "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-standard-fixe-particuliers.pdf",
         prices: [

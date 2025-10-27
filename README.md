@@ -4,20 +4,20 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 [Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
 ## Derniers tarifs: 
-* EDF : 2025-09-15
-* ~~Alpiq : 2025-02-01~~
-* ~~Alterna : 01 Février 2024~~
+* EDF : 2025-10-27
+* Alpiq : 2025-10-27
+* Alterna : 2025-10-27
+* Mint Energie : 2025-10-27
+* Engie : 2025-10-27
+* TotalEnergie : 2025-10-27
+* Octopus : 2025-10-27
 * ~~Ekwateur : 30 janvier 2024~~
 * ~~Enercoop : 01 Février 2024~~
-* ~~Engie : 01 Février 2024~~
 * ~~ES : 01 Février 2024~~
 * ~~Ilek : 01 Février 2024~~
 * ~~La belle énergie : 01 Février 2024~~
-* ~~Mint Energie : 01 Février 2024~~
-* ~~Octopus : 2024-05-13~~
 * ~~OHM Energie : 01 Février 2024~~
 * ~~Switch : 01 Février 2024~~ [Voir ici](https://www.jechange.fr/energie/chez-switch/)
-* ~~TotalEnergie : 01 Février 2024~~
 
 ## Remerciements
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).

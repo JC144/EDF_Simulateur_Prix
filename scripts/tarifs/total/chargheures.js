@@ -37,7 +37,7 @@
     abonnements.push(
         {
             name: "TotalEnergie - Charge'Heures",
-            lastUpdate: "2025-10-24",
+            lastUpdate: "2025-10-01",
             subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-charge-heures",
             price_url: "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-charge-heures-particuliers.pdf",
             prices: Object.keys(prixAbonnements).map((puissance) => ({

@@ -1,7 +1,7 @@
 abonnements.push(
     {
         name: "Engie - Elec Référence 1 an",
-        lastUpdate: "2025-10-24",
+        lastUpdate: "2025-09-01",
         subscription_url: "https://particuliers.engie.fr/electricite.html",
         price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-reference.pdf",
         prices: [

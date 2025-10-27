@@ -1,7 +1,7 @@
 abonnements.push(
     {
         name: "Mint Energie - Online & Green HC",
-        lastUpdate: "2025-10-24",
+        lastUpdate: "2025-08-01",
         subscription_url: "https://www.mint-energie.com/Pages/Informations/tarifs_elec.aspx",
         price_url: "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_21912_ONLINE_GREEN.pdf",
         prices: [

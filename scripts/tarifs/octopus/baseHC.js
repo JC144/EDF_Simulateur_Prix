@@ -1,7 +1,7 @@
 abonnements.push({
     name: "Octopus - Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-10-24",
+    lastUpdate: "2025-08-01",
     subscription_url: "https://www.octopusenergy.fr/offre-electricite-tarifs",
     price_url: "https://a.storyblok.com/f/151412/x/cea34c87af/grille-tarifaire-eco_conso_fixe_6_aout25.pdf",
     prices: [

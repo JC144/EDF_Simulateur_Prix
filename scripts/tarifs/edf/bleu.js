@@ -2,7 +2,7 @@ abonnements.push(
     {
         name: "EDF - Bleu",
         offer_type: "TRV",
-        lastUpdate: "2025-10-24",
+        lastUpdate: "2025-08-01",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
@@ -38,7 +38,7 @@ abonnements.push(
     {
         name: "EDF - Bleu Heures Creuses",
         offer_type: "TRV",
-        lastUpdate: "2025-10-24",
+        lastUpdate: "2025-08-01",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
@@ -69,7 +69,7 @@ abonnements.push(
         name: "EDF - Tempo",
         offer_type: "TRV",
         isCommunity: false,
-        lastUpdate: "2025-10-24",
+        lastUpdate: "2025-08-01",
         subscription_url: "https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
         prices: [

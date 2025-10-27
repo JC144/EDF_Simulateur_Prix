@@ -1,7 +1,7 @@
 abonnements.push(
     {
         name: "TotalEnergie - Offre verte fixe HC",
-        lastUpdate: "2025-10-24",
+        lastUpdate: "2025-08-05",
         subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite",
         price_url: "https://www.totalenergies.fr/fileadmin/Digital/Documents-contractuels/GT/grille-tarifaire-verte-fixe-particuliers.pdf",
         prices: [
