@@ -1,72 +1,73 @@
 abonnements.push(
     {
         name: "La Belle Energie - Garance HC",
-        lastUpdate: "2024-02-01",
+        lastUpdate: "2025-11-01",
+        isCommunity: true,
         subscription_url: "https://labellenergie.fr/offre-electricite-verte/",
         price_url: "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf",
         prices: [
         {
             puissance: 6,
-            abonnement: 18.38,
+            abonnement: 17.84,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 19.07,
+                prixKwhHC: 15.07
             }
         },
         {
             puissance: 9,
-            abonnement: 21.99,
+            abonnement: 22.31,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 19.07,
+                prixKwhHC: 15.07
             }
         },
         {
             puissance: 12,
-            abonnement: 25.51,
+            abonnement: 26.38,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 19.07,
+                prixKwhHC: 15.07
             }
         },
         {
             puissance: 15,
-            abonnement: 28.88,
+            abonnement: 30.25,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 19.07,
+                prixKwhHC: 15.07
             }
         },
         {
             puissance: 18,
-            abonnement: 32.21,
+            abonnement: 34.23,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 19.07,
+                prixKwhHC: 15.07
             }
         },
         {
             puissance: 24,
-            abonnement: 39.21,
+            abonnement: 42.63,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 19.07,
+                prixKwhHC: 15.07
             }
         },
         {
             puissance: 30,
-            abonnement: 45.60,
+            abonnement: 50.44,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 19.07,
+                prixKwhHC: 15.07
             }
         },
         {
             puissance: 36,
-            abonnement: 52.03,
+            abonnement: 58.30,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 19.07,
+                prixKwhHC: 15.07
             }
         }],
         hc: [{
