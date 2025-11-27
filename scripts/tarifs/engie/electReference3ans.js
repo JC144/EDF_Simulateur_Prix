@@ -3,7 +3,7 @@ abonnements.push(
         name: "Engie - Elec Référence 1 an",
         lastUpdate: "2025-09-01",
         subscription_url: "https://particuliers.engie.fr/electricite.html",
-        price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-reference.pdf",
+        price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-reference-3-ans.pdf",
         prices: [
             { puissance: 3, abonnement: (36.61 + 105.36) / 12 },
             { puissance: 6, abonnement: (34.12 + 153.95) / 12 },
@@ -14,10 +14,14 @@ abonnements.push(
             { puissance: 24, abonnement: (29.89 + 445.50) / 12 },
             { puissance: 30, abonnement: (27.05 + 542.69) / 12 },
             { puissance: 36, abonnement: (26.51 + 639.87) / 12 }
-        ].map(item => ({
-            ...item,
-            bleu: { prixKwhHC: 15.998,  prixKwhHP: 15.998 }
-        })),
+        ].map(item => {
+            const obligationComptage = item.puissance <= 6 ? 1.302 : 1.439;
+            return {
+                ...item,
+                // Fourniture + acheminement sans différenciation temporelle + Obligation comptage simple
+                bleu: { prixKwhHC: 15.180 + 0.05808 + obligationComptage,  prixKwhHP: 15.180 + 0.05808 + obligationComptage }
+            };
+        }),
         hc: [{
             start: {hour:0, minute:0},
             end: {hour:24, minute:0}
@@ -36,7 +40,7 @@ abonnements.push(
         name: "Engie - Elec Référence 1 an HC",
         lastUpdate: "2025-09-01",
         subscription_url: "https://particuliers.engie.fr/electricite.html",
-        price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-reference.pdf",
+        price_url: "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-reference-3-ans.pdf",
         prices: [
             { puissance: 6, abonnement: (37.43 + 175.20) / 12 },
             { puissance: 9, abonnement: (38.95 + 234.41) / 12 },
@@ -48,7 +52,8 @@ abonnements.push(
             { puissance: 36, abonnement: (30.40 + 767.34) / 12 }
         ].map(item => ({
             ...item,
-            bleu: { prixKwhHC: 13.704, prixKwhHP: 16.240 }
+            // Fourniture + acheminement 2 plages + Obligation comptage HP/HC
+            bleu: { prixKwhHC: 13.183 + 0.04200 + 1.414 , prixKwhHP: 15.097 + 0.05928 + 1.414}
         })),
         hc: [{
             start: { hour: 22, minute: 0 },
