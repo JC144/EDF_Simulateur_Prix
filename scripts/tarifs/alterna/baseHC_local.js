@@ -1,7 +1,7 @@
 abonnements.push({
     name: "Alterna - Heures Creuses Locale",
     offer_type: "Marché",
-    lastUpdate: "2025-10-02",
+    lastUpdate: "2025-12-18",
     subscription_url: "https://www.alterna-energie.fr",
     price_url: "https://www.alterna-energie.fr/tarifs-electricite-locale",
     prices: [
@@ -15,7 +15,7 @@ abonnements.push({
         { puissance: 36, abonnement: 56.20 }
     ].map(item => ({
         ...item,
-        bleu: { prixKwhHC: 19.77,  prixKwhHP: 15.59 }
+        bleu: { prixKwhHC: 18.74,  prixKwhHP: 14.82 }
     })),
     hc: [],
     hasHCCustom: true,
