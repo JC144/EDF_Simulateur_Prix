@@ -1,7 +1,7 @@
 abonnements.push({
     name: "Alterna - Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-10-02",
+    lastUpdate: "2025-12-18",
     subscription_url: "https://www.alterna-energie.fr",
     price_url: "https://www.alterna-energie.fr/tarifs-electricite-francaise",
     prices: [
@@ -15,7 +15,7 @@ abonnements.push({
         { puissance: 36, abonnement: 56.20 }
     ].map(item => ({
         ...item,
-        bleu: { prixKwhHC: 19.43,  prixKwhHP: 15.33 }
+        bleu: { prixKwhHC: 18.40,  prixKwhHP: 14.57 }
     })),
     hc: [],
     hasHCCustom: true,
