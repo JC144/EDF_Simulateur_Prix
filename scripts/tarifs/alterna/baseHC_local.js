@@ -15,7 +15,7 @@ abonnements.push({
         { puissance: 36, abonnement: 56.20 }
     ].map(item => ({
         ...item,
-        bleu: { prixKwhHC: 18.74,  prixKwhHP: 14.82 }
+        bleu: { prixKwhHC: 14.82, prixKwhHP: 18.74 }
     })),
     hc: [],
     hasHCCustom: true,
