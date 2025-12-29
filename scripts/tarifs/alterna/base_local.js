@@ -2,7 +2,7 @@ abonnements.push(
     {
         name: "Alterna - Base Locale",
         offer_type: "Marché",
-        lastUpdate: "2025-10-02",
+        lastUpdate: "2025-12-18",
         subscription_url: "https://www.alterna-energie.fr",
         price_url: "https://www.alterna-energie.fr/tarifs-electricite-locale",
         prices: [
@@ -17,7 +17,7 @@ abonnements.push(
             { puissance: 36, abonnement: 54.29 }
         ].map(item => ({
             ...item,
-            bleu: { prixKwhHC: 18.57,  prixKwhHP: 18.57 }
+            bleu: { prixKwhHC: 17.61,  prixKwhHP: 17.61 }
         })),
         hc: [{
             start: {hour:0, minute:0},
