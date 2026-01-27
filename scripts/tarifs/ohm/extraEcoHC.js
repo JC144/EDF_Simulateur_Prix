@@ -1,6 +1,6 @@
 abonnements.push(
     {
-        name: "OHM Energie - Extra Eco Fixe",
+        name: "OHM Energie - Offre Extra Eco Fixe HC",
         offer_type: "Marché",
         lastUpdate: "2026-01-27",
         subscription_url: "https://ohm-energie.com/offre/electricite",
@@ -70,8 +70,12 @@ abonnements.push(
             }
         }],
         hc: [{
-            start: {hour: 0, minute: 0},
-            end: {hour: 24, minute: 0}
+            start: {hour:22, minute:0},
+            end: {hour:24, minute:0}
+        },
+        {
+            start: {hour:0, minute:0},
+            end: {hour:6, minute:0}
         }],
         hasHCCustom: false,
         specialDays: [],
