@@ -1,85 +1,79 @@
 abonnements.push(
     {
-        name: "OHM Energie - Offre Hype Eco HC",
+        name: "OHM Energie - Extra Eco Fixe",
         offer_type: "Marché",
-        lastUpdate: "2024-07-01",
+        lastUpdate: "2026-01-27",
         subscription_url: "https://ohm-energie.com/offre/electricite",
-        price_url: "https://ohm-energie.com/grilles/elec/2024/06/HYPER-ECO-FIXE.pdf",
-        prices: [
-        {
+        price_url: "https://ohm-energie.com/grilles/elec/2025/09/ELEC-ExtraECO.pdf",
+        prices: [{
             puissance: 6,
-            abonnement: 13.19,
+            abonnement: 17.36,
             bleu: {
-                prixKwhHP: 22.10,
+                prixKwhHP: 18.86,
                 prixKwhHC: 17.04
             }
         },
         {
             puissance: 9,
-            abonnement: 16.70,
+            abonnement: 21.91,
             bleu: {
-                prixKwhHP: 22.10,
+                prixKwhHP: 18.86,
                 prixKwhHC: 17.04
             }
         },
         {
             puissance: 12,
-            abonnement: 20.13,
+            abonnement: 26.31,
             bleu: {
-                prixKwhHP: 22.10,
+                prixKwhHP: 18.86,
                 prixKwhHC: 17.04
             }
         },
         {
             puissance: 15,
-            abonnement: 23.40,
+            abonnement: 30.49,
             bleu: {
-                prixKwhHP: 22.10,
+                prixKwhHP: 18.86,
                 prixKwhHC: 17.04
             }
         },
         {
             puissance: 18,
-            abonnement: 26.64,
+            abonnement: 34.78,
             bleu: {
-                prixKwhHP: 22.10,
+                prixKwhHP: 18.86,
                 prixKwhHC: 17.04
             }
         },
         {
             puissance: 24,
-            abonnement: 33.44,
+            abonnement: 43.86,
             bleu: {
-                prixKwhHP: 22.10,
+                prixKwhHP: 18.86,
                 prixKwhHC: 17.04
             }
         },
         {
             puissance: 30,
-            abonnement: 39.63,
+            abonnement: 52.29,
             bleu: {
-                prixKwhHP: 22.10,
+                prixKwhHP: 18.86,
                 prixKwhHC: 17.04
             }
         },
         {
             puissance: 36,
-            abonnement: 45.87,
+            abonnement: 60.78,
             bleu: {
                 prixKwhHP: 22.10,
                 prixKwhHC: 17.04
             }
         }],
         hc: [{
-            start: {hour:22, minute:0},
-            end: {hour:24, minute:0}
-        },
-        {
-            start: {hour:0, minute:0},
-            end: {hour:6, minute:0}
+            start: {hour: 0, minute: 0},
+            end: {hour: 24, minute: 0}
         }],
         hasHCCustom: false,
-        hasSpecialDaysCustom: false,
         specialDays: [],
         getDayType: function (day) {
             let dayType = "bleu";
