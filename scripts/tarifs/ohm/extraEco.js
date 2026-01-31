@@ -2,7 +2,7 @@ abonnements.push(
     {
         name: "OHM Energie - Offre Extra Eco Fixe",
         offer_type: "Marché",
-        lastUpdate: "2026-01-27",
+        lastUpdate: "2025-09-17",
         subscription_url: "https://ohm-energie.com/offre/electricite",
         price_url: "https://ohm-energie.com/grilles/elec/2025/09/ELEC-ExtraECO.pdf",
         prices: [{

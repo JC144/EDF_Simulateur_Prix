@@ -2,7 +2,7 @@ abonnements.push(
     {
         name: "OHM Energie - Offre Extra Eco Fixe HC",
         offer_type: "Marché",
-        lastUpdate: "2026-01-27",
+        lastUpdate: "2025-09-17",
         subscription_url: "https://ohm-energie.com/offre/electricite",
         price_url: "https://ohm-energie.com/grilles/elec/2025/09/ELEC-ExtraECO.pdf",
         prices: [{
@@ -10,7 +10,7 @@ abonnements.push(
             abonnement: 17.36,
             bleu: {
                 prixKwhHP: 18.86,
-                prixKwhHC: 17.04
+                prixKwhHC: 14.91
             }
         },
         {
@@ -18,7 +18,7 @@ abonnements.push(
             abonnement: 21.91,
             bleu: {
                 prixKwhHP: 18.86,
-                prixKwhHC: 17.04
+                prixKwhHC: 14.91
             }
         },
         {
@@ -26,7 +26,7 @@ abonnements.push(
             abonnement: 26.31,
             bleu: {
                 prixKwhHP: 18.86,
-                prixKwhHC: 17.04
+                prixKwhHC: 14.91
             }
         },
         {
@@ -34,7 +34,7 @@ abonnements.push(
             abonnement: 30.49,
             bleu: {
                 prixKwhHP: 18.86,
-                prixKwhHC: 17.04
+                prixKwhHC: 14.91
             }
         },
         {
@@ -42,7 +42,7 @@ abonnements.push(
             abonnement: 34.78,
             bleu: {
                 prixKwhHP: 18.86,
-                prixKwhHC: 17.04
+                prixKwhHC: 14.91
             }
         },
         {
@@ -50,7 +50,7 @@ abonnements.push(
             abonnement: 43.86,
             bleu: {
                 prixKwhHP: 18.86,
-                prixKwhHC: 17.04
+                prixKwhHC: 14.91
             }
         },
         {
@@ -58,15 +58,15 @@ abonnements.push(
             abonnement: 52.29,
             bleu: {
                 prixKwhHP: 18.86,
-                prixKwhHC: 17.04
+                prixKwhHC: 14.91
             }
         },
         {
             puissance: 36,
             abonnement: 60.78,
             bleu: {
-                prixKwhHP: 22.10,
-                prixKwhHC: 17.04
+                prixKwhHP: 18.86,
+                prixKwhHC: 14.91
             }
         }],
         hc: [{
