@@ -4,7 +4,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 [Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
 ## Derniers tarifs: 
-* EDF : 2025-10-27
+* EDF : 2026-02-01
 * Alpiq : 2025-10-27
 * Alterna : 2025-12-18
 * Mint Energie : 2025-10-27

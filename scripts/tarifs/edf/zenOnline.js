@@ -2,23 +2,23 @@ abonnements.push(
     {
         name: "EDF - Zen Online",
         offer_type: "Marché",
-        lastUpdate: "2025-08-01",
+        lastUpdate: "2026-02-01",
         isCommunity: false,
         subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
         price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",
         prices: [
-            { puissance: 3, abonnement: 11.73 },
-            { puissance: 6, abonnement: 15.47 },
-            { puissance: 9, abonnement: 19.39 },
+            { puissance: 3, abonnement: 12.03 },
+            { puissance: 6, abonnement: 15.65 },
+            { puissance: 9, abonnement: 19.56 },
             { puissance: 12, abonnement: 23.32 },
-            { puissance: 15, abonnement: 27.06 },
-            { puissance: 18, abonnement: 30.76 },
-            { puissance: 24, abonnement: 38.79 },
-            { puissance: 30, abonnement: 46.44 },
-            { puissance: 36, abonnement: 54.29 }
+            { puissance: 15, abonnement: 26.84 },
+            { puissance: 18, abonnement: 30.49 },
+            { puissance: 24, abonnement: 38.24 },
+            { puissance: 30, abonnement: 45.37 },
+            { puissance: 36, abonnement: 52.54 }
         ].map(item => ({
             ...item,
-            bleu: { prixKwhHC: 18.56 }
+            bleu: { prixKwhHC: 18.33 }
         })),
         hc: [{
             start: { hour: 0, minute: 0 },
@@ -37,24 +37,24 @@ abonnements.push(
 abonnements.push({
     name: "EDF - Zen Online Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2025-08-01",
+    lastUpdate: "2026-02-01",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",
     prices: [
-        { puissance: 6, abonnement: 15.74 },
-        { puissance: 9, abonnement: 19.81 },
-        { puissance: 12, abonnement: 23.76 },
-        { puissance: 15, abonnement: 27.49 },
-        { puissance: 18, abonnement: 31.34 },
-        { puissance: 24, abonnement: 39.47 },
-        { puissance: 30, abonnement: 47.02 },
-        { puissance: 36, abonnement: 54.61 }
+        { puissance: 6, abonnement: 15.65 },
+        { puissance: 9, abonnement: 19.56 },
+        { puissance: 12, abonnement: 23.32 },
+        { puissance: 15, abonnement: 26.84 },
+        { puissance: 18, abonnement: 30.49 },
+        { puissance: 24, abonnement: 38.24 },
+        { puissance: 30, abonnement: 45.37 },
+        { puissance: 36, abonnement: 52.54 }
     ].map(item => ({
         ...item,
         bleu: {
-            prixKwhHP: 19.77,
-            prixKwhHC: 15.59
+            prixKwhHP: 19.63,
+            prixKwhHC: 15.05
         }
     })),
     hc: [],
