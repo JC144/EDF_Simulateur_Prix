@@ -2,19 +2,19 @@ abonnements.push(
     {
         name: "Gaz de Bordeaux - NovaFixe - base",
         offer_type: "Marché",
-        lastUpdate: "2026-01-03",
+        lastUpdate: "2026-02-04",
         isCommunity: true,
         subscription_url: "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans",
         price_url: "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans",
         prices: [
-            { puissance: 3, abonnement: 11.72 },
-            { puissance: 6, abonnement: 15.46 },
-            { puissance: 9, abonnement: 19.39 },
-            { puissance: 12, abonnement: 23.33 },
-            { puissance: 15, abonnement: 27.06 },
+            { puissance: 3, abonnement: 12.02 },
+            { puissance: 6, abonnement: 15.65 },
+            { puissance: 9, abonnement: 19.56 },
+            { puissance: 12, abonnement: 23.32 },
+            { puissance: 15, abonnement: 26.85 }
         ].map(item => ({
             ...item,
-            bleu: { prixKwhHC: 16.337 }
+            bleu: { prixKwhHC: item.puissance <= 6 ? 16.573 : 16.464 }
         })),
         hc: [{
             start: { hour: 0, minute: 0 },
@@ -34,22 +34,22 @@ abonnements.push(
     {
         name: "Gaz de Bordeaux - NovaFixe - heures creuses",
         offer_type: "Marché",
-        lastUpdate: "2026-01-03",
+        lastUpdate: "2026-02-04",
         isCommunity: true,
         subscription_url: "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans",
         price_url: "https://www.gazdebordeaux.fr/nos-offres-d-energie/electricite/offre-electricite-prix-fixe-2-ans",
         prices: [
-            { puissance: 6, abonnement: 16.01 },
-            { puissance: 9, abonnement: 20.21 },
-            { puissance: 12, abonnement: 24.28 },
-            { puissance: 15, abonnement: 28.16 },
-            { puissance: 18, abonnement: 32.14 },
-            { puissance: 24, abonnement: 40.52 },
-            { puissance: 30, abonnement: 48.34 },
-            { puissance: 36, abonnement: 56.20 }
+            { puissance: 6, abonnement: 15.83 },
+            { puissance: 9, abonnement: 19.84 },
+            { puissance: 12, abonnement: 23.68 },
+            { puissance: 15, abonnement: 27.30 },
+            { puissance: 18, abonnement: 31.03 },
+            { puissance: 24, abonnement: 38.96 },
+            { puissance: 30, abonnement: 46.28 },
+            { puissance: 36, abonnement: 53.63 }
         ].map(item => ({
             ...item,
-            bleu: { prixKwhHP: 17.364, prixKwhHC: 13.802 }
+            bleu: { prixKwhHP: 17.596, prixKwhHC: 13.610 }
         })),
         hc: [],
         hasHCCustom: true,
