@@ -55,13 +55,10 @@ Vous trouverez la documentation dans le [wiki](https://github.com/JC144/EDF_Simu
 2. Dézippez ce répertoire
 
 ### Depuis le site d'Enedis
-1. Depuis le site d'Enedis: [https://mon-compte-particulier.enedis.fr/mes-telechargements-mesures/](https://mon-compte-particulier.enedis.fr/mes-telechargements-mesures/)
-2. Cliquez sur "Nouveau Téléchargement" en haut à droite
-3. Sélectionnez "Consommation horaire"
-4. Cliquez sur Date de début et cherchez la date la plus ancienne
-5. Cliquez sur Télécharger mes données
-6. Revenez plus tard sur la page "Mes téléchargements". La génération du fichier n'est pas immédiate
-7. Quand une nouvelle ligne apparaît sur cette page, cliquez sur la flèche pour télécharger
+1. Depuis le site d'Enedis, il n'est plus possible de générer un fichier csv avec des données de plus de 7 jours sans installer [l'extension Conso Downloader dans votre navigateur Chrome](https://chromewebstore.google.com/detail/conso-downloader/geldaniiglcfekimaghpdiiabjaflllp)
+2. Une fois installée, connectez-vous à [votre espace client Enedis](https://mon-compte-particulier.enedis.fr/visualiser-vos-mesures-consommation), page Ma consommation / Suivre ses consommations
+3. Sélectionnez "Énergie consommée" puis "Heures"
+4. Cliquez sur le bouton bleu "Télécharger tout mon historique" en bas à gauche de la page: votre fichier CSV contenant tout votre historique sur la période disponible sera téléchargé automatiquement. Si ce bouton n'apparait pas, l'extension n'est pas correctement installée, reprenez l'étape 1.
 
 ### Depuis le site de TotalEnergies
 1. Depuis le site de TotalEnergies [https://www.totalenergies.fr/clients/ma-conso](https://www.totalenergies.fr/clients/ma-conso)
