@@ -326,6 +326,11 @@ function refreshResultView(dateBegin, dateEnd) {
         accordionCell.colSpan = 3;
         accordionRow.appendChild(accordionCell);
 
+        // Bannière spécifique EDF Tempo : information sur le calendrier + bouton de mise à jour
+        if (result.title === "EDF - Tempo") {
+            accordionCell.appendChild(buildTempoUpdateBanner(dateBegin, dateEnd));
+        }
+
         result.tarif.months.forEach((m) => {
             const titleDetail = document.createElement("h3");
             accordionCell.appendChild(titleDetail);
@@ -612,4 +617,105 @@ function yearEndSelectorChanged(e) {
 
 function monthEndSelectorChanged(e) {
     endMonth = e.target.value;
+}
+
+// ─── Mise à jour du calendrier Tempo ────────────────────────────────────────
+
+/**
+ * Récupère les couleurs des jours Tempo depuis l'API publique api-couleur-tempo.fr.
+ * Chaque élément retourné : { dateJour: "YYYY-MM-DD", codeJour: 1|2|3 }
+ *   codeJour 1 = Bleu, 2 = Blanc, 3 = Rouge
+ * @returns {Promise<Array>}
+ */
+async function fetchTempoCalendar() {
+    const API_URL = "https://www.api-couleur-tempo.fr/api/joursTempo";
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+        throw new Error(`Réponse HTTP ${response.status}`);
+    }
+    return response.json();
+}
+
+/**
+ * Met à jour en mémoire les tableaux specialDays (rouge / blanc) du tarif EDF - Tempo
+ * avec les données fraîches récupérées depuis l'API.
+ * @returns {Promise<{rouge: number, blanc: number}>} Nombre total de jours rouge et blanc
+ */
+async function updateTempoSpecialDays() {
+    const days = await fetchTempoCalendar();
+
+    const tempoTarif = abonnements.find(a => a.name === "EDF - Tempo");
+    if (!tempoTarif) throw new Error("Tarif EDF - Tempo introuvable dans les abonnements");
+
+    const toSlashDate = d => d.dateJour.replace(/-/g, "/");
+
+    const rougeDays = days.filter(d => d.codeJour === 3).map(toSlashDate).sort();
+    const blancDays = days.filter(d => d.codeJour === 2).map(toSlashDate).sort();
+
+    tempoTarif.specialDays.find(s => s.name === "rouge").lastDays = rougeDays;
+    tempoTarif.specialDays.find(s => s.name === "blanc").lastDays = blancDays;
+
+    return { rouge: rougeDays.length, blanc: blancDays.length };
+}
+
+/**
+ * Construit la bannière d'information + bouton "Actualiser" affichée dans
+ * l'accordéon de la ligne EDF - Tempo.
+ * @param {Date} dateBegin
+ * @param {Date} dateEnd
+ * @returns {HTMLElement}
+ */
+function buildTempoUpdateBanner(dateBegin, dateEnd) {
+    const tempoTarif = abonnements.find(a => a.name === "EDF - Tempo");
+    const allDates = tempoTarif.specialDays.flatMap(s => s.lastDays).sort();
+    const lastKnown = allDates.at(-1) ?? "";
+    const displayDate = lastKnown
+        ? lastKnown.split("/").reverse().join("/")
+        : "inconnue";
+
+    const banner = document.createElement("div");
+    banner.className = "d-flex align-items-center gap-2 p-2 mb-3 rounded border border-warning-subtle bg-warning-subtle";
+    banner.style.cssText = "font-size:0.85rem";
+
+    const ico = document.createElement("i");
+    ico.className = "fa-solid fa-calendar-days text-warning flex-shrink-0";
+    banner.appendChild(ico);
+
+    const info = document.createElement("span");
+    info.className = "flex-grow-1";
+    info.innerHTML = `Calendrier Tempo enregistré jusqu'au <strong>${displayDate}</strong>. `
+        + `Les jours postérieurs sont classés <strong>Bleu</strong> par défaut.`;
+    banner.appendChild(info);
+
+    const btn = document.createElement("button");
+    btn.className = "btn btn-sm btn-warning flex-shrink-0";
+    btn.innerHTML = '<i class="fa-solid fa-rotate me-1"></i>Actualiser';
+
+    btn.addEventListener("click", async () => {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i>Chargement…';
+        info.innerHTML = `Récupération du calendrier Tempo en cours…`;
+
+        try {
+            const result = await updateTempoSpecialDays();
+            info.innerHTML = `<span class="text-success fw-bold">`
+                + `<i class="fa-solid fa-check me-1"></i>Calendrier mis à jour !</span> `
+                + `${result.rouge} jours rouges · ${result.blanc} jours blancs.`;
+            btn.className = "btn btn-sm btn-success flex-shrink-0";
+            btn.innerHTML = '<i class="fa-solid fa-check me-1"></i>À jour';
+
+            // Recalcul avec les nouveaux types de jours puis rafraîchissement
+            calculateAllMonths(kvaSelector.value, getSelectedTypeOfPrice());
+            refreshResultView(dateBegin, dateEnd);
+        } catch (err) {
+            info.innerHTML = `<span class="text-danger">`
+                + `<i class="fa-solid fa-triangle-exclamation me-1"></i>`
+                + `Erreur : ${err.message}. Vérifiez votre connexion ou réessayez.</span>`;
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-rotate me-1"></i>Réessayer';
+        }
+    });
+
+    banner.appendChild(btn);
+    return banner;
 }
