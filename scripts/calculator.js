@@ -70,7 +70,10 @@ var calculator = {
                         // On reconverti à une heure réelle pour le calcul des HC/HP
                         const realHour = hourData.time.hour == 24 ? 0 : hourData.time.hour;
                         const realTime = { hour: realHour, minute: hourData.time.minute };
-                        if (grille.hc.some(range => isHC(realTime, range.start, range.end))) {
+                        const hcRanges = (grille.hcByDayType && grille.hcByDayType[dayType])
+                            ? grille.hcByDayType[dayType]
+                            : grille.hc;
+                        if (hcRanges.some(range => isHC(realTime, range.start, range.end))) {
                             hourData.type = dayType + " HC";
                             const prixKwh = abonnement[dayType].prixKwhHC;
                             hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
