@@ -3,7 +3,7 @@ abonnements.push({
     offer_type: "Marché",
     lastUpdate: "2026-05-07",
     subscription_url: "https://www.alterna-energie.fr",
-    price_url: "https://www.alterna-energie.fr/fiche-descriptive-electricite-verte-super-creuse",
+    price_url: "https://www.alterna-energie.fr/tarifs-electricite-vehicule-electrique",
     prices: [
         { puissance: 6, abonnement: 16.65 },
         { puissance: 9, abonnement: 20.83 },
