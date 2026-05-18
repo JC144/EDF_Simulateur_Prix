@@ -4,6 +4,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 [Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
 ## Derniers tarifs: 
+* Enercoop : 18 avril 2026
 * EDF : 2026-02-01
 * Alpiq : 2025-10-27
 * Alterna : 2025-12-18
@@ -13,7 +14,6 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 * Octopus : 2025-10-27
 * La belle énergie : 2025-12-01
 * ~~Ekwateur : 30 janvier 2024~~
-* ~~Enercoop : 01 Février 2024~~
 * ~~ES : 01 Février 2024~~
 * ~~Ilek : 01 Février 2024~~
 * ~~OHM Energie : 01 Février 2024~~
