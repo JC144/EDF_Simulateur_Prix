@@ -73,27 +73,28 @@ var calculator = {
                         const hcRanges = (grille.hcByDayType && grille.hcByDayType[dayType])
                             ? grille.hcByDayType[dayType]
                             : grille.hc;
-                        if (hcRanges.some(range => isHC(realTime, range.start, range.end))) {
-                            hourData.type = dayType + " HC";
-                            const prixKwh = abonnement[dayType].prixKwhHC;
-                            hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
-                            if (!isNaN(hourData.price)) {
-                                dayData.priceHC += hourData.price;
+                        const isHcSlot = hcRanges.some(range => isHC(realTime, range.start, range.end));
+
+                        let prixKwh;
+                        if (typeof grille.getPrixKwh === 'function') {
+                            const stepMinutes = 60 / step;
+                            prixKwh = grille.getPrixKwh(dayData.date, realTime, dayType, isHcSlot, stepMinutes);
+                            if (isNaN(prixKwh)) {
+                                dayData.spotMissing = true;
                             }
-                            if (!isNaN(hourData.conso)) {
-                                dayData.consoHC += hourData.conso;
-                            }
+                        } else {
+                            prixKwh = isHcSlot ? abonnement[dayType].prixKwhHC : abonnement[dayType].prixKwhHP;
                         }
-                        else {
+                        hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
+
+                        if (isHcSlot) {
+                            hourData.type = dayType + " HC";
+                            if (!isNaN(hourData.price)) dayData.priceHC += hourData.price;
+                            if (!isNaN(hourData.conso)) dayData.consoHC += hourData.conso;
+                        } else {
                             hourData.type = dayType + " HP";
-                            const prixKwh = abonnement[dayType].prixKwhHP;
-                            hourData.price = (((hourData.conso / 1000) * prixKwh) / 100);
-                            if (!isNaN(hourData.price)) {
-                                dayData.priceHP += hourData.price;
-                            }
-                            if (!isNaN(hourData.conso)) {
-                                dayData.consoHP += hourData.conso;
-                            }
+                            if (!isNaN(hourData.price)) dayData.priceHP += hourData.price;
+                            if (!isNaN(hourData.conso)) dayData.consoHP += hourData.conso;
                         }
 
                         dayData.hours.push(hourData);
@@ -101,6 +102,9 @@ var calculator = {
 
                     dayData.conso = dayData.hours.filter(m => !isNaN(m.conso)).reduce((a, b) => a + b.conso, 0);
                     dayData.price = dayData.hours.filter(m => !isNaN(m.price)).reduce((a, b) => a + b.price, 0) + monthData.aboPriceByDay;
+                    if (dayData.spotMissing) {
+                        dayData.price = monthData.aboPriceByDay;
+                    }
                 }
                 monthData.days.push(dayData);
             }
@@ -132,6 +136,10 @@ var calculator = {
 function sumMonthData(monthData) {
     monthData.conso = monthData.days.filter(d => !isNaN(d.conso)).reduce((a, b) => a + b.conso, 0);
     monthData.price = monthData.days.filter(d => !isNaN(d.price)).reduce((a, b) => a + b.price, 0);
+    monthData.spotMissing = monthData.days.some(d => d.spotMissing);
+    if (monthData.spotMissing) {
+        monthData.hasErrors = true;
+    }
     const diffNumberOfDays = monthData.numberOfDaysInMonth - monthData.days.length;
     if (diffNumberOfDays > 0) {
         monthData.hasErrors = true;
@@ -151,4 +159,8 @@ function isHC(timeInformation, hcTimeBegin, hcTimeEnd) {
   const isHC = time > begin && time <= end;
 
   return isHC;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { calculator, sumMonthData, isHC };
 }

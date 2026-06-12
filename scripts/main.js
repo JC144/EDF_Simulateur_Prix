@@ -1,5 +1,9 @@
 viewManager.init();
 
+// Les prix spot Sobry sont chargés en global (window.spotPrices) par
+// data/spot-fr.js via une balise <script> dans index.html — pas de fetch, pour
+// rester compatible avec l'ouverture directe du fichier (file://).
+
 var data = [];
 let calculatedMonths = {};
 
@@ -302,13 +306,28 @@ function refreshResultView(dateBegin, dateEnd) {
     table.appendChild(tableBody);
 
     let currentRow = 0;
+    // Une offre dont la MAJORITÉ des jours n'a pas de prix spot (énergie non
+    // calculable, ex. fichier ouvert en file:// → prix non chargés, ou import hors
+    // période couverte) ne doit pas être comparée : son total ne serait que
+    // l'abonnement. Un petit trou de données (qq jours) ne disqualifie pas l'offre.
+    const hasSpotGap = r => {
+        const days = r.tarif.months.flatMap(m => m.days || []);
+        if (!days.length) return false;
+        return days.filter(d => d.spotMissing).length / days.length > 0.5;
+    };
     const resultsOrdered = resultsForPeriod.map((r) => ({
         tarif: r.tarif,
         title: r.title,
         lastUpdate: r.lastUpdate,
         subscription_url: r.subscription_url
     }))
-        .sort((a, b) => a.tarif.price - b.tarif.price);
+        // Les offres sans prix spot sont reléguées en fin de classement pour ne pas
+        // être faussement désignées « les plus avantageuses ».
+        .sort((a, b) => {
+            const ga = hasSpotGap(a), gb = hasSpotGap(b);
+            if (ga !== gb) return ga - gb;
+            return a.tarif.price - b.tarif.price;
+        });
 
     resultsOrdered.forEach(result => {
         const tarifRow = document.createElement("tr");
@@ -476,21 +495,41 @@ function refreshResultView(dateBegin, dateEnd) {
         const containerTarifPrice = document.createElement("div");
         containerTarifPrice.className = "container justify-content-center";
 
+        const spotUnavailable = hasSpotGap(result);
+
         const titleMonthlyTarifPrice = document.createElement("div");
         titleMonthlyTarifPrice.className = "h4 row";
         spanMonthlyTarifPrice = document.createElement("span");
-        spanMonthlyTarifPrice.className = "badge fw-bold text-bg-info";
-        spanMonthlyTarifPrice.innerHTML = (result.tarif.price / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup>";
-        titleMonthlyTarifPrice.appendChild(spanMonthlyTarifPrice);
-        containerTarifPrice.appendChild(titleMonthlyTarifPrice);
+        if (spotUnavailable) {
+            // Erreur explicite : sans prix spot, l'énergie n'est pas calculable.
+            // On n'affiche PAS un coût (qui ne serait que l'abonnement) pour ne pas tromper.
+            spanMonthlyTarifPrice.className = "badge fw-bold text-bg-danger text-wrap";
+            spanMonthlyTarifPrice.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Prix spot indisponibles";
+            titleMonthlyTarifPrice.appendChild(spanMonthlyTarifPrice);
+            containerTarifPrice.appendChild(titleMonthlyTarifPrice);
 
-        const titleTotalTarifPrice = document.createElement("div");
-        titleTotalTarifPrice.className = "h5 row";
-        spanTotalTarifPrice = document.createElement("span");
-        spanTotalTarifPrice.className = "badge fw-bold text-muted";
-        spanTotalTarifPrice.innerHTML = "soit " + result.tarif.price.toFixed(2) + " €<br/> pour la période.";
-        titleTotalTarifPrice.appendChild(spanTotalTarifPrice);
-        containerTarifPrice.appendChild(titleTotalTarifPrice);
+            const titleTotalTarifPrice = document.createElement("div");
+            titleTotalTarifPrice.className = "h6 row";
+            const spanTotalTarifError = document.createElement("span");
+            spanTotalTarifError.className = "badge text-muted text-wrap";
+            spanTotalTarifError.innerHTML = "Aucun prix spot pour cette période — coût non calculable.";
+            titleTotalTarifPrice.appendChild(spanTotalTarifError);
+            containerTarifPrice.appendChild(titleTotalTarifPrice);
+        }
+        else {
+            spanMonthlyTarifPrice.className = "badge fw-bold text-bg-info";
+            spanMonthlyTarifPrice.innerHTML = (result.tarif.price / result.tarif.months.length).toFixed(2) + "<sup> €/mois</sup>";
+            titleMonthlyTarifPrice.appendChild(spanMonthlyTarifPrice);
+            containerTarifPrice.appendChild(titleMonthlyTarifPrice);
+
+            const titleTotalTarifPrice = document.createElement("div");
+            titleTotalTarifPrice.className = "h5 row";
+            spanTotalTarifPrice = document.createElement("span");
+            spanTotalTarifPrice.className = "badge fw-bold text-muted";
+            spanTotalTarifPrice.innerHTML = "soit " + result.tarif.price.toFixed(2) + " €<br/> pour la période.";
+            titleTotalTarifPrice.appendChild(spanTotalTarifPrice);
+            containerTarifPrice.appendChild(titleTotalTarifPrice);
+        }
 
         cellTarifPrice.appendChild(containerTarifPrice);
 
@@ -508,7 +547,11 @@ function refreshResultView(dateBegin, dateEnd) {
         const subSpanTitleLessExpensive = document.createElement("span");
         titleLessExpensive.appendChild(subSpanTitleLessExpensive);
 
-        if (currentRow == 0) {
+        if (spotUnavailable) {
+            subSpanTitleLessExpensive.className = "badge fw-bold text-bg-danger text-white";
+            subSpanTitleLessExpensive.innerHTML = "Non comparable";
+        }
+        else if (currentRow == 0) {
             subSpanTitleLessExpensive.className = "badge p-1 text-dark";
             subSpanTitleLessExpensive.innerHTML = "<i class='fa-solid fa-medal fa-lg'></i> Tarif le plus avantageux<br/><small>(selon vos données)</small>";
         }

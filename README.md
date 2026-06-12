@@ -18,6 +18,20 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 * ~~Ilek : 01 Février 2024~~
 * ~~OHM Energie : 01 Février 2024~~
 * ~~Switch : 01 Février 2024~~ [Voir ici](https://www.jechange.fr/energie/chez-switch/)
+* Sobry (SoCap, SoFlex) : 14/04/2026
+
+## Prix spot (offres Sobry)
+
+Les offres Sobry sont indexées sur le prix spot EPEX FR Day-Ahead. Les prix historiques
+sont stockés dans `data/spot-fr.js` et proviennent d'energy-charts.info
+(licence CC BY 4.0, source SMARD.de / Bundesnetzagentur).
+
+**Mise à jour manuelle des prix** (à relancer périodiquement) :
+
+```bash
+node tools/update-spot-prices.js 3   # 3 ans d'historique
+git add data/spot-fr.js && git commit -m "chore: maj prix spot FR"
+```
 
 ## Remerciements
 Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [Malory Bouvier](https://twitter.com/MaloryBouvier/).
