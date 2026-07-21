@@ -19,6 +19,10 @@ if (!provider) {
     console.error('Usage : node tools/try-parser.mjs <fournisseur> [--json]');
     process.exit(2);
 }
+if (!/^[a-zA-Z0-9_-]+$/.test(provider)) {
+    console.error('Erreur : fournisseur invalide (caractères autorisés : lettres, chiffres, - et _)');
+    process.exit(2);
+}
 
 const IMPORT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const parser = await import(`../parsers/${provider}.mjs`);
