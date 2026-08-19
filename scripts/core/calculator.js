@@ -96,7 +96,11 @@ function computeDay(day, aboPriceByDay, plan, getDayType, hcRangesFor, spotPrice
         return dayData;
     }
 
-    for (const [timeLabel, rawValue] of day.hours) {
+    // L'export EDF liste les relevés du plus récent au plus ancien : on trie
+    // avant construction, l'ordre de dayData.hours portant le graphe horaire.
+    const sortedHours = [...day.hours].sort((a, b) => a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0);
+
+    for (const [timeLabel, rawValue] of sortedHours) {
         const [hour, minute] = timeLabel.split(":");
         const hourData = {
             time: { hour: parseInt(hour), minute: parseInt(minute) },

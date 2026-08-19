@@ -49,6 +49,19 @@ test('formule de prix : W / step -> kWh, centimes -> euros, abonnement réparti 
     assert.ok(Math.abs(day.price - (2.4 + 30 / 31)) < 1e-9);
 });
 
+test('relevés fournis dans le désordre (export EDF : du plus récent au plus ancien) -> hours triées chronologiquement', () => {
+    const grille = makeGrille();
+    const day = makeFullDay('2024/03/05');
+    day.hours = [...day.hours].reverse();
+    const months = computeMonths(viewOf(grille), [day]);
+
+    const labels = months[0].days[0].hours.map(h =>
+        `${String(h.time.hour).padStart(2, '0')}:${String(h.time.minute).padStart(2, '0')}`);
+    assert.deepStrictEqual(labels, [...labels].sort());
+    assert.strictEqual(labels[0], '00:30');
+    assert.strictEqual(labels[labels.length - 1], '24:00');
+});
+
 test('jour incomplet (moins de 24 relevés) : conso et prix NaN', () => {
     const grille = makeGrille();
     const months = computeMonths(viewOf(grille), [makePartialDay('2024/03/05', 10)]);
