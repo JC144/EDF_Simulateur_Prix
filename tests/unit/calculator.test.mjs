@@ -62,6 +62,19 @@ test('relevés fournis dans le désordre (export EDF : du plus récent au plus a
     assert.strictEqual(labels[labels.length - 1], '24:00');
 });
 
+test('tri des relevés numérique : libellés non zéro-paddés ("9:30:00") dans le désordre -> ordre chronologique', () => {
+    const grille = makeGrille();
+    const day = makeFullDay('2024/03/05');
+    // Un tri lexicographique placerait "9:30:00" après "23:30:00".
+    day.hours = [...day.hours].reverse().map(([label, value]) => [label.replace(/^0/, ''), value]);
+    const months = computeMonths(viewOf(grille), [day]);
+
+    const minutes = months[0].days[0].hours.map(h => h.time.hour * 60 + h.time.minute);
+    assert.deepStrictEqual(minutes, [...minutes].sort((a, b) => a - b));
+    assert.strictEqual(minutes[0], 30);        // 00:30
+    assert.strictEqual(minutes[minutes.length - 1], 24 * 60); // 24:00
+});
+
 test('jour incomplet (moins de 24 relevés) : conso et prix NaN', () => {
     const grille = makeGrille();
     const months = computeMonths(viewOf(grille), [makePartialDay('2024/03/05', 10)]);

@@ -96,9 +96,11 @@ function computeDay(day, aboPriceByDay, plan, getDayType, hcRangesFor, spotPrice
         return dayData;
     }
 
-    // L'export EDF liste les relevés du plus récent au plus ancien : on trie
-    // avant construction, l'ordre de dayData.hours portant le graphe horaire.
-    const sortedHours = [...day.hours].sort((a, b) => a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0);
+    // Les parsers stockent les relevés du plus récent au plus ancien (convention
+    // des exports EDF/Enedis) : on trie avant construction, l'ordre de
+    // dayData.hours portant le graphe horaire. Tri numérique sur (heure, minute)
+    // pour ne pas dépendre du zéro-padding des libellés selon le parser.
+    const sortedHours = [...day.hours].sort((a, b) => minutesOfLabel(a[0]) - minutesOfLabel(b[0]));
 
     for (const [timeLabel, rawValue] of sortedHours) {
         const [hour, minute] = timeLabel.split(":");
@@ -163,6 +165,13 @@ function spotPrixKwh(slotPrices, time, step) {
         count++;
     }
     return sum / count;
+}
+
+// Minutes depuis le début de journée d'un libellé "HH:MM[:SS]" (minuit noté
+// 24:00 par les parsers, donc en fin de journée). Sert uniquement au tri.
+function minutesOfLabel(label) {
+    const [hour, minute] = label.split(":");
+    return parseInt(hour) * 60 + parseInt(minute);
 }
 
 // Heure scalaire pour le classement HP/HC : minuit (00:00 ou 24:00) vaut 24,
