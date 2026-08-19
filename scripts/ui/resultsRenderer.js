@@ -117,7 +117,9 @@ function renderMonthDetail(m, display) {
     }
     appendColumnHeader(refs["header-row"], "Total (€)", null, "text-end");
 
-    //Les jours sont affichés du plus récent au plus ancien
+    // Parcours inversé de m.days, qui suit l'ordre du parser : les exports
+    // EDF/Enedis/Total sont livrés du plus récent au plus ancien, le mois
+    // s'affiche donc du 1er au dernier jour (ordre chronologique).
     for (let j = m.days.length - 1; j >= 0; j--) {
         // Zébrage par paire ligne jour + ligne graphe (table-striped ne
         // convient plus : les lignes de graphe masquées cassent l'alternance).
