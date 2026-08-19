@@ -2,72 +2,72 @@
   {
     "name": "EDF - Bleu",
     "offer_type": "TRV",
-    "lastUpdate": "2026-02-01",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
     "prices": [
       {
         "puissance": 3,
-        "abonnement": 12.03,
+        "abonnement": 12.13,
         "bleu": {
-          "prixKwhHC": 19.4
+          "prixKwhHC": 20.01
         }
       },
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.86,
         "bleu": {
-          "prixKwhHC": 19.4
+          "prixKwhHC": 20.01
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.88,
         "bleu": {
-          "prixKwhHC": 19.27
+          "prixKwhHC": 19.85
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.76,
         "bleu": {
-          "prixKwhHC": 19.27
+          "prixKwhHC": 19.85
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 27.4,
         "bleu": {
-          "prixKwhHC": 19.27
+          "prixKwhHC": 19.85
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 31.14,
         "bleu": {
-          "prixKwhHC": 19.27
+          "prixKwhHC": 19.85
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 39.14,
         "bleu": {
-          "prixKwhHC": 19.27
+          "prixKwhHC": 19.85
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 46.47,
         "bleu": {
-          "prixKwhHC": 19.27
+          "prixKwhHC": 19.85
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 53.88,
         "bleu": {
-          "prixKwhHC": 19.27
+          "prixKwhHC": 19.85
         }
       }
     ],
@@ -90,73 +90,73 @@
   {
     "name": "EDF - Bleu Heures Creuses",
     "offer_type": "TRV",
-    "lastUpdate": "2026-02-01",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/tarif-bleu.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.86,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.79
+          "prixKwhHP": 21.42,
+          "prixKwhHC": 15.89
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.88,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.79
+          "prixKwhHP": 21.42,
+          "prixKwhHC": 15.89
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.76,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.79
+          "prixKwhHP": 21.42,
+          "prixKwhHC": 15.89
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 27.4,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.79
+          "prixKwhHP": 21.42,
+          "prixKwhHC": 15.89
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 31.14,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.79
+          "prixKwhHP": 21.42,
+          "prixKwhHC": 15.89
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 39.14,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.79
+          "prixKwhHP": 21.42,
+          "prixKwhHC": 15.89
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 46.47,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.79
+          "prixKwhHP": 21.42,
+          "prixKwhHC": 15.89
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 53.88,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.79
+          "prixKwhHP": 21.42,
+          "prixKwhHC": 15.89
         }
       }
     ],
@@ -168,121 +168,121 @@
   {
     "name": "EDF - Tempo",
     "offer_type": "TRV",
-    "lastUpdate": "2026-02-01",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/gestion-contrat/options/tempo/details.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.59,
+        "abonnement": 15.8,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.38,
+        "abonnement": 19.7,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.07,
+        "abonnement": 23.5,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.47,
+        "abonnement": 27.01,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.04,
+        "abonnement": 30.69,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 30,
-        "abonnement": 44.73,
+        "abonnement": 45.82,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.42,
+        "abonnement": 53.76,
         "bleu": {
-          "prixKwhHP": 16.12,
-          "prixKwhHC": 13.25
+          "prixKwhHP": 16.54,
+          "prixKwhHC": 13.56
         },
         "blanc": {
-          "prixKwhHP": 18.71,
-          "prixKwhHC": 14.99
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 15.36
         },
         "rouge": {
-          "prixKwhHP": 70.6,
-          "prixKwhHC": 15.75
+          "prixKwhHP": 72.95,
+          "prixKwhHC": 16.15
         }
       }
     ],
@@ -722,69 +722,69 @@
   {
     "name": "EDF - EJP",
     "offer_type": "TRV",
-    "lastUpdate": "2026-02-01",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
     "prices": [
       {
         "puissance": 9,
-        "abonnement": 19.2,
+        "abonnement": 19.52,
         "bleu": {
-          "prixKwhHP": 17.81,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 17.89,
+          "prixKwhHC": 17.89
         },
         "rouge": {
-          "prixKwhHP": 34.4,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 43.24,
+          "prixKwhHC": 17.89
         }
       },
       {
         "puissance": 12,
-        "abonnement": 22.71,
+        "abonnement": 23.14,
         "bleu": {
-          "prixKwhHP": 17.81,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 17.89,
+          "prixKwhHC": 17.89
         },
         "rouge": {
-          "prixKwhHP": 34.4,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 43.24,
+          "prixKwhHC": 17.89
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.27,
+        "abonnement": 26.81,
         "bleu": {
-          "prixKwhHP": 17.81,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 17.89,
+          "prixKwhHC": 17.89
         },
         "rouge": {
-          "prixKwhHP": 34.4,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 43.24,
+          "prixKwhHC": 17.89
         }
       },
       {
         "puissance": 18,
-        "abonnement": 29.74,
+        "abonnement": 30.37,
         "bleu": {
-          "prixKwhHP": 17.81,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 17.89,
+          "prixKwhHC": 17.89
         },
         "rouge": {
-          "prixKwhHP": 34.4,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 43.24,
+          "prixKwhHC": 17.89
         }
       },
       {
         "puissance": 36,
-        "abonnement": 51.31,
+        "abonnement": 52.6,
         "bleu": {
-          "prixKwhHP": 17.81,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 17.89,
+          "prixKwhHC": 17.89
         },
         "rouge": {
-          "prixKwhHP": 34.4,
-          "prixKwhHC": 17.81
+          "prixKwhHP": 43.24,
+          "prixKwhHC": 17.89
         }
       }
     ],
@@ -948,65 +948,65 @@
   {
     "name": "EDF - Vert Electrique",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHC": 19.51
+          "prixKwhHC": 19.48
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHC": 19.37
+          "prixKwhHC": 19.35
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHC": 19.37
+          "prixKwhHC": 19.35
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHC": 19.37
+          "prixKwhHC": 19.35
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHC": 19.37
+          "prixKwhHC": 19.35
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHC": 19.37
+          "prixKwhHC": 19.35
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHC": 19.37
+          "prixKwhHC": 19.35
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHC": 19.37
+          "prixKwhHC": 19.35
         }
       }
     ],
@@ -1029,73 +1029,73 @@
   {
     "name": "EDF - Vert Electrique Heures Creuses",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHP": 20.74,
-          "prixKwhHC": 15.88
+          "prixKwhHP": 20.71,
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHP": 20.74,
-          "prixKwhHC": 15.88
+          "prixKwhHP": 20.71,
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHP": 20.74,
-          "prixKwhHC": 15.88
+          "prixKwhHP": 20.71,
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHP": 20.74,
-          "prixKwhHC": 15.88
+          "prixKwhHP": 20.71,
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHP": 20.74,
-          "prixKwhHC": 15.88
+          "prixKwhHP": 20.71,
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHP": 20.74,
-          "prixKwhHC": 15.88
+          "prixKwhHP": 20.71,
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHP": 20.74,
-          "prixKwhHC": 15.88
+          "prixKwhHP": 20.71,
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHP": 20.74,
-          "prixKwhHC": 15.88
+          "prixKwhHP": 20.71,
+          "prixKwhHC": 15.85
         }
       }
     ],
@@ -1107,73 +1107,73 @@
   {
     "name": "EDF - Vert Electrique Auto",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-auto.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-auto.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHP": 22.77,
-          "prixKwhHC": 13.24
+          "prixKwhHP": 22.74,
+          "prixKwhHC": 13.21
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHP": 22.77,
-          "prixKwhHC": 13.24
+          "prixKwhHP": 22.74,
+          "prixKwhHC": 13.21
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHP": 22.77,
-          "prixKwhHC": 13.24
+          "prixKwhHP": 22.74,
+          "prixKwhHC": 13.21
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHP": 22.77,
-          "prixKwhHC": 13.24
+          "prixKwhHP": 22.74,
+          "prixKwhHC": 13.21
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHP": 22.77,
-          "prixKwhHC": 13.24
+          "prixKwhHP": 22.74,
+          "prixKwhHC": 13.21
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHP": 22.77,
-          "prixKwhHC": 13.24
+          "prixKwhHP": 22.74,
+          "prixKwhHC": 13.21
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHP": 22.77,
-          "prixKwhHC": 13.24
+          "prixKwhHP": 22.74,
+          "prixKwhHC": 13.21
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHP": 22.77,
-          "prixKwhHC": 13.24
+          "prixKwhHP": 22.74,
+          "prixKwhHC": 13.21
         }
       }
     ],
@@ -1185,65 +1185,65 @@
   {
     "name": "EDF - Vert Electrique Régional",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-regional.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHC": 19.57
+          "prixKwhHC": 19.54
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHC": 19.77
+          "prixKwhHC": 19.74
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHC": 19.77
+          "prixKwhHC": 19.74
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHC": 19.77
+          "prixKwhHC": 19.74
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHC": 19.77
+          "prixKwhHC": 19.74
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHC": 19.77
+          "prixKwhHC": 19.74
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHC": 19.77
+          "prixKwhHC": 19.74
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHC": 19.77
+          "prixKwhHC": 19.74
         }
       }
     ],
@@ -1266,73 +1266,73 @@
   {
     "name": "EDF - Vert Electrique Régional Heures Creuses",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-regional.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-regional.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHP": 21.4,
-          "prixKwhHC": 15.31
+          "prixKwhHP": 21.37,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHP": 21.4,
-          "prixKwhHC": 15.31
+          "prixKwhHP": 21.37,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHP": 21.4,
-          "prixKwhHC": 15.31
+          "prixKwhHP": 21.37,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHP": 21.4,
-          "prixKwhHC": 15.31
+          "prixKwhHP": 21.37,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHP": 21.4,
-          "prixKwhHC": 15.31
+          "prixKwhHP": 21.37,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHP": 21.4,
-          "prixKwhHC": 15.31
+          "prixKwhHP": 21.37,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHP": 21.4,
-          "prixKwhHC": 15.31
+          "prixKwhHP": 21.37,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHP": 21.4,
-          "prixKwhHC": 15.31
+          "prixKwhHP": 21.37,
+          "prixKwhHC": 15.28
         }
       }
     ],
@@ -1344,89 +1344,89 @@
   {
     "name": "EDF - Vert Electrique Week-End",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-week-end.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-weekend.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHC": 21.1
+          "prixKwhHC": 21.07
         },
         "weekend": {
-          "prixKwhHC": 15.88
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHC": 21.1
+          "prixKwhHC": 21.07
         },
         "weekend": {
-          "prixKwhHC": 15.88
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHC": 21.1
+          "prixKwhHC": 21.07
         },
         "weekend": {
-          "prixKwhHC": 15.88
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHC": 21.1
+          "prixKwhHC": 21.07
         },
         "weekend": {
-          "prixKwhHC": 15.88
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHC": 21.1
+          "prixKwhHC": 21.07
         },
         "weekend": {
-          "prixKwhHC": 15.88
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHC": 21.1
+          "prixKwhHC": 21.07
         },
         "weekend": {
-          "prixKwhHC": 15.88
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHC": 21.1
+          "prixKwhHC": 21.07
         },
         "weekend": {
-          "prixKwhHC": 15.88
+          "prixKwhHC": 15.85
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHC": 21.1
+          "prixKwhHC": 21.07
         },
         "weekend": {
-          "prixKwhHC": 15.88
+          "prixKwhHC": 15.85
         }
       }
     ],
@@ -1452,105 +1452,105 @@
   {
     "name": "EDF - Vert Electrique Week-End Heures Creuses",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-verte/vert-electrique-week-end.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-weekend.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHP": 21.88,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 21.85,
+          "prixKwhHC": 16.41
         },
         "weekend": {
-          "prixKwhHP": 16.43,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 16.41,
+          "prixKwhHC": 16.41
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHP": 21.88,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 21.85,
+          "prixKwhHC": 16.41
         },
         "weekend": {
-          "prixKwhHP": 16.43,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 16.41,
+          "prixKwhHC": 16.41
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHP": 21.88,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 21.85,
+          "prixKwhHC": 16.41
         },
         "weekend": {
-          "prixKwhHP": 16.43,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 16.41,
+          "prixKwhHC": 16.41
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHP": 21.88,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 21.85,
+          "prixKwhHC": 16.41
         },
         "weekend": {
-          "prixKwhHP": 16.43,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 16.41,
+          "prixKwhHC": 16.41
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHP": 21.88,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 21.85,
+          "prixKwhHC": 16.41
         },
         "weekend": {
-          "prixKwhHP": 16.43,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 16.41,
+          "prixKwhHC": 16.41
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 39.11,
         "bleu": {
-          "prixKwhHP": 21.88,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 21.85,
+          "prixKwhHC": 16.41
         },
         "weekend": {
-          "prixKwhHP": 16.43,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 16.41,
+          "prixKwhHC": 16.41
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 46.45,
         "bleu": {
-          "prixKwhHP": 21.88,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 21.85,
+          "prixKwhHC": 16.41
         },
         "weekend": {
-          "prixKwhHP": 16.43,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 16.41,
+          "prixKwhHC": 16.41
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHP": 21.88,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 21.85,
+          "prixKwhHC": 16.41
         },
         "weekend": {
-          "prixKwhHP": 16.43,
-          "prixKwhHC": 16.43
+          "prixKwhHP": 16.41,
+          "prixKwhHC": 16.41
         }
       }
     ],
@@ -1565,171 +1565,171 @@
   {
     "name": "EDF - Zen Estival",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-31",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-estival.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-estival.pdf",
     "prices": [
       {
         "puissance": 3,
-        "abonnement": 12.03,
+        "abonnement": 12.06,
         "hiver": {
-          "prixKwhHP": 26.27,
-          "prixKwhHC": 20.62
+          "prixKwhHP": 26.25,
+          "prixKwhHC": 20.59
         },
         "hiverSC": {
-          "prixKwhHC": 19.28
+          "prixKwhHC": 19.25
         },
         "ete": {
-          "prixKwhHP": 15.22,
-          "prixKwhHC": 13.04
+          "prixKwhHP": 15.19,
+          "prixKwhHC": 13.01
         },
         "eteSC": {
-          "prixKwhHC": 9.87
+          "prixKwhHC": 9.84
         }
       },
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "hiver": {
-          "prixKwhHP": 26.27,
-          "prixKwhHC": 20.62
+          "prixKwhHP": 26.25,
+          "prixKwhHC": 20.59
         },
         "hiverSC": {
-          "prixKwhHC": 19.28
+          "prixKwhHC": 19.25
         },
         "ete": {
-          "prixKwhHP": 15.22,
-          "prixKwhHC": 13.04
+          "prixKwhHP": 15.19,
+          "prixKwhHC": 13.01
         },
         "eteSC": {
-          "prixKwhHC": 9.87
+          "prixKwhHC": 9.84
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "hiver": {
-          "prixKwhHP": 26.27,
-          "prixKwhHC": 20.62
+          "prixKwhHP": 26.25,
+          "prixKwhHC": 20.59
         },
         "hiverSC": {
-          "prixKwhHC": 19.28
+          "prixKwhHC": 19.25
         },
         "ete": {
-          "prixKwhHP": 15.22,
-          "prixKwhHC": 13.04
+          "prixKwhHP": 15.19,
+          "prixKwhHC": 13.01
         },
         "eteSC": {
-          "prixKwhHC": 9.87
+          "prixKwhHC": 9.84
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "hiver": {
-          "prixKwhHP": 26.27,
-          "prixKwhHC": 20.62
+          "prixKwhHP": 26.25,
+          "prixKwhHC": 20.59
         },
         "hiverSC": {
-          "prixKwhHC": 19.28
+          "prixKwhHC": 19.25
         },
         "ete": {
-          "prixKwhHP": 15.22,
-          "prixKwhHC": 13.04
+          "prixKwhHP": 15.19,
+          "prixKwhHC": 13.01
         },
         "eteSC": {
-          "prixKwhHC": 9.87
+          "prixKwhHC": 9.84
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "hiver": {
-          "prixKwhHP": 26.27,
-          "prixKwhHC": 20.62
+          "prixKwhHP": 26.25,
+          "prixKwhHC": 20.59
         },
         "hiverSC": {
-          "prixKwhHC": 19.28
+          "prixKwhHC": 19.25
         },
         "ete": {
-          "prixKwhHP": 15.22,
-          "prixKwhHC": 13.04
+          "prixKwhHP": 15.19,
+          "prixKwhHC": 13.01
         },
         "eteSC": {
-          "prixKwhHC": 9.87
+          "prixKwhHC": 9.84
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "hiver": {
-          "prixKwhHP": 26.27,
-          "prixKwhHC": 20.62
+          "prixKwhHP": 26.25,
+          "prixKwhHC": 20.59
         },
         "hiverSC": {
-          "prixKwhHC": 19.28
+          "prixKwhHC": 19.25
         },
         "ete": {
-          "prixKwhHP": 15.22,
-          "prixKwhHC": 13.04
+          "prixKwhHP": 15.19,
+          "prixKwhHC": 13.01
         },
         "eteSC": {
-          "prixKwhHC": 9.87
+          "prixKwhHC": 9.84
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "hiver": {
-          "prixKwhHP": 26.27,
-          "prixKwhHC": 20.62
+          "prixKwhHP": 26.25,
+          "prixKwhHC": 20.59
         },
         "hiverSC": {
-          "prixKwhHC": 19.28
+          "prixKwhHC": 19.25
         },
         "ete": {
-          "prixKwhHP": 15.22,
-          "prixKwhHC": 13.04
+          "prixKwhHP": 15.19,
+          "prixKwhHC": 13.01
         },
         "eteSC": {
-          "prixKwhHC": 9.87
+          "prixKwhHC": 9.84
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "hiver": {
-          "prixKwhHP": 26.27,
-          "prixKwhHC": 20.62
+          "prixKwhHP": 26.25,
+          "prixKwhHC": 20.59
         },
         "hiverSC": {
-          "prixKwhHC": 19.28
+          "prixKwhHC": 19.25
         },
         "ete": {
-          "prixKwhHP": 15.22,
-          "prixKwhHC": 13.04
+          "prixKwhHP": 15.19,
+          "prixKwhHC": 13.01
         },
         "eteSC": {
-          "prixKwhHC": 9.87
+          "prixKwhHC": 9.84
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "hiver": {
-          "prixKwhHP": 26.27,
-          "prixKwhHC": 20.62
+          "prixKwhHP": 26.25,
+          "prixKwhHC": 20.59
         },
         "hiverSC": {
-          "prixKwhHC": 19.28
+          "prixKwhHC": 19.25
         },
         "ete": {
-          "prixKwhHP": 15.22,
-          "prixKwhHC": 13.04
+          "prixKwhHP": 15.19,
+          "prixKwhHC": 13.01
         },
         "eteSC": {
-          "prixKwhHC": 9.87
+          "prixKwhHC": 9.84
         }
       }
     ],
@@ -1811,72 +1811,72 @@
   {
     "name": "EDF - Zen Fixe",
     "offer_type": "Marché",
-    "lastUpdate": "2026-06-01",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-fixe.pdf",
     "prices": [
       {
         "puissance": 3,
-        "abonnement": 12.03,
+        "abonnement": 12.67,
         "bleu": {
-          "prixKwhHC": 18.5
+          "prixKwhHC": 18.47
         }
       },
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 17.22,
         "bleu": {
-          "prixKwhHC": 18.5
+          "prixKwhHC": 18.47
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 23.92,
         "bleu": {
-          "prixKwhHC": 18.38
+          "prixKwhHC": 18.35
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 29.7,
         "bleu": {
-          "prixKwhHC": 18.38
+          "prixKwhHC": 18.35
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 34,
         "bleu": {
-          "prixKwhHC": 18.38
+          "prixKwhHC": 18.35
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 39.24,
         "bleu": {
-          "prixKwhHC": 18.38
+          "prixKwhHC": 18.35
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 49.77,
         "bleu": {
-          "prixKwhHC": 18.38
+          "prixKwhHC": 18.35
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 57.76,
         "bleu": {
-          "prixKwhHC": 18.38
+          "prixKwhHC": 18.35
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 68.88,
         "bleu": {
-          "prixKwhHC": 18.38
+          "prixKwhHC": 18.35
         }
       }
     ],
@@ -1899,73 +1899,73 @@
   {
     "name": "EDF - Zen Fixe Heures Creuses",
     "offer_type": "Marché",
-    "lastUpdate": "2026-06-01",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/zen-fixe.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-fixe.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 18.36,
         "bleu": {
-          "prixKwhHP": 19.69,
-          "prixKwhHC": 15.1
+          "prixKwhHP": 19.66,
+          "prixKwhHC": 15.07
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 24.77,
         "bleu": {
-          "prixKwhHP": 19.69,
-          "prixKwhHC": 15.1
+          "prixKwhHP": 19.66,
+          "prixKwhHC": 15.07
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 30.91,
         "bleu": {
-          "prixKwhHP": 19.69,
-          "prixKwhHC": 15.1
+          "prixKwhHP": 19.66,
+          "prixKwhHC": 15.07
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 35.02,
         "bleu": {
-          "prixKwhHP": 19.69,
-          "prixKwhHC": 15.1
+          "prixKwhHP": 19.66,
+          "prixKwhHC": 15.07
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 40.51,
         "bleu": {
-          "prixKwhHP": 19.69,
-          "prixKwhHC": 15.1
+          "prixKwhHP": 19.66,
+          "prixKwhHC": 15.07
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 51.74,
         "bleu": {
-          "prixKwhHP": 19.69,
-          "prixKwhHC": 15.1
+          "prixKwhHP": 19.66,
+          "prixKwhHC": 15.07
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 62.38,
         "bleu": {
-          "prixKwhHP": 19.69,
-          "prixKwhHC": 15.1
+          "prixKwhHP": 19.66,
+          "prixKwhHC": 15.07
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 70.36,
         "bleu": {
-          "prixKwhHP": 19.69,
-          "prixKwhHC": 15.1
+          "prixKwhHP": 19.66,
+          "prixKwhHC": 15.07
         }
       }
     ],
@@ -1977,72 +1977,72 @@
   {
     "name": "EDF - Zen Online",
     "offer_type": "Marché",
-    "lastUpdate": "2026-02-01",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",
     "prices": [
       {
         "puissance": 3,
-        "abonnement": 12.03,
+        "abonnement": 12.13,
         "bleu": {
-          "prixKwhHC": 18.67
+          "prixKwhHC": 19.25
         }
       },
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.86,
         "bleu": {
-          "prixKwhHC": 18.67
+          "prixKwhHC": 19.25
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.88,
         "bleu": {
-          "prixKwhHC": 18.53
+          "prixKwhHC": 19.09
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.76,
         "bleu": {
-          "prixKwhHC": 18.53
+          "prixKwhHC": 19.09
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 27.4,
         "bleu": {
-          "prixKwhHC": 18.53
+          "prixKwhHC": 19.09
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 31.14,
         "bleu": {
-          "prixKwhHC": 18.53
+          "prixKwhHC": 19.09
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 39.14,
         "bleu": {
-          "prixKwhHC": 18.53
+          "prixKwhHC": 19.09
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 46.47,
         "bleu": {
-          "prixKwhHC": 18.53
+          "prixKwhHC": 19.09
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 53.88,
         "bleu": {
-          "prixKwhHC": 18.53
+          "prixKwhHC": 19.09
         }
       }
     ],
@@ -2065,73 +2065,73 @@
   {
     "name": "EDF - Zen Online Heures Creuses",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-online.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.86,
         "bleu": {
-          "prixKwhHP": 19.85,
-          "prixKwhHC": 15.22
+          "prixKwhHP": 20.59,
+          "prixKwhHC": 15.31
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.88,
         "bleu": {
-          "prixKwhHP": 19.85,
-          "prixKwhHC": 15.22
+          "prixKwhHP": 20.59,
+          "prixKwhHC": 15.31
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.76,
         "bleu": {
-          "prixKwhHP": 19.85,
-          "prixKwhHC": 15.22
+          "prixKwhHP": 20.59,
+          "prixKwhHC": 15.31
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 27.4,
         "bleu": {
-          "prixKwhHP": 19.85,
-          "prixKwhHC": 15.22
+          "prixKwhHP": 20.59,
+          "prixKwhHC": 15.31
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 31.14,
         "bleu": {
-          "prixKwhHP": 19.85,
-          "prixKwhHC": 15.22
+          "prixKwhHP": 20.59,
+          "prixKwhHC": 15.31
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 39.14,
         "bleu": {
-          "prixKwhHP": 19.85,
-          "prixKwhHC": 15.22
+          "prixKwhHP": 20.59,
+          "prixKwhHC": 15.31
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 46.47,
         "bleu": {
-          "prixKwhHP": 19.85,
-          "prixKwhHC": 15.22
+          "prixKwhHP": 20.59,
+          "prixKwhHC": 15.31
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 53.88,
         "bleu": {
-          "prixKwhHP": 19.85,
-          "prixKwhHC": 15.22
+          "prixKwhHP": 20.59,
+          "prixKwhHC": 15.31
         }
       }
     ],
@@ -2143,99 +2143,99 @@
   {
     "name": "EDF - Zen Week-End",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
     "prices": [
       {
         "puissance": 3,
-        "abonnement": 12.03,
+        "abonnement": 12.06,
         "bleu": {
-          "prixKwhHC": 21.8
+          "prixKwhHC": 21.77
         },
         "weekend": {
-          "prixKwhHC": 16.37
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHC": 21.8
+          "prixKwhHC": 21.77
         },
         "weekend": {
-          "prixKwhHC": 16.37
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHC": 21.8
+          "prixKwhHC": 21.77
         },
         "weekend": {
-          "prixKwhHC": 16.37
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHC": 21.8
+          "prixKwhHC": 21.77
         },
         "weekend": {
-          "prixKwhHC": 16.37
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHC": 21.8
+          "prixKwhHC": 21.77
         },
         "weekend": {
-          "prixKwhHC": 16.37
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHC": 21.8
+          "prixKwhHC": 21.77
         },
         "weekend": {
-          "prixKwhHC": 16.37
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHC": 21.8
+          "prixKwhHC": 21.77
         },
         "weekend": {
-          "prixKwhHC": 16.37
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHC": 21.8
+          "prixKwhHC": 21.77
         },
         "weekend": {
-          "prixKwhHC": 16.37
+          "prixKwhHC": 16.35
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHC": 21.8
+          "prixKwhHC": 21.77
         },
         "weekend": {
-          "prixKwhHC": 16.37
+          "prixKwhHC": 16.35
         }
       }
     ],
@@ -2261,105 +2261,105 @@
   {
     "name": "EDF - Zen Week-End HC",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHP": 22.63,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 22.6,
+          "prixKwhHC": 16.92
         },
         "weekend": {
-          "prixKwhHP": 16.95,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 16.92,
+          "prixKwhHC": 16.92
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHP": 22.63,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 22.6,
+          "prixKwhHC": 16.92
         },
         "weekend": {
-          "prixKwhHP": 16.95,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 16.92,
+          "prixKwhHC": 16.92
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHP": 22.63,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 22.6,
+          "prixKwhHC": 16.92
         },
         "weekend": {
-          "prixKwhHP": 16.95,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 16.92,
+          "prixKwhHC": 16.92
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHP": 22.63,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 22.6,
+          "prixKwhHC": 16.92
         },
         "weekend": {
-          "prixKwhHP": 16.95,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 16.92,
+          "prixKwhHC": 16.92
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHP": 22.63,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 22.6,
+          "prixKwhHC": 16.92
         },
         "weekend": {
-          "prixKwhHP": 16.95,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 16.92,
+          "prixKwhHC": 16.92
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHP": 22.63,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 22.6,
+          "prixKwhHC": 16.92
         },
         "weekend": {
-          "prixKwhHP": 16.95,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 16.92,
+          "prixKwhHC": 16.92
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHP": 22.63,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 22.6,
+          "prixKwhHC": 16.92
         },
         "weekend": {
-          "prixKwhHP": 16.95,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 16.92,
+          "prixKwhHC": 16.92
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHP": 22.63,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 22.6,
+          "prixKwhHC": 16.92
         },
         "weekend": {
-          "prixKwhHP": 16.95,
-          "prixKwhHC": 16.95
+          "prixKwhHP": 16.92,
+          "prixKwhHC": 16.92
         }
       }
     ],
@@ -2374,105 +2374,105 @@
   {
     "name": "EDF - Zen Week-End Option Flex",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-flex.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.85
+          "prixKwhHP": 20.62,
+          "prixKwhHC": 15.82
         },
         "sobriete": {
-          "prixKwhHP": 71.48,
-          "prixKwhHC": 20.65
+          "prixKwhHP": 71.45,
+          "prixKwhHC": 20.62
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.85
+          "prixKwhHP": 20.62,
+          "prixKwhHC": 15.82
         },
         "sobriete": {
-          "prixKwhHP": 71.48,
-          "prixKwhHC": 20.65
+          "prixKwhHP": 71.45,
+          "prixKwhHC": 20.62
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.85
+          "prixKwhHP": 20.62,
+          "prixKwhHC": 15.82
         },
         "sobriete": {
-          "prixKwhHP": 71.48,
-          "prixKwhHC": 20.65
+          "prixKwhHP": 71.45,
+          "prixKwhHC": 20.62
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.85
+          "prixKwhHP": 20.62,
+          "prixKwhHC": 15.82
         },
         "sobriete": {
-          "prixKwhHP": 71.48,
-          "prixKwhHC": 20.65
+          "prixKwhHP": 71.45,
+          "prixKwhHC": 20.62
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.85
+          "prixKwhHP": 20.62,
+          "prixKwhHC": 15.82
         },
         "sobriete": {
-          "prixKwhHP": 71.48,
-          "prixKwhHC": 20.65
+          "prixKwhHP": 71.45,
+          "prixKwhHC": 20.62
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.85
+          "prixKwhHP": 20.62,
+          "prixKwhHC": 15.82
         },
         "sobriete": {
-          "prixKwhHP": 71.48,
-          "prixKwhHC": 20.65
+          "prixKwhHP": 71.45,
+          "prixKwhHC": 20.62
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.85
+          "prixKwhHP": 20.62,
+          "prixKwhHC": 15.82
         },
         "sobriete": {
-          "prixKwhHP": 71.48,
-          "prixKwhHC": 20.65
+          "prixKwhHP": 71.45,
+          "prixKwhHC": 20.62
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHP": 20.65,
-          "prixKwhHC": 15.85
+          "prixKwhHP": 20.62,
+          "prixKwhHC": 15.82
         },
         "sobriete": {
-          "prixKwhHP": 71.48,
-          "prixKwhHC": 20.65
+          "prixKwhHP": 71.45,
+          "prixKwhHC": 20.62
         }
       }
     ],
@@ -2644,89 +2644,89 @@
   {
     "name": "EDF - Zen Week-End Plus",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end-plus.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHC": 22.48
+          "prixKwhHC": 21.54
         },
         "weekend": {
-          "prixKwhHC": 16.85
+          "prixKwhHC": 16.18
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHC": 22.48
+          "prixKwhHC": 21.54
         },
         "weekend": {
-          "prixKwhHC": 16.85
+          "prixKwhHC": 16.18
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHC": 22.48
+          "prixKwhHC": 21.54
         },
         "weekend": {
-          "prixKwhHC": 16.85
+          "prixKwhHC": 16.18
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHC": 22.48
+          "prixKwhHC": 21.54
         },
         "weekend": {
-          "prixKwhHC": 16.85
+          "prixKwhHC": 16.18
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHC": 22.48
+          "prixKwhHC": 21.54
         },
         "weekend": {
-          "prixKwhHC": 16.85
+          "prixKwhHC": 16.18
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHC": 22.48
+          "prixKwhHC": 21.54
         },
         "weekend": {
-          "prixKwhHC": 16.85
+          "prixKwhHC": 16.18
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHC": 22.48
+          "prixKwhHC": 21.54
         },
         "weekend": {
-          "prixKwhHC": 16.85
+          "prixKwhHC": 16.18
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHC": 22.48
+          "prixKwhHC": 21.54
         },
         "weekend": {
-          "prixKwhHC": 16.85
+          "prixKwhHC": 16.18
         }
       }
     ],
@@ -2752,105 +2752,105 @@
   {
     "name": "EDF - Zen Week-End Plus HC",
     "offer_type": "Marché",
-    "lastUpdate": "2026-03-16",
+    "lastUpdate": "2026-08-01",
     "isCommunity": false,
     "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end-plus.html",
     "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end-plus.pdf",
     "prices": [
       {
         "puissance": 6,
-        "abonnement": 15.65,
+        "abonnement": 15.69,
         "bleu": {
-          "prixKwhHP": 23.05,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 22.13,
+          "prixKwhHC": 16.6
         },
         "weekend": {
-          "prixKwhHP": 17.24,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 16.6,
+          "prixKwhHC": 16.6
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.56,
+        "abonnement": 19.62,
         "bleu": {
-          "prixKwhHP": 23.05,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 22.13,
+          "prixKwhHC": 16.6
         },
         "weekend": {
-          "prixKwhHP": 17.24,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 16.6,
+          "prixKwhHC": 16.6
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.32,
+        "abonnement": 23.39,
         "bleu": {
-          "prixKwhHP": 23.05,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 22.13,
+          "prixKwhHC": 16.6
         },
         "weekend": {
-          "prixKwhHP": 17.24,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 16.6,
+          "prixKwhHC": 16.6
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.84,
+        "abonnement": 26.93,
         "bleu": {
-          "prixKwhHP": 23.05,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 22.13,
+          "prixKwhHC": 16.6
         },
         "weekend": {
-          "prixKwhHP": 17.24,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 16.6,
+          "prixKwhHC": 16.6
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.49,
+        "abonnement": 30.59,
         "bleu": {
-          "prixKwhHP": 23.05,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 22.13,
+          "prixKwhHC": 16.6
         },
         "weekend": {
-          "prixKwhHP": 17.24,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 16.6,
+          "prixKwhHC": 16.6
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.24,
+        "abonnement": 38.37,
         "bleu": {
-          "prixKwhHP": 23.05,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 22.13,
+          "prixKwhHC": 16.6
         },
         "weekend": {
-          "prixKwhHP": 17.24,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 16.6,
+          "prixKwhHC": 16.6
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.37,
+        "abonnement": 45.52,
         "bleu": {
-          "prixKwhHP": 23.05,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 22.13,
+          "prixKwhHC": 16.6
         },
         "weekend": {
-          "prixKwhHP": 17.24,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 16.6,
+          "prixKwhHC": 16.6
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.54,
+        "abonnement": 52.72,
         "bleu": {
-          "prixKwhHP": 23.05,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 22.13,
+          "prixKwhHC": 16.6
         },
         "weekend": {
-          "prixKwhHP": 17.24,
-          "prixKwhHC": 17.24
+          "prixKwhHP": 16.6,
+          "prixKwhHC": 16.6
         }
       }
     ],
