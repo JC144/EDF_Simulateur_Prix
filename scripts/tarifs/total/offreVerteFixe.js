@@ -1,7 +1,7 @@
 defineTarif({
     name: "TotalEnergie - Offre verte fixe",
     offer_type: "Marché",
-    lastUpdate: "2026-07-29",
+    lastUpdate: "2026-09-24",
     isCommunity: true,
     subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-electricite",
     price_url: "https://www.totalenergies.fr/fileadmin/Digital/Documents-contractuels/GT/grille-tarifaire-verte-fixe-particuliers.pdf",
@@ -16,8 +16,8 @@ defineTarif({
         30: 46.47,
         36: 53.88
     },
-    dayTypes: { bleu: { price: 21.47 } },
+    dayTypes: { bleu: { price: 25.19 } },
     // 3 et 6 kVA ont un prix du kWh plus élevé
-    priceOverrides: { 3: { bleu: { price: 21.64 } }, 6: { bleu: { price: 21.64 } } },
+    priceOverrides: { 3: { bleu: { price: 25.4 } }, 6: { bleu: { price: 25.4 } } },
     dayRule: { type: "constant", dayType: "bleu" }
 });

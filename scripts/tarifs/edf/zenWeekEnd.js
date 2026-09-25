@@ -1,14 +1,14 @@
 defineTarif({
     name: "EDF - Zen Week-End",
     offer_type: "Marché",
-    lastUpdate: "2026-08-01",
+    lastUpdate: "2026-09-15",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
-    subscriptions: { 3: 12.06, 6: 15.69, 9: 19.62, 12: 23.39, 15: 26.93, 18: 30.59, 24: 38.37, 30: 45.52, 36: 52.72 },
+    subscriptions: { 3: 12.13, 6: 15.86, 9: 19.88, 12: 23.76, 15: 27.4, 18: 31.14, 24: 39.14, 30: 46.47, 36: 53.88 },
     dayTypes: {
-        bleu: { price: 21.77 },
-        weekend: { price: 16.35 }
+        bleu: { price: 22.85 },
+        weekend: { price: 17.1 }
     },
     dayRule: { type: "weekly", default: "bleu", days: { weekend: [0, 6] } }
 });
@@ -16,14 +16,14 @@ defineTarif({
 defineTarif({
     name: "EDF - Zen Week-End HC",
     offer_type: "Marché",
-    lastUpdate: "2026-08-01",
+    lastUpdate: "2026-09-15",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-week-end.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
-    subscriptions: { 6: 15.69, 9: 19.62, 12: 23.39, 15: 26.93, 18: 30.59, 24: 38.37, 30: 45.52, 36: 52.72 },
+    subscriptions: { 6: 15.86, 9: 19.88, 12: 23.76, 15: 27.4, 18: 31.14, 24: 39.14, 30: 46.47, 36: 53.88 },
     dayTypes: {
-        bleu: { HP: 22.6, HC: 16.92 },
-        weekend: { HP: 16.92, HC: 16.92 }   // tout le week-end au prix HC
+        bleu: { HP: 23.59, HC: 17.62 },
+        weekend: { HP: 17.62, HC: 17.62 }   // tout le week-end au prix HC
     },
     dayRule: { type: "weekly", default: "bleu", days: { weekend: [0, 6] } },
     hcRanges: "custom"
@@ -35,14 +35,14 @@ defineTarif({
 defineTarif({
     name: "EDF - Zen Week-End Option Flex",
     offer_type: "Marché",
-    lastUpdate: "2026-08-01",
+    lastUpdate: "2026-09-15",
     isCommunity: false,
     subscription_url: "https://particulier.edf.fr/fr/accueil/electricite-gaz/offres-electricite/offres-marche/electricite-weekend/zen-flex.html",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf",
-    subscriptions: { 6: 15.69, 9: 19.62, 12: 23.39, 15: 26.93, 18: 30.59, 24: 38.37, 30: 45.52, 36: 52.72 },
+    subscriptions: { 6: 15.86, 9: 19.88, 12: 23.76, 15: 27.4, 18: 31.14, 24: 39.14, 30: 46.47, 36: 53.88 },
     dayTypes: {
-        bleu: { HP: 20.62, HC: 15.82 },
-        sobriete: { HP: 71.45, HC: 20.62 }
+        bleu: { HP: 21.42, HC: 15.95 },
+        sobriete: { HP: 74.67, HC: 21.42 }
     },
     dayRule: { type: "calendar", default: "bleu", calendar: "zenflex-sobriete" },
     hcRanges: [

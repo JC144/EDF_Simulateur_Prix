@@ -1,7 +1,7 @@
 defineTarif({
     name: "TotalEnergie - Offre standard fixe",
     offer_type: "Marché",
-    lastUpdate: "2026-07-29",
+    lastUpdate: "2026-09-24",
     isCommunity: true,
     subscription_url: "https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-standard-fixe-electricite",
     price_url: "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-standard-fixe-particuliers.pdf",
@@ -16,8 +16,8 @@ defineTarif({
         30: 46.47,
         36: 53.88
     },
-    dayTypes: { bleu: { price: 20.98 } },
+    dayTypes: { bleu: { price: 24.87 } },
     // 3 et 6 kVA ont un prix du kWh plus élevé
-    priceOverrides: { 3: { bleu: { price: 21.15 } }, 6: { bleu: { price: 21.15 } } },
+    priceOverrides: { 3: { bleu: { price: 25.07 } }, 6: { bleu: { price: 25.07 } } },
     dayRule: { type: "constant", dayType: "bleu" }
 });
