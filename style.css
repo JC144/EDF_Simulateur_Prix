@@ -1245,6 +1245,11 @@ a.btn-donate:hover {
   transform: rotate(90deg);
 }
 
+/* Icône « grille de plus de 6 mois » à côté du nom du tarif. */
+.tarif-stale-icon {
+  cursor: help;
+}
+
 /* Ligne accordéon de détail : fond bleu très clair (au lieu du gris
    table-secondary) pour le contraste avec les titres mensuels. */
 .tarif-detail-row {
