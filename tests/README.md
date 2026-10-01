@@ -21,7 +21,9 @@ node --test "tests/**/*.test.mjs"
 ## Structure
 
 - `unit/` — tests unitaires ciblés : frontières HP/HC du calculateur, plages HC
-  personnalisées, parser CSV EDF, règles `getDayType` (Tempo, EJP, week-end, Estival).
+  personnalisées, parser CSV EDF, règles `getDayType` (Tempo, EJP, week-end, Estival),
+  slugs des pages de grille et péremption à 6 mois (`tarifMeta.test.mjs`). Le
+  contenu des pages `tarifs/*.html` est testé côté `import/` (`npm test`).
 - `golden.test.mjs` + `golden/` — tests golden-master : les résultats complets de la
   simulation sur le CSV réel sont figés dans des snapshots JSON versionnés.
   - `monthly-<kva>.json` — agrégats mensuels (conso, prix, HP/HC) par tarif EDF, pour

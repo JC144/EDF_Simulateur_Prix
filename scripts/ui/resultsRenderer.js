@@ -3,6 +3,7 @@ import { cloneTemplate } from './dom.js';
 import { bandColumns, buildDayModel, buildPeriodShare } from './tariffDisplay.js';
 import { renderDayChart } from './dayChart.js';
 import { renderBandShareBar } from './bandShareBar.js';
+import { tarifPagePath } from '../utils/tarifMeta.js';
 
 // Rendu de l'écran de résultats : table de comparaison des tarifs et accordéons
 // de détail mensuel/journalier. Le HTML vit dans les <template> d'index.html ;
@@ -16,7 +17,6 @@ export function render(container, calculatedMonths, dateBegin, dateEnd, sumPerio
             tarif: sumPeriod(t.allMonths, dateBegin, dateEnd),
             title: t.title,
             lastUpdate: t.lastUpdate,
-            subscription_url: t.subscription_url,
             display: t.display
         }
     });
@@ -46,13 +46,8 @@ function renderTarifRow(result, index, bestResult, dateBegin) {
 
     refs["title"].textContent = result.title;
     refs["last-update"].textContent = `Dernière mise à jour : ${result.lastUpdate}`;
-    if (result.subscription_url) {
-        refs["provider-link"].href = result.subscription_url;
-    }
-    else {
-        refs["link-br"].remove();
-        refs["provider-link"].remove();
-    }
+    // Page de grille générée (tarifs/<slug>.html) : liens fournisseur et PDF.
+    refs["offer-link"].href = tarifPagePath(result.title);
 
     const share = buildPeriodShare(result.tarif.months, result.display);
     if (share) {

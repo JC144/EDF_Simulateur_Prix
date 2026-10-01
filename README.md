@@ -67,12 +67,8 @@ Vérifiez que votre export s'appelle bien history.csv.
 ## Comment contribuer
 Toutes les contributions sont les bienvenues, via une Pull Request vers `main` (fork + branche). Avant d'ouvrir la PR, vérifiez que les tests passent : `node --test "tests/**/*.test.mjs"` (Node ≥ 22).
 
-* **Ajouter un tarif** — suivez le guide [scripts/tarifs/README.md](scripts/tarifs/README.md) : les tarifs sont des définitions déclaratives `defineTarif(...)` dans `scripts/tarifs/<fournisseur>/*.js` (aucune fonction à écrire), avec des recettes pour chaque type d'offre (Base, HP/HC, week-end, calendrier type Tempo, saisonnier, prix spot). N'oubliez pas la balise `<script>` correspondante dans `index.html`.
-* **Mettre à jour un tarif** — modifiez les prix et `lastUpdate` dans le fichier concerné, puis régénérez les snapshots de simulation et relisez le diff (recette « Mettre à jour un prix » du même guide) :
-  ```
-  UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"
-  git diff tests/golden
-  ```
+* **Ajouter un tarif** — suivez le guide [scripts/tarifs/README.md](scripts/tarifs/README.md) : les tarifs sont des définitions déclaratives `defineTarif(...)` dans `scripts/tarifs/<fournisseur>/*.js` (aucune fonction à écrire), avec des recettes pour chaque type d'offre (Base, HP/HC, week-end, calendrier type Tempo, saisonnier, prix spot). N'oubliez pas la balise `<script>` correspondante dans `index.html`, puis générez la page de grille du tarif (`cd import && npm run gen`, voir [Pages de grille tarifaire](#pages-de-grille-tarifaire)).
+* **Mettre à jour un tarif** — modifiez les prix et `lastUpdate` dans le fichier concerné, puis suivez la [procédure de mise à jour](#mise-à-jour-des-données-tarifaires) (snapshots de simulation, pages de grille, relecture du diff).
 * **Créer un importateur pour un fournisseur non géré** (Engie, Sobry, grilles HTML…) — ajoutez un parser `import/parsers/<fournisseur>.mjs` respectant le contrat `parse(doc, url) -> { gridDate, offers }` (clés = `name` des `defineTarif`, prix kWh en centimes TTC, abonnements en €/mois TTC). Les outils `import/tools/` (`dump-text.mjs`, `try-parser.mjs`, `gen-expected.mjs`) permettent d'itérer sur des fixtures locales, avec des tests sans réseau — voir [import/README.md](import/README.md).
 * **Corriger ou améliorer l'application** (parsers d'export de consommation, interface, calculs) — l'architecture est décrite dans la section [Développement](#développement) ci-dessous.
 * **Signaler un problème ou proposer une offre manquante** — ouvrez une [issue](https://github.com/JC144/EDF_Simulateur_Prix/issues).
@@ -87,6 +83,7 @@ L'application est 100% statique (aucun build, aucune dépendance à installer), 
 * `scripts/core/` — logique métier : `calculator.js` (calculs), `simulation.js` (personnalisation + calcul global), `tarifsRegistry.js` (accès au registre des tarifs).
 * `scripts/parsers/` — un parser par format d'export (EDF, Enedis, TotalEnergies, SER, Home Assistant) et `index.js` qui choisit le bon d'après le nom du fichier.
 * `scripts/tarifs-registry.js` et `scripts/tarifs/` — registre global `window.abonnements` et fichiers de tarifs (scripts classiques, chargés avant l'application).
+* `tarifs/` — une page HTML statique par tarif (grille tarifaire standardisée), **générée** à partir de `scripts/tarifs/` : ne pas éditer à la main (voir [Pages de grille tarifaire](#pages-de-grille-tarifaire)).
 
 Pour développer en local, servez le répertoire via un serveur HTTP (les modules ES ne fonctionnent pas en `file://`) :
 
@@ -98,13 +95,43 @@ puis ouvrez [http://localhost:8000](http://localhost:8000).
 
 ### Mise à jour des données tarifaires
 
-Le dossier [`import/`](import/README.md) contient les outils locaux (Node ≥ 22) de mise à jour des données : grilles tarifaires PDF des fournisseurs (`price_url` des `defineTarif`, prix patchés automatiquement dans `scripts/tarifs/**`), calendriers Tempo/EJP et Zenflex, prix spot EPEX FR. Point d'entrée recommandé :
+Le dossier [`import/`](import/README.md) contient les outils locaux (Node ≥ 22) de mise à jour des données : grilles tarifaires PDF des fournisseurs (`price_url` des `defineTarif`, prix patchés automatiquement dans `scripts/tarifs/**`), calendriers Tempo/EJP et Zenflex, prix spot EPEX FR. Première utilisation : `cd import && npm ci`.
 
-```
-node import/update-all.mjs
-```
+Procédure de mise à jour :
 
-qui lance les quatre scripts en parallèle et affiche une synthèse. La revue du `git diff` et la régénération des goldens restent manuelles avant commit — voir [import/README.md](import/README.md).
+1. **Mettre à jour les données** — automatiquement :
+   ```
+   node import/update-all.mjs
+   ```
+   qui lance les quatre scripts en parallèle, affiche une synthèse puis **régénère les pages du site** dérivées des tarifs (étape 2). Pour un tarif sans importateur (grilles HTML d'Alterna/Enercoop, Engie…), modifiez à la main les prix et `lastUpdate` dans `scripts/tarifs/<fournisseur>/*.js`.
+2. **Régénérer les pages du site** — fait par `update-all.mjs` à chaque lancement. Après une modification manuelle seule :
+   ```
+   cd import && npm run gen
+   ```
+3. **Régénérer les snapshots de simulation** (goldens) — ou `node import/update-all.mjs --goldens` à l'étape 1 :
+   ```
+   UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"
+   ```
+4. **Relire le diff** : il doit correspondre exactement aux changements de prix attendus.
+   ```
+   git diff scripts/tarifs scripts/tarifs-lib
+   git diff tests/golden
+   git diff index.html tarifs sitemap.xml
+   ```
+5. **Lancer les tests**, puis commiter le tout (données, goldens et pages générées ensemble) :
+   ```
+   node --test "tests/**/*.test.mjs"
+   cd import && npm test
+   ```
+   `npm test` échoue si les pages générées ne sont plus à jour (`npm run gen` oublié).
+
+`node import/update-all.mjs --dry-run` (ou `--check-only`) exécute tout sans rien écrire et se contente de signaler les pages à régénérer. Détails et options : [import/README.md](import/README.md).
+
+### Pages de grille tarifaire
+
+Chaque tarif a sa page statique `tarifs/<slug>.html` (slug dérivé du nom du tarif, ex. `EDF - Tempo` → `tarifs/edf-tempo.html`), au même gabarit pour toutes les offres : date de la grille, lien vers l'offre et vers la grille officielle (PDF), abonnement par puissance, prix du kWh, heures creuses et règle des types de jour. Un avertissement s'affiche dans le navigateur quand la grille a plus de 6 mois. L'accueil (section « Tarifs suivis ») et le tableau de résultats du simulateur (« Détails de l'offre ») renvoient vers ces pages.
+
+Ces pages, la section « Tarifs suivis » d'`index.html` et les entrées correspondantes de `sitemap.xml` sont **générées** par `import/tools/gen-tarif-pages.mjs` et `import/tools/gen-tarifs-section.mjs` (lancés ensemble par `cd import && npm run gen`) et committées telles quelles : ne les éditez pas à la main, modifiez le tarif puis régénérez. Un tarif retiré ou renommé voit son ancienne page supprimée à la génération suivante. Un nouveau fournisseur doit être ajouté à la table `PROVIDERS` de `import/lib/site-gen.mjs`.
 
 ### Prix spot (tarifs Sobry)
 

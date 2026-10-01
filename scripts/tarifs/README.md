@@ -22,6 +22,7 @@ Modifier la valeur dans `subscriptions` / `dayTypes` du fichier concerné, mettr
 ```
 UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"
 git diff tests/golden
+cd import && npm run gen    # page tarifs/<slug>.html, section « Tarifs suivis », sitemap
 ```
 
 ### Tarif à prix unique (type Base)
@@ -227,10 +228,21 @@ calendriers utilisés :
 <script src="./scripts/tarifs/monfournisseur/monoffre.js"></script>
 ```
 
+Puis générer sa page de grille (`tarifs/<slug>.html`, slug dérivé du `name`) et
+mettre à jour la section « Tarifs suivis » de l'accueil et le sitemap :
+
+```
+cd import && npm run gen
+```
+
+Un nouveau dossier fournisseur doit aussi être ajouté à la table `PROVIDERS` de
+`import/lib/site-gen.mjs` (nom commercial affiché).
+
 ## Vérifier
 
 ```
 node --test "tests/**/*.test.mjs"
+cd import && npm test      # inclut « pages du site à jour » (sinon : npm run gen)
 ```
 
 Un nouveau tarif fait échouer les tests golden (résultats de simulation figés) : c'est

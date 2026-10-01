@@ -2,7 +2,9 @@
 // Mise à jour globale : lance les quatre scripts d'import du dossier
 // (calendriers Tempo/EJP, calendrier Zenflex, prix spot EPEX FR, grilles
 // tarifaires PDF) en sous-processus, bufferise leur sortie (affichée à la
-// complétion de chaque script) et termine par une synthèse.
+// complétion de chaque script) et termine par une synthèse, puis régénère
+// les pages du site dérivées des tarifs (npm run gen ; vérification seule en
+// --dry-run / --check-only).
 //   node update-all.mjs [--dry-run] [--full] [--force] [--check-only]
 //                       [--only tempo,zenflex,spot,tarifs] [--sequential]
 //                       [--goldens] [--help]
@@ -13,6 +15,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
 import { REPO_ROOT } from './lib/tarif-defs.mjs';
+import { reportChanges } from './lib/site-gen.mjs';
+import { run as runTarifsSection } from './tools/gen-tarifs-section.mjs';
+import { run as runTarifPages } from './tools/gen-tarif-pages.mjs';
 
 const IMPORT_DIR = path.dirname(fileURLToPath(import.meta.url));
 
@@ -74,9 +79,15 @@ async function main() {
 
     const allOk = results.every(r => r.code === 0);
     const goldensNeeded = results.some(r => r.goldensNeeded);
+    // Pages du site : régénérées à chaque run, même si un script a échoué (un
+    // échec n'écrit rien ; les autres scripts ont pu mettre à jour des
+    // tarifs) ou si rien n'a changé (rattrape une modification manuelle d'un
+    // tarif). En --dry-run / --check-only : simple vérification, rien n'est écrit.
+    runSiteGenerators({ check: opts.dryRun || opts.checkOnly });
     if (goldensNeeded && !opts.dryRun && !opts.checkOnly) {
         console.log('\nFichiers modifiés — à vérifier avant commit :');
         console.log('  git diff scripts/tarifs scripts/tarifs-lib');
+        console.log('  git diff index.html tarifs sitemap.xml   (pages de grille et section « Tarifs suivis »)');
         console.log('  UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"   (depuis la racine)');
         console.log('  git diff tests/golden');
     }
@@ -207,6 +218,24 @@ function printSummary(results) {
     }
 }
 
+// Pages statiques dérivées des tarifs (section « Tarifs suivis » d'index.html,
+// pages tarifs/*.html, sitemap.xml) : déterministes, équivalent de
+// npm run gen (check = npm run gen:check, informatif : n'échoue pas le run).
+function runSiteGenerators({ check }) {
+    console.log(check
+        ? '\nVérification des pages du site (npm run gen:check) ...'
+        : '\nRégénération des pages du site (npm run gen) ...');
+    try {
+        reportChanges(runTarifsSection({ check }).changes, { check, what: 'Section « Tarifs suivis » d’index.html' });
+        const pages = runTarifPages({ check });
+        for (const w of new Set(pages.warnings)) console.warn(`Attention : ${w}`);
+        reportChanges(pages.changes, { check, what: 'Pages de grille tarifaire (tarifs/*.html, sitemap.xml)' });
+    } catch (error) {
+        console.error(`Échec de la régénération des pages : ${error.message}`);
+        process.exitCode = 1;
+    }
+}
+
 // Régénère les goldens depuis la racine (le glob est résolu par node --test).
 function runGoldens() {
     console.log('\nRégénération des goldens : UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs" ...');
@@ -249,6 +278,11 @@ Options :
   --goldens       si tout est OK et que des fichiers ont changé, régénère les goldens
                   (incompatible avec --dry-run / --check-only)
   --help          affiche cette aide
+
+À chaque run, les pages du site dérivées des tarifs (section « Tarifs suivis »
+d'index.html, pages tarifs/*.html, sitemap.xml) sont ensuite régénérées
+(équivalent de npm run gen) ; en --dry-run / --check-only elles sont seulement
+vérifiées.
 
 Pour un ciblage fin (--from/--to, --option TEMPO|EJP, --provider, --tarif),
 lancer le script individuel. Code de sortie : 0 si tout OK, 1 sinon.`);

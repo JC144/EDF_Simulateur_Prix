@@ -51,3 +51,30 @@ export function groupByPriceUrl(defs = listTarifDefs()) {
     }
     return byUrl;
 }
+
+// Scripts tarifs effectivement chargés par l'application, dans l'ordre
+// d'index.html (lib, calendriers, données spot, puis tarifs).
+export function listAppScripts() {
+    const html = fs.readFileSync(path.join(REPO_ROOT, 'index.html'), 'utf8');
+    const matches = html.matchAll(/<script src="\.\/(scripts\/(?:tarifs|tarifs-lib)\/[^"]+)"><\/script>/g);
+    return [...matches].map(m => m[1]);
+}
+
+// Exécute les scripts de l'application avec la VRAIE factory defineTarif
+// (validation comprise) et renvoie les abonnements construits (champ display
+// notamment) et les calendriers. Lève à la moindre erreur de définition.
+// -> { abonnements, calendars }
+export function loadBuiltTarifs() {
+    const sandbox = { abonnements: [], console };
+    sandbox.window = sandbox;
+    const context = vm.createContext(sandbox);
+    for (const rel of listAppScripts()) {
+        const code = fs.readFileSync(path.join(REPO_ROOT, rel), 'utf8');
+        new vm.Script(code, { filename: rel }).runInContext(context);
+    }
+    const errors = sandbox.tarifDefinitionErrors ?? [];
+    if (errors.length > 0) {
+        throw new Error('Définitions de tarifs invalides :\n' + errors.join('\n'));
+    }
+    return { abonnements: sandbox.abonnements, calendars: sandbox.TarifCalendars ?? {} };
+}

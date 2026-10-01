@@ -785,6 +785,201 @@ a.btn-donate:hover {
   max-width: 72ch;
 }
 
+/* --- Page de grille tarifaire (tarifs/*.html, générées par
+   import/tools/gen-tarif-pages.mjs) : même gabarit pour toutes les offres. --- */
+.tarif-page {
+  max-width: 880px;
+}
+
+.tarif-page h1 {
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+}
+
+.tarif-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.tarif-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent-palest);
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.tarif-badge-community {
+  color: var(--ink-2);
+  background: var(--border-soft);
+  border-color: var(--border);
+}
+
+.tarif-meta {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-top: 24px;
+}
+
+.tarif-date {
+  font-size: 16.5px;
+  margin: 0 0 12px;
+}
+
+.tarif-date time {
+  font-weight: 700;
+}
+
+.tarif-meta .alert {
+  margin: 0 0 12px;
+}
+
+.tarif-stale-hint {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.tarif-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+
+.tarif-section {
+  margin-top: 40px;
+}
+
+.tarif-section h2 {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+}
+
+.tarif-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin: 20px 0 8px;
+}
+
+.tarif-unit {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.tarif-formula {
+  font-family: var(--font-display);
+  font-weight: 600;
+  background: var(--accent-palest);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.tarif-table {
+  margin-bottom: 0;
+}
+
+.tarif-table th[scope="row"] {
+  font-weight: 600;
+}
+
+.tarif-table td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Prix unique d'une ligne dans une table HP/HC : centré sur les deux colonnes. */
+.tarif-table td.tarif-single {
+  text-align: center;
+}
+
+.tarif-band {
+  font-weight: 600;
+}
+
+.tarif-window {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.tarif-list {
+  padding-left: 1.2rem;
+}
+
+.tarif-list li {
+  margin-bottom: 6px;
+}
+
+.tarif-footer > .shell {
+  padding-block: 32px;
+}
+
+/* Les tables de grille (3 colonnes courtes) restent des tables sur mobile :
+   on neutralise le mode carte générique des .table (≤ 768 px, plus bas),
+   d'où la spécificité .table.tarif-table. */
+@media (max-width: 768px) {
+  .table.tarif-table {
+    display: table;
+  }
+
+  .table.tarif-table thead {
+    display: table-header-group;
+  }
+
+  .table.tarif-table tbody {
+    display: table-row-group;
+  }
+
+  .table.tarif-table tr {
+    display: table-row;
+    margin-bottom: 0;
+  }
+
+  .table.tarif-table th,
+  .table.tarif-table td {
+    display: table-cell;
+    width: auto;
+    padding: 0.6rem 0.5rem;
+    position: static;
+    font-size: 14px;
+  }
+
+  .table.tarif-table td::before {
+    content: none;
+  }
+
+  .table.tarif-table td[data-label] {
+    text-align: left !important;
+  }
+
+  .table.tarif-table td.tarif-single[data-label] {
+    text-align: center !important;
+  }
+
+  .tarif-meta {
+    padding: 16px;
+  }
+}
+
 /* ============================================================
    5. Wizard d'import
    ============================================================ */

@@ -5,13 +5,7 @@
 import vm from 'node:vm';
 import fs from 'node:fs';
 import path from 'node:path';
-import { REPO_ROOT } from './tarif-defs.mjs';
-
-function listAppScripts() {
-    const html = fs.readFileSync(path.join(REPO_ROOT, 'index.html'), 'utf8');
-    const matches = html.matchAll(/<script src="\.\/(scripts\/(?:tarifs|tarifs-lib)\/[^"]+)"><\/script>/g);
-    return [...matches].map(m => m[1]);
-}
+import { REPO_ROOT, listAppScripts } from './tarif-defs.mjs';
 
 // pending: [{ file, newSource }] (chemins relatifs repo, séparateur '/')
 // -> { ok: true } | { ok: false, error }

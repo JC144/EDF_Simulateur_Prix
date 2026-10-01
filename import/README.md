@@ -80,6 +80,40 @@ Les flags de ciblage fin (`--from`/`--to`, `--option TEMPO|EJP`, `--provider`,
 La revue humaine reste la même qu'avec les scripts individuels : relire
 `git diff scripts/tarifs scripts/tarifs-lib`, régénérer les goldens
 (automatisable avec `--goldens`), relire `git diff tests/golden`, puis commit.
+À la fin de **chaque** run, l'orchestrateur régénère aussi les pages du site
+(équivalent de `npm run gen`, voir ci-dessous) : y compris si un script a
+échoué (les autres ont pu écrire) ou si rien n'a changé (une modification
+manuelle d'un tarif est ainsi rattrapée). Relire
+`git diff index.html tarifs sitemap.xml`. En `--dry-run` / `--check-only`, les
+pages sont seulement vérifiées (équivalent de `npm run gen:check`, informatif :
+n'affecte pas le code de sortie).
+
+## Pages du site générées (npm run gen)
+
+Deux générateurs produisent du HTML statique à partir des `defineTarif` ;
+leur sortie est **committée** (site sans build) et ne dépend que des données :
+
+- `tools/gen-tarifs-section.mjs` : section « Tarifs suivis » d'`index.html`
+  (entre `<!-- TARIFS-LIST:BEGIN/END -->`), un lien « détails de l'offre » par tarif.
+- `tools/gen-tarif-pages.mjs` : une page standardisée par tarif,
+  `tarifs/<slug>.html` (slug dérivé du `name`, cf. `scripts/utils/tarifMeta.js`) :
+  date de la grille, lien vers l'offre (`subscription_url`) et vers la grille
+  officielle (`price_url`, « (PDF) » si l'URL finit par `.pdf`), abonnement par
+  puissance, prix du kWh (un tableau par groupe de puissances quand il y a des
+  `priceOverrides`), heures creuses, règle des types de jour (formule pour les
+  tarifs spot). Met aussi à jour `sitemap.xml` entre `<!-- TARIF-PAGES:BEGIN/END -->`
+  et supprime les pages générées dont le tarif a disparu.
+
+```powershell
+npm run gen          # régénère la section, les pages et le sitemap
+npm run gen:check    # exit 1 si quelque chose est à régénérer (aussi vérifié par npm test)
+```
+
+À relancer après toute modification d'un tarif (prix, `lastUpdate`, URL, ajout
+ou renommage) faite hors de `update-all.mjs`. Un tarif doit être déclaré dans `index.html` pour avoir sa page
+(le générateur charge la vraie librairie `defineTarif` pour la table `display`
+et les calendriers). L'avertissement « grille de plus de 6 mois » est calculé
+dans le navigateur (`scripts/tarif-page.js`), pas au moment de la génération.
 
 ## Statuts du rapport
 
@@ -113,7 +147,9 @@ tempo-update.mjs      mise à jour des calendriers Tempo/EJP (voir « Calendrier
 zenflex-update.mjs    mise à jour du calendrier des jours de sobriété Zenflex (voir « Calendrier Zenflex » ci-dessous)
 manifest.json         état persistant par URL { sha256, etag, lastChecked, lastApplied } — committé
 lib/
-  tarif-defs.mjs      énumère les defineTarif via node:vm (comme tests/helpers/legacyLoader.mjs)
+  tarif-defs.mjs      énumère les defineTarif via node:vm (comme tests/helpers/legacyLoader.mjs) ;
+                      loadBuiltTarifs : abonnements construits par la vraie lib (scripts d'index.html)
+  site-gen.mjs        aides des générateurs HTML : fournisseurs, formats FR, écriture idempotente
   registry.mjs        URL -> fournisseur/parser ; URLs HTML non gérées
   download.mjs        fetch conditionnel + SHA-256 + cache/ (gitignoré)
   pdf-text.mjs        extraction pdfjs-dist -> items positionnés + reconstruction de lignes/cellules
@@ -133,7 +169,10 @@ tools/
   dump-text.mjs       télécharge les PDFs et régénère les fixtures json+txt
   try-parser.mjs      exécute un parser sur ses fixtures et affiche la réconciliation avec le repo
   gen-expected.mjs    régénère les snapshots .expected.json
-tests/                node --test : fr-numbers, patch-tarif, parsers (hermétiques, sans réseau)
+  gen-tarifs-section.mjs  section « Tarifs suivis » d'index.html (voir « Pages du site générées »)
+  gen-tarif-pages.mjs     pages tarifs/<slug>.html + sitemap.xml
+tests/                node --test : fr-numbers, patch-tarif, parsers, site-gen (hermétiques, sans réseau ;
+                      site-gen vérifie aussi que les pages committées sont à jour)
 ```
 
 Contrat parser : les clés de `offers` sont exactement les `name` des `defineTarif` ; prix kWh en **centimes TTC**, abonnements en **€ TTC/mois** ; `priceOverrides` émis quand le PDF différencie certaines puissances (la valeur de référence est celle de la plus grande puissance).
