@@ -35,7 +35,7 @@ const SCRIPTS = [
 // lib/report.mjs ; NON GERE (HTML) est volontairement exclu (imprimé à
 // chaque run pour les URLs HTML, vérification manuelle déjà connue).
 const WARNING_PATTERNS = [
-    /^ATTENTION : .*index\.html/, // spot-update : nouvelle année à brancher dans index.html
+    /^ATTENTION : .*tarifs-manifest\.js/, // spot-update : nouvelle année à brancher dans le manifeste
     /^\[(INTERVENTION MANUELLE REQUISE|PARSER MANQUANT|ERREUR RESEAU|ERREUR PARSING|VALEUR INTROUVABLE \(patch refuse\)|OFFRE INTROUVABLE)\]/,
 ];
 

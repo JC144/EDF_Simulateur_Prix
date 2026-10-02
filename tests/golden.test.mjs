@@ -94,7 +94,7 @@ function contractSnapshot(abo) {
     return contract;
 }
 
-test('chargement : tous les scripts de tarifs d\'index.html se chargent sans erreur', () => {
+test('chargement : tous les scripts de tarifs du manifeste se chargent sans erreur', () => {
     const abonnements = loadAbonnements();
     assert.ok(abonnements.length > 0);
     for (const abo of abonnements) {

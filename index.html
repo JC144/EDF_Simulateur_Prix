@@ -5,17 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'none'">
+        content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description"
-        content="Comparez gratuitement les abonnements d'électricité (EDF, Tempo, heures creuses…) à partir de votre consommation Linky réelle. 100 % local, sans inscription.">
+        content="Comparez plus de 50 abonnements d'électricité (EDF, Tempo, heures creuses…) sur votre consommation Linky réelle. Gratuit, 100 % local, sans inscription.">
     <meta name="author" content="jcvasselon">
-    <title>Comparateur d'abonnements d'électricité — simulateur Linky gratuit</title>
+    <title>Simulateur EDF, Tempo et 50+ tarifs d'électricité avec Linky</title>
     <link rel="canonical" href="https://comparateur-abonnements-electricite.fr/">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://comparateur-abonnements-electricite.fr/">
-    <meta property="og:title" content="Comparateur d'abonnements d'électricité">
+    <meta property="og:title" content="Simulateur EDF, Tempo et 50+ tarifs d'électricité avec Linky">
     <meta property="og:description"
         content="Comparez gratuitement les tarifs des fournisseurs d'électricité à partir de votre export de consommation Linky. 100% local, sans envoi de données.">
     <meta property="og:image" content="https://comparateur-abonnements-electricite.fr/img/screen.png">
@@ -25,20 +25,16 @@
     <meta property="og:site_name" content="Comparateur d'abonnements d'électricité">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Comparateur d'abonnements d'électricité">
+    <meta name="twitter:title" content="Simulateur EDF, Tempo et 50+ tarifs d'électricité avec Linky">
     <meta name="twitter:description"
         content="Comparez gratuitement les tarifs des fournisseurs d'électricité à partir de votre export de consommation Linky. 100% local, sans envoi de données.">
     <meta name="twitter:image" content="https://comparateur-abonnements-electricite.fr/img/screen.png">
 
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
@@ -62,6 +58,7 @@
       },
       "author": {
         "@type": "Person",
+        "@id": "https://comparateur-abonnements-electricite.fr/#auteur",
         "name": "jcvasselon",
         "url": "https://github.com/JC144",
         "sameAs": [
@@ -79,12 +76,14 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": "https://comparateur-abonnements-electricite.fr/#website",
       "name": "Comparateur d'abonnements d'électricité",
       "url": "https://comparateur-abonnements-electricite.fr/",
       "description": "Simulateur gratuit pour comparer les tarifs des fournisseurs d'électricité en France depuis un export de consommation Linky.",
       "inLanguage": "fr-FR",
       "publisher": {
         "@type": "Person",
+        "@id": "https://comparateur-abonnements-electricite.fr/#auteur",
         "name": "jcvasselon",
         "url": "https://github.com/JC144"
       }
@@ -151,6 +150,23 @@
 </head>
 
 <body>
+    <!-- Icônes (sprite SVG, référencées par <use href="#fa-…">) : Font Awesome Free 6.5.1
+         by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free
+         (Icons: CC BY 4.0) Copyright 2023 Fonticons, Inc. -->
+    <svg xmlns="http://www.w3.org/2000/svg" hidden>
+        <symbol id="fa-arrow-right" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></symbol>
+        <symbol id="fa-arrows-rotate" viewBox="0 0 512 512"><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160H352c-17.7 0-32 14.3-32 32s14.3 32 32 32H463.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V80c0-17.7-14.3-32-32-32s-32 14.3-32 32v35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V432c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352H160c17.7 0 32-14.3 32-32s-14.3-32-32-32H48.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></symbol>
+        <symbol id="fa-chevron-right" viewBox="0 0 320 512"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></symbol>
+        <symbol id="fa-circle-plus" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></symbol>
+        <symbol id="fa-circle-question" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></symbol>
+        <symbol id="fa-file-arrow-up" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 408c0 13.3-10.7 24-24 24s-24-10.7-24-24V305.9l-31 31c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l72-72c9.4-9.4 24.6-9.4 33.9 0l72 72c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-31-31V408z"/></symbol>
+        <symbol id="fa-github" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></symbol>
+        <symbol id="fa-lock" viewBox="0 0 448 512"><path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></symbol>
+        <symbol id="fa-medal" viewBox="0 0 512 512"><path d="M4.1 38.2C1.4 34.2 0 29.4 0 24.6C0 11 11 0 24.6 0H133.9c11.2 0 21.7 5.9 27.4 15.5l68.5 114.1c-48.2 6.1-91.3 28.6-123.4 61.9L4.1 38.2zm503.7 0L405.6 191.5c-32.1-33.3-75.2-55.8-123.4-61.9L350.7 15.5C356.5 5.9 366.9 0 378.1 0H487.4C501 0 512 11 512 24.6c0 4.8-1.4 9.6-4.1 13.6zM80 336a176 176 0 1 1 352 0A176 176 0 1 1 80 336zm184.4-94.9c-3.4-7-13.3-7-16.8 0l-22.4 45.4c-1.4 2.8-4 4.7-7 5.1L168 298.9c-7.7 1.1-10.7 10.5-5.2 16l36.3 35.4c2.2 2.2 3.2 5.2 2.7 8.3l-8.6 49.9c-1.3 7.6 6.7 13.5 13.6 9.9l44.8-23.6c2.7-1.4 6-1.4 8.7 0l44.8 23.6c6.9 3.6 14.9-2.2 13.6-9.9l-8.6-49.9c-.5-3 .5-6.1 2.7-8.3l36.3-35.4c5.6-5.4 2.5-14.8-5.2-16l-50.1-7.3c-3-.4-5.7-2.4-7-5.1l-22.4-45.4z"/></symbol>
+        <symbol id="fa-play" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></symbol>
+        <symbol id="fa-repeat" viewBox="0 0 512 512"><path d="M0 224c0 17.7 14.3 32 32 32s32-14.3 32-32c0-53 43-96 96-96H320v32c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-9.2-9.2-22.9-11.9-34.9-6.9S320 19.1 320 32V64H160C71.6 64 0 135.6 0 224zm512 64c0-17.7-14.3-32-32-32s-32 14.3-32 32c0 53-43 96-96 96H192V352c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V448H352c88.4 0 160-71.6 160-160z"/></symbol>
+        <symbol id="fa-triangle-exclamation" viewBox="0 0 512 512"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></symbol>
+    </svg>
     <nav class="site-nav">
         <div class="shell site-nav-inner">
             <a href="./" class="site-nav-brand">
@@ -180,8 +196,7 @@
                         <div class="hero-badges">
                             <span class="pill">100&nbsp;% gratuit</span>
                             <span class="pill">Sans inscription</span>
-                            <a class="pill" href="https://github.com/JC144/EDF_Simulateur_Prix" rel="noopener"><i
-                                    class="fa-brands fa-github" aria-hidden="true"></i> Open source</a>
+                            <a class="pill" href="https://github.com/JC144/EDF_Simulateur_Prix" rel="noopener"><svg class="icon icon-github" viewBox="0 0 496 512" aria-hidden="true" focusable="false"><use href="#fa-github"/></svg> Open source</a>
                         </div>
                         <h1>Comparateur d'abonnements <span class="hl">d'électricité</span></h1>
                         <p class="hero-lead">
@@ -190,10 +205,9 @@
                                 Linky</strong>.
                         </p>
                         <div class="hero-cta">
-                            <button type="button" class="btn btn-success btn-lg" id="startButton">Démarrer <i
-                                    class="fa-solid fa-play ms-2"></i></button>
+                            <button type="button" class="btn btn-success btn-lg" id="startButton">Démarrer <svg class="icon icon-play ms-2" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><use href="#fa-play"/></svg></button>
                             <p class="hero-privacy">
-                                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                                <svg class="icon icon-lock" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#fa-lock"/></svg>
                                 <span>100&nbsp;% local&nbsp;: vos données Linky ne quittent jamais votre navigateur.
                                     <br/>Pas de cookies, pas de trackers.</span>
                             </p>
@@ -762,7 +776,7 @@
                             </h3>
 
                             <label class="upload-dropzone mt-3 mb-3" for="csvFile" id="csvDropzone">
-                                <i class="fa-solid fa-file-arrow-up upload-dropzone-icon"></i>
+                                <svg class="icon icon-file-arrow-up upload-dropzone-icon" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><use href="#fa-file-arrow-up"/></svg>
                                 <span class="upload-dropzone-title">Choisissez votre fichier CSV</span>
                                 <span class="upload-dropzone-hint">ou glissez-déposez-le ici</span>
                                 <span class="upload-dropzone-file d-none" id="csvFileName"></span>
@@ -788,7 +802,7 @@
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#accordionHelperContainer"
                                                 aria-expanded="false" aria-controls="accordionHelperContainer">
-                                                <i class="fa-solid fa-circle-question me-2"></i>
+                                                <svg class="icon icon-circle-question me-2" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-circle-question"/></svg>
                                                 Comment récupérer les données sur le site de votre fournisseur ?
                                             </button>
                                         </h4>
@@ -1025,7 +1039,7 @@
                                 Tarifs communautaires
                             </h3>
                             <div class="alert alert-warning" role="alert">
-                                <p class="h5 alert-heading"><i class="fa-solid fa-triangle-exclamation me-2"></i>Vérifiez
+                                <p class="h5 alert-heading"><svg class="icon icon-triangle-exclamation me-2" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg>Vérifiez
                                     ces tarifs avant de les utiliser</p>
                                 <p class="mb-0">Les tarifs communautaires ne nous parviennent pas directement et sont
                                     maintenus par la communauté.<br/><strong>Ils peuvent ne pas être à jour : vérifiez-les
@@ -1050,11 +1064,10 @@
                         </div>
                         </div>
                         <div id="wizardNav" class="wizard-nav my-4">
-                            <button type="button" class="btn btn-primary" id="wizardNextButton">Suivant<i
-                                    class="fa-solid fa-arrow-right ms-2"></i></button>
+                            <button type="button" class="btn btn-primary" id="wizardNextButton">Suivant<svg class="icon icon-arrow-right ms-2" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><use href="#fa-arrow-right"/></svg></button>
                             <button type="button" class="btn btn-success d-none" id="simulateButton">Simuler les
                                 différents
-                                tarifs <i class="fa-solid fa-play ms-2"></i></button>
+                                tarifs <svg class="icon icon-play ms-2" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><use href="#fa-play"/></svg></button>
                         </div>
                     </div>
                 </div>
@@ -1070,7 +1083,7 @@
                 <div class="card-body">
                     <h2 class="visually-hidden">Résultats de la simulation</h2>
                     <div class="alert alert-warning fade show" role="alert">
-                        <strong class="alert-heading"><i class="fa-solid fa-triangle-exclamation toast-icon"></i>
+                        <strong class="alert-heading"><svg class="icon icon-triangle-exclamation toast-icon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg>
                             Attention:
                         </strong>
                         <ul>
@@ -1112,7 +1125,7 @@
 
                             <div class="col-sm">
                                 <button type="button" class="btn btn-primary btn-circle" id="refreshButton" disabled>
-                                    <i class="fa-solid fa-arrows-rotate"></i>
+                                    <svg class="icon icon-arrows-rotate" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-arrows-rotate"/></svg>
                                 </button>
                             </div>
                         </div>
@@ -1238,13 +1251,11 @@
         <tr>
             <th class="align-middle">
                 <button type="button" class="btn btn-link p-0 ms-3 tarif-toggle" title="Détail mois par mois"
-                    data-bs-toggle="collapse" aria-expanded="false" data-ref="toggle"><i
-                        class="fa-solid fa-chevron-right"></i></button>
+                    data-bs-toggle="collapse" aria-expanded="false" data-ref="toggle"><svg class="icon icon-chevron-right" viewBox="0 0 320 512" aria-hidden="true" focusable="false"><use href="#fa-chevron-right"/></svg></button>
                 <span class="ms-2" data-ref="title"></span>
                 <!-- Grille de plus de STALE_MONTHS mois : tooltip Bootstrap (voir resultsRenderer) -->
                 <span class="ms-1 text-warning tarif-stale-icon" tabindex="0" role="img"
-                    data-ref="stale-warning" hidden><i class="fa-solid fa-triangle-exclamation"
-                        aria-hidden="true"></i></span>
+                    data-ref="stale-warning" hidden><svg class="icon icon-triangle-exclamation" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg></span>
                 <div class="fw-normal">
                     <span class="ms-2" data-ref="last-update"></span>
                     <br />
@@ -1275,14 +1286,13 @@
 
     <!-- Badge du tarif le plus avantageux (1er du classement) -->
     <template id="tpl-diff-best">
-        <span class="badge p-1 text-dark"><i class="fa-solid fa-medal fa-lg"></i> Tarif le plus
+        <span class="badge p-1 text-dark"><svg class="icon icon-medal icon-lg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-medal"/></svg> Tarif le plus
             avantageux<br /><small>(selon vos données)</small></span>
     </template>
 
     <!-- Badges de surcoût par rapport au plus avantageux -->
     <template id="tpl-diff-worse">
-        <span class="badge fw-bold text-bg-warning text-white" data-ref="diff-badge"><i
-                class="fa-solid fa-circle-plus"></i><sup> €/mois</sup></span>
+        <span class="badge fw-bold text-bg-warning text-white" data-ref="diff-badge"><svg class="icon icon-circle-plus" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-circle-plus"/></svg><sup> €/mois</sup></span>
         <div class="h5 row">
             <span class="badge fw-bold text-muted" data-ref="diff-total"><br /></span>
         </div>
@@ -1299,7 +1309,7 @@
                 <button type="button" class="btn btn-sm btn-link p-0 band-share-toggle"
                     data-ref="mode-toggle" title="Basculer la répartition kWh / € (hors abonnement)"
                     aria-pressed="false">
-                    <i class="fa-solid fa-repeat" aria-hidden="true"></i>
+                    <svg class="icon icon-repeat" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-repeat"/></svg>
                     <span data-ref="unit-kwh">kWh</span><span aria-hidden="true">·</span><span data-ref="unit-eur">€</span>
                 </button>
             </div>
@@ -1312,7 +1322,7 @@
          bande horaire du tarif (HP, HC, super creuses...) | Total. -->
     <template id="tpl-month-detail">
         <h3 class="month-title d-inline ms-2" data-ref="month-name"></h3>
-        <i class="fa-solid fa-triangle-exclamation text-warning ms-2" data-ref="month-warning" hidden></i>
+        <span class="text-warning ms-2" data-ref="month-warning" hidden><svg class="icon icon-triangle-exclamation" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg></span>
         <span class="h4 month-summary float-end"><span data-ref="summary-conso"></span> / <span class="fw-bold"
                 data-ref="summary-price"></span></span>
         <table class="mt-2 ms-2 table table-sm align-middle">
@@ -1335,7 +1345,7 @@
         <tr>
             <td class="text-start align-middle" data-ref="date-cell"><button type="button"
                     class="btn btn-sm btn-link p-0 me-2 day-chart-toggle" title="Détail horaire"
-                    data-ref="chart-toggle"><i class="fa-solid fa-chevron-right"></i></button><span
+                    data-ref="chart-toggle"><svg class="icon icon-chevron-right" viewBox="0 0 320 512" aria-hidden="true" focusable="false"><use href="#fa-chevron-right"/></svg></button><span
                     data-ref="date"></span><span class="badge daytype-badge ms-2" data-ref="day-badge"></span></td>
             <td class="text-center align-middle" data-ref="conso"></td>
             <td class="text-end align-middle" data-ref="price"></td>
@@ -1365,79 +1375,14 @@
         </tr>
     </template>
 
-    <!-- Tarifs (scripts classiques : chaque fichier pousse dans le registre global) -->
-    <script src="./scripts/tarifs-registry.js"></script>
-    <!-- Bibliothèque de définition déclarative des tarifs (defineTarif, defineCalendar)
-         et calendriers de jours spéciaux partagés — voir scripts/tarifs/README.md -->
-    <script src="./scripts/tarifs-lib/define-tarif.js"></script>
-    <script src="./scripts/tarifs-lib/calendars/tempo-edf.js"></script>
-    <script src="./scripts/tarifs-lib/calendars/ejp-edf.js"></script>
-    <script src="./scripts/tarifs-lib/calendars/zenflex-sobriete.js"></script>
-    <!-- Prix spot EPEX FR Day-Ahead (energy-charts.info, données SMARD.de,
-         CC BY 4.0), générés par import/spot-update.mjs — à charger avant les
-         tarifs spot (Sobry) -->
-    <script src="./scripts/tarifs-lib/spot/epex-fr-2023.js"></script>
-    <script src="./scripts/tarifs-lib/spot/epex-fr-2024.js"></script>
-    <script src="./scripts/tarifs-lib/spot/epex-fr-2025.js"></script>
-    <script src="./scripts/tarifs-lib/spot/epex-fr-2026.js"></script>
-
-    <script src="./scripts/tarifs/alpiq/base.js"></script>
-
-    <script src="./scripts/tarifs/alterna/baseHC_france.js"></script>
-    <script src="./scripts/tarifs/alterna/baseHC_local.js"></script>
-    <script src="./scripts/tarifs/alterna/base_france.js"></script>
-    <script src="./scripts/tarifs/alterna/base_local.js"></script>
-    <script src="./scripts/tarifs/alterna/vert_HSC.js"></script>
-
-    <script src="./scripts/tarifs/edf/bleu.js"></script>
-    <script src="./scripts/tarifs/edf/tempo.js"></script>
-    <script src="./scripts/tarifs/edf/ejp.js"></script>
-    <script src="./scripts/tarifs/edf/vert.js"></script>
-    <script src="./scripts/tarifs/edf/vertAuto.js"></script>
-    <script src="./scripts/tarifs/edf/vertRegional.js"></script>
-    <script src="./scripts/tarifs/edf/vertWeekEnd.js"></script>
-    <script src="./scripts/tarifs/edf/zenEstival.js"></script>
-    <script src="./scripts/tarifs/edf/zenFixe.js"></script>
-    <script src="./scripts/tarifs/edf/zenOnline.js"></script>
-    <script src="./scripts/tarifs/edf/zenWeekEnd.js"></script>
-    <script src="./scripts/tarifs/edf/zenWeekEndPlus.js"></script>
-
-    <script src="./scripts/tarifs/enercoop/base.js"></script>
-    <script src="./scripts/tarifs/enercoop/flexibiliteHC.js"></script>
-    <script src="./scripts/tarifs/enercoop/flexibiliteHCWE.js"></script>
-    <script src="./scripts/tarifs/enercoop/flexibiliteSaison.js"></script>  
-   
-    <script src="./scripts/tarifs/engie/electReference3ans.js"></script> 
-
-    <script src="./scripts/tarifs/labelleenergie/constance.js"></script>
-    <script src="./scripts/tarifs/labelleenergie/constanceHC.js"></script>
-    <script src="./scripts/tarifs/labelleenergie/garance.js"></script>
-    <script src="./scripts/tarifs/labelleenergie/garanceHC.js"></script>
-    <script src="./scripts/tarifs/labelleenergie/prudence.js"></script>
-    <script src="./scripts/tarifs/labelleenergie/prudenceHC.js"></script>
-
-    <script src="./scripts/tarifs/mint/classicEtGreen.js"></script>
-    <script src="./scripts/tarifs/mint/classicEtGreenHC.js"></script>
-    <script src="./scripts/tarifs/mint/onlineEtGreen.js"></script>
-    <script src="./scripts/tarifs/mint/onlineEtGreenHC.js"></script>
-    
-    <script src="./scripts/tarifs/sobry/socap.js"></script>
-    <script src="./scripts/tarifs/sobry/soflex.js"></script>
-
-    <script src="./scripts/tarifs/total/chargheures.js"></script>
-    <script src="./scripts/tarifs/total/heuresEco.js"></script>
-    <script src="./scripts/tarifs/total/heuresEcoHC.js"></script>
-    <script src="./scripts/tarifs/total/offreStandardFixe.js"></script>
-    <script src="./scripts/tarifs/total/offreStandardFixeHC.js"></script>
-    <script src="./scripts/tarifs/total/offreVerteFixe.js"></script>
-    <script src="./scripts/tarifs/total/offreVerteFixeHC.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous" defer></script>
 
-    <!-- Application (module ES, différé : s'exécute après les scripts classiques
-         ci-dessus et le parsing du DOM ; window.abonnements est alors peuplé) -->
+    <!-- Application (module ES, différé : s'exécute après bootstrap (defer) et le
+         parsing du DOM). Les scripts de tarifs ne sont pas chargés ici : la liste
+         est dans scripts/tarifs-manifest.js, chargée à la demande au lancement
+         du comparatif (scripts/core/tarifsRegistry.js). -->
     <script type="module" src="./scripts/app.js"></script>
 </body>
 

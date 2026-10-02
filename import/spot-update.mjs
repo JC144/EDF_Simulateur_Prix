@@ -78,7 +78,7 @@ async function main() {
     for (const file of written) {
         console.log(`${label} : ${path.relative(REPO_ROOT, file)}`);
     }
-    checkIndexHtml(written, args.dryRun);
+    checkManifest(written, args.dryRun);
     if (!args.dryRun && written.length > 0) {
         console.log('Penser à régénérer les goldens si des dates couvertes par le CSV Sample ont changé :');
         console.log('  UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"');
@@ -144,14 +144,14 @@ function verifyGeneratedFile(content, file) {
     }
 }
 
-// Les fichiers d'années doivent être chargés par index.html (avant les tarifs) :
-// signale toute balise <script> manquante, notamment à la bascule d'année.
-function checkIndexHtml(writtenFiles, dryRun) {
-    const html = fs.readFileSync(path.join(REPO_ROOT, 'index.html'), 'utf8');
+// Les fichiers d'années doivent figurer dans scripts/tarifs-manifest.js (avant
+// les tarifs) : signale toute entrée manquante, notamment à la bascule d'année.
+function checkManifest(writtenFiles, dryRun) {
+    const manifest = fs.readFileSync(path.join(REPO_ROOT, 'scripts', 'tarifs-manifest.js'), 'utf8');
     for (const file of writtenFiles) {
         const rel = `scripts/tarifs-lib/spot/${path.basename(file)}`;
-        if (!html.includes(`"./${rel}"`)) {
-            console.warn(`ATTENTION : ajouter <script src="./${rel}"></script> dans index.html (avant les tarifs)${dryRun ? ' (dry-run)' : ''}`);
+        if (!manifest.includes(`"${rel}"`)) {
+            console.warn(`ATTENTION : ajouter "${rel}" dans scripts/tarifs-manifest.js (avant les tarifs)${dryRun ? ' (dry-run)' : ''}`);
         }
     }
 }

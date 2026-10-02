@@ -8,7 +8,9 @@ import vm from 'node:vm';
 import fs from 'node:fs';
 import path from 'node:path';
 import { REPO_ROOT } from '../lib/tarif-defs.mjs';
-import { formatMonths, formatIntervals, buildGrille, renderPage, run as runPages } from '../tools/gen-tarif-pages.mjs';
+import {
+    formatMonths, formatIntervals, buildGrille, renderPage, pageTitle, pageDescription, run as runPages,
+} from '../tools/gen-tarif-pages.mjs';
 import { run as runSection } from '../tools/gen-tarifs-section.mjs';
 
 // Construit les abonnements avec la vraie librairie defineTarif (display,
@@ -202,9 +204,59 @@ test('renderPage : métadonnées, liens conditionnels, échappement, déterminis
     assert.match(html, /<script type="module" src="\.\.\/scripts\/tarif-page\.js"><\/script>/);
     assert.doesNotMatch(html, /<script>/, 'aucun script inline (CSP)');
 
+    // Fil d'Ariane visible à 2 niveaux, identique au BreadcrumbList.
+    assert.match(html, /<nav aria-label="Fil d’Ariane" class="breadcrumb-nav">\s*<ol>\s*<li><a href="\.\.\/">Accueil<\/a><\/li>\s*<li aria-current="page">Mint Énergie – Classic &amp; Green<\/li>/);
+    const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+    assert.equal(blocks.length, 1);
+    const [page, crumbs] = JSON.parse(blocks[0][1])['@graph'];
+    const url = 'https://comparateur-abonnements-electricite.fr/tarifs/mint-energie-classic-green.html';
+    assert.equal(page['@type'], 'WebPage');
+    assert.equal(page.url, url);
+    assert.equal(page.dateModified, '2026-08-01');
+    assert.equal(page.isBasedOn, 'https://exemple.fr/grille.pdf');
+    assert.equal(page.breadcrumb['@id'], crumbs['@id']);
+    assert.deepEqual(crumbs.itemListElement, [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://comparateur-abonnements-electricite.fr/' },
+        { '@type': 'ListItem', position: 2, name: 'Mint Énergie – Classic & Green' },
+    ]);
+    assert.doesNotMatch(blocks[0][1], /price|Offer|Product/, 'aucun prix balisé');
+    const injected = renderPage(grilleOf({ ...base, name: 'Mint Énergie - a</script>b' }));
+    // « < » échappé : le nom ne ferme pas le <script> JSON-LD et se relit tel quel.
+    assert.equal(injected.split('</script>').length - 1, 2);
+    const injectedLd = JSON.parse(injected.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+    assert.equal(injectedLd['@graph'][1].itemListElement[1].name, 'Mint Énergie – a</script>b');
+
     const other = renderPage(grilleOf({ ...base, name: 'Mint Énergie - Autre', subscription_url: '', price_url: 'https://exemple.fr/annexes' }));
     assert.doesNotMatch(other, /Page de l’offre/);
     assert.match(other, /Grille tarifaire officielle<\/a>/);
+});
+
+test('pageTitle / pageDescription : modèle, année de la grille, repli sous les limites', () => {
+    const def = {
+        ...META, file: 'scripts/tarifs/edf/x.js', name: 'EDF - Tempo', lastUpdate: '2025-12-15',
+        subscriptions: { 6: 15.8, 36: 60 },
+        dayTypes: { bleu: { HP: 20.91, HC: 16.46 } },
+        dayRule: { type: 'constant', dayType: 'bleu' },
+        hcRanges: 'custom',
+    };
+    const g = grilleOf(def);
+    assert.equal(pageTitle(g), 'Tempo EDF : prix du kWh 2025 TTC');
+    assert.equal(pageDescription(g), 'Grille tarifaire EDF Tempo du 15 décembre 2025 : abonnement de 6 à 36 kVA,'
+        + ' prix du kWh TTC, heures creuses. Lien vers la grille officielle du fournisseur.');
+
+    // Trop long en entier : « Heures Creuses » abrégé, lien raccourci puis retiré.
+    const long = grilleOf({ ...def, name: 'EDF - Vert Electrique Régional Heures Creuses', lastUpdate: '2026-09-15' });
+    assert.equal(pageTitle(long), 'Vert Electrique Régional HC EDF : prix du kWh 2026 TTC');
+    assert.equal(pageDescription(long), 'Grille tarifaire EDF Vert Electrique Régional Heures Creuses du 15 septembre 2026 :'
+        + ' abonnement de 6 à 36 kVA, prix du kWh TTC, heures creuses.');
+
+    // Irréductible : signalé par run (ici, rendu tel quel).
+    const huge = grilleOf({ ...def, name: `EDF - ${'Offre '.repeat(10)}Heures Creuses` });
+    assert.ok(pageTitle(huge).length > 60);
+});
+
+test('titles ≤ 60 et meta descriptions ≤ 155 caractères sur toutes les grilles', () => {
+    assert.deepEqual(runPages({ check: true }).errors, []);
 });
 
 test('site généré à jour (sinon : cd import && npm run gen)', () => {

@@ -217,16 +217,22 @@ conformite + marge + prime) × tva`, avec les saisons TURPE codées en dur
 interdits : la conso est agrégée sous l'unique bande « Prix spot ». Un jour
 sans données spot (avant 2023, trou de l'API) est marqué en erreur pour ce
 tarif seulement. Le fichier de données doit être chargé **avant** le tarif
-dans `index.html`.
+dans `scripts/tarifs-manifest.js`.
 
 ## Déclarer le fichier
 
-Ajouter la balise dans `index.html`, **après** les scripts `tarifs-lib` et les
-calendriers utilisés :
+Ajouter son chemin dans `scripts/tarifs-manifest.js`, **après** les scripts
+`tarifs-lib` et les calendriers utilisés (l'ordre du manifeste est l'ordre
+d'exécution) :
 
-```html
-<script src="./scripts/tarifs/monfournisseur/monoffre.js"></script>
+```js
+    "scripts/tarifs/monfournisseur/monoffre.js",
 ```
+
+Les scripts de tarifs ne sont pas chargés avec l'accueil : l'application les
+injecte au lancement du comparatif (`loadTarifs` de
+`scripts/core/tarifsRegistry.js`). Les tests et les outils `import/` lisent la
+même liste.
 
 Puis générer sa page de grille (`tarifs/<slug>.html`, slug dérivé du `name`) et
 mettre à jour la section « Tarifs suivis » de l'accueil et le sitemap :

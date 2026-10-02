@@ -52,11 +52,11 @@ export function groupByPriceUrl(defs = listTarifDefs()) {
     return byUrl;
 }
 
-// Scripts tarifs effectivement chargés par l'application, dans l'ordre
-// d'index.html (lib, calendriers, données spot, puis tarifs).
+// Scripts tarifs effectivement chargés par l'application, dans l'ordre de
+// scripts/tarifs-manifest.js (lib, calendriers, données spot, puis tarifs).
 export function listAppScripts() {
-    const html = fs.readFileSync(path.join(REPO_ROOT, 'index.html'), 'utf8');
-    const matches = html.matchAll(/<script src="\.\/(scripts\/(?:tarifs|tarifs-lib)\/[^"]+)"><\/script>/g);
+    const manifest = fs.readFileSync(path.join(REPO_ROOT, 'scripts', 'tarifs-manifest.js'), 'utf8');
+    const matches = manifest.matchAll(/"(scripts\/(?:tarifs|tarifs-lib)\/[^"]+\.js)"/g);
     return [...matches].map(m => m[1]);
 }
 

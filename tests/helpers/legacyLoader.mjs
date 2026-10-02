@@ -1,6 +1,6 @@
 // Charge les scripts classiques de tarifs (scripts/tarifs/**, scripts/tarifs-lib/**,
 // tous déclaratifs via defineTarif) dans un contexte node:vm frais, comme le
-// ferait le navigateur via index.html. Un état frais à chaque appel est
+// ferait le navigateur via scripts/tarifs-manifest.js. Un état frais à chaque appel est
 // indispensable : runSimulation mute les abonnements (remplacement de hc,
 // accumulation de specialDays).
 import vm from 'node:vm';
@@ -8,11 +8,11 @@ import fs from 'node:fs';
 
 const ROOT = new URL('../../', import.meta.url);
 
-// La liste des scripts vient d'index.html : les tests couvrent exactement
-// ce que l'application charge, et suivent les ajouts/retraits de tarifs.
+// La liste des scripts vient de scripts/tarifs-manifest.js : les tests couvrent
+// exactement ce que l'application charge, et suivent les ajouts/retraits de tarifs.
 export function listTarifScripts() {
-    const html = fs.readFileSync(new URL('index.html', ROOT), 'utf8');
-    const matches = html.matchAll(/<script src="\.\/(scripts\/(?:tarifs|tarifs-lib)\/[^"]+)"><\/script>/g);
+    const manifest = fs.readFileSync(new URL('scripts/tarifs-manifest.js', ROOT), 'utf8');
+    const matches = manifest.matchAll(/"(scripts\/(?:tarifs|tarifs-lib)\/[^"]+\.js)"/g);
     return [...matches].map(m => m[1]);
 }
 

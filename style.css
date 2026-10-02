@@ -59,6 +59,31 @@ body {
   line-height: 1.6;
 }
 
+/* Icônes SVG (sprite Font Awesome en tête de <body>) : mêmes métriques que
+   le mode SVG de Font Awesome — hauteur 1em, largeur = ratio du viewBox
+   (explicite : width:auto n'en tient pas compte dans un conteneur flex). */
+.icon {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.icon-chevron-right { width: 0.625em; }   /* viewBox 320 × 512 */
+.icon-play,
+.icon-file-arrow-up { width: 0.75em; }    /* 384 × 512 */
+.icon-lock,
+.icon-arrow-right { width: 0.875em; }     /* 448 × 512 */
+.icon-github { width: 0.96875em; }        /* 496 × 512 */
+
+.icon-lg {
+  font-size: 1.25em;
+  vertical-align: -0.2em;
+}
+
 ::selection {
   background: var(--accent-pale);
 }
@@ -309,7 +334,7 @@ a.pill:hover {
   border-color: var(--ink-3);
 }
 
-.pill .fa-github {
+.pill .icon-github {
   margin-right: 4px;
 }
 
@@ -367,7 +392,7 @@ a.pill:hover {
   margin: 0;
 }
 
-.hero-privacy .fa-lock {
+.hero-privacy .icon-lock {
   color: var(--accent-dark);
   margin-top: 3px;
 }
@@ -791,6 +816,30 @@ a.btn-donate:hover {
   max-width: 880px;
 }
 
+.breadcrumb-nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+
+.breadcrumb-nav li + li::before {
+  content: "›";
+  padding-inline: 8px;
+  color: var(--muted);
+}
+
+.breadcrumb-nav a {
+  color: var(--ink-2);
+}
+
+.breadcrumb-nav [aria-current="page"] {
+  color: var(--ink);
+}
+
 .tarif-page h1 {
   font-size: clamp(1.75rem, 3.2vw, 2.25rem);
   font-weight: 700;
@@ -875,6 +924,47 @@ a.btn-donate:hover {
   font-weight: 600;
   color: var(--ink-2);
   margin: 20px 0 8px;
+}
+
+.tarif-footer-cta {
+  margin: 40px 0 0;
+}
+
+.tarif-cta-btn {
+  border-radius: var(--radius);
+  box-shadow: 0 2px 0 var(--accent-ink), 0 12px 28px -12px rgba(13, 110, 253, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.tarif-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 var(--accent-ink), 0 18px 34px -12px rgba(13, 110, 253, 0.5);
+}
+
+.tarif-cta {
+  margin-top: 24px;
+  padding: 28px 32px;
+  background: var(--accent-palest);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-lg);
+}
+
+.tarif-cta h2 {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+
+.tarif-cta p {
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+
+.tarif-cta .tarif-cta-privacy {
+  font-size: 14.5px;
+  color: var(--ink-3);
+  margin: 14px 0 0;
 }
 
 .tarif-unit {
@@ -977,6 +1067,15 @@ a.btn-donate:hover {
 
   .tarif-meta {
     padding: 16px;
+  }
+
+  .tarif-cta {
+    padding: 20px 16px;
+  }
+
+  .tarif-cta-btn {
+    display: block;
+    width: 100%;
   }
 }
 
@@ -1147,7 +1246,7 @@ a.btn-donate:hover {
   box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25); /* même focus que la dropzone */
 }
 
-.help-accordion .accordion-button .fa-circle-question {
+.help-accordion .accordion-button .icon-circle-question {
   color: var(--accent-dark);
   font-size: 1.15rem;
 }
@@ -1237,11 +1336,11 @@ a.btn-donate:hover {
 
 /* Bouton chevron qui déplie l'accordéon de détail d'un tarif (la ligne
    elle-même n'est pas cliquable) ; aria-expanded est maintenu par Bootstrap. */
-.tarif-toggle .fa-chevron-right {
+.tarif-toggle .icon-chevron-right {
   transition: transform 0.2s ease;
 }
 
-.tarif-toggle[aria-expanded="true"] .fa-chevron-right {
+.tarif-toggle[aria-expanded="true"] .icon-chevron-right {
   transform: rotate(90deg);
 }
 
@@ -1285,11 +1384,11 @@ a.btn-donate:hover {
 }
 
 /* Graphe horaire d'une journée (SVG généré par scripts/ui/dayChart.js). */
-.day-chart-toggle .fa-chevron-right {
+.day-chart-toggle .icon-chevron-right {
   transition: transform 0.2s ease;
 }
 
-.day-chart-toggle-open .fa-chevron-right {
+.day-chart-toggle-open .icon-chevron-right {
   transform: rotate(90deg);
 }
 
@@ -1316,7 +1415,7 @@ a.btn-donate:hover {
   margin-top: 0.35rem;
 }
 
-.band-share svg {
+.band-share-bar svg {
   display: block;
   width: 100%;
   height: 10px;
@@ -1344,7 +1443,7 @@ a.btn-donate:hover {
   white-space: nowrap;
 }
 
-.band-share-toggle .fa-repeat {
+.band-share-toggle .icon-repeat {
   margin-right: 0.2em;
   font-size: 0.9em;
 }

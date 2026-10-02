@@ -6,6 +6,8 @@
 // Usage :
 //   node import/tools/gen-tarif-pages.mjs           # écrit les pages + sitemap
 //   node import/tools/gen-tarif-pages.mjs --check   # exit 1 si quelque chose est à régénérer
+// (dans les deux modes : exit 1 si un title dépasse 60 caractères ou une meta
+// description 155)
 // (ou, depuis import/ : npm run gen / npm run gen:check pour tout le site)
 //
 // Sources : définitions brutes (listTarifDefs : dayRule, hcRanges,
@@ -34,7 +36,14 @@ const SITEMAP_END = '<!-- TARIF-PAGES:END -->';
 
 // Copie de la CSP de mentions-legales.html / index.html (site sans en-têtes
 // HTTP personnalisables) : à garder synchronisée.
-const CSP = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'none'";
+const CSP = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'none'";
+
+// Les CTA mènent à l'accueil, dont app.js ouvre directement l'assistant
+// d'import quand l'URL porte ce hash.
+const SIMULATOR_HREF = '../#simulateur';
+// Flèche (fa-arrow-right) en ligne : les pages de grille n'ont pas le sprite SVG de l'accueil.
+const ARROW_ICON = '<svg class="icon icon-arrow-right ms-2" viewBox="0 0 448 512" aria-hidden="true" focusable="false">'
+    + '<path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>';
 
 // ------------------------------------------------------------------ //
 //  Plages horaires                                                   //
@@ -392,16 +401,122 @@ function renderHc(hc, ind) {
     }
 }
 
-function pageTitle(g) {
-    return `${g.name.replaceAll(' - ', ' ')} : grille tarifaire, abonnement et prix du kWh`;
+// Longueurs au-delà desquelles Google tronque ou réécrit (contrôlées par run).
+export const TITLE_MAX = 60;
+export const DESCRIPTION_MAX = 155;
+
+// "Enercoop - Flexibilité - nuit & week-end" -> "Flexibilité nuit & week-end" :
+// le premier segment est la marque, remplacée par le nom canonique du fournisseur.
+function offerName(g) {
+    const parts = g.name.split(' - ');
+    return (parts.length > 1 ? parts.slice(1) : parts).join(' ');
 }
 
-function pageDescription(g) {
+// « l’offre Tempo d’EDF », « l’offre Constance de La Belle Énergie ».
+function offerOfProvider(g) {
+    return `l’offre ${offerName(g)} ${/^[aeiouéâ]/i.test(g.provider) ? 'd’' : 'de '}${g.provider}`;
+}
+
+// Premier candidat qui tient dans max, sinon le dernier (le plus court),
+// signalé par run.
+function fitting(candidates, max) {
+    return candidates.find(c => c.length <= max) ?? candidates.at(-1);
+}
+
+// "<Offre> <Fournisseur> : prix du kWh <année> TTC", année de la grille ;
+// « Heures Creuses » abrégé en « HC » si le titre dépasse TITLE_MAX.
+export function pageTitle(g) {
+    const year = g.lastUpdate.slice(0, 4);
+    const kwh = g.kind === 'spot' ? `prix du kWh spot ${year}` : `prix du kWh ${year} TTC`;
+    const offer = offerName(g);
+    return fitting([offer, offer.replace(/heures creuses/i, 'HC')].map(o => `${o} ${g.provider} : ${kwh}`), TITLE_MAX);
+}
+
+export function pageDescription(g) {
     const kvas = g.subscriptions.map(s => s.kva);
     const range = kvas.length === 1 ? `${kvas[0]} kVA` : `de ${kvas[0]} à ${kvas.at(-1)} kVA`;
     const kwh = g.kind === 'spot' ? 'formule du prix du kWh indexé sur le prix spot' : 'prix du kWh TTC';
-    return `Grille tarifaire ${g.name.replaceAll(' - ', ' ')} du ${formatDate(g.lastUpdate)} : abonnement ${range}, ${kwh}`
-        + `${g.kind === 'grid' && g.hc.mode !== 'none' ? ', heures creuses' : ''}. Lien vers la grille officielle du fournisseur.`;
+    const body = `Grille tarifaire ${g.provider} ${offerName(g)} du ${formatDate(g.lastUpdate)} : abonnement ${range}, ${kwh}`
+        + `${g.kind === 'grid' && g.hc.mode !== 'none' ? ', heures creuses' : ''}.`;
+    return fitting([
+        `${body} Lien vers la grille officielle du fournisseur.`,
+        `${body} Lien vers la grille officielle.`,
+        body,
+    ], DESCRIPTION_MAX);
+}
+
+// Nom affiché de l'offre (h1 et dernier niveau du fil d'Ariane).
+function displayName(g) {
+    return g.name.replaceAll(' - ', ' – ');
+}
+
+// JSON-LD WebPage + BreadcrumbList (audit SEO, findings/schema.md §4). Fil à
+// 2 niveaux, Accueil > offre : il n'existe pas de page /tarifs/. Les @id
+// #website et #auteur sont déclarés dans le JSON-LD de index.html. Aucun prix
+// (Product/Offer trompeurs pour un site non marchand) : ils restent dans les
+// tableaux.
+export function pageJsonLd(g) {
+    const url = `${SITE_URL}/${PAGES_DIR}/${g.slug}.html`;
+    return {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'WebPage',
+                '@id': `${url}#webpage`,
+                url,
+                name: pageTitle(g),
+                description: pageDescription(g),
+                inLanguage: 'fr-FR',
+                dateModified: g.lastUpdate,
+                isPartOf: { '@id': `${SITE_URL}/#website` },
+                breadcrumb: { '@id': `${url}#breadcrumb` },
+                about: {
+                    '@type': 'Thing',
+                    name: `Grille tarifaire ${displayName(g)}`,
+                    description: `Abonnement et prix du kWh de ${offerOfProvider(g)}`,
+                },
+                isBasedOn: g.priceUrl,
+                publisher: { '@id': `${SITE_URL}/#auteur` },
+            },
+            {
+                '@type': 'BreadcrumbList',
+                '@id': `${url}#breadcrumb`,
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE_URL}/` },
+                    { '@type': 'ListItem', position: 2, name: displayName(g) },
+                ],
+            },
+        ],
+    };
+}
+
+// JSON indenté sous ind ; « < » échappé pour ne jamais fermer le <script>.
+function renderJsonLd(data, ind) {
+    const json = JSON.stringify(data, null, 4).replaceAll('<', '\\u003c');
+    return [
+        `${ind}<script type="application/ld+json">`,
+        ...json.split('\n').map(l => `${ind}${l}`),
+        `${ind}</script>`,
+    ];
+}
+
+// Carte d'appel au simulateur, sous l'en-tête. Les tarifs communautaires ne
+// sont simulés que si l'utilisateur les inclut (dernière étape de l'assistant).
+function renderCta(g, ind) {
+    const S = ind + '    ';
+    return [
+        `${ind}<section class="tarif-cta" aria-labelledby="tarif-cta-title">`,
+        `${S}<h2 id="tarif-cta-title">Combien vous coûterait ${escapeHtml(offerOfProvider(g))}&nbsp;?</h2>`,
+        `${S}<p>Importez votre historique de consommation Linky&nbsp;: le simulateur calcule, demi-heure par demi-heure,`
+            + ' ce que vous auriez payé avec cette offre et la compare aux autres offres d’électricité suivies.</p>',
+        ...(g.isCommunity
+            ? [`${S}<p>Tarif communautaire&nbsp;: à la dernière étape, choisissez d’inclure les tarifs communautaires pour voir cette offre dans les résultats.</p>`]
+            : []),
+        `${S}<a class="btn btn-success btn-lg tarif-cta-btn" href="${SIMULATOR_HREF}">Comparer avec ma consommation réelle${ARROW_ICON}</a>`,
+        `${S}<p class="tarif-cta-privacy">Gratuit, sans inscription&nbsp;: vos données Linky ne quittent jamais votre navigateur.</p>`,
+        `${ind}</section>`,
+        '',
+    ];
 }
 
 export function renderPage(g) {
@@ -433,6 +548,8 @@ export function renderPage(g) {
         `${I}<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">`,
         `${I}<link rel="stylesheet" href="../style.css" />`,
         `${I}<link rel="icon" type="image/x-icon" href="/img/favicon.ico">`,
+        '',
+        ...renderJsonLd(pageJsonLd(g), I),
         '</head>',
         '',
         '<body>',
@@ -449,14 +566,21 @@ export function renderPage(g) {
         `${I}</nav>`,
         '',
         `${I}<main class="shell legal-shell tarif-page" data-last-update="${g.lastUpdate}">`,
+        // Fil d'Ariane visible : doit correspondre au BreadcrumbList du JSON-LD.
+        `${M}<nav aria-label="Fil d’Ariane" class="breadcrumb-nav">`,
+        `${M}    <ol>`,
+        `${M}        <li><a href="../">Accueil</a></li>`,
+        `${M}        <li aria-current="page">${escapeHtml(displayName(g))}</li>`,
+        `${M}    </ol>`,
+        `${M}</nav>`,
         `${M}<header class="tarif-header">`,
         `${M}    <div class="kicker">${escapeHtml(g.provider)}</div>`,
-        `${M}    <h1>${escapeHtml(g.name.replaceAll(' - ', ' – '))}</h1>`,
+        `${M}    <h1>${escapeHtml(displayName(g))}</h1>`,
         `${M}    <p class="tarif-badges"><span class="tarif-badge">${g.offerType === 'TRV' ? 'Tarif réglementé' : 'Offre de marché'}</span>`
             + `${g.isCommunity ? ' <span class="tarif-badge tarif-badge-community">Tarif communautaire</span>' : ''}</p>`,
     ];
     if (g.isCommunity) lines.push(`${M}    <p class="tarifs-note">${COMMUNITY_NOTE}</p>`);
-    lines.push(`${M}</header>`, '');
+    lines.push(`${M}</header>`, '', ...renderCta(g, M));
 
     // Source de la grille : date, avertissement d'ancienneté, liens.
     lines.push(
@@ -518,6 +642,8 @@ export function renderPage(g) {
         ...g.ruleLines.map(l => `${S}    <li>${l}</li>`),
         `${S}</ul>`,
         `${M}</section>`,
+        `${M}<p class="tarif-footer-cta"><a class="btn btn-success tarif-cta-btn" href="${SIMULATOR_HREF}">`
+            + `Simuler cette offre avec ma consommation Linky${ARROW_ICON}</a></p>`,
         `${I}</main>`,
         '',
         `${I}<footer class="band-dark tarif-footer">`,
@@ -566,13 +692,22 @@ export function run({ check = false } = {}) {
 
     const grilles = defs.map(def => {
         const abo = built.get(def.name);
-        if (!abo) throw new Error(`${def.name} (${def.file}) n'est pas chargé par index.html : déclarer le script avant de générer sa page.`);
+        if (!abo) throw new Error(`${def.name} (${def.file}) n'est pas chargé par l'application : déclarer le script dans scripts/tarifs-manifest.js avant de générer sa page.`);
         return buildGrille(def, abo.display, calendars, warnings);
     });
     const bySlug = new Map();
     for (const g of grilles) {
         if (bySlug.has(g.slug)) throw new Error(`Slug « ${g.slug} » partagé par « ${bySlug.get(g.slug).name} » et « ${g.name} » : renommer l'un des tarifs.`);
         bySlug.set(g.slug, g);
+    }
+
+    // Longueurs title / meta description : bloquant, y compris sans --check.
+    const errors = [];
+    for (const g of grilles) {
+        const title = pageTitle(g);
+        const description = pageDescription(g);
+        if (title.length > TITLE_MAX) errors.push(`${g.name} : title de ${title.length} caractères (max ${TITLE_MAX}) « ${title} »`);
+        if (description.length > DESCRIPTION_MAX) errors.push(`${g.name} : meta description de ${description.length} caractères (max ${DESCRIPTION_MAX}) « ${description} »`);
     }
 
     const changes = [];
@@ -597,12 +732,13 @@ export function run({ check = false } = {}) {
     const nextSitemap = replaceBetweenMarkers(sitemap, SITEMAP_BEGIN, SITEMAP_END, renderSitemapEntries(grilles), 'sitemap.xml');
     changes.push(syncFile(sitemapPath, nextSitemap, { check }));
 
-    return { changes, warnings };
+    return { changes, warnings, errors };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
     const check = process.argv.includes('--check');
-    const { changes, warnings } = run({ check });
+    const { changes, warnings, errors } = run({ check });
     for (const w of new Set(warnings)) console.warn(`Attention : ${w}`);
-    process.exitCode = reportChanges(changes, { check, what: 'Pages de grille tarifaire (tarifs/*.html, sitemap.xml)' });
+    for (const e of errors) console.error(`Erreur : ${e}`);
+    process.exitCode = reportChanges(changes, { check, what: 'Pages de grille tarifaire (tarifs/*.html, sitemap.xml)' }) || (errors.length ? 1 : 0);
 }

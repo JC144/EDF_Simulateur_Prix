@@ -67,7 +67,7 @@ Vérifiez que votre export s'appelle bien history.csv.
 ## Comment contribuer
 Toutes les contributions sont les bienvenues, via une Pull Request vers `main` (fork + branche). Avant d'ouvrir la PR, vérifiez que les tests passent : `node --test "tests/**/*.test.mjs"` (Node ≥ 22).
 
-* **Ajouter un tarif** — suivez le guide [scripts/tarifs/README.md](scripts/tarifs/README.md) : les tarifs sont des définitions déclaratives `defineTarif(...)` dans `scripts/tarifs/<fournisseur>/*.js` (aucune fonction à écrire), avec des recettes pour chaque type d'offre (Base, HP/HC, week-end, calendrier type Tempo, saisonnier, prix spot). N'oubliez pas la balise `<script>` correspondante dans `index.html`, puis générez la page de grille du tarif (`cd import && npm run gen`, voir [Pages de grille tarifaire](#pages-de-grille-tarifaire)).
+* **Ajouter un tarif** — suivez le guide [scripts/tarifs/README.md](scripts/tarifs/README.md) : les tarifs sont des définitions déclaratives `defineTarif(...)` dans `scripts/tarifs/<fournisseur>/*.js` (aucune fonction à écrire), avec des recettes pour chaque type d'offre (Base, HP/HC, week-end, calendrier type Tempo, saisonnier, prix spot). N'oubliez pas d'ajouter son chemin dans `scripts/tarifs-manifest.js` (liste des scripts de tarifs, chargés à la demande au lancement du comparatif), puis générez la page de grille du tarif (`cd import && npm run gen`, voir [Pages de grille tarifaire](#pages-de-grille-tarifaire)).
 * **Mettre à jour un tarif** — modifiez les prix et `lastUpdate` dans le fichier concerné, puis suivez la [procédure de mise à jour](#mise-à-jour-des-données-tarifaires) (snapshots de simulation, pages de grille, relecture du diff).
 * **Créer un importateur pour un fournisseur non géré** (Engie, Sobry, grilles HTML…) — ajoutez un parser `import/parsers/<fournisseur>.mjs` respectant le contrat `parse(doc, url) -> { gridDate, offers }` (clés = `name` des `defineTarif`, prix kWh en centimes TTC, abonnements en €/mois TTC). Les outils `import/tools/` (`dump-text.mjs`, `try-parser.mjs`, `gen-expected.mjs`) permettent d'itérer sur des fixtures locales, avec des tests sans réseau — voir [import/README.md](import/README.md).
 * **Corriger ou améliorer l'application** (parsers d'export de consommation, interface, calculs) — l'architecture est décrite dans la section [Développement](#développement) ci-dessous.
@@ -77,7 +77,7 @@ Toutes les contributions sont les bienvenues, via une Pull Request vers `main` (
 ## Développement
 L'application est 100% statique (aucun build, aucune dépendance à installer), en JavaScript vanilla avec des modules ES :
 
-* `index.html` — page unique : les 3 écrans (présentation, import, résultats), les `<template>` de l'écran de résultats et le chargement des scripts.
+* `index.html` — page unique : les 3 écrans (présentation, import, résultats), les `<template>` de l'écran de résultats et le chargement de l'application (les scripts de tarifs sont listés dans `scripts/tarifs-manifest.js` et chargés à la demande).
 * `scripts/app.js` — point d'entrée (module ES) : orchestration entre les vues et la simulation.
 * `scripts/ui/` — vues et rendu : `importView.js` (réglages + import CSV), `resultsView.js` (période + rafraîchissement), `resultsRenderer.js` (clonage/hydratation des templates), `viewManager.js` (navigation), `dom.js` (helpers).
 * `scripts/core/` — logique métier : `calculator.js` (calculs), `simulation.js` (personnalisation + calcul global), `tarifsRegistry.js` (accès au registre des tarifs).

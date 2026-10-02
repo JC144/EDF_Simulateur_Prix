@@ -50,7 +50,7 @@ Orchestrateur des quatre scripts (tempo, zenflex, spot, tarifs) : lancement
 en sous-processus **parallèles** (APIs distinctes), sortie de chaque script
 bufferisée et affichée à sa complétion, puis synthèse finale (statut, durée,
 avertissements notables : `INTERVENTION MANUELLE REQUISE`, `PARSER MANQUANT`,
-erreurs réseau/parsing, balise `<script>` à ajouter dans `index.html` à la
+erreurs réseau/parsing, entrée à ajouter dans `scripts/tarifs-manifest.js` à la
 bascule d'année spot) et rappel goldens consolidé. Code de sortie : 0 si tout
 OK, 1 sinon.
 
@@ -110,7 +110,7 @@ npm run gen:check    # exit 1 si quelque chose est à régénérer (aussi vérif
 ```
 
 À relancer après toute modification d'un tarif (prix, `lastUpdate`, URL, ajout
-ou renommage) faite hors de `update-all.mjs`. Un tarif doit être déclaré dans `index.html` pour avoir sa page
+ou renommage) faite hors de `update-all.mjs`. Un tarif doit être déclaré dans `scripts/tarifs-manifest.js` pour avoir sa page
 (le générateur charge la vraie librairie `defineTarif` pour la table `display`
 et les calendriers). L'avertissement « grille de plus de 6 mois » est calculé
 dans le navigateur (`scripts/tarif-page.js`), pas au moment de la génération.
@@ -148,7 +148,7 @@ zenflex-update.mjs    mise à jour du calendrier des jours de sobriété Zenflex
 manifest.json         état persistant par URL { sha256, etag, lastChecked, lastApplied } — committé
 lib/
   tarif-defs.mjs      énumère les defineTarif via node:vm (comme tests/helpers/legacyLoader.mjs) ;
-                      loadBuiltTarifs : abonnements construits par la vraie lib (scripts d'index.html)
+                      loadBuiltTarifs : abonnements construits par la vraie lib (scripts du manifeste)
   site-gen.mjs        aides des générateurs HTML : fournisseurs, formats FR, écriture idempotente
   registry.mjs        URL -> fournisseur/parser ; URLs HTML non gérées
   download.mjs        fetch conditionnel + SHA-256 + cache/ (gitignoré)
@@ -197,7 +197,7 @@ depuis le 2025-10-01), jours DST comblés/moyennés sur l'heure 02, jours
 incomplets côté API **omis** (le simulateur les marque en erreur pour les
 tarifs spot uniquement — c'est le cas du 2025-09-30, jour de la bascule de
 granularité, publié tout à `null` par SMARD). À la bascule d'année, ajouter
-la balise `<script>` du nouveau fichier dans `index.html` (le script le
+le nouveau fichier dans `scripts/tarifs-manifest.js` (le script le
 signale). Logique pure testée dans `tests/spot-data.test.mjs`.
 
 ## Calendriers Tempo / EJP (tempo-update.mjs)

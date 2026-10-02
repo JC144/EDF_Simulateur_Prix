@@ -1,5 +1,5 @@
 // Garde-fou final avant écriture : recharge l'ensemble des scripts tarifs
-// (liste tirée d'index.html, comme tests/helpers/legacyLoader.mjs) dans un
+// (liste tirée de scripts/tarifs-manifest.js, comme tests/helpers/legacyLoader.mjs) dans un
 // contexte VM avec la VRAIE factory defineTarif, en substituant les sources
 // patchées. La moindre erreur de validation => on n'écrit rien.
 import vm from 'node:vm';
@@ -12,7 +12,7 @@ import { REPO_ROOT, listAppScripts } from './tarif-defs.mjs';
 export function revalidateTarifs(pending) {
     const overrides = new Map(pending.map(p => [p.file, p.newSource]));
     const files = listAppScripts();
-    // Un fichier patché absent d'index.html (tarif pas encore branché) est
+    // Un fichier patché absent du manifeste (tarif pas encore branché) est
     // tout de même validé, après la lib et les calendriers.
     for (const file of overrides.keys()) {
         if (!files.includes(file)) files.push(file);
