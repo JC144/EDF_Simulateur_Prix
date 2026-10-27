@@ -12,6 +12,7 @@ const PROVIDER_BY_HOST = {
     'particulier.edf.fr': 'edf',
     'particuliers.engie.fr': 'engie',
     'www.totalenergies.fr': 'total',
+    'a.storyblok.com': 'octopus',
     'particuliers.alpiq.fr': 'alpiq',
     'doc.mint-energie.com': 'mint',
     'labellenergie.fr': 'labelleenergie',

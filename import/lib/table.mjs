@@ -227,7 +227,7 @@ export function buildOffer(rows, cols) {
 }
 
 // Pipeline commun aux grilles « colonnes HT/TTC doublées » (Total, Mint,
-// Alpiq) : configs[i] décrit le i-ème tableau détecté.
+// Octopus, Alpiq) : configs[i] décrit le i-ème tableau détecté.
 //   { offer, colCount, abo, prices: [[index, paths]] }
 // abo/index pointent dans les colonnes numériques (0-based, kVA exclus) ;
 // les prix sont des €/kWh convertis en centimes.

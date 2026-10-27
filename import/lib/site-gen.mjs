@@ -16,6 +16,7 @@ export const PROVIDERS = {
     engie: 'Engie',
     labelleenergie: 'La Bellenergie',
     mint: 'Mint Énergie',
+    octopus: 'Octopus Energy',
     sobry: 'Sobry',
     total: 'TotalEnergies',
 };

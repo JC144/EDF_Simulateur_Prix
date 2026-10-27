@@ -891,6 +891,92 @@
       "HC"
     ]
   },
+  "Octopus - Eco-fixe Base": {
+    "types": {
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "hiver",
+          "HC": "hiver"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "ete",
+          "HC": "ete"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "ete"
+    ],
+    "bandOrder": [
+      "hiver",
+      "ete"
+    ]
+  },
+  "Octopus - Eco-fixe Heures Creuses": {
+    "types": {
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "ete"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Octopus - OctoSaisons": {
+    "types": {
+      "rouge": {
+        "day": "rouge",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "ete",
+      "rouge"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
   "Sobry - SoCap": {
     "types": {
       "spot": {

@@ -63,6 +63,10 @@ export const TARIF_SCRIPTS = [
     "scripts/tarifs/mint/onlineEtGreen.js",
     "scripts/tarifs/mint/onlineEtGreenHC.js",
 
+    "scripts/tarifs/octopus/ecoFixeBase.js",
+    "scripts/tarifs/octopus/ecoFixeHC.js",
+    "scripts/tarifs/octopus/octosaisons.js",
+
     "scripts/tarifs/sobry/socap.js",
     "scripts/tarifs/sobry/soflex.js",
 

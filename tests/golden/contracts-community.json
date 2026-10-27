@@ -3641,6 +3641,479 @@
     "specialDays": []
   },
   {
+    "name": "Octopus - Eco-fixe Base",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-08-12",
+    "isCommunity": true,
+    "subscription_url": "https://octopusenergy.fr/offre-electricite-tarifs",
+    "price_url": "https://a.storyblok.com/f/151412/x/f9e6edf063/grille-tarifaire-eco-fixe-aout-26-base.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.13,
+        "hiver": {
+          "prixKwhHC": 20.5
+        },
+        "ete": {
+          "prixKwhHC": 19.19
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.86,
+        "hiver": {
+          "prixKwhHC": 22.45
+        },
+        "ete": {
+          "prixKwhHC": 17.07
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.88,
+        "hiver": {
+          "prixKwhHC": 22.77
+        },
+        "ete": {
+          "prixKwhHC": 17.43
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.76,
+        "hiver": {
+          "prixKwhHC": 22.77
+        },
+        "ete": {
+          "prixKwhHC": 17.43
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.4,
+        "hiver": {
+          "prixKwhHC": 22.77
+        },
+        "ete": {
+          "prixKwhHC": 17.43
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.14,
+        "hiver": {
+          "prixKwhHC": 22.77
+        },
+        "ete": {
+          "prixKwhHC": 17.43
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.14,
+        "hiver": {
+          "prixKwhHC": 22.77
+        },
+        "ete": {
+          "prixKwhHC": 17.43
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.47,
+        "hiver": {
+          "prixKwhHC": 22.77
+        },
+        "ete": {
+          "prixKwhHC": 17.43
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 53.88,
+        "hiver": {
+          "prixKwhHC": 22.77
+        },
+        "ete": {
+          "prixKwhHC": 17.43
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Octopus - Eco-fixe Heures Creuses",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-08-12",
+    "isCommunity": true,
+    "subscription_url": "https://octopusenergy.fr/offre-electricite-tarifs",
+    "price_url": "https://a.storyblok.com/f/151412/x/d505811345/grille-tarifaire-ecofixe-aout-26-hphc.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.13,
+        "hiver": {
+          "prixKwhHP": 21.95,
+          "prixKwhHC": 16.26
+        },
+        "ete": {
+          "prixKwhHP": 18.76,
+          "prixKwhHC": 14.05
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.86,
+        "hiver": {
+          "prixKwhHP": 24.09,
+          "prixKwhHC": 17.73
+        },
+        "ete": {
+          "prixKwhHP": 17.87,
+          "prixKwhHC": 13.44
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.88,
+        "hiver": {
+          "prixKwhHP": 24.61,
+          "prixKwhHC": 18.09
+        },
+        "ete": {
+          "prixKwhHP": 18.76,
+          "prixKwhHC": 14.05
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.76,
+        "hiver": {
+          "prixKwhHP": 24.61,
+          "prixKwhHC": 18.09
+        },
+        "ete": {
+          "prixKwhHP": 18.76,
+          "prixKwhHC": 14.05
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.4,
+        "hiver": {
+          "prixKwhHP": 24.61,
+          "prixKwhHC": 18.09
+        },
+        "ete": {
+          "prixKwhHP": 18.76,
+          "prixKwhHC": 14.05
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.14,
+        "hiver": {
+          "prixKwhHP": 24.61,
+          "prixKwhHC": 18.09
+        },
+        "ete": {
+          "prixKwhHP": 18.76,
+          "prixKwhHC": 14.05
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.14,
+        "hiver": {
+          "prixKwhHP": 24.61,
+          "prixKwhHC": 18.09
+        },
+        "ete": {
+          "prixKwhHP": 18.76,
+          "prixKwhHC": 14.05
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.47,
+        "hiver": {
+          "prixKwhHP": 24.61,
+          "prixKwhHC": 18.09
+        },
+        "ete": {
+          "prixKwhHP": 18.76,
+          "prixKwhHC": 14.05
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 53.88,
+        "hiver": {
+          "prixKwhHP": 24.61,
+          "prixKwhHC": 18.09
+        },
+        "ete": {
+          "prixKwhHP": 18.76,
+          "prixKwhHC": 14.05
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "Octopus - OctoSaisons",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-10-21",
+    "isCommunity": true,
+    "subscription_url": "https://octopusenergy.fr/octosaisons-gp",
+    "price_url": "https://a.storyblok.com/f/151412/x/0d23dec94c/grille-tarifaire-octosaisons.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.13,
+        "rouge": {
+          "prixKwhHP": 64.65,
+          "prixKwhHC": 16.15
+        },
+        "hiver": {
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 16.15
+        },
+        "ete": {
+          "prixKwhHP": 16.15,
+          "prixKwhHC": 13.56
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.86,
+        "rouge": {
+          "prixKwhHP": 64.65,
+          "prixKwhHC": 16.15
+        },
+        "hiver": {
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 16.15
+        },
+        "ete": {
+          "prixKwhHP": 16.15,
+          "prixKwhHC": 13.56
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.88,
+        "rouge": {
+          "prixKwhHP": 64.65,
+          "prixKwhHC": 16.15
+        },
+        "hiver": {
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 16.15
+        },
+        "ete": {
+          "prixKwhHP": 16.15,
+          "prixKwhHC": 13.56
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.76,
+        "rouge": {
+          "prixKwhHP": 64.65,
+          "prixKwhHC": 16.15
+        },
+        "hiver": {
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 16.15
+        },
+        "ete": {
+          "prixKwhHP": 16.15,
+          "prixKwhHC": 13.56
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.4,
+        "rouge": {
+          "prixKwhHP": 64.65,
+          "prixKwhHC": 16.15
+        },
+        "hiver": {
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 16.15
+        },
+        "ete": {
+          "prixKwhHP": 16.15,
+          "prixKwhHC": 13.56
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.14,
+        "rouge": {
+          "prixKwhHP": 64.65,
+          "prixKwhHC": 16.15
+        },
+        "hiver": {
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 16.15
+        },
+        "ete": {
+          "prixKwhHP": 16.15,
+          "prixKwhHC": 13.56
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.14,
+        "rouge": {
+          "prixKwhHP": 64.65,
+          "prixKwhHC": 16.15
+        },
+        "hiver": {
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 16.15
+        },
+        "ete": {
+          "prixKwhHP": 16.15,
+          "prixKwhHC": 13.56
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.47,
+        "rouge": {
+          "prixKwhHP": 64.65,
+          "prixKwhHC": 16.15
+        },
+        "hiver": {
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 16.15
+        },
+        "ete": {
+          "prixKwhHP": 16.15,
+          "prixKwhHC": 13.56
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 53.88,
+        "rouge": {
+          "prixKwhHP": 64.65,
+          "prixKwhHC": 16.15
+        },
+        "hiver": {
+          "prixKwhHP": 19.21,
+          "prixKwhHC": 16.15
+        },
+        "ete": {
+          "prixKwhHP": 16.15,
+          "prixKwhHC": 13.56
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": [],
+    "hcByDayType": {
+      "rouge": [
+        {
+          "start": {
+            "hour": 21,
+            "minute": 0
+          },
+          "end": {
+            "hour": 24,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 7,
+            "minute": 0
+          }
+        }
+      ],
+      "hiver": [
+        {
+          "start": {
+            "hour": 21,
+            "minute": 0
+          },
+          "end": {
+            "hour": 24,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 7,
+            "minute": 0
+          }
+        }
+      ],
+      "ete": [
+        {
+          "start": {
+            "hour": 21,
+            "minute": 0
+          },
+          "end": {
+            "hour": 24,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 0,
+            "minute": 0
+          },
+          "end": {
+            "hour": 7,
+            "minute": 0
+          }
+        },
+        {
+          "start": {
+            "hour": 11,
+            "minute": 0
+          },
+          "end": {
+            "hour": 17,
+            "minute": 0
+          }
+        }
+      ]
+    }
+  },
+  {
     "name": "Sobry - SoCap",
     "offer_type": "Marché",
     "lastUpdate": "2026-06-17",

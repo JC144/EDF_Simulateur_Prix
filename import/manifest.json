@@ -1,4 +1,11 @@
 {
+  "https://a.storyblok.com/f/151412/x/0d23dec94c/grille-tarifaire-octosaisons.pdf": {
+    "lastChecked": "2026-10-27",
+    "sha256": "45e23b80bdcee5d1628adf7a17183317f35739e96d454cfcff7f74b2331f0df4",
+    "etag": "W/\"f6ec2a7cb4f4072f5255452e9268a2f4\"",
+    "lastModified": "Wed, 21 Oct 2026 13:46:38 GMT",
+    "lastApplied": "2026-10-27"
+  },
   "https://a.storyblok.com/f/151412/x/a5a79d71c2/grille-tarifaire-eco_conso_fixe_2_b_mars26.pdf": {
     "lastChecked": "2026-08-16",
     "etag": "W/\"13ae7596ea3d5b8d67fa18d648e48faf\"",
@@ -12,6 +19,20 @@
     "lastModified": "Tue, 14 Apr 2026 14:02:50 GMT",
     "sha256": "e907750eb955e7cacc749a927891634f462d134782442c049b4d77c197dbb1b9",
     "lastApplied": "2026-07-18"
+  },
+  "https://a.storyblok.com/f/151412/x/d505811345/grille-tarifaire-ecofixe-aout-26-hphc.pdf": {
+    "lastChecked": "2026-10-27",
+    "sha256": "1f2546ea211721d54060e6c0bd611a3dafadfee47904e7595caebc45769d5f2f",
+    "etag": "W/\"e56beeeacaec1cd9a7c039e7aef9cb13\"",
+    "lastModified": "Wed, 12 Aug 2026 10:37:08 GMT",
+    "lastApplied": "2026-10-27"
+  },
+  "https://a.storyblok.com/f/151412/x/f9e6edf063/grille-tarifaire-eco-fixe-aout-26-base.pdf": {
+    "lastChecked": "2026-10-27",
+    "sha256": "494be062cc9abc8ddda614c60a5c57f1c8f4431080884931841b5f9c7842c78f",
+    "etag": "W/\"5f4a2fd082c6d92e94e9aa6bae3fce70\"",
+    "lastModified": "Wed, 12 Aug 2026 10:37:42 GMT",
+    "lastApplied": "2026-10-27"
   },
   "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_21912_ONLINE_GREEN.pdf": {
     "lastChecked": "2026-10-01",
