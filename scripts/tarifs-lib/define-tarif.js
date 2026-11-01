@@ -88,9 +88,14 @@
         Object.assign(source.days, daysByDate);
     };
 
-    window.defineTarif = function (def) {
+    // Valide et construit un abonnement SANS l'ajouter au registre : sert aux
+    // offres saisies par l'utilisateur (scripts/core/currentOffer.js).
+    // options.silent : lève l'erreur sans la consigner dans
+    // tarifDefinitionErrors ni dans la console (validation à chaque saisie).
+    window.buildTarif = function (def, options) {
+        const silent = !!(options && options.silent);
         if (!isPlainObject(def)) {
-            fail(["defineTarif : un objet de définition est attendu"]);
+            fail(["defineTarif : un objet de définition est attendu"], silent);
         }
         const label = typeof def.name === "string" && def.name !== "" ? def.name : "<sans nom>";
         const errors = [];
@@ -109,18 +114,24 @@
         }
 
         if (errors.length > 0) {
-            fail(errors.map(e => `defineTarif("${label}") : ${e}`));
+            fail(errors.map(e => `defineTarif("${label}") : ${e}`), silent);
         }
 
-        const abonnement = buildAbonnement(def);
+        return buildAbonnement(def);
+    };
+
+    window.defineTarif = function (def) {
+        const abonnement = window.buildTarif(def);
         abonnements.push(abonnement);
         return abonnement;
     };
 
-    function fail(messages) {
-        for (const message of messages) {
-            window.tarifDefinitionErrors.push(message);
-            console.error(message);
+    function fail(messages, silent) {
+        if (!silent) {
+            for (const message of messages) {
+                window.tarifDefinitionErrors.push(message);
+                console.error(message);
+            }
         }
         throw new Error(messages.join("\n"));
     }

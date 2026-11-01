@@ -1,11 +1,12 @@
 import { selectParser } from '../parsers/index.js';
 import { createWizard } from './wizard.js';
 import { initEnedisSnippetBox } from './enedisSnippetBox.js';
+import { initCurrentOfferForm } from './currentOfferForm.js';
 
 // Écran d'import : réglages (puissance, jour Zen+, heures creuses, tarifs
 // communautaires) et chargement du fichier CSV. Détient les données parsées
 // jusqu'au lancement de la simulation.
-export function initImportView({ onStart, onStepForward, onSimulate }) {
+export function initImportView({ onStart, onStepForward, onSimulate, offerApi }) {
     let data = [];
 
     const csvFile = document.getElementById("csvFile");
@@ -77,6 +78,8 @@ export function initImportView({ onStart, onStepForward, onSimulate }) {
         onSimulate(buildSettings(getSelectedTypeOfPrice()), data);
     };
 
+    const currentOfferForm = initCurrentOfferForm({ kvaSelector, simulateButton, offerApi });
+
     function buildSettings(includeCommunity) {
         return {
             kva: Number(kvaSelector.value),
@@ -89,7 +92,8 @@ export function initImportView({ onStart, onStepForward, onSimulate }) {
                 document.getElementById(startId).value,
                 document.getElementById(endId).value
             ]),
-            includeCommunity: includeCommunity
+            includeCommunity: includeCommunity,
+            currentOffer: currentOfferForm.read()
         };
     }
 

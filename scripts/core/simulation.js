@@ -1,11 +1,14 @@
 import { computeMonths } from './calculator.js';
 import { getAbonnements } from './tarifsRegistry.js';
+import { buildCurrentOfferAbonnement } from './currentOffer.js';
 
 // Lance la simulation complète : pour chaque abonnement compatible, applique
 // les réglages utilisateur sur une vue résolue (le registre n'est jamais muté,
 // une re-simulation part donc toujours de la grille d'origine) puis calcule
 // les agrégats mensuels.
-// settings : { kva, jourZenPlus, hcRawRanges, includeCommunity }
+// settings : { kva, jourZenPlus, hcRawRanges, includeCommunity, currentOffer? }
+// currentOffer (facultatif) : offre saisie par l'utilisateur, comparée aux
+// grilles (modèle décrit dans core/currentOffer.js).
 export function runSimulation(settings, data) {
     const calculatedMonths = calculateAllMonths(settings, data);
     const yearsAvailable = [...new Set(calculatedMonths[0].allMonths.map(m => m.year))].sort((a, b) => a - b);
@@ -48,7 +51,7 @@ function calculateAllMonths(settings, data) {
     if (!settings.includeCommunity) {
         filteredAbonnements = filteredAbonnements.filter(a => a.name.includes("EDF"));
     }
-    return filteredAbonnements.map(abo => {
+    const results = filteredAbonnements.map(abo => {
         const resolved = resolveAbonnement(abo, settings);
         return {
             allMonths: computeMonths(resolveView(resolved, kva), data),
@@ -62,6 +65,19 @@ function calculateAllMonths(settings, data) {
             display: abo.display
         }
     });
+    // Ajoutée en dernier : calculatedMonths[0] reste une grille du registre
+    // (références de période et de consommation de la vue résultats).
+    if (settings.currentOffer) {
+        const current = buildCurrentOfferAbonnement(settings.currentOffer, kva);
+        const resolved = resolveAbonnement(current, settings);
+        results.push({
+            allMonths: computeMonths(resolveView(resolved, kva), data),
+            title: current.name,
+            isCurrentOffer: true,
+            display: current.display
+        });
+    }
+    return results;
 }
 
 // Transforme les plages brutes des inputs time ([["22:00","23:59"], ...])

@@ -17,6 +17,7 @@ export function render(container, calculatedMonths, dateBegin, dateEnd, sumPerio
             tarif: sumPeriod(t.allMonths, dateBegin, dateEnd),
             title: t.title,
             lastUpdate: t.lastUpdate,
+            isCurrentOffer: t.isCurrentOffer === true,
             display: t.display
         }
     });
@@ -30,12 +31,13 @@ export function render(container, calculatedMonths, dateBegin, dateEnd, sumPerio
     const resultsBody = summary.refs["results-body"];
     container.appendChild(summary.fragment);
 
+    const currentResult = resultsOrdered.find(r => r.isCurrentOffer) ?? null;
     resultsOrdered.forEach((result, index) => {
-        resultsBody.appendChild(renderTarifRow(result, index, resultsOrdered[0], dateBegin));
+        resultsBody.appendChild(renderTarifRow(result, index, resultsOrdered[0], dateBegin, currentResult));
     });
 }
 
-function renderTarifRow(result, index, bestResult, dateBegin) {
+function renderTarifRow(result, index, bestResult, dateBegin, currentResult) {
     const accordionRowId = dateBegin.getFullYear() + "-" + index;
     const { fragment, refs } = cloneTemplate("tpl-tarif-row");
     const monthCount = result.tarif.months.length;
@@ -45,22 +47,32 @@ function renderTarifRow(result, index, bestResult, dateBegin) {
     refs["accordion-row"].id = accordionRowId;
 
     refs["title"].textContent = result.title;
-    refs["last-update"].textContent = `Dernière mise à jour : ${result.lastUpdate}`;
-    if (isStale(result.lastUpdate)) {
-        const warning = refs["stale-warning"];
-        const message = `Tarif mis à jour il y a plus de ${STALE_MONTHS} mois : vérifiez-le sur le site du fournisseur.`;
-        warning.hidden = false;
-        warning.title = message;
-        warning.setAttribute("aria-label", message);
-        // Tooltip Bootstrap (bundle chargé en script classique) : s'affiche
-        // aussi au focus, donc au toucher sur mobile, contrairement à title.
-        new bootstrap.Tooltip(warning);
+    if (result.isCurrentOffer) {
+        // Offre saisie par l'utilisateur : ni date de grille, ni page de détail.
+        refs["current-badge"].hidden = false;
+        refs["last-update"].remove();
+        refs["stale-warning"].remove();
+        refs["offer-link"].remove();
     }
     else {
-        refs["stale-warning"].remove();
+        refs["current-badge"].remove();
+        refs["last-update"].textContent = `Dernière mise à jour : ${result.lastUpdate}`;
+        if (isStale(result.lastUpdate)) {
+            const warning = refs["stale-warning"];
+            const message = `Tarif mis à jour il y a plus de ${STALE_MONTHS} mois : vérifiez-le sur le site du fournisseur.`;
+            warning.hidden = false;
+            warning.title = message;
+            warning.setAttribute("aria-label", message);
+            // Tooltip Bootstrap (bundle chargé en script classique) : s'affiche
+            // aussi au focus, donc au toucher sur mobile, contrairement à title.
+            new bootstrap.Tooltip(warning);
+        }
+        else {
+            refs["stale-warning"].remove();
+        }
+        // Page de grille générée (tarifs/<slug>.html) : liens fournisseur et PDF.
+        refs["offer-link"].href = tarifPagePath(result.title);
     }
-    // Page de grille générée (tarifs/<slug>.html) : liens fournisseur et PDF.
-    refs["offer-link"].href = tarifPagePath(result.title);
 
     const share = buildPeriodShare(result.tarif.months, result.display);
     if (share) {
@@ -83,6 +95,27 @@ function renderTarifRow(result, index, bestResult, dateBegin) {
         setTextAroundBr(diff.refs["diff-total"], "+ " + priceDiff.toFixed(2) + " €", " sur ces " + monthCount + " mois.");
         refs["diff-main"].appendChild(diff.refs["diff-badge"]);
         refs["diff-container"].appendChild(diff.fragment);
+    }
+
+    // Écart avec l'offre actuelle de l'utilisateur, quand elle est saisie : même
+    // forme que le surcoût par rapport au plus avantageux, couleur propre.
+    if (currentResult && result.isCurrentOffer) {
+        refs["diff-container"].appendChild(cloneTemplate("tpl-diff-current-self").fragment);
+    }
+    else if (currentResult) {
+        const priceDiff = result.tarif.price - currentResult.tarif.price;
+        const percent = currentResult.tarif.price > 0 ? priceDiff / currentResult.tarif.price * 100 : 0;
+        const vs = cloneTemplate("tpl-diff-current");
+        const sign = value => (value > 0 ? "+" : value < 0 ? "−" : "");
+        const monthly = priceDiff / monthCount;
+        if (priceDiff < 0) {
+            vs.refs["vs-icon"].querySelector("use").setAttribute("href", "#fa-circle-minus");
+        }
+        insertTextBeforeSup(vs.refs["vs-badge"], " " + Math.abs(monthly).toFixed(2));
+        setTextAroundBr(vs.refs["vs-total"],
+            sign(priceDiff) + " " + Math.abs(priceDiff).toFixed(2) + " €",
+            " (" + sign(percent) + Math.abs(percent).toFixed(1) + " %) sur ces " + monthCount + " mois.");
+        refs["diff-container"].appendChild(vs.fragment);
     }
 
     // Détail mensuel construit à la première ouverture de l'accordéon :
