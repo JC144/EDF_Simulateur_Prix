@@ -4,6 +4,7 @@ import { initResultsView } from './ui/resultsView.js';
 import { runSimulation } from './core/simulation.js';
 import { sumPeriod } from './core/calculator.js';
 import { loadTarifs } from './core/tarifsRegistry.js';
+import { validateCurrentOffer, serializeOffer, parseOffer, dayTypesOf, DEFAULT_SPOT } from './core/currentOffer.js';
 
 viewManager.init();
 
@@ -19,7 +20,17 @@ function preloadTarifs() {
     });
 }
 
+// Logique de l'offre actuelle injectée dans le formulaire (ui/ ne dépend pas de core/).
+const offerApi = {
+    validate: validateCurrentOffer,
+    serialize: serializeOffer,
+    parse: parseOffer,
+    dayTypesOf: dayTypesOf,
+    defaultSpot: DEFAULT_SPOT
+};
+
 const importView = initImportView({
+    offerApi,
     onStart: function () {
         preloadTarifs();
         viewManager.show("import");

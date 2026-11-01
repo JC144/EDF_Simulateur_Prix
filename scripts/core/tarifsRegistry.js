@@ -7,6 +7,12 @@ export function getAbonnements() {
     return window.abonnements ?? [];
 }
 
+// Constructeur d'abonnement hors registre (offre saisie par l'utilisateur) :
+// défini par define-tarif.js, donc disponible une fois les tarifs chargés.
+export function getTarifBuilder() {
+    return window.buildTarif ?? null;
+}
+
 // Racine du site, déduite de l'emplacement de ce module (scripts/core/).
 const ROOT = new URL('../../', import.meta.url);
 

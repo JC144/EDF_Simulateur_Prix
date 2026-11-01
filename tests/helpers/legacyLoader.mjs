@@ -36,8 +36,9 @@ export function loadAbonnements(options) {
 // Installe un registre frais consommé par scripts/core/tarifsRegistry.js
 // (qui lit window.abonnements). À appeler avant chaque runSimulation.
 export function installFreshRegistry(options) {
-    const abonnements = loadAbonnements(options);
+    const sandbox = createTarifSandbox(options);
     globalThis.window = globalThis;
-    globalThis.abonnements = abonnements;
-    return abonnements;
+    globalThis.abonnements = sandbox.abonnements;
+    globalThis.buildTarif = sandbox.buildTarif;
+    return sandbox.abonnements;
 }
