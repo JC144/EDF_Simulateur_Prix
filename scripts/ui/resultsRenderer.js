@@ -5,6 +5,8 @@ import { renderDayChart } from './dayChart.js';
 import { renderBandShareBar } from './bandShareBar.js';
 import { isStale, STALE_MONTHS, tarifPagePath } from '../utils/tarifMeta.js';
 
+const MIN_MONTHLY_SAVINGS_FOR_SUPPORT = 5; // €/mois
+
 // Rendu de l'écran de résultats : table de comparaison des tarifs et accordéons
 // de détail mensuel/journalier. Le HTML vit dans les <template> d'index.html ;
 // ce module se contente de les cloner et d'y injecter les valeurs.
@@ -27,6 +29,9 @@ export function render(container, { calculatedMonths, currentOffer }, dateBegin,
         .sort((a, b) => a.tarif.price - b.tarif.price);
 
     const summary = cloneTemplate("tpl-result-summary");
+    const cheapest = resultsOrdered[0]?.tarif;
+    const showSupport = !selected || (cheapest?.months.length > 0 &&
+        selected.tarif.price >= cheapest.price + MIN_MONTHLY_SAVINGS_FOR_SUPPORT * cheapest.months.length);
     if (selected) {
         resultsOrdered.unshift(selected);
         summary.refs["diff-heading"].textContent = "Diff. avec votre offre";
@@ -36,8 +41,15 @@ export function render(container, { calculatedMonths, currentOffer }, dateBegin,
     const resultsBody = summary.refs["results-body"];
     container.appendChild(summary.fragment);
 
+    const offersBeforeSupport = Math.min(3, resultsOrdered.length);
     resultsOrdered.forEach((result, index) => {
         resultsBody.appendChild(renderTarifRow(result, index, resultsOrdered[0], selected, dateBegin));
+        if (showSupport && index + 1 === offersBeforeSupport) {
+            const supportRow = cloneTemplate("tpl-results-support-row");
+            const supportCta = document.querySelector("body > .support-cta");
+            supportRow.refs["support-cell"].appendChild(supportCta.cloneNode(true));
+            resultsBody.appendChild(supportRow.fragment);
+        }
     });
 }
 

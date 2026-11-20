@@ -1101,25 +1101,6 @@
             <div id="pricesResultView" class="card maxcard">
                 <div class="card-body">
                     <h2 class="visually-hidden">Résultats de la simulation</h2>
-                    <div class="alert alert-warning fade show" role="alert">
-                        <strong class="alert-heading"><svg class="icon icon-triangle-exclamation toast-icon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg>
-                            Attention:
-                        </strong>
-                        <ul>
-                            <li>Ce résultat est une simulation basée sur votre consommation passée avec les tarifs
-                                actuels.</li>
-                            <li>Le coût de l'abonnement est intégré au prorata journalier.</li>
-                            <li>Il existe des subtilités contractuelles entre les offres dites "de marché" (à la
-                                main de
-                                l'opérateur) et les offres TRV (règlementées) qui doivent être étudiées au cas par
-                                cas
-                                suite au classement des résultats obtenus ci-dessous.</li>                            
-                            <li>Nous faisons de notre mieux pour garder les tarifs à jour, <strong>mais pensez à les
-                                vérifier
-                                avec vos
-                                fournisseurs avant de souscrire un contrat.</strong></li>
-                        </ul>
-                    </div>
                     <div class="mt-4 mb-4">
                         <div class="row">
                             <div class="input-group col">
@@ -1155,13 +1136,32 @@
             </div>
     </main>
 
+    <!-- SUPPORT-CTA:BEGIN -->
+    <section class="support-cta" aria-label="Soutenir le comparateur">
+        <div class="shell support-layout">
+            <div>
+                <h2>Vous avez fait <em>de grosses économies&nbsp;?</em></h2>
+                <p>Le comparateur est entièrement gratuit, aidez-nous à ce qu'il le reste.
+                    Votre soutien finance le nom de domaine, les licences, le temps passé à mettre les tarifs à jour et gérer les contributions.</p>
+            </div>
+            <div class="support-actions">
+                <h3>Faites vivre le comparateur</h3>
+                <a class="support-donate" href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU">
+                    <span aria-hidden="true">♥</span> Faire un don via PayPal</a>
+                <a class="support-github" href="https://github.com/JC144/EDF_Simulateur_Prix#comment-contribuer">
+                    Contribuer sur GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+        </div>
+    </section>
+    <!-- SUPPORT-CTA:END -->
+
     <!-- Footer sombre « À propos », commun aux trois vues -->
     <footer id="a-propos" class="band-dark">
         <div class="shell">
+            <div class="kicker kicker-accent">À propos</div>
+            <h2>À propos de ce comparateur</h2>
             <div class="about-grid">
                 <div>
-                    <div class="kicker kicker-accent">À propos</div>
-                    <h2>À propos de ce comparateur</h2>
                     <p>
                         Ce comparateur est un outil open source basé sur votre historique
                         réel de consommation Linky plutôt que des profils types pour comparer les abonnements
@@ -1171,22 +1171,15 @@
                         Vos données sont traitées en local dans votre navigateur&nbsp;: aucune donnée
                         n'est envoyée vers un serveur, vous pouvez même l'exécuter sans internet.
                         <br/>
-                        Le site n'est rémunéré ni par les fournisseurs, ni par la publicité, <a
-                            href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU">vos dons</a> me
-                        permettent de le maintenir et de financer son développement (nom de domaine, licenses).
+                        Le site n'est rémunéré ni par les fournisseurs, ni par la publicité.
                     </p>
+                </div>
+                <div>
                     <p>Ce site a été conçu et est maintenu par <a
                             href="https://www.linkedin.com/in/jvasselon/" rel="noopener">Jean-Christophe
                             VASSELON</a>.<br />
                         D'après une discussion avec <a href="https://twitter.com/autommen/">Nicolas 'Automnen'</a> et <a
                             href="https://twitter.com/MaloryBouvier/">Malory Bouvier</a></p>
-                </div>
-                <div class="donate-card">
-                    <div class="donate-emoji" aria-hidden="true">☕</div>
-                    <p>Si comme nous, vous faites une belle économie, n'hésitez pas à convertir mon temps en bon café
-                        en faisant un don&nbsp;!</p>
-                    <a class="btn-donate" href="https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU">Faire
-                        un don</a>
                 </div>
             </div>
             <div class="about-foot">
@@ -1248,6 +1241,20 @@
             <div class="position-relative py-2 px-4 text-center border border-info rounded-pill">
                 <h4 class="h5 mt-1 mb-1" data-ref="conso-title"></h4>
             </div>
+            <div class="alert alert-warning mt-3" role="alert">
+                <strong class="alert-heading"><svg class="icon icon-triangle-exclamation toast-icon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg>
+                    Attention:
+                </strong>
+                <ul>
+                    <li>Ce résultat est une simulation basée sur votre consommation passée avec les tarifs actuels.</li>
+                    <li>Le coût de l'abonnement est intégré au prorata journalier.</li>
+                    <li>Il existe des subtilités contractuelles entre les offres dites "de marché" (à la main de
+                        l'opérateur) et les offres TRV (règlementées) qui doivent être étudiées au cas par cas
+                        suite au classement des résultats obtenus ci-dessous.</li>
+                    <li>Nous faisons de notre mieux pour garder les tarifs à jour, <strong>mais pensez à les vérifier
+                        avec vos fournisseurs avant de souscrire un contrat.</strong></li>
+                </ul>
+            </div>
             <div class="mt-2 table-responsive">
                 <table
                     class="resultable table mt-3 align-middle table-striped-columns table-hover table-borderless table-sm">
@@ -1262,6 +1269,12 @@
                 </table>
             </div>
         </div>
+    </template>
+
+    <template id="tpl-results-support-row">
+        <tr>
+            <td colspan="3" class="px-0 py-3 text-start" data-ref="support-cell"></td>
+        </tr>
     </template>
 
     <!-- Paire de lignes par tarif : ligne résumé (bouton chevron pour déplier)

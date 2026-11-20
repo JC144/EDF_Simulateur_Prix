@@ -79,6 +79,7 @@ L'application est 100% statique (aucun build, aucune dépendance à installer), 
 
 * `index.html` — page unique : les 3 écrans (présentation, import, résultats), les `<template>` de l'écran de résultats et le chargement de l'application (les scripts de tarifs sont listés dans `scripts/tarifs-manifest.js` et chargés à la demande).
 * `scripts/app.js` — point d'entrée (module ES) : orchestration entre les vues et la simulation.
+* [`components/support-cta.html`](components/support-cta.html) contient le bandeau de don et de contribution GitHub. La commande `npm run gen` (depuis `import/`) l’insère dans `index.html`. Les autres pages générées peuvent inclure le même fragment HTML.
 * `scripts/ui/` — vues et rendu : `importView.js` (réglages + import CSV), `resultsView.js` (période + rafraîchissement), `resultsRenderer.js` (clonage/hydratation des templates), `viewManager.js` (navigation), `dom.js` (helpers).
 * `scripts/core/` — logique métier : `calculator.js` (calculs), `simulation.js` (personnalisation + calcul global), `tarifsRegistry.js` (accès au registre des tarifs).
 * `scripts/parsers/` — un parser par format d'export (EDF, Enedis, TotalEnergies, SER, Home Assistant) et `index.js` qui choisit le bon d'après le nom du fichier.

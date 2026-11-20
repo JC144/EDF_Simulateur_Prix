@@ -690,8 +690,100 @@ a.pill:hover {
 }
 
 /* ============================================================
-   4. Footer sombre « À propos »
+   4. Soutien au projet et footer « À propos »
    ============================================================ */
+.support-cta {
+  background: radial-gradient(ellipse at top right, #284c7a, transparent 65%), #11233c;
+  color: #fff;
+  border-bottom: 1px solid #34465e;
+}
+
+#pricesResultView .support-cta {
+  border-radius: var(--radius-xl);
+}
+
+.support-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 22rem);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.support-cta h2 {
+  margin: 0 0 1rem;
+  color: #fff;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.support-cta h2 em {
+  display: block;
+  color: #a9ceff;
+  font-style: normal;
+}
+
+.support-cta p {
+  max-width: 56ch;
+  margin: 0;
+  color: #dce6f3;
+  font-size: 1.05rem;
+  text-wrap: pretty;
+}
+
+.support-actions {
+  display: grid;
+  gap: 0.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  text-align: center;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+}
+
+.support-actions h3 {
+  margin: 0 0 0.6rem;
+  color: var(--ink);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.support-actions a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 44px;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.support-donate {
+  background: var(--accent-dark);
+  color: #fff;
+  text-decoration: none;
+}
+
+.support-donate:hover {
+  background: var(--accent-ink);
+  color: #fff;
+}
+
+.support-github {
+  color: var(--accent-ink);
+}
+
+.support-github:hover {
+  background: var(--accent-palest);
+}
+
+.support-actions a:focus-visible {
+  outline: 3px solid var(--accent-ink);
+  outline-offset: 3px;
+}
+
 .band-dark {
   background: var(--dark-bg);
   color: var(--dark-text);
@@ -734,35 +826,6 @@ a.pill:hover {
   color: var(--dark-text);
   margin: 0 0 18px;
   text-wrap: pretty;
-}
-
-.donate-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-xl);
-  padding: 32px;
-}
-
-.donate-emoji {
-  font-size: 26px;
-  margin-bottom: 14px;
-}
-
-a.btn-donate {
-  display: inline-block;
-  background: var(--dark-accent);
-  color: #fff;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-  padding: 13px 28px;
-  border-radius: var(--radius);
-  text-decoration: none;
-}
-
-a.btn-donate:hover {
-  background: #8BB9FE;
-  color: #fff;
 }
 
 .about-foot {
@@ -1503,6 +1566,11 @@ a.btn-donate:hover {
 }
 
 @media (max-width: 768px) {
+  .support-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
   .faq-grid,
   .tarifs-grid {
     grid-template-columns: 1fr;

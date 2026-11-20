@@ -11,8 +11,8 @@
     "check": "node update.mjs --check-only",
     "update": "node update.mjs",
     "update-all": "node update-all.mjs",
-    "gen": "node tools/gen-tarifs-section.mjs && node tools/gen-tarif-pages.mjs",
-    "gen:check": "node tools/gen-tarifs-section.mjs --check && node tools/gen-tarif-pages.mjs --check"
+    "gen": "node tools/gen-tarifs-section.mjs && node tools/gen-tarif-pages.mjs && node tools/gen-support-cta.mjs",
+    "gen:check": "node tools/gen-tarifs-section.mjs --check && node tools/gen-tarif-pages.mjs --check && node tools/gen-support-cta.mjs --check"
   },
   "dependencies": {
     "pdfjs-dist": "5.4.54"

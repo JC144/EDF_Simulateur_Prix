@@ -18,6 +18,7 @@ import { REPO_ROOT } from './lib/tarif-defs.mjs';
 import { reportChanges } from './lib/site-gen.mjs';
 import { run as runTarifsSection } from './tools/gen-tarifs-section.mjs';
 import { run as runTarifPages } from './tools/gen-tarif-pages.mjs';
+import { run as runSupportCta } from './tools/gen-support-cta.mjs';
 
 const IMPORT_DIR = path.dirname(fileURLToPath(import.meta.url));
 
@@ -227,6 +228,7 @@ function runSiteGenerators({ check }) {
         : '\nRégénération des pages du site (npm run gen) ...');
     try {
         reportChanges(runTarifsSection({ check }).changes, { check, what: 'Section « Tarifs suivis » d’index.html' });
+        reportChanges(runSupportCta({ check }).changes, { check, what: 'Bandeau de soutien' });
         const pages = runTarifPages({ check });
         for (const w of new Set(pages.warnings)) console.warn(`Attention : ${w}`);
         reportChanges(pages.changes, { check, what: 'Pages de grille tarifaire (tarifs/*.html, sitemap.xml)' });
