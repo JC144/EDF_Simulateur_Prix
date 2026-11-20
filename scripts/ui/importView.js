@@ -1,15 +1,23 @@
 import { selectParser } from '../parsers/index.js';
+import { isEdfOffer } from '../utils/tarifMeta.js';
+import { setOptions } from './dom.js';
 import { createWizard } from './wizard.js';
 import { initEnedisSnippetBox } from './enedisSnippetBox.js';
 
 // Écran d'import : réglages (puissance, jour Zen+, heures creuses, tarifs
 // communautaires) et chargement du fichier CSV. Détient les données parsées
 // jusqu'au lancement de la simulation.
-export function initImportView({ onStart, onStepForward, onSimulate }) {
+export function initImportView({ getAvailableAbonnements, onStart, onStepForward, onSimulate }) {
     let data = [];
 
     const csvFile = document.getElementById("csvFile");
     const kvaSelector = document.getElementById("puissanceSouscrite");
+    const currentOffer = document.getElementById("currentOffer");
+    const noOfferOption = { text: currentOffer.options[0].text, value: "" };
+    const edfOnly = document.getElementById("communityRadioIsNotCommunity");
+    const community = document.getElementById("communityRadioIsCommunity");
+    const communityRequired = document.getElementById("communityRequired");
+    let communityPreference = community.checked;
     const jourZenPlusSelector = document.getElementById("jourZenPlus");
     const simulateButton = document.getElementById("simulateButton");
     const importError = document.getElementById("importError");
@@ -49,6 +57,32 @@ export function initImportView({ onStart, onStepForward, onSimulate }) {
     csvFile.addEventListener("change", onFileImported);
     importError.style.display = "none";
 
+    function syncCommunityChoice() {
+        if (!community.disabled) {
+            communityPreference = community.checked;
+        }
+        const required = currentOffer.value !== "" && !isEdfOffer(currentOffer.value);
+        community.checked = required || communityPreference;
+        edfOnly.checked = !community.checked;
+        edfOnly.disabled = required;
+        community.disabled = required;
+        communityRequired.hidden = !required;
+    }
+
+    function refreshCurrentOffers() {
+        const names = getAvailableAbonnements(kvaSelector.value).map(abo => abo.name);
+        names.sort((a, b) => a.localeCompare(b, "fr"));
+        const selected = names.includes(currentOffer.value) ? currentOffer.value : "";
+        setOptions(currentOffer, [noOfferOption, ...names.map(name => ({ text: name, value: name }))], selected);
+        currentOffer.disabled = false;
+        syncCommunityChoice();
+    }
+
+    currentOffer.addEventListener("change", syncCommunityChoice);
+    kvaSelector.addEventListener("change", () => {
+        if (!currentOffer.disabled) refreshCurrentOffers();
+    });
+
     // Dropzone : le drag & drop alimente #csvFile puis rejoue le pipeline
     // d'import via l'événement change.
     const dropzone = document.getElementById("csvDropzone");
@@ -74,10 +108,10 @@ export function initImportView({ onStart, onStepForward, onSimulate }) {
         onStart();
     };
     simulateButton.onclick = function () {
-        onSimulate(buildSettings(getSelectedTypeOfPrice()), data);
+        onSimulate(buildSettings(), data);
     };
 
-    function buildSettings(includeCommunity) {
+    function buildSettings() {
         return {
             kva: Number(kvaSelector.value),
             jourZenPlus: parseInt(jourZenPlusSelector.value),
@@ -89,12 +123,9 @@ export function initImportView({ onStart, onStepForward, onSimulate }) {
                 document.getElementById(startId).value,
                 document.getElementById(endId).value
             ]),
-            includeCommunity: includeCommunity
+            includeCommunity: community.checked,
+            currentOffer: currentOffer.value
         };
-    }
-
-    function getSelectedTypeOfPrice() {
-        return document.querySelector('input[name="communityPricesRadio"]:checked').value == 'isCommunity';
     }
 
     function setDropzoneFile(name) {
@@ -158,5 +189,5 @@ export function initImportView({ onStart, onStepForward, onSimulate }) {
 
     // Application d'une étape depuis l'historique navigateur (popstate) :
     // navigation directe, sans pousser de nouvelle entrée.
-    return { goToStep: (n) => wizard.goTo(n) };
+    return { goToStep: (n) => wizard.goTo(n), refreshCurrentOffers };
 }

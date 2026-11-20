@@ -9,7 +9,7 @@ import { isStale, STALE_MONTHS, tarifPagePath } from '../utils/tarifMeta.js';
 // de détail mensuel/journalier. Le HTML vit dans les <template> d'index.html ;
 // ce module se contente de les cloner et d'y injecter les valeurs.
 // sumPeriod est injectée par la vue (voir app.js) : aucun import de core/ ici.
-export function render(container, calculatedMonths, dateBegin, dateEnd, sumPeriod) {
+export function render(container, { calculatedMonths, currentOffer }, dateBegin, dateEnd, sumPeriod) {
     container.innerHTML = "";
 
     const resultsForPeriod = calculatedMonths.map((t) => {
@@ -22,20 +22,26 @@ export function render(container, calculatedMonths, dateBegin, dateEnd, sumPerio
     });
 
     const consoForPeriod = resultsForPeriod[0].tarif.conso;
-    const resultsOrdered = [...resultsForPeriod].sort((a, b) => a.tarif.price - b.tarif.price);
+    const selected = resultsForPeriod.find(result => result.title === currentOffer);
+    const resultsOrdered = resultsForPeriod.filter(result => result !== selected)
+        .sort((a, b) => a.tarif.price - b.tarif.price);
 
     const summary = cloneTemplate("tpl-result-summary");
+    if (selected) {
+        resultsOrdered.unshift(selected);
+        summary.refs["diff-heading"].textContent = "Diff. avec votre offre";
+    }
     summary.refs["conso-title"].textContent =
         "Consommation  totale pour cette période : " + (consoForPeriod / 1000).toFixed(2) + "kWh";
     const resultsBody = summary.refs["results-body"];
     container.appendChild(summary.fragment);
 
     resultsOrdered.forEach((result, index) => {
-        resultsBody.appendChild(renderTarifRow(result, index, resultsOrdered[0], dateBegin));
+        resultsBody.appendChild(renderTarifRow(result, index, resultsOrdered[0], selected, dateBegin));
     });
 }
 
-function renderTarifRow(result, index, bestResult, dateBegin) {
+function renderTarifRow(result, index, reference, selected, dateBegin) {
     const accordionRowId = dateBegin.getFullYear() + "-" + index;
     const { fragment, refs } = cloneTemplate("tpl-tarif-row");
     const monthCount = result.tarif.months.length;
@@ -73,14 +79,17 @@ function renderTarifRow(result, index, bestResult, dateBegin) {
     insertTextBeforeSup(refs["monthly-price"], (result.tarif.price / monthCount).toFixed(2));
     setTextAroundBr(refs["total-price"], "soit " + result.tarif.price.toFixed(2) + " €", " pour la période.");
 
-    if (index == 0) {
-        refs["diff-main"].appendChild(cloneTemplate("tpl-diff-best").fragment);
+    if (result === reference) {
+        refs["diff-main"].appendChild(cloneTemplate(selected ? "tpl-diff-current" : "tpl-diff-best").fragment);
     }
     else {
-        const diff = cloneTemplate("tpl-diff-worse");
-        const priceDiff = result.tarif.price - bestResult.tarif.price;
-        insertTextBeforeSup(diff.refs["diff-badge"], " " + (priceDiff / monthCount).toFixed(2));
-        setTextAroundBr(diff.refs["diff-total"], "+ " + priceDiff.toFixed(2) + " €", " sur ces " + monthCount + " mois.");
+        const diff = cloneTemplate("tpl-diff-amount");
+        const priceDiff = result.tarif.price - reference.tarif.price;
+        const totalDiff = signedPrice(priceDiff);
+        const badgeColor = Number(totalDiff) < 0 ? "success" : Number(totalDiff) > 0 ? "warning" : "secondary";
+        diff.refs["diff-badge"].classList.add("text-bg-" + badgeColor);
+        insertTextBeforeSup(diff.refs["diff-badge"], signedPrice(priceDiff / monthCount));
+        setTextAroundBr(diff.refs["diff-total"], totalDiff + " €", " sur ces " + monthCount + " mois.");
         refs["diff-main"].appendChild(diff.refs["diff-badge"]);
         refs["diff-container"].appendChild(diff.fragment);
     }
@@ -94,6 +103,12 @@ function renderTarifRow(result, index, bestResult, dateBegin) {
     }, { once: true });
 
     return fragment;
+}
+
+function signedPrice(price) {
+    const rounded = price.toFixed(2);
+    if (Number(rounded) === 0) return "0.00";
+    return price > 0 ? "+" + rounded : rounded;
 }
 
 function renderMonthDetail(m, display) {

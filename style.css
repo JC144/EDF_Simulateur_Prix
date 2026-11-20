@@ -1266,8 +1266,12 @@ a.btn-donate:hover {
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.choice-card:hover {
+.choice-card:hover:not(:has(:disabled)) {
   border-color: var(--ink);
+}
+
+.choice-card:has(:disabled) {
+  cursor: default;
 }
 
 .choice-card:has(:checked) {

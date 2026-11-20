@@ -2,6 +2,10 @@
 // utilisé par le navigateur (resultsRenderer, tarif-page.js) ET par le
 // générateur Node (import/tools/gen-tarif-pages.mjs). ES pur, aucun import.
 
+export function isEdfOffer(name) {
+    return name.startsWith("EDF - ");
+}
+
 // "EDF - Bleu Heures Creuses" -> "edf-bleu-heures-creuses". Dérivé du NOM du
 // tarif, jamais du fichier (un fichier peut déclarer plusieurs tarifs).
 export function tarifSlug(name) {

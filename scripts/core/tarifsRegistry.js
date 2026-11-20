@@ -7,6 +7,11 @@ export function getAbonnements() {
     return window.abonnements ?? [];
 }
 
+export function getAvailableAbonnements(kva) {
+    const puissance = Number(kva);
+    return getAbonnements().filter(abo => abo.prices.some(p => p.puissance === puissance));
+}
+
 // Racine du site, déduite de l'emplacement de ce module (scripts/core/).
 const ROOT = new URL('../../', import.meta.url);
 

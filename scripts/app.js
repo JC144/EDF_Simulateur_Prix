@@ -3,7 +3,7 @@ import { initImportView } from './ui/importView.js';
 import { initResultsView } from './ui/resultsView.js';
 import { runSimulation } from './core/simulation.js';
 import { sumPeriod } from './core/calculator.js';
-import { loadTarifs } from './core/tarifsRegistry.js';
+import { getAvailableAbonnements, loadTarifs } from './core/tarifsRegistry.js';
 
 viewManager.init();
 
@@ -14,12 +14,13 @@ const resultsView = initResultsView({ sumPeriod });
 // avec l'accueil : leur téléchargement démarre à l'entrée dans l'assistant,
 // pendant que l'utilisateur importe son CSV, et Simuler l'attend au besoin.
 function preloadTarifs() {
-    loadTarifs().catch(function (error) {
+    loadTarifs().then(importView.refreshCurrentOffers).catch(function (error) {
         console.error(error);
     });
 }
 
 const importView = initImportView({
+    getAvailableAbonnements,
     onStart: function () {
         preloadTarifs();
         viewManager.show("import");

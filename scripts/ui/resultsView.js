@@ -35,7 +35,7 @@ export function initResultsView({ sumPeriod }) {
     function refresh() {
         const dateBegin = new Date(beginYear, beginMonth - 1, 1);
         const dateEnd = new Date(endYear, endMonth - 1, 1);
-        render(document.getElementById("pricesResultRow"), simulation.calculatedMonths, dateBegin, dateEnd, sumPeriod);
+        render(document.getElementById("pricesResultRow"), simulation, dateBegin, dateEnd, sumPeriod);
     }
 
     function setBeginYearSelector() {

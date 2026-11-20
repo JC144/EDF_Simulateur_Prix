@@ -1,15 +1,16 @@
 import { computeMonths } from './calculator.js';
-import { getAbonnements } from './tarifsRegistry.js';
+import { getAvailableAbonnements } from './tarifsRegistry.js';
+import { isEdfOffer } from '../utils/tarifMeta.js';
 
 // Lance la simulation complète : pour chaque abonnement compatible, applique
 // les réglages utilisateur sur une vue résolue (le registre n'est jamais muté,
 // une re-simulation part donc toujours de la grille d'origine) puis calcule
 // les agrégats mensuels.
-// settings : { kva, jourZenPlus, hcRawRanges, includeCommunity }
+// settings : { kva, jourZenPlus, hcRawRanges, includeCommunity, currentOffer }
 export function runSimulation(settings, data) {
     const calculatedMonths = calculateAllMonths(settings, data);
     const yearsAvailable = [...new Set(calculatedMonths[0].allMonths.map(m => m.year))].sort((a, b) => a - b);
-    return { calculatedMonths, yearsAvailable };
+    return { calculatedMonths, yearsAvailable, currentOffer: settings.currentOffer };
 }
 
 // Copie superficielle suffisante : le calculateur appelle getDayType avec la
@@ -43,10 +44,9 @@ function calculateAllMonths(settings, data) {
     // Défense en profondeur : les puissances des grilles sont des numbers
     // (garanti par defineTarif), on normalise le réglage au même type.
     const kva = Number(settings.kva);
-    //On filtre sur les abonnements qui correspondent à la puissance souscrite
-    let filteredAbonnements = getAbonnements().filter(a => a.prices.some(p => p.puissance === kva));
+    let filteredAbonnements = getAvailableAbonnements(kva);
     if (!settings.includeCommunity) {
-        filteredAbonnements = filteredAbonnements.filter(a => a.name.includes("EDF"));
+        filteredAbonnements = filteredAbonnements.filter(a => isEdfOffer(a.name));
     }
     return filteredAbonnements.map(abo => {
         const resolved = resolveAbonnement(abo, settings);

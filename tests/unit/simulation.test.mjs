@@ -78,10 +78,10 @@ test('hasSpecialDaysCustom : jourZenPlus appliqué à la vue résolue, sans muta
     assert.deepStrictEqual(second.calculatedMonths, first.calculatedMonths, 're-simulation déterministe');
 });
 
-test('filtre communautaire : sans opt-in, seuls les abonnements dont le nom contient "EDF"', () => {
+test('filtre communautaire : sans opt-in, seules les offres du fournisseur EDF sont incluses', () => {
     installStubRegistry([
         makeGrille({ name: 'EDF - Bleu Stub' }),
-        makeGrille({ name: 'Autre - Fournisseur' })
+        makeGrille({ name: 'Autre - Offre indexée sur le tarif EDF' })
     ]);
 
     const { calculatedMonths } = runSimulation(defaultSettings(6), DATA);
@@ -91,7 +91,7 @@ test('filtre communautaire : sans opt-in, seuls les abonnements dont le nom cont
     settings.includeCommunity = true;
     const withCommunity = runSimulation(settings, DATA);
     assert.deepStrictEqual(withCommunity.calculatedMonths.map(t => t.title),
-        ['EDF - Bleu Stub', 'Autre - Fournisseur']);
+        ['EDF - Bleu Stub', 'Autre - Offre indexée sur le tarif EDF']);
 });
 
 test('propagation : display, offer_type et price_url descendent jusqu\'aux résultats', () => {
