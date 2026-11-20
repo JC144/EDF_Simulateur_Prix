@@ -705,6 +705,64 @@
       "HC"
     ]
   },
+  "Enercoop - Flexibilité 2 saisons - Jours de pointe": {
+    "types": {
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "hiverWeekend": {
+        "day": "hiverWeekend",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "hiverPointe": {
+        "day": "hiverPointe",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "eteWeekend": {
+        "day": "eteWeekend",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "etePointe": {
+        "day": "etePointe",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "hiverWeekend",
+      "hiverPointe",
+      "ete",
+      "eteWeekend",
+      "etePointe"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
   "Engie - Elec Référence 3 ans": {
     "types": {
       "bleu": {

@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Grille tarifaire Sobry SoFlex du 17 juin 2026 : abonnement de 3 à 36 kVA, formule du prix du kWh indexé sur le prix spot. Lien vers la grille officielle.">
+    <meta name="description" content="Grille tarifaire Sobry SoFlex du 1er novembre 2026 : abonnement de 3 à 36 kVA, formule du prix du kWh indexé sur le prix spot.">
     <meta name="author" content="jcvasselon">
     <title>SoFlex Sobry : prix du kWh spot 2026</title>
     <link rel="canonical" href="https://comparateur-abonnements-electricite.fr/tarifs/sobry-soflex.html">
@@ -31,9 +31,9 @@
                 "@id": "https://comparateur-abonnements-electricite.fr/tarifs/sobry-soflex.html#webpage",
                 "url": "https://comparateur-abonnements-electricite.fr/tarifs/sobry-soflex.html",
                 "name": "SoFlex Sobry : prix du kWh spot 2026",
-                "description": "Grille tarifaire Sobry SoFlex du 17 juin 2026 : abonnement de 3 à 36 kVA, formule du prix du kWh indexé sur le prix spot. Lien vers la grille officielle.",
+                "description": "Grille tarifaire Sobry SoFlex du 1er novembre 2026 : abonnement de 3 à 36 kVA, formule du prix du kWh indexé sur le prix spot.",
                 "inLanguage": "fr-FR",
-                "dateModified": "2026-06-17",
+                "dateModified": "2026-11-01",
                 "isPartOf": {
                     "@id": "https://comparateur-abonnements-electricite.fr/#website"
                 },
@@ -85,7 +85,7 @@
         </div>
     </nav>
 
-    <main class="shell legal-shell tarif-page" data-last-update="2026-06-17">
+    <main class="shell legal-shell tarif-page" data-last-update="2026-11-01">
         <nav aria-label="Fil d’Ariane" class="breadcrumb-nav">
             <ol>
                 <li><a href="../">Accueil</a></li>
@@ -99,6 +99,24 @@
             <p class="tarifs-note">Ces tarifs sont maintenus par la communauté et peuvent ne pas être à jour : vérifiez-les sur le site du fournisseur avant toute décision.</p>
         </header>
 
+        <div class="tarif-history" data-history-url="historique/sobry-soflex.json" hidden>
+            <label for="grille-date">Grille tarifaire</label>
+            <select id="grille-date" class="form-select" aria-controls="grille-actuelle grille-archivee">
+                <option value="2026-11-01">1er novembre 2026 · Dernière grille</option>
+                <option value="2026-06-17">17 juin 2026</option>
+            </select>
+        </div>
+        <div id="grille-archivee" hidden>
+            <section class="tarif-meta">
+                <h2 class="tarif-date" id="archive-titre"></h2>
+                <p>La simulation utilise la dernière grille de cette offre.</p>
+                <a href="#grille-2026-11-01" id="archive-retour">Revenir à la dernière grille</a>
+            </section>
+            <p id="archive-statut" role="status"></p>
+            <button type="button" id="archive-reessayer" hidden>Réessayer</button>
+            <div id="archive-prix"></div>
+        </div>
+        <div id="grille-actuelle">
         <section class="tarif-cta" aria-labelledby="tarif-cta-title">
             <h2 id="tarif-cta-title">Combien vous coûterait l’offre SoFlex de Sobry&nbsp;?</h2>
             <p>Importez votre historique de consommation Linky&nbsp;: le simulateur calcule, demi-heure par demi-heure, ce que vous auriez payé avec cette offre et la compare aux autres offres d’électricité suivies.</p>
@@ -108,7 +126,7 @@
         </section>
 
         <section class="tarif-meta" aria-label="Source de la grille">
-            <p class="tarif-date">Grille tarifaire du <time datetime="2026-06-17">17 juin 2026</time></p>
+            <p class="tarif-date">Grille tarifaire du <time datetime="2026-11-01">1er novembre 2026</time></p>
             <div class="alert alert-warning tarif-stale" role="alert" hidden>Cette grille a plus de 6 mois&nbsp;: les prix ont probablement évolué depuis. Vérifiez-les sur le site du fournisseur avant toute décision.</div>
             <noscript><p class="tarif-stale-hint">Si cette grille a plus de 6 mois, les prix ont probablement évolué&nbsp;: vérifiez-les sur le site du fournisseur.</p></noscript>
             <ul class="tarif-links">
@@ -119,25 +137,27 @@
 
         <section class="tarif-section">
             <h2>Abonnement</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 17 juin 2026.</p>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Abonnement TTC par puissance souscrite</caption>
                 <thead><tr><th scope="col">Puissance</th><th scope="col">€ TTC / mois</th><th scope="col">€ TTC / an</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">3 kVA</th><td data-label="€ TTC / mois">12,7488</td><td data-label="€ TTC / an">152,99</td></tr>
-                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">21,0402</td><td data-label="€ TTC / an">252,48</td></tr>
-                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">27,6276</td><td data-label="€ TTC / an">331,53</td></tr>
-                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">33,5892</td><td data-label="€ TTC / an">403,07</td></tr>
-                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">39,2046</td><td data-label="€ TTC / an">470,46</td></tr>
-                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">44,592</td><td data-label="€ TTC / an">535,10</td></tr>
-                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">54,873</td><td data-label="€ TTC / an">658,48</td></tr>
-                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">64,7358</td><td data-label="€ TTC / an">776,83</td></tr>
-                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">74,3088</td><td data-label="€ TTC / an">891,71</td></tr>
+                    <tr><th scope="row">3 kVA</th><td data-label="€ TTC / mois">12,9658<small class="tarif-change tarif-rise">+1,70 %</small></td><td data-label="€ TTC / an">155,59<small class="tarif-change tarif-rise">+1,70 %</small></td></tr>
+                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">21,3747<small class="tarif-change tarif-rise">+1,59 %</small></td><td data-label="€ TTC / an">256,50<small class="tarif-change tarif-rise">+1,59 %</small></td></tr>
+                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">28,0536<small class="tarif-change tarif-rise">+1,54 %</small></td><td data-label="€ TTC / an">336,64<small class="tarif-change tarif-rise">+1,54 %</small></td></tr>
+                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">34,1325<small class="tarif-change tarif-rise">+1,62 %</small></td><td data-label="€ TTC / an">409,59<small class="tarif-change tarif-rise">+1,62 %</small></td></tr>
+                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">39,8514<small class="tarif-change tarif-rise">+1,65 %</small></td><td data-label="€ TTC / an">478,22<small class="tarif-change tarif-rise">+1,65 %</small></td></tr>
+                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">45,3503<small class="tarif-change tarif-rise">+1,70 %</small></td><td data-label="€ TTC / an">544,20<small class="tarif-change tarif-rise">+1,70 %</small></td></tr>
+                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">55,8481<small class="tarif-change tarif-rise">+1,78 %</small></td><td data-label="€ TTC / an">670,18<small class="tarif-change tarif-rise">+1,78 %</small></td></tr>
+                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">65,9259<small class="tarif-change tarif-rise">+1,84 %</small></td><td data-label="€ TTC / an">791,11<small class="tarif-change tarif-rise">+1,84 %</small></td></tr>
+                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">75,7037<small class="tarif-change tarif-rise">+1,88 %</small></td><td data-label="€ TTC / an">908,44<small class="tarif-change tarif-rise">+1,88 %</small></td></tr>
                 </tbody>
             </table>
         </section>
 
         <section class="tarif-section">
             <h2>Prix du kWh</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 17 juin 2026.</p>
             <p>Le prix du kWh suit le prix de gros de l’électricité (prix spot EPEX FR day-ahead), créneau par créneau&nbsp;:</p>
             <p class="tarif-formula">(min(spot + TURPE + accise&nbsp;; plafond) + conformité + marge + prime) × TVA</p>
             <p class="tarif-unit">Composantes en centimes d’euro HT par kWh. Saisons TURPE&nbsp;: hiver de novembre à mars, été d’avril à octobre.</p>
@@ -145,13 +165,13 @@
                 <caption class="visually-hidden">Composantes de la formule du prix du kWh</caption>
                 <thead><tr><th scope="col">Composante</th><th scope="col">Hiver</th><th scope="col">Été</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">TURPE (acheminement)</th><td data-label="Hiver">6,32</td><td data-label="Été">1,49</td></tr>
-                    <tr><th scope="row">Plafond (spot + TURPE + accise)</th><td data-label="Hiver">33,33</td><td data-label="Été">33,33</td></tr>
-                    <tr><th scope="row">Accise</th><td colspan="2" class="tarif-single" data-label="Toute l’année">3,085</td></tr>
-                    <tr><th scope="row">Conformité (CEE, capacité)</th><td colspan="2" class="tarif-single" data-label="Toute l’année">1,00</td></tr>
-                    <tr><th scope="row">Marge du fournisseur</th><td colspan="2" class="tarif-single" data-label="Toute l’année">0,80</td></tr>
-                    <tr><th scope="row">Prime de couverture</th><td colspan="2" class="tarif-single" data-label="Toute l’année">0,20</td></tr>
-                    <tr><th scope="row">TVA</th><td colspan="2" class="tarif-single" data-label="Toute l’année">× 1,20</td></tr>
+                    <tr><th scope="row">TURPE (acheminement)</th><td data-label="Hiver">6,45<small class="tarif-change tarif-rise">+2,06 %</small></td><td data-label="Été">1,53<small class="tarif-change tarif-rise">+2,68 %</small></td></tr>
+                    <tr><th scope="row">Plafond (spot + TURPE + accise)</th><td data-label="Hiver">70,00<small class="tarif-change tarif-rise">+110,02 %</small></td><td data-label="Été">70,00<small class="tarif-change tarif-rise">+110,02 %</small></td></tr>
+                    <tr><th scope="row">Accise</th><td colspan="2" class="tarif-single" data-label="Toute l’année">3,062<small class="tarif-change tarif-fall">-0,75 %</small></td></tr>
+                    <tr><th scope="row">Conformité (CEE, capacité)</th><td colspan="2" class="tarif-single" data-label="Toute l’année">2,00<small class="tarif-change tarif-rise">+100,00 %</small></td></tr>
+                    <tr><th scope="row">Marge du fournisseur</th><td colspan="2" class="tarif-single" data-label="Toute l’année">0,80<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">Prime de couverture</th><td colspan="2" class="tarif-single" data-label="Toute l’année">0,20<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">TVA</th><td colspan="2" class="tarif-single" data-label="Toute l’année">× 1,20<small class="tarif-change">Inchangé</small></td></tr>
                 </tbody>
             </table>
         </section>
@@ -163,6 +183,7 @@
             </ul>
         </section>
         <p class="tarif-footer-cta"><a class="btn btn-success tarif-cta-btn" href="../#simulateur">Simuler cette offre avec ma consommation Linky<svg class="icon icon-arrow-right ms-2" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a></p>
+        </div>
     </main>
 
     <footer class="band-dark tarif-footer">

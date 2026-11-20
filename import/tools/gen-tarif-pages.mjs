@@ -27,6 +27,7 @@ import { tarifSlug, STALE_MONTHS } from '../../scripts/utils/tarifMeta.js';
 import { bandInfo, dayBadge } from '../../scripts/ui/tariffDisplay.js';
 import { formatKvaGroup, joinFr, renderBadge, renderHcSection, renderPriceSections } from '../../scripts/ui/grillePrices.js';
 import { priceSnapshot, syncHistory } from '../lib/grille-history.mjs';
+import { isPdfUrl } from '../lib/registry.mjs';
 
 export const SITE_URL = 'https://comparateur-abonnements-electricite.fr';
 const PAGES_DIR = 'tarifs';
@@ -110,9 +111,11 @@ export function formatMonths(months) {
 
 // [0, 6] -> "samedi et dimanche" (semaine ordonnée du lundi au dimanche) ;
 // article = "le" -> "le samedi et le dimanche".
-function formatWeekDays(days, article = '') {
+function formatWeekDays(days, article = '', includePublicHolidays = false) {
     const order = d => (d + 6) % 7;
-    return joinFr([...days].sort((a, b) => order(a) - order(b)).map(d => article + JOURS[d]));
+    const labels = [...days].sort((a, b) => order(a) - order(b)).map(d => article + JOURS[d]);
+    if (includePublicHolidays) labels.push('les jours fériés nationaux');
+    return joinFr(labels);
 }
 
 // ------------------------------------------------------------------ //
@@ -224,7 +227,8 @@ function buildRuleLines(def, calendars) {
             break;
         case 'weekly': {
             const [special, days] = Object.entries(rule.days)[0];
-            lines.push(`${chip(special)} chaque ${formatWeekDays(days)}.`);
+            const specialDays = rule.includePublicHolidays ? formatWeekDays(days, 'le ', true) : `chaque ${formatWeekDays(days)}`;
+            lines.push(`${chip(special)} ${specialDays}.`);
             lines.push(`${chip(rule.default)} tous les autres jours.`);
             if (rule.userDaySetting === 'jourZenPlus') {
                 lines.push(`Un jour de semaine supplémentaire, choisi par le client, est facturé au prix ${chip(special)} (réglage « jour Zen+ » du simulateur).`);
@@ -245,7 +249,7 @@ function buildRuleLines(def, calendars) {
             break;
         }
         case 'season': {
-            const weekend = rule.weekendDays ? formatWeekDays(rule.weekendDays, 'le ') : null;
+            const weekend = rule.weekendDays ? formatWeekDays(rule.weekendDays, 'le ', rule.includePublicHolidays) : null;
             for (const [season, spec] of Object.entries(rule.seasons)) {
                 const months = formatMonths(spec.months);
                 if (spec.weekendType) {
@@ -254,6 +258,12 @@ function buildRuleLines(def, calendars) {
                 } else {
                     lines.push(`${chip(season)} ${months}.`);
                 }
+                if (spec.peakType) {
+                    lines.push(`${chip(spec.peakType)} ${months}, aux dates signalées par Enercoop, y compris le week-end et les jours fériés. Les horaires de semaine s’appliquent.`);
+                }
+            }
+            if (Object.values(rule.seasons).some(s => s.peakType)) {
+                lines.push('Option réservée aux compteurs Linky. Enercoop annonce jusqu’à 15 jours de pointe par an. Pour comparer l’option, renseignez les dates de vos alertes à l’étape Tarifs du simulateur.');
             }
             if (rule.calendarOverride) {
                 for (const type of rule.calendarOverride.types) {
@@ -285,7 +295,8 @@ export function buildGrille(def, display, calendars, warnings = []) {
         lastUpdate: def.lastUpdate,
         subscriptionUrl: def.subscription_url || null,
         priceUrl: def.price_url,
-        priceIsPdf: /\.pdf(\?|#|$)/i.test(def.price_url),
+        pricesInCustomerArea: def.pricesInCustomerArea === true,
+        priceIsPdf: isPdfUrl(def.price_url),
         subscriptions: kvas.map(kva => {
             const monthly = def.subscriptions[kva];
             return { kva, monthly, yearly: Math.round(monthly * 12 * 100) / 100 };
@@ -335,7 +346,10 @@ export function pageTitle(g) {
     const year = g.lastUpdate.slice(0, 4);
     const kwh = g.kind === 'spot' ? `prix du kWh spot ${year}` : `prix du kWh ${year} TTC`;
     const offer = offerName(g);
-    return fitting([offer, offer.replace(/heures creuses/i, 'HC')].map(o => `${o} ${g.provider} : ${kwh}`), TITLE_MAX);
+    return fitting([
+        ...[offer, offer.replace(/heures creuses/i, 'HC')].map(o => `${o} ${g.provider} : ${kwh}`),
+        `${offer} ${g.provider} : tarifs ${year}`,
+    ], TITLE_MAX);
 }
 
 export function pageDescription(g) {
@@ -344,6 +358,7 @@ export function pageDescription(g) {
     const kwh = g.kind === 'spot' ? 'formule du prix du kWh indexé sur le prix spot' : 'prix du kWh TTC';
     const body = `Grille tarifaire ${g.provider} ${offerName(g)} du ${formatDate(g.lastUpdate)} : abonnement ${range}, ${kwh}`
         + `${g.kind === 'grid' && g.hc.mode !== 'none' ? ', heures creuses' : ''}.`;
+    if (g.pricesInCustomerArea) return fitting([`${body} Prix actuels dans l’espace client.`, body], DESCRIPTION_MAX);
     return fitting([
         `${body} Lien vers la grille officielle du fournisseur.`,
         `${body} Lien vers la grille officielle.`,
@@ -523,8 +538,11 @@ export function renderPage(g, versions = [priceSnapshot(g)]) {
     if (g.subscriptionUrl) {
         lines.push(`${S}    <li><a href="${escapeHtml(g.subscriptionUrl)}" target="_blank" rel="noopener">Page de l’offre sur le site du fournisseur</a></li>`);
     }
+    const priceLinkLabel = g.pricesInCustomerArea
+        ? 'Consulter mes tarifs actuels dans l’espace client'
+        : `Grille tarifaire officielle${g.priceIsPdf ? ' (PDF)' : ''}`;
     lines.push(
-        `${S}    <li><a href="${escapeHtml(g.priceUrl)}" target="_blank" rel="noopener">Grille tarifaire officielle${g.priceIsPdf ? ' (PDF)' : ''}</a></li>`,
+        `${S}    <li><a href="${escapeHtml(g.priceUrl)}" target="_blank" rel="noopener">${priceLinkLabel}</a></li>`,
         `${S}</ul>`,
         `${M}</section>`,
         '',

@@ -4,14 +4,16 @@
 //   (min(spot + turpe[saison] + accise, cap[saison]) + conformite + marge + prime) * tva
 // avec hiver = novembre à mars (saisons TURPE).
 // Abonnement TTC/mois = (Total_CU4_HTVA + 15 % × Acheminement_HTVA) × 1,20
-// (CTA = 15 % du TURPE fixe). Valeurs recalculées par import/parsers/sobry.mjs.
+// Offre fermée à la souscription. Les clients retrouvent leurs prix dans
+// leur espace Sobry. La dernière grille publique connue est conservée ici.
 defineTarif({
     name: "Sobry - SoCap",
     offer_type: "Marché",
     lastUpdate: "2026-06-17",
     isCommunity: true,
-    subscription_url: "https://sobry.co/",
-    price_url: "https://storage.googleapis.com/sobry-legals/grille-tarifaire-sobry.pdf",
+    subscription_url: "",
+    price_url: "https://app.sobry.co/",
+    pricesInCustomerArea: true,
     subscriptions: {
         3: 12.7488,
         6: 21.0402,

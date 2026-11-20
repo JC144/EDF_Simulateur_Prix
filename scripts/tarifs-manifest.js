@@ -48,6 +48,7 @@ export const TARIF_SCRIPTS = [
     "scripts/tarifs/enercoop/flexibiliteHC.js",
     "scripts/tarifs/enercoop/flexibiliteHCWE.js",
     "scripts/tarifs/enercoop/flexibiliteSaison.js",
+    "scripts/tarifs/enercoop/flexibiliteSaisonPointe.js",
 
     "scripts/tarifs/engie/electReference3ans.js",
 

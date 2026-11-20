@@ -12,6 +12,11 @@ export function getAvailableAbonnements(kva) {
     return getAbonnements().filter(abo => abo.prices.some(p => p.puissance === puissance));
 }
 
+export function getAvailablePowers() {
+    const powers = getAbonnements().flatMap(abo => abo.prices.map(p => p.puissance));
+    return [...new Set(powers)].sort((a, b) => a - b);
+}
+
 // Racine du site, déduite de l'emplacement de ce module (scripts/core/).
 const ROOT = new URL('../../', import.meta.url);
 

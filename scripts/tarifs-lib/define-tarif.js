@@ -375,6 +375,9 @@
                         hasWeekendType = true;
                         requireType(`dayRule.seasons.${season}.weekendType`, spec.weekendType);
                     }
+                    if (spec.peakType !== undefined) {
+                        requireType(`dayRule.seasons.${season}.peakType`, spec.peakType);
+                    }
                 }
                 for (let month = 1; month <= 12; month++) {
                     if (!coveredMonths.has(month)) {
@@ -546,6 +549,9 @@
         if (hcParts.hcByDayType) {
             abonnement.hcByDayType = hcParts.hcByDayType;
         }
+        if (def.dayRule.type === "season" && Object.values(def.dayRule.seasons).some(s => s.peakType)) {
+            abonnement.requiresPeakDates = true;
+        }
         if (rule.spotPricesFor) {
             abonnement.spotPricesFor = rule.spotPricesFor;
         }
@@ -606,6 +612,10 @@
                     if (spec.weekendType !== undefined) {
                         dayOf[spec.weekendType] = spec.weekendType;
                         dayKeys.push(spec.weekendType);
+                    }
+                    if (spec.peakType) {
+                        dayOf[spec.peakType] = spec.peakType;
+                        dayKeys.push(spec.peakType);
                     }
                 }
                 for (const [season, subRules] of Object.entries(rule.hourSubTypes || {})) {
@@ -722,6 +732,31 @@
         return hour > subRule.fromHour && hour <= subRule.toHour;
     }
 
+    // Jours fériés nationaux en métropole. Calcul grégorien de Pâques
+    // (Meeus/Jones/Butcher) pour les trois fêtes mobiles, une fois par année.
+    const holidaysByYear = new Map();
+    function isPublicHoliday(date) {
+        const year = Number(date.slice(0, 4));
+        if (!holidaysByYear.has(year)) {
+            const cycle = year % 19;
+            const century = Math.floor(year / 100);
+            const withinCentury = year % 100;
+            const correction = Math.floor((century - Math.floor((century + 8) / 25) + 1) / 3);
+            const epact = (19 * cycle + century - Math.floor(century / 4) - correction + 15) % 30;
+            const weekday = (32 + 2 * (century % 4) + 2 * Math.floor(withinCentury / 4) - epact - withinCentury % 4) % 7;
+            const offset = epact + weekday - 7 * Math.floor((cycle + 11 * epact + 22 * weekday) / 451) + 114;
+            const easterMonth = Math.floor(offset / 31);
+            const easterDay = offset % 31 + 1;
+            const holidays = new Set(["01/01", "05/01", "05/08", "07/14", "08/15", "11/01", "11/11", "12/25"]);
+            for (const daysAfterEaster of [1, 39, 50]) {
+                const day = new Date(Date.UTC(year, easterMonth - 1, easterDay + daysAfterEaster));
+                holidays.add(day.toISOString().slice(5, 10).replace("-", "/"));
+            }
+            holidaysByYear.set(year, holidays);
+        }
+        return holidaysByYear.get(year).has(date.slice(5));
+    }
+
     // Chaque builder retourne { specialDays, hasSpecialDaysCustom, getDayType }.
     // Les getDayType générés reproduisent exactement la sémantique des anciens
     // fichiers de tarifs (y compris la règle "avant Nh = couleur de la veille").
@@ -762,7 +797,8 @@
                 hasSpecialDaysCustom: rule.userDaySetting !== undefined,
                 getDayType: function (day) {
                     const dayOfWeek = new Date(day.date).getDay();
-                    return this.specialDays.includes(dayOfWeek) ? specialType : defaultType;
+                    const special = this.specialDays.includes(dayOfWeek) || (rule.includePublicHolidays && isPublicHoliday(day.date));
+                    return special ? specialType : defaultType;
                 }
             };
         },
@@ -841,11 +877,14 @@
                     }
                     const month = Number(checkDate.split("/")[1]);
                     const season = monthToSeason[month];
+                    if (rule.seasons[season].peakType && this.peakDates?.has(checkDate)) {
+                        return rule.seasons[season].peakType;
+                    }
                     // Le week-end est évalué sur la même date décalée que la saison
                     // (une nuit de dimanche avant Nh compte comme du week-end).
                     if (weekendTypeBySeason[season] !== undefined) {
                         const dayOfWeek = new Date(checkDate + " 12:00:00").getDay();
-                        if (weekendDays.includes(dayOfWeek)) {
+                        if (weekendDays.includes(dayOfWeek) || (rule.includePublicHolidays && isPublicHoliday(checkDate))) {
                             return weekendTypeBySeason[season];
                         }
                     }

@@ -60,12 +60,16 @@ function readSubscriptions(lines, label) {
     const orphanKvas = [];
     const orphanValues = [];
     for (const line of lines) {
-        const amounts = line.cells.map(parseFrNumber).filter(v => v !== null && v >= 1);
-        if (KVAS.has(line.cells[0])) {
-            const rowAmounts = line.cells.slice(1).map(parseFrNumber).filter(v => v !== null && v >= 1);
-            if (rowAmounts.length >= 2) rows.push({ kva: line.cells[0], amounts: rowAmounts });
+        const hasKva = KVAS.has(line.cells[0]);
+        // Les colonnes de prix du kWh peuvent partager la ligne HTT/TTC,
+        // même lorsque la puissance est seule sur la ligne précédente.
+        const start = hasKva ? 1 : 0;
+        const amounts = line.cells.slice(start, start + 2).map(parseFrNumber);
+        const complete = amounts.length === 2 && amounts.every(v => v !== null && v >= 1);
+        if (hasKva) {
+            if (complete) rows.push({ kva: line.cells[0], amounts });
             else orphanKvas.push({ kva: line.cells[0], y: line.y });
-        } else if (amounts.length === 2 && amounts.length === line.cells.length) {
+        } else if (complete) {
             orphanValues.push({ y: line.y, amounts, used: false });
         }
     }

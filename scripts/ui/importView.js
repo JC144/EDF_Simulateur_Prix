@@ -7,7 +7,7 @@ import { initEnedisSnippetBox } from './enedisSnippetBox.js';
 // Écran d'import : réglages (puissance, jour Zen+, heures creuses, tarifs
 // communautaires) et chargement du fichier CSV. Détient les données parsées
 // jusqu'au lancement de la simulation.
-export function initImportView({ getAvailableAbonnements, onStart, onStepForward, onSimulate }) {
+export function initImportView({ getAvailableAbonnements, getAvailablePowers, onStart, onStepForward, onSimulate }) {
     let data = [];
 
     const csvFile = document.getElementById("csvFile");
@@ -18,6 +18,8 @@ export function initImportView({ getAvailableAbonnements, onStart, onStepForward
     const community = document.getElementById("communityRadioIsCommunity");
     const communityRequired = document.getElementById("communityRequired");
     const communityWarning = document.getElementById("communityWarning");
+    const peakSettings = document.getElementById("enercoopPeakSettings");
+    const peakDates = document.getElementById("enercoopPeakDates");
     let communityPreference = community.checked;
     const jourZenPlusSelector = document.getElementById("jourZenPlus");
     const simulateButton = document.getElementById("simulateButton");
@@ -62,16 +64,25 @@ export function initImportView({ getAvailableAbonnements, onStart, onStepForward
         if (!community.disabled) {
             communityPreference = community.checked;
         }
-        const required = currentOffer.value !== "" && !isEdfOffer(currentOffer.value);
+        const offers = getAvailableAbonnements(kvaSelector.value);
+        const communityOnly = offers.length > 0 && offers.every(abo => !isEdfOffer(abo.name));
+        const required = communityOnly || (currentOffer.value !== "" && !isEdfOffer(currentOffer.value));
         community.checked = required || communityPreference;
         edfOnly.checked = !community.checked;
         edfOnly.disabled = required;
         community.disabled = required;
         communityRequired.hidden = !required;
+        communityRequired.textContent = communityOnly
+            ? "Seuls des tarifs communautaires sont disponibles pour cette puissance."
+            : "Votre offre actuelle nécessite d’inclure les tarifs communautaires.";
         communityWarning.hidden = !community.checked;
+        peakSettings.hidden = !community.checked;
+        peakDates.required = offers.some(abo => abo.name === currentOffer.value && abo.requiresPeakDates);
     }
 
     function refreshCurrentOffers() {
+        const powers = getAvailablePowers();
+        setOptions(kvaSelector, powers.map(kva => ({ text: kva + " kVA", value: kva })), kvaSelector.value);
         const names = getAvailableAbonnements(kvaSelector.value).map(abo => abo.name);
         names.sort((a, b) => a.localeCompare(b, "fr"));
         const selected = names.includes(currentOffer.value) ? currentOffer.value : "";
@@ -112,7 +123,17 @@ export function initImportView({ getAvailableAbonnements, onStart, onStepForward
         onStart();
     };
     simulateButton.onclick = function () {
-        onSimulate(buildSettings(), data);
+        let dates = null;
+        if (community.checked) {
+            try {
+                dates = parsePeakDates(peakDates.value);
+                peakDates.setCustomValidity("");
+            } catch (error) {
+                peakDates.setCustomValidity(error.message);
+            }
+            if (!peakDates.reportValidity()) return;
+        }
+        onSimulate({ ...buildSettings(), enercoopPeakDates: dates }, data);
     };
 
     function buildSettings() {
@@ -194,4 +215,22 @@ export function initImportView({ getAvailableAbonnements, onStart, onStepForward
     // Application d'une étape depuis l'historique navigateur (popstate) :
     // navigation directe, sans pousser de nouvelle entrée.
     return { goToStep: (n) => wizard.goTo(n), refreshCurrentOffers };
+}
+
+// null exclut l'option du classement ; [] confirme une période sans alerte.
+export function parsePeakDates(input) {
+    const value = input.trim();
+    if (!value) return null;
+    if (value.toLowerCase() === "aucun") return [];
+    const dates = value.split(/[,;\s]+/).map(part => {
+        const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(part);
+        if (match) {
+            const [, day, month, year] = match;
+            const iso = [year, month, day].join("-");
+            const date = new Date(iso + "T00:00:00Z");
+            if (Number.isFinite(date.getTime()) && date.toISOString().startsWith(iso)) return [year, month, day].join("/");
+        }
+        throw new Error("Saisissez des dates valides au format JJ/MM/AAAA ou indiquez « aucun ».");
+    });
+    return [...new Set(dates)];
 }

@@ -4,7 +4,7 @@ defineTarif({
     lastUpdate: "2026-08-01",
     isCommunity: true,
     subscription_url: "https://souscription.enercoop.fr/",
-    price_url: "https://www.faq.enercoop.fr/hc/fr/articles/360024967152-Annexes-tarifaires",
+    price_url: "https://www.faq.enercoop.fr/hc/fr/article_attachments/37607556170770",
     subscriptions: {
         1: 6.28,
         2: 7.98,
@@ -43,12 +43,15 @@ defineTarif({
         35: 67.45,
         36: 69.25
     },
-    // Le week-end, tout est au prix HC (HP = HC) ; en semaine, les plages HC
-    // restent saisies par l'utilisateur.
     dayTypes: {
         bleu: { HP: 30.638, HC: 17.290 },
         weekend: { HP: 17.290, HC: 17.290 }
     },
-    dayRule: { type: "weekly", default: "bleu", days: { weekend: [0, 6] } },
-    hcRanges: "custom"
+    dayRule: { type: "weekly", default: "bleu", days: { weekend: [0, 6] }, includePublicHolidays: true },
+    hcRanges: {
+        byDayType: {
+            bleu: [{ from: "23:00", to: "24:00" }, { from: "00:00", to: "06:00" }],
+            weekend: [{ from: "00:00", to: "24:00" }]
+        }
+    }
 });

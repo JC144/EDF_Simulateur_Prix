@@ -30,7 +30,7 @@ for (const [url, defs] of byUrl) {
     const fixturePath = path.join(IMPORT_DIR, 'fixtures', provider, `${slug}.json`);
     const expectedPath = path.join(IMPORT_DIR, 'fixtures', provider, `${slug}.expected.json`);
     const parserPath = path.join(IMPORT_DIR, 'parsers', `${provider}.mjs`);
-    if (!fs.existsSync(parserPath)) continue; // fournisseur sans parser (Engie)
+    if (!fs.existsSync(parserPath)) continue;
 
     test(`${provider}/${slug}`, async () => {
         assert.ok(fs.existsSync(fixturePath), `fixture manquante : ${fixturePath} (node tools/dump-text.mjs)`);

@@ -37,6 +37,8 @@ const DAY_REGISTRY = {
     weekend: { label: "Week-end", color: "#1baf7a", ink: "#0b0b0b" },
     hiverWeekend: { label: "W-E hiver", color: "#1c5cab", ink: "#ffffff" },
     eteWeekend: { label: "W-E été", color: "#eda100", ink: "#0b0b0b" },
+    hiverPointe: { label: "Pointe hiver", color: "#a32836", ink: "#ffffff" },
+    etePointe: { label: "Pointe été", color: "#a32836", ink: "#ffffff" },
     sobriete: { label: "Sobriété", color: "#4a3aa7", ink: "#ffffff" }
 };
 

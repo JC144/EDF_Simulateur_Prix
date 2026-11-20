@@ -147,9 +147,9 @@ comme les heures super creuses de Zen Estival).
 
 ### Tarif saison × week-end (type Enercoop Flexibilité)
 
-Chaque saison peut déclarer un type week-end ; le jour de semaine est évalué sur la
-même date décalée que la saison quand `previousDayBefore` est présent (une nuit de
-dimanche avant 6h compte comme du week-end) :
+Chaque saison peut déclarer un type week-end. Avec `includePublicHolidays: true`,
+les jours fériés nationaux suivent aussi cette tarification. Un `peakType` dans la
+saison donne priorité aux dates de pointe renseignées pour la simulation.
 
 ```js
 dayRule: {
@@ -159,7 +159,7 @@ dayRule: {
         ete:   { months: [4, 5, 6, 7, 8, 9, 10], weekendType: "eteWeekend" }
     },
     weekendDays: [0, 6],    // 0 = dimanche ... 6 = samedi
-    previousDayBefore: 6
+    includePublicHolidays: true
 },
 hcRanges: {
     byDayType: {

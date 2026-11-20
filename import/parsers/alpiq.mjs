@@ -1,4 +1,4 @@
-// Grille Alpiq (gtr_elec_part.pdf) : page 1 = offre Électricité Stable,
+// Grille Alpiq (gtr_elec_part.pdf) : grille d'électricité en page 1,
 // deux tableaux côte à côte (Base / Heures Creuses). Toutes les puissances
 // entières, abonnement HT/TTC par ligne, prix kWh en cellules fusionnées
 // avec double série TRV/Alpiq (6 décimales en €/kWh). Le repo stocke les
@@ -16,12 +16,40 @@ const CONFIGS = [
     { offer: 'Alpiq - Heures Creuses', colCount: 10, abo: 1, prices: [[5, ['bleu.HP']], [9, ['bleu.HC']]] },
 ];
 
+// En novembre 2026 le TTC HC à 36 kVA est superposé au HT Base.
+// Rétablir sa position uniquement si les deux HT et les deux TTC concordent.
+// Sinon la lecture générique prendrait le tarif 35 kVA pour une cellule fusionnée.
+function alignLastSubscription(page, tables) {
+    if (tables.length !== 2) return page;
+    const [base, hc] = tables;
+    function amounts(table, kva, xMax) {
+        const row = table.rows.find(r => r.kva === kva);
+        if (!row) return [];
+        return page.items.filter(it => Math.abs(it.y - row.y) < 2.5
+            && it.x > table.kvaX && it.x < xMax && /^\d+[,.]\d{2}$/.test(it.str))
+            .sort((a, b) => a.x - b.x);
+    }
+    const right = amounts(hc, '36', Infinity);
+    if (right.length === 2) return page;
+    const left = amounts(base, '36', hc.kvaX);
+    const previous = amounts(hc, '35', Infinity);
+    if (right.length !== 1 || left.length !== 3 || previous.length !== 2) {
+        throw new Error('Alpiq : abonnement HC 36 kVA incomplet');
+    }
+    const [overlap, other, ttc] = left;
+    const misplaced = [overlap, other].find(it => it.str === ttc.str);
+    if (!misplaced || overlap.x !== other.x || ![overlap, other].some(it => it.str === right[0].str)) {
+        throw new Error('Alpiq : abonnement HC 36 kVA ambigu');
+    }
+    return { ...page, items: page.items.map(it => it === misplaced ? { ...it, x: previous[1].x } : it) };
+}
+
 export function parse(doc) {
-    // Page 1 = électricité Stable ; pages suivantes = autres offres/gaz.
     const tables = findKvaTables({ pages: [doc.pages[0]] });
     // PDF très dense : certaines colonnes ne sont espacées que de ~2.7 pts,
     // et chaque nombre y est un item entier (pas de chiffres fragmentés) —
     // on peut donc couper les cellules au moindre écart.
-    const offers = extractConfiguredOffers(doc, tables, CONFIGS, 'gtr_elec_part.pdf', { cellGap: 1 });
+    const pages = [alignLastSubscription(doc.pages[0], tables)];
+    const offers = extractConfiguredOffers({ pages }, tables, CONFIGS, 'gtr_elec_part.pdf', { cellGap: 1 });
     return { gridDate: findNumericDate(pageToText(doc.pages[0])), offers };
 }

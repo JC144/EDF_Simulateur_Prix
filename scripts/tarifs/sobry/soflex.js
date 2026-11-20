@@ -1,35 +1,34 @@
 // Sobry SoFlex : fourniture au prix spot EPEX FR Day-Ahead avec plafond
-// garanti annuel unique (grille "Particuliers", option SoFlex — même
-// formule que SoCap, seuls le plafond et la prime de couverture changent).
+// garanti annuel unique (grille "Particuliers", option SoFlex).
 // Prix du kWh par créneau (centimes TTC) :
 //   (min(spot + turpe[saison] + accise, cap[saison]) + conformite + marge + prime) * tva
 // avec hiver = novembre à mars (saisons TURPE).
-// Abonnement TTC/mois = (Total_CU4_HTVA + 15 % × Acheminement_HTVA) × 1,20
-// (CTA = 15 % du TURPE fixe). Valeurs recalculées par import/parsers/sobry.mjs.
+// Abonnement TTC/mois = abonnement CU4 TTC publié + CTA sur le TURPE fixe,
+// TVA incluse. Le TURPE variable est la moyenne saisonnière publiée par Sobry.
 defineTarif({
     name: "Sobry - SoFlex",
     offer_type: "Marché",
-    lastUpdate: "2026-06-17",
+    lastUpdate: "2026-11-01",
     isCommunity: true,
     subscription_url: "https://sobry.co/",
     price_url: "https://storage.googleapis.com/sobry-legals/grille-tarifaire-sobry.pdf",
     subscriptions: {
-        3: 12.7488,
-        6: 21.0402,
-        9: 27.6276,
-        12: 33.5892,
-        15: 39.2046,
-        18: 44.592,
-        24: 54.873,
-        30: 64.7358,
-        36: 74.3088
+        3: 12.96575,
+        6: 21.37465,
+        9: 28.05355,
+        12: 34.13245,
+        15: 39.85135,
+        18: 45.35025,
+        24: 55.84805,
+        30: 65.92585,
+        36: 75.70365
     },
     dayRule: { type: "spot", source: "epex-fr" },
     spotFormula: {
-        turpe: { hiver: 6.32, ete: 1.49 },
-        accise: 3.085,
-        cap: { hiver: 33.33, ete: 33.33 },
-        conformite: 1.00,
+        turpe: { hiver: 6.45, ete: 1.53 },
+        accise: 3.062,
+        cap: { hiver: 70, ete: 70 },
+        conformite: 2,
         marge: 0.80,
         prime: 0.20,
         tva: 1.20

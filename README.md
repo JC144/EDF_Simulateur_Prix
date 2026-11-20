@@ -69,7 +69,7 @@ Toutes les contributions sont les bienvenues, via une Pull Request vers `main` (
 
 * **Ajouter un tarif** — suivez le guide [scripts/tarifs/README.md](scripts/tarifs/README.md) : les tarifs sont des définitions déclaratives `defineTarif(...)` dans `scripts/tarifs/<fournisseur>/*.js` (aucune fonction à écrire), avec des recettes pour chaque type d'offre (Base, HP/HC, week-end, calendrier type Tempo, saisonnier, prix spot). N'oubliez pas d'ajouter son chemin dans `scripts/tarifs-manifest.js` (liste des scripts de tarifs, chargés à la demande au lancement du comparatif), puis générez la page de grille du tarif (`cd import && npm run gen`, voir [Pages de grille tarifaire](#pages-de-grille-tarifaire)).
 * **Mettre à jour un tarif** — modifiez les prix et `lastUpdate` dans le fichier concerné, puis suivez la [procédure de mise à jour](#mise-à-jour-des-données-tarifaires) (snapshots de simulation, pages de grille, relecture du diff).
-* **Créer un importateur pour un fournisseur non géré** (Engie, Sobry, grilles HTML…) — ajoutez un parser `import/parsers/<fournisseur>.mjs` respectant le contrat `parse(doc, url) -> { gridDate, offers }` (clés = `name` des `defineTarif`, prix kWh en centimes TTC, abonnements en €/mois TTC). Les outils `import/tools/` (`dump-text.mjs`, `try-parser.mjs`, `gen-expected.mjs`) permettent d'itérer sur des fixtures locales, avec des tests sans réseau — voir [import/README.md](import/README.md).
+* **Créer un importateur pour un fournisseur non géré** — ajoutez un parser `import/parsers/<fournisseur>.mjs` respectant le contrat `parse(doc, url) -> { gridDate, offers }` (clés = `name` des `defineTarif`, prix kWh en centimes TTC, abonnements en €/mois TTC). Les outils `import/tools/` (`dump-text.mjs`, `try-parser.mjs`, `gen-expected.mjs`) permettent d'itérer sur des fixtures locales, avec des tests sans réseau — voir [import/README.md](import/README.md).
 * **Corriger ou améliorer l'application** (parsers d'export de consommation, interface, calculs) — l'architecture est décrite dans la section [Développement](#développement) ci-dessous.
 * **Signaler un problème ou proposer une offre manquante** — ouvrez une [issue](https://github.com/JC144/EDF_Simulateur_Prix/issues).
 * **Ou tout simplement** [laisser un pourboire qui me permet de financer le domaine et l'abonnement IA](https://www.paypal.com/donate/?hosted_button_id=3FRF77WQDZXUU)
@@ -104,7 +104,7 @@ Procédure de mise à jour :
    ```
    node import/update-all.mjs
    ```
-   qui lance les quatre scripts en parallèle, affiche une synthèse puis **régénère les pages du site** dérivées des tarifs (étape 2). Pour un tarif sans importateur (grilles HTML d'Alterna/Enercoop, Engie…), modifiez à la main les prix et `lastUpdate` dans `scripts/tarifs/<fournisseur>/*.js`.
+   qui lance les quatre scripts en parallèle, affiche une synthèse puis **régénère les pages du site** dérivées des tarifs (étape 2). Pour un tarif sans importateur (grilles HTML d'Alterna), modifiez à la main les prix et `lastUpdate` dans `scripts/tarifs/<fournisseur>/*.js`.
 2. **Régénérer les pages du site** — fait par `update-all.mjs` à chaque lancement. Après une modification manuelle seule :
    ```
    cd import && npm run gen

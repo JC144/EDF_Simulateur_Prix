@@ -3,8 +3,8 @@ defineTarif({
     offer_type: "Marché",
     lastUpdate: "2026-08-01",
     isCommunity: false,
-    subscription_url: "https://www.faq.enercoop.fr/hc/fr",
-    price_url: "https://www.faq.enercoop.fr/hc/fr/article_attachments/34072541524114",
+    subscription_url: "https://souscription.enercoop.fr/",
+    price_url: "https://www.faq.enercoop.fr/hc/fr/article_attachments/37607556170770",
     subscriptions: {
         1: 6.40,
         2: 8.23,
@@ -45,9 +45,9 @@ defineTarif({
     },
     dayTypes: {
         hiver: { HP: 31.601, HC: 22.356 },
-        hiverWeekend: { HP: 31.601, HC: 22.356 },
+        hiverWeekend: { HP: 22.356, HC: 22.356 },
         ete: { HP: 19.567, HC: 13.831 },
-        eteWeekend: { HP: 19.567, HC: 13.831 }
+        eteWeekend: { HP: 13.831, HC: 13.831 }
     },
     dayRule: {
         type: "season",
@@ -56,7 +56,7 @@ defineTarif({
             ete: { months: [4, 5, 6, 7, 8, 9, 10], weekendType: "eteWeekend" }
         },
         weekendDays: [0, 6],
-        previousDayBefore: 6
+        includePublicHolidays: true
     },
     // Le week-end, toute la journée est facturée en heures creuses.
     hcRanges: {

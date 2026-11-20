@@ -6,7 +6,7 @@ import { isEdfOffer } from '../utils/tarifMeta.js';
 // les réglages utilisateur sur une vue résolue (le registre n'est jamais muté,
 // une re-simulation part donc toujours de la grille d'origine) puis calcule
 // les agrégats mensuels.
-// settings : { kva, jourZenPlus, hcRawRanges, includeCommunity, currentOffer }
+// settings : { kva, jourZenPlus, hcRawRanges, includeCommunity, currentOffer, enercoopPeakDates? }
 export function runSimulation(settings, data) {
     const calculatedMonths = calculateAllMonths(settings, data);
     const yearsAvailable = [...new Set(calculatedMonths[0].allMonths.map(m => m.year))].sort((a, b) => a - b);
@@ -18,6 +18,9 @@ export function runSimulation(settings, data) {
 // this.specialDays — la copie résolue porte la personnalisation.
 function resolveAbonnement(abo, settings) {
     const resolved = { ...abo };
+    if (abo.requiresPeakDates) {
+        resolved.peakDates = new Set(settings.enercoopPeakDates);
+    }
     if (abo.hasSpecialDaysCustom) {
         resolved.specialDays = [...abo.specialDays, settings.jourZenPlus];
     }
@@ -48,6 +51,7 @@ function calculateAllMonths(settings, data) {
     if (!settings.includeCommunity) {
         filteredAbonnements = filteredAbonnements.filter(a => isEdfOffer(a.name));
     }
+    filteredAbonnements = filteredAbonnements.filter(abo => !abo.requiresPeakDates || Array.isArray(settings.enercoopPeakDates));
     return filteredAbonnements.map(abo => {
         const resolved = resolveAbonnement(abo, settings);
         return {

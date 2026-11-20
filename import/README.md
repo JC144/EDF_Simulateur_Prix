@@ -9,7 +9,7 @@ L'outil grilles tarifaires (`update.mjs`), pour chaque `price_url` des `defineTa
 
 1. télécharge la grille (requête conditionnelle + comparaison SHA-256 avec `manifest.json`),
 2. si elle a changé, extrait le texte du PDF (pdfjs-dist) et parse les prix,
-3. patche les fichiers `scripts/tarifs/**` (uniquement les nombres et `lastUpdate`, jamais la structure),
+3. actualise les prix et `lastUpdate` dans `scripts/tarifs/**`, ainsi que `price_url` si Enercoop publie une nouvelle pièce jointe,
 4. met à jour `manifest.json` et la section « Derniers tarifs » du README racine.
 
 **La revue humaine reste obligatoire** : relire `git diff scripts/tarifs`, régénérer les goldens, puis commit.
@@ -123,8 +123,9 @@ dans le navigateur (`scripts/tarif-page.js`), pas au moment de la génération.
 | `MODIFIE` | valeurs mises à jour dans les fichiers tarifs (détail affiché) |
 | `GRILLE CHANGEE, VALEURS IDENTIQUES` | PDF ré-édité sans changement de prix (réconcilié) |
 | `INTERVENTION MANUELLE REQUISE` | divergence **structurelle** : kVA ou type de jour ajouté/supprimé, `priceOverrides` présents d'un seul côté. L'outil ne patche jamais la structure : éditer le fichier tarif à la main, puis relancer |
-| `NON GERE (HTML)` | `price_url` non-PDF (Alterna, Enercoop) : vérification manuelle |
-| `PARSER MANQUANT` | PDF téléchargé et changement détecté, mais pas de parser (Engie, voir plus bas) |
+| `NON GERE (HTML)` | `price_url` non-PDF (Alterna) : vérification manuelle |
+| `GRILLE PRIVÉE, DERNIÈRE GRILLE PUBLIQUE CONSERVÉE` | L’offre renvoie les abonnés à leur espace client (`pricesInCustomerArea: true`). Le simulateur conserve la grille publique datée. |
+| `PARSER MANQUANT` | PDF téléchargé, changement détecté et module du fournisseur absent |
 | `VALEUR INTROUVABLE (patch refuse)` | le littéral attendu n'est plus dans le fichier : rien n'est écrit |
 | `ERREUR RESEAU` / `ERREUR PARSING` | à investiguer (URL morte ? mise en page changée ?) |
 
@@ -270,10 +271,12 @@ node tools/gen-expected.mjs                         # re-snapshotter, relire le 
 npm test
 ```
 
-## Hors périmètre (v1)
+## Particularités des fournisseurs
 
-- **Alterna, Enercoop** : `price_url` en HTML, vérification manuelle.
-- **Engie** : les fiches descriptives décomposent les prix en fourniture + acheminement (TURPE CU/CU4/MUDT/MU4) + obligations, en €/an — la reconstruction du prix TTC mensuel est trop hasardeuse pour un parser fiable. Le changement de grille reste détecté par SHA-256 (`PARSER MANQUANT`). Par ailleurs deux des trois `price_url` Engie du repo renvoient 404 (tranquillité, happy-heures-vertes) : à rafraîchir dans les fichiers tarifs.
-- **Sobry** : le PDF de la grille est un export design (texte **vectorisé en tracés**, zéro item texte pour pdfjs) — parser textuel impossible sans OCR. Le changement de grille reste détecté (`PARSER MANQUANT`, mapping par URL exacte dans `registry.mjs`). Mise à jour manuelle depuis le PDF : `subscriptions[kVA] = (Total_CU4_HTVA + 15 % × Acheminement_HTVA) × 1,20` (table « Abonnement mensuel C5 », grille CU4) et `spotFormula` (composantes p. 2-3 et 9, ×100 pour passer en centimes). `reconcile.mjs` sait déjà comparer `spotFormula` si un parser voit le jour.
+- **Alterna** publie sa grille en HTML. La vérification est manuelle.
+- **Enercoop** publie ses grilles sur la [page des annexes tarifaires](https://www.faq.enercoop.fr/hc/fr/articles/360024967152-Annexes-tarifaires). `node update.mjs --provider enercoop` retrouve le PDF particuliers et actualise le lien des offres lors d’un changement de pièce jointe. Il importe les montants TTC de 1 à 36 kVA pour les quatre offres et l’option Jours de pointe. L’ancienne grille 2 saisons HP/HC est fermée à la souscription depuis le 4 juin 2025. Les dates des alertes de pointe sont saisies dans le simulateur.
+- Pour **Engie Elec Référence 3 ans**, l’import additionne les abonnements annuels TTC de fourniture et d’acheminement, puis divise par douze. Le kWh inclut la fourniture, l’acheminement (CU en Base, MUDT en HP/HC) et les obligations au prix de souscription. La fiche indique un mois, enregistré au premier du mois.
+- Pour **Sobry SoFlex**, l’import lit la grille résidentielle CU4 et les moyennes saisonnières du TURPE publiées dans le mémo de calcul du kWh. Il ajoute la CTA à l’abonnement TTC. Son assiette utilise les composantes fixes du barème Enedis en vigueur au 1er août 2026. Ces coefficients doivent être révisés au prochain changement de barème. [Grille TURPE 7 Enedis, pages 17 à 19](https://www.enedis.fr/media/4717/download).
+- **Sobry SoCap** est fermée à la souscription. Le simulateur conserve sa grille du 17 juin 2026. Sobry renvoie les clients concernés à leur espace personnel. [Information du fournisseur](https://prix.sobry.co/).
 - **Octopus** : l'URL du PDF change à chaque nouvelle grille (ex. `...-aout-26-base.pdf`), la `price_url` du repo pointe donc toujours vers l'ancienne et le changement n'est pas détecté. Mise à jour : remplacer `price_url` dans `scripts/tarifs/octopus/*.js` (liens sur la page de l'offre), puis relancer `node update.mjs --provider octopus`. Le parser reconnaît l'offre au titre de la page 1 (« Offre d’électricité - OctoSaisons / Eco fixe Base / Eco-fixe HPHC »), pas au nom de fichier : il n'y a rien à modifier dans le parser tant que la mise en page reste la même.
 - Les nouvelles puissances proposées par un fournisseur (ex. un kVA ajouté au PDF) ne sont pas signalées si le repo ne les modélise pas.

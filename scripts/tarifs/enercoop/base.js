@@ -4,7 +4,7 @@ defineTarif({
     lastUpdate: "2026-08-01",
     isCommunity: true,
     subscription_url: "https://souscription.enercoop.fr/",
-    price_url: "https://www.faq.enercoop.fr/hc/fr/articles/360024967152-Annexes-tarifaires",
+    price_url: "https://www.faq.enercoop.fr/hc/fr/article_attachments/37607556170770",
     subscriptions: {
         1: 6.31,
         2: 8.04,

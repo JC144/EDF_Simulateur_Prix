@@ -1,7 +1,7 @@
 defineTarif({
     name: "Alpiq - Base",
     offer_type: "Marché",
-    lastUpdate: "2026-08-01",
+    lastUpdate: "2026-11-01",
     isCommunity: true,
     subscription_url: "https://particuliers.alpiq.fr/electricite/nos-tarifs",
     price_url: "https://particuliers.alpiq.fr/grille-tarifaire/particuliers/gtr_elec_part.pdf",
@@ -19,8 +19,11 @@ defineTarif({
     // HP = HC mais les plages HC restent saisies par l'utilisateur :
     // la répartition HC/HP affichée dépend de ses réglages.
     dayTypes: { bleu: { HP: 19.7695, HC: 19.7695 } },
-    // 3 kVA a un prix du kWh plus élevé (la grille majore 3/4/5 kVA, pas le 6)
-    priceOverrides: { 3: { bleu: { HP: 19.9247, HC: 19.9247 } } },
+    // La première tranche de la grille Base couvre les puissances de 3 à 6 kVA.
+    priceOverrides: {
+        3: { bleu: { HP: 19.9248, HC: 19.9248 } },
+        6: { bleu: { HP: 19.9248, HC: 19.9248 } }
+    },
     dayRule: { type: "constant", dayType: "bleu" },
     hcRanges: "custom"
 });

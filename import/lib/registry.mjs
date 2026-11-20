@@ -16,6 +16,7 @@ const PROVIDER_BY_HOST = {
     'particuliers.alpiq.fr': 'alpiq',
     'doc.mint-energie.com': 'mint',
     'labellenergie.fr': 'labelleenergie',
+    'www.faq.enercoop.fr': 'enercoop',
 };
 
 // Grilles hébergées sur un host générique (stockage cloud partagé) : mapping
@@ -25,7 +26,9 @@ const PROVIDER_BY_URL = {
 };
 
 export function isPdfUrl(url) {
-    return new URL(url).pathname.toLowerCase().endsWith('.pdf');
+    const { host, pathname } = new URL(url);
+    return pathname.toLowerCase().endsWith('.pdf')
+        || (host === 'www.faq.enercoop.fr' && /^\/hc\/(?:fr\/)?article_attachments\/\d+$/.test(pathname));
 }
 
 export function providerFor(url) {

@@ -3,7 +3,7 @@ import { initImportView } from './ui/importView.js';
 import { initResultsView } from './ui/resultsView.js';
 import { runSimulation } from './core/simulation.js';
 import { sumPeriod } from './core/calculator.js';
-import { getAvailableAbonnements, loadTarifs } from './core/tarifsRegistry.js';
+import { getAvailableAbonnements, getAvailablePowers, loadTarifs } from './core/tarifsRegistry.js';
 
 viewManager.init();
 
@@ -21,6 +21,7 @@ function preloadTarifs() {
 
 const importView = initImportView({
     getAvailableAbonnements,
+    getAvailablePowers,
     onStart: function () {
         preloadTarifs();
         viewManager.show("import");

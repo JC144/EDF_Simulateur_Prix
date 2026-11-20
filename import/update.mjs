@@ -3,7 +3,7 @@
 // Pour chaque price_url unique des defineTarif du repo :
 //   1. télécharge la grille (requête conditionnelle + comparaison SHA-256),
 //   2. si elle a changé, extrait le texte du PDF et parse les prix,
-//   3. patche les fichiers scripts/tarifs/** (nombres + lastUpdate uniquement),
+//   3. patche les prix, lastUpdate et le lien des grilles à URL variable,
 //   4. met à jour manifest.json.
 // La revue humaine se fait ensuite sur `git diff scripts/tarifs` avant commit.
 //
@@ -99,13 +99,29 @@ function applyChanges(perDefChanges, report) {
 }
 
 async function processUrl(url, urlDefs, manifest, report, appliedDates) {
-    const resolved = await resolveParser(url);
+    const privateDefs = urlDefs.filter(def => def.pricesInCustomerArea);
+    if (privateDefs.length) {
+        report.add(url, 'private-grid', privateDefs.map(d => d.name).join(', '));
+        urlDefs = urlDefs.filter(def => !def.pricesInCustomerArea);
+        if (!urlDefs.length) return;
+    }
     const names = urlDefs.map(d => d.name).join(', ');
+    const resolved = await resolveParser(url);
     if (!resolved) {
         report.add(url, 'unsupported', names);
         return;
     }
 
+    const configuredUrl = url;
+    if (!opts.offline && resolved.parser?.discoverUrl) {
+        try {
+            url = await resolved.parser.discoverUrl();
+        } catch (err) {
+            report.add(url, 'network-error', err.message);
+            return;
+        }
+    }
+    const sourceChanged = url !== configuredUrl;
     const entry = manifest[url] || {};
     let pdfPath = null;
     let sha256 = null;
@@ -124,7 +140,7 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         const conditional = entry.sha256 ? { etag: entry.etag, lastModified: entry.lastModified } : {};
         let result;
         try {
-            result = await fetchGrille(url, { ...conditional, force: opts.force });
+            result = await fetchGrille(url, { ...conditional, force: opts.force || sourceChanged });
         } catch (err) {
             report.add(url, 'network-error', err.message);
             return;
@@ -133,7 +149,7 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         manifest[url] = entry;
 
         if (result.status === 'not-modified') {
-            if (!opts.force) {
+            if (!opts.force && !sourceChanged) {
                 report.add(url, 'up-to-date', '304 Not Modified');
                 return;
             }
@@ -145,7 +161,7 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         } else {
             sha256 = result.sha256;
             fetchedValidators = { etag: result.etag, lastModified: result.lastModified };
-            if (sha256 === entry.sha256 && !opts.force) {
+            if (sha256 === entry.sha256 && !opts.force && !sourceChanged) {
                 entry.etag = result.etag;
                 entry.lastModified = result.lastModified;
                 report.add(url, 'up-to-date', 'SHA-256 inchangé');
@@ -193,6 +209,9 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         }
         if (reconciled.issues.length) {
             allIssues.push(...reconciled.issues.map(i => `${def.name} : ${i}`));
+        }
+        if (def.price_url !== url) {
+            reconciled.changes.push({ path: ['price_url'], old: def.price_url, new: url });
         }
         if (reconciled.changes.length) {
             perDefChanges.push({ def, changes: reconciled.changes });
@@ -264,7 +283,8 @@ async function main() {
 
     report.summary();
 
-    if (!opts['dry-run'] && !opts.offline) {
+    // Un --tarif ne réconcilie pas les autres offres de la même pièce jointe.
+    if (!opts['dry-run'] && !opts.offline && !opts.tarif) {
         saveManifest(manifest);
     }
     if (appliedDates.size > 0) {

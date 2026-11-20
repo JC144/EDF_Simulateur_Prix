@@ -149,9 +149,8 @@ function sumMonthData(monthData) {
 // Prix spot du créneau de conso : moyenne des pas spot couverts par
 // l'intervalle du relevé. Un relevé étiqueté T couvre ]T - 60/step ; T] (même
 // convention que le classement HP/HC : minuit = fin de journée, heure 24).
-// Calcul en minutes — ne pas réutiliser hcHourOf, qui ignore les minutes
-// 15/45 des relevés quart-horaires. Les grilles 60/30/15 min s'alignent
-// toutes sur les pas spot de 60 min (24 valeurs) ou 15 min (96 valeurs).
+// Les grilles 60/30/15 min s'alignent toutes sur les pas spot de 60 min (24
+// valeurs) ou 15 min (96 valeurs).
 function spotPrixKwh(slotPrices, time, step) {
     const mEnd = (time.hour === 24 || (time.hour === 0 && time.minute === 0))
         ? 1440
@@ -181,7 +180,7 @@ function hcHourOf(time) {
     if (hour === 0 && time.minute === 0) {
         return 24;
     }
-    return hour + (time.minute === 30 ? 0.5 : 0);
+    return hour + time.minute / 60;
 }
 
 // Une plage HC exclut sa borne de début et inclut sa borne de fin.
