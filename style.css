@@ -944,6 +944,38 @@ a.pill:hover {
   margin-top: 24px;
 }
 
+.tarif-history:not([hidden]) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 24px;
+}
+
+.tarif-history label {
+  font-weight: 600;
+}
+
+.tarif-history select {
+  width: auto;
+  max-width: 100%;
+  min-height: 44px;
+}
+
+.tarif-reference {
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.tarif-change {
+  display: block;
+  font-size: 0.82em;
+  color: var(--ink-2);
+}
+
+.tarif-rise { color: #93441d; }
+.tarif-fall { color: #216448; }
+
 .tarif-date {
   font-size: 16.5px;
   margin: 0 0 12px;

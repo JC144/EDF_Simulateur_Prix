@@ -98,6 +98,36 @@
             <p class="tarif-badges"><span class="tarif-badge">Offre de marché</span></p>
         </header>
 
+        <div class="tarif-history" data-history-url="historique/edf-zen-fixe-heures-creuses.json" hidden>
+            <label for="grille-date">Grille tarifaire</label>
+            <select id="grille-date" class="form-select" aria-controls="grille-actuelle grille-archivee">
+                <option value="2026-08-01">1er août 2026 · Dernière grille</option>
+                <option value="2026-06-01">1er juin 2026</option>
+                <option value="2026-02-01">1er février 2026</option>
+                <option value="2025-10-01">1er octobre 2025</option>
+                <option value="2025-08-01">1er août 2025</option>
+                <option value="2025-07-01">1er juillet 2025</option>
+                <option value="2025-04-01">1er avril 2025</option>
+                <option value="2025-02-01">1er février 2025</option>
+                <option value="2025-01-01">1er janvier 2025</option>
+                <option value="2024-11-01">1er novembre 2024</option>
+                <option value="2024-07-01">1er juillet 2024</option>
+                <option value="2024-03-19">19 mars 2024</option>
+                <option value="2024-02-01">1er février 2024</option>
+                <option value="2024-01-19">19 janvier 2024</option>
+            </select>
+        </div>
+        <div id="grille-archivee" hidden>
+            <section class="tarif-meta">
+                <h2 class="tarif-date" id="archive-titre"></h2>
+                <p>La simulation utilise la dernière grille de cette offre.</p>
+                <a href="#grille-2026-08-01" id="archive-retour">Revenir à la dernière grille</a>
+            </section>
+            <p id="archive-statut" role="status"></p>
+            <button type="button" id="archive-reessayer" hidden>Réessayer</button>
+            <div id="archive-prix"></div>
+        </div>
+        <div id="grille-actuelle">
         <section class="tarif-cta" aria-labelledby="tarif-cta-title">
             <h2 id="tarif-cta-title">Combien vous coûterait l’offre Zen Fixe Heures Creuses d’EDF&nbsp;?</h2>
             <p>Importez votre historique de consommation Linky&nbsp;: le simulateur calcule, demi-heure par demi-heure, ce que vous auriez payé avec cette offre et la compare aux autres offres d’électricité suivies.</p>
@@ -117,30 +147,32 @@
 
         <section class="tarif-section">
             <h2>Abonnement</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 1er juin 2026.</p>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Abonnement TTC par puissance souscrite</caption>
                 <thead><tr><th scope="col">Puissance</th><th scope="col">€ TTC / mois</th><th scope="col">€ TTC / an</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">18,36</td><td data-label="€ TTC / an">220,32</td></tr>
-                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">24,77</td><td data-label="€ TTC / an">297,24</td></tr>
-                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">30,91</td><td data-label="€ TTC / an">370,92</td></tr>
-                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">35,02</td><td data-label="€ TTC / an">420,24</td></tr>
-                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">40,51</td><td data-label="€ TTC / an">486,12</td></tr>
-                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">51,74</td><td data-label="€ TTC / an">620,88</td></tr>
-                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">62,38</td><td data-label="€ TTC / an">748,56</td></tr>
-                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">70,36</td><td data-label="€ TTC / an">844,32</td></tr>
+                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">18,36<small class="tarif-change tarif-rise">+17,32 %</small></td><td data-label="€ TTC / an">220,32<small class="tarif-change tarif-rise">+17,32 %</small></td></tr>
+                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">24,77<small class="tarif-change tarif-rise">+26,64 %</small></td><td data-label="€ TTC / an">297,24<small class="tarif-change tarif-rise">+26,64 %</small></td></tr>
+                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">30,91<small class="tarif-change tarif-rise">+32,55 %</small></td><td data-label="€ TTC / an">370,92<small class="tarif-change tarif-rise">+32,55 %</small></td></tr>
+                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">35,02<small class="tarif-change tarif-rise">+30,48 %</small></td><td data-label="€ TTC / an">420,24<small class="tarif-change tarif-rise">+30,48 %</small></td></tr>
+                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">40,51<small class="tarif-change tarif-rise">+32,86 %</small></td><td data-label="€ TTC / an">486,12<small class="tarif-change tarif-rise">+32,86 %</small></td></tr>
+                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">51,74<small class="tarif-change tarif-rise">+35,30 %</small></td><td data-label="€ TTC / an">620,88<small class="tarif-change tarif-rise">+35,30 %</small></td></tr>
+                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">62,38<small class="tarif-change tarif-rise">+37,49 %</small></td><td data-label="€ TTC / an">748,56<small class="tarif-change tarif-rise">+37,49 %</small></td></tr>
+                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">70,36<small class="tarif-change tarif-rise">+33,92 %</small></td><td data-label="€ TTC / an">844,32<small class="tarif-change tarif-rise">+33,92 %</small></td></tr>
                 </tbody>
             </table>
         </section>
 
         <section class="tarif-section">
             <h2>Prix du kWh</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 1er juin 2026.</p>
             <p class="tarif-unit">Prix TTC en centimes d’euro par kWh.</p>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro</caption>
                 <thead><tr><th scope="col">Période</th><th scope="col">Heures pleines</th><th scope="col">Heures creuses</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">Tous les jours</th><td data-label="Heures pleines">19,66</td><td data-label="Heures creuses">15,07</td></tr>
+                    <tr><th scope="row">Tous les jours</th><td data-label="Heures pleines">19,66<small class="tarif-change tarif-fall">-0,15 %</small></td><td data-label="Heures creuses">15,07<small class="tarif-change tarif-fall">-0,20 %</small></td></tr>
                 </tbody>
             </table>
         </section>
@@ -157,6 +189,7 @@
             </ul>
         </section>
         <p class="tarif-footer-cta"><a class="btn btn-success tarif-cta-btn" href="../#simulateur">Simuler cette offre avec ma consommation Linky<svg class="icon icon-arrow-right ms-2" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a></p>
+        </div>
     </main>
 
     <footer class="band-dark tarif-footer">

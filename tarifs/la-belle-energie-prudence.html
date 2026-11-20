@@ -99,6 +99,28 @@
             <p class="tarifs-note">Ces tarifs sont maintenus par la communauté et peuvent ne pas être à jour : vérifiez-les sur le site du fournisseur avant toute décision.</p>
         </header>
 
+        <div class="tarif-history" data-history-url="historique/la-belle-energie-prudence.json" hidden>
+            <label for="grille-date">Grille tarifaire</label>
+            <select id="grille-date" class="form-select" aria-controls="grille-actuelle grille-archivee">
+                <option value="2026-08-01">1er août 2026 · Dernière grille</option>
+                <option value="2026-07-01">1er juillet 2026</option>
+                <option value="2026-05-07">7 mai 2026</option>
+                <option value="2025-11-01">1er novembre 2025</option>
+                <option value="2024-02-01">1er février 2024</option>
+                <option value="2024-01-10">10 janvier 2024</option>
+            </select>
+        </div>
+        <div id="grille-archivee" hidden>
+            <section class="tarif-meta">
+                <h2 class="tarif-date" id="archive-titre"></h2>
+                <p>La simulation utilise la dernière grille de cette offre.</p>
+                <a href="#grille-2026-08-01" id="archive-retour">Revenir à la dernière grille</a>
+            </section>
+            <p id="archive-statut" role="status"></p>
+            <button type="button" id="archive-reessayer" hidden>Réessayer</button>
+            <div id="archive-prix"></div>
+        </div>
+        <div id="grille-actuelle">
         <section class="tarif-cta" aria-labelledby="tarif-cta-title">
             <h2 id="tarif-cta-title">Combien vous coûterait l’offre Prudence de La Bellenergie&nbsp;?</h2>
             <p>Importez votre historique de consommation Linky&nbsp;: le simulateur calcule, demi-heure par demi-heure, ce que vous auriez payé avec cette offre et la compare aux autres offres d’électricité suivies.</p>
@@ -119,32 +141,34 @@
 
         <section class="tarif-section">
             <h2>Abonnement</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 1er juillet 2026.</p>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Abonnement TTC par puissance souscrite</caption>
                 <thead><tr><th scope="col">Puissance</th><th scope="col">€ TTC / mois</th><th scope="col">€ TTC / an</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">3 kVA</th><td data-label="€ TTC / mois">11,63</td><td data-label="€ TTC / an">139,56</td></tr>
-                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">15,36</td><td data-label="€ TTC / an">184,32</td></tr>
-                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">19,38</td><td data-label="€ TTC / an">232,56</td></tr>
-                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">23,26</td><td data-label="€ TTC / an">279,12</td></tr>
-                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">26,89</td><td data-label="€ TTC / an">322,68</td></tr>
-                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">30,64</td><td data-label="€ TTC / an">367,68</td></tr>
-                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">38,63</td><td data-label="€ TTC / an">463,56</td></tr>
-                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">45,96</td><td data-label="€ TTC / an">551,52</td></tr>
-                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">53,37</td><td data-label="€ TTC / an">640,44</td></tr>
+                    <tr><th scope="row">3 kVA</th><td data-label="€ TTC / mois">11,63<small class="tarif-change tarif-rise">+4,49 %</small></td><td data-label="€ TTC / an">139,56<small class="tarif-change tarif-rise">+4,49 %</small></td></tr>
+                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">15,36<small class="tarif-change tarif-rise">+4,14 %</small></td><td data-label="€ TTC / an">184,32<small class="tarif-change tarif-rise">+4,14 %</small></td></tr>
+                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">19,38<small class="tarif-change tarif-rise">+3,86 %</small></td><td data-label="€ TTC / an">232,56<small class="tarif-change tarif-rise">+3,86 %</small></td></tr>
+                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">23,26<small class="tarif-change tarif-rise">+3,75 %</small></td><td data-label="€ TTC / an">279,12<small class="tarif-change tarif-rise">+3,75 %</small></td></tr>
+                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">26,89<small class="tarif-change tarif-rise">+3,66 %</small></td><td data-label="€ TTC / an">322,68<small class="tarif-change tarif-rise">+3,66 %</small></td></tr>
+                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">30,64<small class="tarif-change tarif-rise">+3,55 %</small></td><td data-label="€ TTC / an">367,68<small class="tarif-change tarif-rise">+3,55 %</small></td></tr>
+                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">38,63<small class="tarif-change tarif-rise">+3,45 %</small></td><td data-label="€ TTC / an">463,56<small class="tarif-change tarif-rise">+3,45 %</small></td></tr>
+                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">45,96<small class="tarif-change tarif-rise">+3,35 %</small></td><td data-label="€ TTC / an">551,52<small class="tarif-change tarif-rise">+3,35 %</small></td></tr>
+                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">53,37<small class="tarif-change tarif-rise">+3,35 %</small></td><td data-label="€ TTC / an">640,44<small class="tarif-change tarif-rise">+3,35 %</small></td></tr>
                 </tbody>
             </table>
         </section>
 
         <section class="tarif-section">
             <h2>Prix du kWh</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 1er juillet 2026.</p>
             <p class="tarif-unit">Prix TTC en centimes d’euro par kWh.</p>
             <h3>3 et 6 kVA</h3>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro (3 et 6 kVA)</caption>
                 <thead><tr><th scope="col">Période</th><th scope="col">Prix du kWh</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">Tous les jours</th><td data-label="Prix du kWh">19,68</td></tr>
+                    <tr><th scope="row">Tous les jours</th><td data-label="Prix du kWh">19,68<small class="tarif-change tarif-rise">+13,23 %</small></td></tr>
                 </tbody>
             </table>
             <h3>9 à 36 kVA</h3>
@@ -152,7 +176,7 @@
                 <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro (9 à 36 kVA)</caption>
                 <thead><tr><th scope="col">Période</th><th scope="col">Prix du kWh</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">Tous les jours</th><td data-label="Prix du kWh">19,53</td></tr>
+                    <tr><th scope="row">Tous les jours</th><td data-label="Prix du kWh">19,53<small class="tarif-change tarif-rise">+13,15 %</small></td></tr>
                 </tbody>
             </table>
         </section>
@@ -164,6 +188,7 @@
             </ul>
         </section>
         <p class="tarif-footer-cta"><a class="btn btn-success tarif-cta-btn" href="../#simulateur">Simuler cette offre avec ma consommation Linky<svg class="icon icon-arrow-right ms-2" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a></p>
+        </div>
     </main>
 
     <footer class="band-dark tarif-footer">

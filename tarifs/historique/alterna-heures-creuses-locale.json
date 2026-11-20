@@ -1,0 +1,7 @@
+[
+  {"date":"2024-02-01","subscriptions":{"6":14.32,"9":18.12,"12":21.83,"15":25.37,"18":28.87,"24":36.23,"30":42.92,"36":49.66},"hc":{"mode":"custom"},"groups":[{"kvas":[6,9,12,15,18,24,30,36],"rates":{"bleu":{"HP":24.06,"HC":18.49}}}],"revision":"78f7d118b4120283bac56ae217433c6613682e9f/scripts/tarifs/alterna/baseHC_local.js"},
+  {"date":"2024-02-08","subscriptions":{"6":14.32,"9":18.12,"12":21.83,"15":25.37,"18":28.87,"24":36.23,"30":42.92,"36":49.66},"hc":{"mode":"custom"},"groups":[{"kvas":[6,9,12,15,18,24,30,36],"rates":{"bleu":{"HP":24.06,"HC":18.49}}}],"revision":"51fda8df880abd99e7f2807cee287acd634c707d/scripts/tarifs/alterna/baseHC_local.js"},
+  {"date":"2025-10-02","subscriptions":{"6":15.74,"9":20.21,"12":24.28,"15":28.15,"18":32.13,"24":40.53,"30":48.34,"36":56.2},"hc":{"mode":"custom"},"groups":[{"kvas":[6,9,12,15,18,24,30,36],"rates":{"bleu":{"HP":15.59,"HC":19.77}}}],"revision":"aa61d814230019b3f8f407b6f4fb5b3e85ffb7e3/scripts/tarifs/alterna/baseHC_local.js"},
+  {"date":"2025-12-18","subscriptions":{"6":15.74,"9":20.21,"12":24.28,"15":28.15,"18":32.13,"24":40.53,"30":48.34,"36":56.2},"hc":{"mode":"custom"},"groups":[{"kvas":[6,9,12,15,18,24,30,36],"rates":{"bleu":{"HP":18.74,"HC":14.82}}}],"revision":"e0e7eb8bae73fbb3b9fd1d9e879c7a9fd8eaa816/scripts/tarifs/alterna/baseHC_local.js"},
+  {"date":"2026-05-07","subscriptions":{"6":15.05,"9":19.19,"12":23.01,"15":26.63,"18":30.35,"24":38.25,"30":45.55,"36":52.91},"hc":{"mode":"custom"},"groups":[{"kvas":[6,9,12,15,18,24,30,36],"rates":{"bleu":{"HP":18.85,"HC":14.93}}}]}
+]

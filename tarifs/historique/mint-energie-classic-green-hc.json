@@ -1,0 +1,6 @@
+[
+  {"date":"2023-12-12","subscriptions":{"6":13.23,"9":16.84,"12":20.36,"15":23.73,"18":27.06,"24":34.06,"30":40.43,"36":46.88},"hc":{"mode":"fixed","text":"22h00 – 06h00"},"groups":[{"kvas":[6,9,12,15,18,24,30,36],"rates":{"bleu":{"HP":20.68,"HC":15.37}}}],"revision":"e06b6ef5ae8785297d593931aec4520ab6eee382/scripts/tarifs/mint/classicEtGreenHC.js"},
+  {"date":"2024-02-01","subscriptions":{"6":13.95,"9":17.7,"12":21.37,"15":24.87,"18":28.34,"24":35.61,"30":42.25,"36":48.93},"hc":{"mode":"fixed","text":"22h00 – 06h00"},"groups":[{"kvas":[6,9,12,15,18,24,30,36],"rates":{"bleu":{"HP":24.55,"HC":18.86}}}],"revision":"77f6e6dccf5fd79e9157d3d6ad7eacc6b507ee89/scripts/tarifs/mint/classicEtGreenHC.js"},
+  {"date":"2025-08-01","subscriptions":{"6":16.25,"9":17.64,"12":22.64,"15":26.44,"18":30.24,"24":39.03,"30":47.23,"36":54.82},"hc":{"mode":"fixed","text":"22h00 – 06h00"},"groups":[{"kvas":[6,9,12,15,18,24,30,36],"rates":{"bleu":{"HP":20.81,"HC":16.35}}}],"revision":"441a21616b8108b4eb49e2ab20168abde7f84559/scripts/tarifs/mint/classicEtGreenHC.js"},
+  {"date":"2026-02-01","subscriptions":{"6":15.47,"9":16.62,"12":21.36,"15":24.91,"18":28.45,"24":36.75,"30":44.44,"36":51.53},"hc":{"mode":"fixed","text":"22h00 – 06h00"},"groups":[{"kvas":[6,9,12,15,18,24,30,36],"rates":{"bleu":{"HP":20.91,"HC":16.46}}}]}
+]

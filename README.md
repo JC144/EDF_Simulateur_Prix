@@ -134,6 +134,10 @@ Chaque tarif a sa page statique `tarifs/<slug>.html` (slug dérivé du nom du ta
 
 Ces pages, la section « Tarifs suivis » d'`index.html` et les entrées correspondantes de `sitemap.xml` sont **générées** par `import/tools/gen-tarif-pages.mjs` et `import/tools/gen-tarifs-section.mjs` (lancés ensemble par `cd import && npm run gen`) et committées telles quelles : ne les éditez pas à la main, modifiez le tarif puis régénérez. Un tarif retiré ou renommé voit son ancienne page supprimée à la génération suivante. Un nouveau fournisseur doit être ajouté à la table `PROVIDERS` de `import/lib/site-gen.mjs`.
 
+Le sélecteur **Grille tarifaire** apparaît dès que deux grilles datées sont disponibles pour une offre. Chaque montant est comparé à celui de la grille précédente pour la même puissance et la même plage tarifaire. Une archive est partageable, par exemple `tarifs/edf-tempo.html#grille-2026-02-01`. La simulation Linky utilise exclusivement les définitions courantes.
+
+Les archives initiales reprennent les versions pour lesquelles le dépôt indique une date de grille. Les premières définitions EDF sans date d’effet ont été écartées. Chaque grille reprise conserve un lien vers le fichier de la révision utilisée. Lors des mises à jour suivantes, `npm run gen` enregistre les montants de chaque offre dans `tarifs/historique/<slug>.json`. Une nouvelle date ajoute une grille, une correction à date identique met à jour la dernière entrée. Ces fichiers conservent les anciennes valeurs et sont à versionner avec les fiches HTML. Si une même offre change de nom, déplacez son historique vers le nouveau slug avant la génération.
+
 ### Prix spot (tarifs Sobry)
 
 Les tarifs indexés sur le marché (Sobry SoCap/SoFlex) s'appuient sur les prix

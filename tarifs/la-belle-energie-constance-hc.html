@@ -99,6 +99,27 @@
             <p class="tarifs-note">Ces tarifs sont maintenus par la communauté et peuvent ne pas être à jour : vérifiez-les sur le site du fournisseur avant toute décision.</p>
         </header>
 
+        <div class="tarif-history" data-history-url="historique/la-belle-energie-constance-hc.json" hidden>
+            <label for="grille-date">Grille tarifaire</label>
+            <select id="grille-date" class="form-select" aria-controls="grille-actuelle grille-archivee">
+                <option value="2026-08-01">1er août 2026 · Dernière grille</option>
+                <option value="2026-07-01">1er juillet 2026</option>
+                <option value="2026-05-07">7 mai 2026</option>
+                <option value="2025-11-01">1er novembre 2025</option>
+                <option value="2024-02-01">1er février 2024</option>
+            </select>
+        </div>
+        <div id="grille-archivee" hidden>
+            <section class="tarif-meta">
+                <h2 class="tarif-date" id="archive-titre"></h2>
+                <p>La simulation utilise la dernière grille de cette offre.</p>
+                <a href="#grille-2026-08-01" id="archive-retour">Revenir à la dernière grille</a>
+            </section>
+            <p id="archive-statut" role="status"></p>
+            <button type="button" id="archive-reessayer" hidden>Réessayer</button>
+            <div id="archive-prix"></div>
+        </div>
+        <div id="grille-actuelle">
         <section class="tarif-cta" aria-labelledby="tarif-cta-title">
             <h2 id="tarif-cta-title">Combien vous coûterait l’offre Constance HC de La Bellenergie&nbsp;?</h2>
             <p>Importez votre historique de consommation Linky&nbsp;: le simulateur calcule, demi-heure par demi-heure, ce que vous auriez payé avec cette offre et la compare aux autres offres d’électricité suivies.</p>
@@ -119,30 +140,32 @@
 
         <section class="tarif-section">
             <h2>Abonnement</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 1er juillet 2026.</p>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Abonnement TTC par puissance souscrite</caption>
                 <thead><tr><th scope="col">Puissance</th><th scope="col">€ TTC / mois</th><th scope="col">€ TTC / an</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">17,87</td><td data-label="€ TTC / an">214,44</td></tr>
-                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">22,17</td><td data-label="€ TTC / an">266,04</td></tr>
-                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">26,14</td><td data-label="€ TTC / an">313,68</td></tr>
-                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">29,87</td><td data-label="€ TTC / an">358,44</td></tr>
-                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">33,71</td><td data-label="€ TTC / an">404,52</td></tr>
-                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">41,89</td><td data-label="€ TTC / an">502,68</td></tr>
-                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">49,41</td><td data-label="€ TTC / an">592,92</td></tr>
-                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">57,00</td><td data-label="€ TTC / an">684,00</td></tr>
+                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">17,87<small class="tarif-change tarif-rise">+0,68 %</small></td><td data-label="€ TTC / an">214,44<small class="tarif-change tarif-rise">+0,68 %</small></td></tr>
+                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">22,17<small class="tarif-change tarif-rise">+1,09 %</small></td><td data-label="€ TTC / an">266,04<small class="tarif-change tarif-rise">+1,09 %</small></td></tr>
+                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">26,14<small class="tarif-change tarif-rise">+1,40 %</small></td><td data-label="€ TTC / an">313,68<small class="tarif-change tarif-rise">+1,40 %</small></td></tr>
+                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">29,87<small class="tarif-change tarif-rise">+1,60 %</small></td><td data-label="€ TTC / an">358,44<small class="tarif-change tarif-rise">+1,60 %</small></td></tr>
+                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">33,71<small class="tarif-change tarif-rise">+1,75 %</small></td><td data-label="€ TTC / an">404,52<small class="tarif-change tarif-rise">+1,75 %</small></td></tr>
+                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">41,89<small class="tarif-change tarif-rise">+2,02 %</small></td><td data-label="€ TTC / an">502,68<small class="tarif-change tarif-rise">+2,02 %</small></td></tr>
+                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">49,41<small class="tarif-change tarif-rise">+2,15 %</small></td><td data-label="€ TTC / an">592,92<small class="tarif-change tarif-rise">+2,15 %</small></td></tr>
+                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">57,00<small class="tarif-change tarif-rise">+2,28 %</small></td><td data-label="€ TTC / an">684,00<small class="tarif-change tarif-rise">+2,28 %</small></td></tr>
                 </tbody>
             </table>
         </section>
 
         <section class="tarif-section">
             <h2>Prix du kWh</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 1er juillet 2026.</p>
             <p class="tarif-unit">Prix TTC en centimes d’euro par kWh.</p>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro</caption>
                 <thead><tr><th scope="col">Période</th><th scope="col">Heures pleines</th><th scope="col">Heures creuses</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">Tous les jours</th><td data-label="Heures pleines">21,06</td><td data-label="Heures creuses">15,65</td></tr>
+                    <tr><th scope="row">Tous les jours</th><td data-label="Heures pleines">21,06<small class="tarif-change tarif-rise">+14,02 %</small></td><td data-label="Heures creuses">15,65<small class="tarif-change tarif-rise">+9,90 %</small></td></tr>
                 </tbody>
             </table>
         </section>
@@ -159,6 +182,7 @@
             </ul>
         </section>
         <p class="tarif-footer-cta"><a class="btn btn-success tarif-cta-btn" href="../#simulateur">Simuler cette offre avec ma consommation Linky<svg class="icon icon-arrow-right ms-2" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a></p>
+        </div>
     </main>
 
     <footer class="band-dark tarif-footer">

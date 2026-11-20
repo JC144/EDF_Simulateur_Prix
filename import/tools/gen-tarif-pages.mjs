@@ -20,11 +20,13 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { listTarifDefs, loadBuiltTarifs, REPO_ROOT } from '../lib/tarif-defs.mjs';
 import {
-    COMMUNITY_NOTE, JOURS, MOIS, escapeHtml, formatDate, formatHour, formatNumber, providerOf, offerLabel,
+    COMMUNITY_NOTE, JOURS, MOIS, escapeHtml, formatDate, formatHour, providerOf, offerLabel,
     replaceBetweenMarkers, reportChanges, syncFile, toMinutes,
 } from '../lib/site-gen.mjs';
 import { tarifSlug, STALE_MONTHS } from '../../scripts/utils/tarifMeta.js';
 import { bandInfo, dayBadge } from '../../scripts/ui/tariffDisplay.js';
+import { formatKvaGroup, joinFr, renderBadge, renderHcSection, renderPriceSections } from '../../scripts/ui/grillePrices.js';
+import { priceSnapshot, syncHistory } from '../lib/grille-history.mjs';
 
 export const SITE_URL = 'https://comparateur-abonnements-electricite.fr';
 const PAGES_DIR = 'tarifs';
@@ -91,11 +93,6 @@ function hcIntervals(ranges) {
 //  Textes                                                            //
 // ------------------------------------------------------------------ //
 
-// ["a", "b", "c"] -> "a, b et c"
-function joinFr(items) {
-    return items.length <= 1 ? items.join('') : `${items.slice(0, -1).join(', ')} et ${items.at(-1)}`;
-}
-
 // [11, 12, 1, 2, 3] -> "de novembre à mars" (séquence cyclique unique), sinon liste.
 export function formatMonths(months) {
     const set = new Set(months);
@@ -116,16 +113,6 @@ export function formatMonths(months) {
 function formatWeekDays(days, article = '') {
     const order = d => (d + 6) % 7;
     return joinFr([...days].sort((a, b) => order(a) - order(b)).map(d => article + JOURS[d]));
-}
-
-// "3, 6" -> "3 et 6 kVA" ; plage contiguë de la grille -> "9 à 36 kVA"
-function formatKvaGroup(kvas, allKvas) {
-    if (kvas.length === 1) return `${kvas[0]} kVA`;
-    const first = allKvas.indexOf(kvas[0]);
-    const contiguous = kvas.every((k, i) => allKvas[first + i] === k);
-    if (contiguous && kvas.length >= 3) return `${kvas[0]} à ${kvas.at(-1)} kVA`;
-    if (kvas.length <= 3) return `${joinFr(kvas.map(String))} kVA`;
-    return null; // liste longue non contiguë : libellé décidé par l'appelant
 }
 
 // ------------------------------------------------------------------ //
@@ -320,87 +307,6 @@ export function buildGrille(def, display, calendars, warnings = []) {
 //  Rendu HTML                                                        //
 // ------------------------------------------------------------------ //
 
-function renderBadge(badge) {
-    return `<span class="badge daytype-badge" style="background-color: ${badge.color}; color: ${badge.ink}">${escapeHtml(badge.label)}</span>`;
-}
-
-const price = n => formatNumber(n);
-
-function rowLabel(row) {
-    const parts = [];
-    if (row.badge) parts.push(renderBadge(row.badge));
-    if (row.band) parts.push(`<span class="tarif-band">${escapeHtml(row.band)}</span>`);
-    if (parts.length === 0) parts.push('Tous les jours');
-    if (row.window) parts.push(`<span class="tarif-window">${escapeHtml(row.window)}</span>`);
-    return parts.join(' ');
-}
-
-function renderPriceTable(prices, group, ind) {
-    const cols = prices.hasHpHc ? ['Heures pleines', 'Heures creuses'] : ['Prix du kWh'];
-    const lines = [
-        `${ind}<table class="table tarif-table">`,
-        `${ind}    <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro${group.kvaLabel ? ` (${escapeHtml(group.kvaLabel)})` : ''}</caption>`,
-        `${ind}    <thead><tr><th scope="col">Période</th>${cols.map(c => `<th scope="col">${c}</th>`).join('')}</tr></thead>`,
-        `${ind}    <tbody>`,
-    ];
-    for (const row of group.rows) {
-        let cells;
-        if ('single' in row.cells) {
-            cells = prices.hasHpHc
-                ? `<td colspan="2" class="tarif-single" data-label="Prix unique">${price(row.cells.single)}</td>`
-                : `<td data-label="Prix du kWh">${price(row.cells.single)}</td>`;
-        } else {
-            cells = `<td data-label="Heures pleines">${price(row.cells.HP)}</td><td data-label="Heures creuses">${price(row.cells.HC)}</td>`;
-        }
-        lines.push(`${ind}        <tr><th scope="row">${rowLabel(row)}</th>${cells}</tr>`);
-    }
-    lines.push(`${ind}    </tbody>`, `${ind}</table>`);
-    return lines;
-}
-
-function renderSpot(g, ind) {
-    const f = g.formula;
-    const source = g.source === 'epex-fr' ? 'prix spot EPEX FR day-ahead' : `prix spot « ${escapeHtml(g.source)} »`;
-    const row = (label, hiver, ete) => ete === undefined
-        ? `${ind}        <tr><th scope="row">${label}</th><td colspan="2" class="tarif-single" data-label="Toute l’année">${hiver}</td></tr>`
-        : `${ind}        <tr><th scope="row">${label}</th><td data-label="Hiver">${hiver}</td><td data-label="Été">${ete}</td></tr>`;
-    return [
-        `${ind}<p>Le prix du kWh suit le prix de gros de l’électricité (${source}), créneau par créneau&nbsp;:</p>`,
-        `${ind}<p class="tarif-formula">(min(spot + TURPE + accise&nbsp;; plafond) + conformité + marge + prime) × TVA</p>`,
-        `${ind}<p class="tarif-unit">Composantes en centimes d’euro HT par kWh. Saisons TURPE&nbsp;: hiver de novembre à mars, été d’avril à octobre.</p>`,
-        `${ind}<table class="table tarif-table">`,
-        `${ind}    <caption class="visually-hidden">Composantes de la formule du prix du kWh</caption>`,
-        `${ind}    <thead><tr><th scope="col">Composante</th><th scope="col">Hiver</th><th scope="col">Été</th></tr></thead>`,
-        `${ind}    <tbody>`,
-        row('TURPE (acheminement)', price(f.turpe.hiver), price(f.turpe.ete)),
-        row('Plafond (spot + TURPE + accise)', price(f.cap.hiver), price(f.cap.ete)),
-        row('Accise', price(f.accise)),
-        row('Conformité (CEE, capacité)', price(f.conformite)),
-        row('Marge du fournisseur', price(f.marge)),
-        row('Prime de couverture', price(f.prime)),
-        row('TVA', `× ${price(f.tva)}`),
-        `${ind}    </tbody>`,
-        `${ind}</table>`,
-    ];
-}
-
-function renderHc(hc, ind) {
-    switch (hc.mode) {
-        case 'custom':
-            return [`${ind}<p>Les heures creuses sont celles de votre compteur Linky, fixées par Enedis selon votre adresse (8 heures par jour). Renseignez-les dans le simulateur.</p>`];
-        case 'fixed':
-            return [`${ind}<p>Tous les jours&nbsp;: <strong>${escapeHtml(hc.text)}</strong>.</p>`];
-        case 'byDayType':
-            return [
-                `${ind}<ul class="tarif-list">`,
-                ...hc.byType.map(t => `${ind}    <li>${t.badge ? renderBadge(t.badge) + ' ' : ''}${escapeHtml(t.text)}</li>`),
-                `${ind}</ul>`,
-            ];
-        default:
-            return [];
-    }
-}
-
 // Longueurs au-delà desquelles Google tronque ou réécrit (contrôlées par run).
 export const TITLE_MAX = 60;
 export const DESCRIPTION_MAX = 155;
@@ -519,7 +425,7 @@ function renderCta(g, ind) {
     ];
 }
 
-export function renderPage(g) {
+export function renderPage(g, versions = [priceSnapshot(g)]) {
     const I = '    ';
     const M = I + I; // enfants de <main>
     const S = M + I; // enfants de <section>
@@ -580,7 +486,29 @@ export function renderPage(g) {
             + `${g.isCommunity ? ' <span class="tarif-badge tarif-badge-community">Tarif communautaire</span>' : ''}</p>`,
     ];
     if (g.isCommunity) lines.push(`${M}    <p class="tarifs-note">${COMMUNITY_NOTE}</p>`);
-    lines.push(`${M}</header>`, '', ...renderCta(g, M));
+    lines.push(`${M}</header>`, '');
+    if (versions.length > 1) {
+        lines.push(
+            `${M}<div class="tarif-history" data-history-url="historique/${g.slug}.json" hidden>`,
+            `${S}<label for="grille-date">Grille tarifaire</label>`,
+            `${S}<select id="grille-date" class="form-select" aria-controls="grille-actuelle grille-archivee">`,
+            ...versions.slice().reverse().map(v => `${S}    <option value="${v.date}">${formatDate(v.date)}${v.date === g.lastUpdate ? ' · Dernière grille' : ''}</option>`),
+            `${S}</select>`,
+            `${M}</div>`,
+            `${M}<div id="grille-archivee" hidden>`,
+            `${S}<section class="tarif-meta">`,
+            `${S}    <h2 class="tarif-date" id="archive-titre"></h2>`,
+            `${S}    <p>La simulation utilise la dernière grille de cette offre.</p>`,
+            `${S}    <a href="#grille-${g.lastUpdate}" id="archive-retour">Revenir à la dernière grille</a>`,
+            `${S}</section>`,
+            `${S}<p id="archive-statut" role="status"></p>`,
+            `${S}<button type="button" id="archive-reessayer" hidden>Réessayer</button>`,
+            `${S}<div id="archive-prix"></div>`,
+            `${M}</div>`,
+            `${M}<div id="grille-actuelle">`,
+        );
+    }
+    lines.push(...renderCta(g, M));
 
     // Source de la grille : date, avertissement d'ancienneté, liens.
     lines.push(
@@ -602,38 +530,9 @@ export function renderPage(g) {
         '',
     );
 
-    // Abonnement
-    lines.push(
-        `${M}<section class="tarif-section">`,
-        `${S}<h2>Abonnement</h2>`,
-        `${S}<table class="table tarif-table">`,
-        `${S}    <caption class="visually-hidden">Abonnement TTC par puissance souscrite</caption>`,
-        `${S}    <thead><tr><th scope="col">Puissance</th><th scope="col">€ TTC / mois</th><th scope="col">€ TTC / an</th></tr></thead>`,
-        `${S}    <tbody>`,
-        ...g.subscriptions.map(s => `${S}        <tr><th scope="row">${s.kva} kVA</th>`
-            + `<td data-label="€ TTC / mois">${formatNumber(s.monthly)}</td><td data-label="€ TTC / an">${formatNumber(s.yearly)}</td></tr>`),
-        `${S}    </tbody>`,
-        `${S}</table>`,
-        `${M}</section>`,
-        '',
-    );
+    lines.push(...renderPriceSections(versions.at(-1), versions.at(-2), M));
 
-    // Prix du kWh
-    lines.push(`${M}<section class="tarif-section">`, `${S}<h2>Prix du kWh</h2>`);
-    if (g.kind === 'spot') {
-        lines.push(...renderSpot(g, S));
-    } else {
-        lines.push(`${S}<p class="tarif-unit">Prix TTC en centimes d’euro par kWh.</p>`);
-        for (const group of g.prices.groups) {
-            if (group.kvaLabel) lines.push(`${S}<h3>${escapeHtml(group.kvaLabel)}</h3>`);
-            lines.push(...renderPriceTable(g.prices, group, S));
-        }
-    }
-    lines.push(`${M}</section>`, '');
-
-    if (g.kind === 'grid' && g.hc.mode !== 'none') {
-        lines.push(`${M}<section class="tarif-section">`, `${S}<h2>Heures creuses</h2>`, ...renderHc(g.hc, S), `${M}</section>`, '');
-    }
+    lines.push(...renderHcSection(versions.at(-1), M));
 
     lines.push(
         `${M}<section class="tarif-section">`,
@@ -644,6 +543,7 @@ export function renderPage(g) {
         `${M}</section>`,
         `${M}<p class="tarif-footer-cta"><a class="btn btn-success tarif-cta-btn" href="${SIMULATOR_HREF}">`
             + `Simuler cette offre avec ma consommation Linky${ARROW_ICON}</a></p>`,
+        ...(versions.length > 1 ? [`${M}</div>`] : []),
         `${I}</main>`,
         '',
         `${I}<footer class="band-dark tarif-footer">`,
@@ -713,7 +613,8 @@ export function run({ check = false } = {}) {
     const changes = [];
     const dir = path.join(REPO_ROOT, PAGES_DIR);
     for (const g of grilles) {
-        changes.push(syncFile(path.join(dir, `${g.slug}.html`), renderPage(g), { check }));
+        const history = syncHistory(dir, g.slug, priceSnapshot(g), { check });
+        changes.push(history.change, syncFile(path.join(dir, `${g.slug}.html`), renderPage(g, history.versions), { check }));
     }
 
     // Pages orphelines (tarif retiré ou renommé) : seulement les pages générées.

@@ -98,6 +98,24 @@
             <p class="tarif-badges"><span class="tarif-badge">Offre de marché</span></p>
         </header>
 
+        <div class="tarif-history" data-history-url="historique/enercoop-offre-flexibilite-2-saisons.json" hidden>
+            <label for="grille-date">Grille tarifaire</label>
+            <select id="grille-date" class="form-select" aria-controls="grille-actuelle grille-archivee">
+                <option value="2026-08-01">1er août 2026 · Dernière grille</option>
+                <option value="2026-02-26">26 février 2026</option>
+            </select>
+        </div>
+        <div id="grille-archivee" hidden>
+            <section class="tarif-meta">
+                <h2 class="tarif-date" id="archive-titre"></h2>
+                <p>La simulation utilise la dernière grille de cette offre.</p>
+                <a href="#grille-2026-08-01" id="archive-retour">Revenir à la dernière grille</a>
+            </section>
+            <p id="archive-statut" role="status"></p>
+            <button type="button" id="archive-reessayer" hidden>Réessayer</button>
+            <div id="archive-prix"></div>
+        </div>
+        <div id="grille-actuelle">
         <section class="tarif-cta" aria-labelledby="tarif-cta-title">
             <h2 id="tarif-cta-title">Combien vous coûterait l’offre Offre Flexibilité 2 Saisons d’Enercoop&nbsp;?</h2>
             <p>Importez votre historique de consommation Linky&nbsp;: le simulateur calcule, demi-heure par demi-heure, ce que vous auriez payé avec cette offre et la compare aux autres offres d’électricité suivies.</p>
@@ -117,61 +135,75 @@
 
         <section class="tarif-section">
             <h2>Abonnement</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 26 février 2026.</p>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Abonnement TTC par puissance souscrite</caption>
                 <thead><tr><th scope="col">Puissance</th><th scope="col">€ TTC / mois</th><th scope="col">€ TTC / an</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">1 kVA</th><td data-label="€ TTC / mois">6,40</td><td data-label="€ TTC / an">76,80</td></tr>
-                    <tr><th scope="row">2 kVA</th><td data-label="€ TTC / mois">8,23</td><td data-label="€ TTC / an">98,76</td></tr>
-                    <tr><th scope="row">3 kVA</th><td data-label="€ TTC / mois">10,05</td><td data-label="€ TTC / an">120,60</td></tr>
-                    <tr><th scope="row">4 kVA</th><td data-label="€ TTC / mois">12,07</td><td data-label="€ TTC / an">144,84</td></tr>
-                    <tr><th scope="row">5 kVA</th><td data-label="€ TTC / mois">13,94</td><td data-label="€ TTC / an">167,28</td></tr>
-                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">15,82</td><td data-label="€ TTC / an">189,84</td></tr>
-                    <tr><th scope="row">7 kVA</th><td data-label="€ TTC / mois">17,43</td><td data-label="€ TTC / an">209,16</td></tr>
-                    <tr><th scope="row">8 kVA</th><td data-label="€ TTC / mois">19,26</td><td data-label="€ TTC / an">231,12</td></tr>
-                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">21,10</td><td data-label="€ TTC / an">253,20</td></tr>
-                    <tr><th scope="row">10 kVA</th><td data-label="€ TTC / mois">22,93</td><td data-label="€ TTC / an">275,16</td></tr>
-                    <tr><th scope="row">11 kVA</th><td data-label="€ TTC / mois">24,77</td><td data-label="€ TTC / an">297,24</td></tr>
-                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">26,60</td><td data-label="€ TTC / an">319,20</td></tr>
-                    <tr><th scope="row">13 kVA</th><td data-label="€ TTC / mois">28,36</td><td data-label="€ TTC / an">340,32</td></tr>
-                    <tr><th scope="row">14 kVA</th><td data-label="€ TTC / mois">30,19</td><td data-label="€ TTC / an">362,28</td></tr>
-                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">32,02</td><td data-label="€ TTC / an">384,24</td></tr>
-                    <tr><th scope="row">16 kVA</th><td data-label="€ TTC / mois">33,85</td><td data-label="€ TTC / an">406,20</td></tr>
-                    <tr><th scope="row">17 kVA</th><td data-label="€ TTC / mois">35,68</td><td data-label="€ TTC / an">428,16</td></tr>
-                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">37,51</td><td data-label="€ TTC / an">450,12</td></tr>
-                    <tr><th scope="row">19 kVA</th><td data-label="€ TTC / mois">39,34</td><td data-label="€ TTC / an">472,08</td></tr>
-                    <tr><th scope="row">20 kVA</th><td data-label="€ TTC / mois">41,17</td><td data-label="€ TTC / an">494,04</td></tr>
-                    <tr><th scope="row">21 kVA</th><td data-label="€ TTC / mois">43,00</td><td data-label="€ TTC / an">516,00</td></tr>
-                    <tr><th scope="row">22 kVA</th><td data-label="€ TTC / mois">44,83</td><td data-label="€ TTC / an">537,96</td></tr>
-                    <tr><th scope="row">23 kVA</th><td data-label="€ TTC / mois">46,66</td><td data-label="€ TTC / an">559,92</td></tr>
-                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">48,22</td><td data-label="€ TTC / an">578,64</td></tr>
-                    <tr><th scope="row">25 kVA</th><td data-label="€ TTC / mois">50,04</td><td data-label="€ TTC / an">600,48</td></tr>
-                    <tr><th scope="row">26 kVA</th><td data-label="€ TTC / mois">51,86</td><td data-label="€ TTC / an">622,32</td></tr>
-                    <tr><th scope="row">27 kVA</th><td data-label="€ TTC / mois">53,68</td><td data-label="€ TTC / an">644,16</td></tr>
-                    <tr><th scope="row">28 kVA</th><td data-label="€ TTC / mois">55,50</td><td data-label="€ TTC / an">666,00</td></tr>
-                    <tr><th scope="row">29 kVA</th><td data-label="€ TTC / mois">57,32</td><td data-label="€ TTC / an">687,84</td></tr>
-                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">59,14</td><td data-label="€ TTC / an">709,68</td></tr>
-                    <tr><th scope="row">31 kVA</th><td data-label="€ TTC / mois">60,95</td><td data-label="€ TTC / an">731,40</td></tr>
-                    <tr><th scope="row">32 kVA</th><td data-label="€ TTC / mois">62,77</td><td data-label="€ TTC / an">753,24</td></tr>
-                    <tr><th scope="row">33 kVA</th><td data-label="€ TTC / mois">64,59</td><td data-label="€ TTC / an">775,08</td></tr>
-                    <tr><th scope="row">34 kVA</th><td data-label="€ TTC / mois">66,41</td><td data-label="€ TTC / an">796,92</td></tr>
-                    <tr><th scope="row">35 kVA</th><td data-label="€ TTC / mois">68,23</td><td data-label="€ TTC / an">818,76</td></tr>
-                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">70,05</td><td data-label="€ TTC / an">840,60</td></tr>
+                    <tr><th scope="row">1 kVA</th><td data-label="€ TTC / mois">6,40<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">76,80<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">2 kVA</th><td data-label="€ TTC / mois">8,23<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">98,76<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">3 kVA</th><td data-label="€ TTC / mois">10,05<small class="tarif-change tarif-rise">+0,30 %</small></td><td data-label="€ TTC / an">120,60<small class="tarif-change tarif-rise">+0,30 %</small></td></tr>
+                    <tr><th scope="row">4 kVA</th><td data-label="€ TTC / mois">12,07<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">144,84<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">5 kVA</th><td data-label="€ TTC / mois">13,94<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">167,28<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">15,82<small class="tarif-change tarif-fall">-0,25 %</small></td><td data-label="€ TTC / an">189,84<small class="tarif-change tarif-fall">-0,25 %</small></td></tr>
+                    <tr><th scope="row">7 kVA</th><td data-label="€ TTC / mois">17,43<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">209,16<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">8 kVA</th><td data-label="€ TTC / mois">19,26<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">231,12<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">21,10<small class="tarif-change tarif-fall">-0,57 %</small></td><td data-label="€ TTC / an">253,20<small class="tarif-change tarif-fall">-0,57 %</small></td></tr>
+                    <tr><th scope="row">10 kVA</th><td data-label="€ TTC / mois">22,93<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">275,16<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">11 kVA</th><td data-label="€ TTC / mois">24,77<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">297,24<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">26,60<small class="tarif-change tarif-fall">-0,78 %</small></td><td data-label="€ TTC / an">319,20<small class="tarif-change tarif-fall">-0,78 %</small></td></tr>
+                    <tr><th scope="row">13 kVA</th><td data-label="€ TTC / mois">28,36<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">340,32<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">14 kVA</th><td data-label="€ TTC / mois">30,19<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">362,28<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">32,02<small class="tarif-change tarif-fall">-0,87 %</small></td><td data-label="€ TTC / an">384,24<small class="tarif-change tarif-fall">-0,87 %</small></td></tr>
+                    <tr><th scope="row">16 kVA</th><td data-label="€ TTC / mois">33,85<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">406,20<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">17 kVA</th><td data-label="€ TTC / mois">35,68<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">428,16<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">37,51<small class="tarif-change tarif-fall">-0,95 %</small></td><td data-label="€ TTC / an">450,12<small class="tarif-change tarif-fall">-0,95 %</small></td></tr>
+                    <tr><th scope="row">19 kVA</th><td data-label="€ TTC / mois">39,34<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">472,08<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">20 kVA</th><td data-label="€ TTC / mois">41,17<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">494,04<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">21 kVA</th><td data-label="€ TTC / mois">43,00<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">516,00<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">22 kVA</th><td data-label="€ TTC / mois">44,83<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">537,96<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">23 kVA</th><td data-label="€ TTC / mois">46,66<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">559,92<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">48,22<small class="tarif-change tarif-fall">-1,07 %</small></td><td data-label="€ TTC / an">578,64<small class="tarif-change tarif-fall">-1,07 %</small></td></tr>
+                    <tr><th scope="row">25 kVA</th><td data-label="€ TTC / mois">50,04<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">600,48<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">26 kVA</th><td data-label="€ TTC / mois">51,86<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">622,32<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">27 kVA</th><td data-label="€ TTC / mois">53,68<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">644,16<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">28 kVA</th><td data-label="€ TTC / mois">55,50<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">666,00<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">29 kVA</th><td data-label="€ TTC / mois">57,32<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">687,84<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">59,14<small class="tarif-change tarif-fall">-1,14 %</small></td><td data-label="€ TTC / an">709,68<small class="tarif-change tarif-fall">-1,14 %</small></td></tr>
+                    <tr><th scope="row">31 kVA</th><td data-label="€ TTC / mois">60,95<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">731,40<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">32 kVA</th><td data-label="€ TTC / mois">62,77<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">753,24<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">33 kVA</th><td data-label="€ TTC / mois">64,59<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">775,08<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">34 kVA</th><td data-label="€ TTC / mois">66,41<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">796,92<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">35 kVA</th><td data-label="€ TTC / mois">68,23<small class="tarif-change">Nouveau</small></td><td data-label="€ TTC / an">818,76<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">70,05<small class="tarif-change tarif-fall">-1,18 %</small></td><td data-label="€ TTC / an">840,60<small class="tarif-change tarif-fall">-1,18 %</small></td></tr>
                 </tbody>
             </table>
         </section>
 
         <section class="tarif-section">
             <h2>Prix du kWh</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 26 février 2026.</p>
             <p class="tarif-unit">Prix TTC en centimes d’euro par kWh.</p>
+            <h3>1, 2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 31, 32, 33, 34 et 35 kVA</h3>
             <table class="table tarif-table">
-                <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro</caption>
+                <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro (1, 2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 31, 32, 33, 34 et 35 kVA)</caption>
                 <thead><tr><th scope="col">Période</th><th scope="col">Heures pleines</th><th scope="col">Heures creuses</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">Hiver</span></th><td data-label="Heures pleines">31,601</td><td data-label="Heures creuses">22,356</td></tr>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">W-E hiver</span></th><td data-label="Heures pleines">31,601</td><td data-label="Heures creuses">22,356</td></tr>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">Été</span></th><td data-label="Heures pleines">19,567</td><td data-label="Heures creuses">13,831</td></tr>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">W-E été</span></th><td data-label="Heures pleines">19,567</td><td data-label="Heures creuses">13,831</td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">Hiver</span></th><td data-label="Heures pleines">31,601<small class="tarif-change">Nouveau</small></td><td data-label="Heures creuses">22,356<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">W-E hiver</span></th><td data-label="Heures pleines">31,601<small class="tarif-change">Nouveau</small></td><td data-label="Heures creuses">22,356<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">Été</span></th><td data-label="Heures pleines">19,567<small class="tarif-change">Nouveau</small></td><td data-label="Heures creuses">13,831<small class="tarif-change">Nouveau</small></td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">W-E été</span></th><td data-label="Heures pleines">19,567<small class="tarif-change">Nouveau</small></td><td data-label="Heures creuses">13,831<small class="tarif-change">Nouveau</small></td></tr>
+                </tbody>
+            </table>
+            <h3>3, 6, 9, 12, 15, 18, 24, 30 et 36 kVA</h3>
+            <table class="table tarif-table">
+                <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro (3, 6, 9, 12, 15, 18, 24, 30 et 36 kVA)</caption>
+                <thead><tr><th scope="col">Période</th><th scope="col">Heures pleines</th><th scope="col">Heures creuses</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">Hiver</span></th><td data-label="Heures pleines">31,601<small class="tarif-change tarif-rise">+1,81 %</small></td><td data-label="Heures creuses">22,356<small class="tarif-change tarif-fall">-2,38 %</small></td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">W-E hiver</span></th><td data-label="Heures pleines">31,601<small class="tarif-change tarif-rise">+1,81 %</small></td><td data-label="Heures creuses">22,356<small class="tarif-change tarif-fall">-2,38 %</small></td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">Été</span></th><td data-label="Heures pleines">19,567<small class="tarif-change tarif-rise">+1,03 %</small></td><td data-label="Heures creuses">13,831<small class="tarif-change tarif-rise">+0,85 %</small></td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">W-E été</span></th><td data-label="Heures pleines">19,567<small class="tarif-change tarif-rise">+1,03 %</small></td><td data-label="Heures creuses">13,831<small class="tarif-change tarif-rise">+0,85 %</small></td></tr>
                 </tbody>
             </table>
         </section>
@@ -197,6 +229,7 @@
             </ul>
         </section>
         <p class="tarif-footer-cta"><a class="btn btn-success tarif-cta-btn" href="../#simulateur">Simuler cette offre avec ma consommation Linky<svg class="icon icon-arrow-right ms-2" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a></p>
+        </div>
     </main>
 
     <footer class="band-dark tarif-footer">
