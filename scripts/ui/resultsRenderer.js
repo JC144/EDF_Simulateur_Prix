@@ -11,10 +11,11 @@ const MIN_MONTHLY_SAVINGS_FOR_SUPPORT = 5; // €/mois
 // de détail mensuel/journalier. Le HTML vit dans les <template> d'index.html ;
 // ce module se contente de les cloner et d'y injecter les valeurs.
 // sumPeriod est injectée par la vue (voir app.js) : aucun import de core/ ici.
-export function render(container, { calculatedMonths, currentOffer }, dateBegin, dateEnd, sumPeriod) {
+export function render(container, { calculatedMonths, missingCalendars = [], currentOffer }, dateBegin, dateEnd, sumPeriod) {
     container.innerHTML = "";
 
-    const resultsForPeriod = calculatedMonths.map((t) => {
+    const unavailable = missingCalendars.filter(c => c.months.some(m => m >= dateBegin && m <= dateEnd)).map(c => c.title);
+    const resultsForPeriod = calculatedMonths.filter(t => !unavailable.includes(t.title)).map((t) => {
         return {
             tarif: sumPeriod(t.allMonths, dateBegin, dateEnd),
             title: t.title,
@@ -29,6 +30,11 @@ export function render(container, { calculatedMonths, currentOffer }, dateBegin,
         .sort((a, b) => a.tarif.price - b.tarif.price);
 
     const summary = cloneTemplate("tpl-result-summary");
+    if (unavailable.length) {
+        const notice = summary.refs["calendar-notice"];
+        notice.hidden = false;
+        notice.textContent = `Calendrier de pointe incomplet sur la période sélectionnée. Offre hors classement : ${unavailable.join(", ")}.`;
+    }
     const cheapest = resultsOrdered[0]?.tarif;
     const showSupport = !selected || (cheapest?.months.length > 0 &&
         selected.tarif.price >= cheapest.price + MIN_MONTHLY_SAVINGS_FOR_SUPPORT * cheapest.months.length);

@@ -3189,6 +3189,32 @@
       "priceHP": 203.61330126
     }
   ],
+  "Enercoop - Flexibilité 2 saisons - Jours de pointe": [
+    {
+      "year": 2026,
+      "month": "01",
+      "conso": 1559396,
+      "price": 460.73343004,
+      "hasErrors": true,
+      "nbDays": 30,
+      "consoHC": 916615,
+      "priceHC": 198.10799995,
+      "consoHP": 642781,
+      "priceHP": 216.88543009
+    },
+    {
+      "year": 2025,
+      "month": "12",
+      "conso": 1608788,
+      "price": 458.36020206,
+      "hasErrors": false,
+      "nbDays": 31,
+      "consoHC": 934356,
+      "priceHC": 201.94236228,
+      "consoHP": 674432,
+      "priceHP": 210.67783978
+    }
+  ],
   "Engie - Elec Référence 3 ans": [
     {
       "year": 2026,

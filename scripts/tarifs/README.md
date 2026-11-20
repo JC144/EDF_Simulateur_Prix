@@ -149,7 +149,10 @@ comme les heures super creuses de Zen Estival).
 
 Chaque saison peut déclarer un type week-end. Avec `includePublicHolidays: true`,
 les jours fériés nationaux suivent aussi cette tarification. Un `peakType` dans la
-saison donne priorité aux dates de pointe renseignées pour la simulation.
+saison donne priorité aux dates de pointe du calendrier désigné par
+`dayRule.peakCalendar`. Ce calendrier recense les jours `normal` et `pointe`.
+Si un relevé a une date absente du calendrier, l’offre est hors classement
+pour toute période de comparaison incluant le mois concerné.
 
 ```js
 dayRule: {

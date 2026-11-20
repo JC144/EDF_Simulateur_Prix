@@ -355,6 +355,10 @@
                     break;
                 }
                 const coveredMonths = new Set();
+                const peakCalendar = window.TarifCalendars[rule.peakCalendar];
+                if (rule.peakCalendar !== undefined && (!peakCalendar?.pointe || !peakCalendar.normal)) {
+                    errors.push("dayRule.peakCalendar : calendrier de jours normaux et de pointe requis");
+                }
                 let hasWeekendType = false;
                 for (const [season, spec] of Object.entries(rule.seasons)) {
                     requireType(`dayRule.seasons.${season}`, season);
@@ -375,8 +379,11 @@
                         hasWeekendType = true;
                         requireType(`dayRule.seasons.${season}.weekendType`, spec.weekendType);
                     }
-                    if (spec.peakType !== undefined) {
+                    if (spec.peakType !== undefined || rule.peakCalendar !== undefined) {
                         requireType(`dayRule.seasons.${season}.peakType`, spec.peakType);
+                        if (rule.peakCalendar === undefined) {
+                            errors.push("dayRule.peakCalendar requis avec peakType");
+                        }
                     }
                 }
                 for (let month = 1; month <= 12; month++) {
@@ -549,8 +556,8 @@
         if (hcParts.hcByDayType) {
             abonnement.hcByDayType = hcParts.hcByDayType;
         }
-        if (def.dayRule.type === "season" && Object.values(def.dayRule.seasons).some(s => s.peakType)) {
-            abonnement.requiresPeakDates = true;
+        if (rule.calendarCoversDate) {
+            abonnement.calendarCoversDate = rule.calendarCoversDate;
         }
         if (rule.spotPricesFor) {
             abonnement.spotPricesFor = rule.spotPricesFor;
@@ -838,6 +845,9 @@
 
         season: function (rule) {
             const previousDayBefore = rule.previousDayBefore;
+            const peakCalendar = window.TarifCalendars[rule.peakCalendar];
+            const peakDates = new Set(peakCalendar?.pointe.days);
+            const normalDates = new Set(peakCalendar?.normal.days);
             const monthToSeason = {};
             const weekendTypeBySeason = {};
             for (const [season, spec] of Object.entries(rule.seasons)) {
@@ -861,6 +871,7 @@
             return {
                 specialDays: [],
                 hasSpecialDaysCustom: false,
+                calendarCoversDate: peakCalendar && (date => normalDates.has(date) || peakDates.has(date)),
                 getDayType: function (day, time) {
                     let checkDate = day.date;
                     if (previousDayBefore !== undefined && time.hour < previousDayBefore) {
@@ -877,8 +888,11 @@
                     }
                     const month = Number(checkDate.split("/")[1]);
                     const season = monthToSeason[month];
-                    if (rule.seasons[season].peakType && this.peakDates?.has(checkDate)) {
+                    if (peakDates.has(checkDate)) {
                         return rule.seasons[season].peakType;
+                    }
+                    if (peakCalendar && !normalDates.has(checkDate)) {
+                        return null;
                     }
                     // Le week-end est évalué sur la même date décalée que la saison
                     // (une nuit de dimanche avant Nh compte comme du week-end).

@@ -58,6 +58,7 @@ function daytypesSnapshot(abonnements, hours) {
     for (const abo of abonnements) {
         const perDate = {};
         for (const date of dates) {
+            if (abo.calendarCoversDate && !abo.calendarCoversDate(date)) continue;
             const day = { date };
             perDate[date] = hours.map(hour => abo.getDayType(day, { hour, minute: 0 })).join('/');
         }
@@ -128,7 +129,9 @@ test('golden journalier 9 kVA (décembre 2024 et janvier 2025)', () => {
 
 test('golden journalier community 9 kVA (décembre 2024 et janvier 2025, tarifs non-EDF)', () => {
     installFreshRegistry();
-    const { calculatedMonths } = runSimulation(communitySettings(9), loadSampleData());
+    // Une offre peut couvrir d'autres mois du CSV sans couvrir la fenêtre testée.
+    const days = loadSampleData().filter(d => d.date >= '2024/12/01' && d.date < '2025/02/01');
+    const { calculatedMonths } = runSimulation(communitySettings(9), days);
     checkGolden('daily-community-9kva', dailySnapshot(calculatedMonths.filter(t => !t.title.includes('EDF'))));
 });
 

@@ -262,8 +262,10 @@ function buildRuleLines(def, calendars) {
                     lines.push(`${chip(spec.peakType)} ${months}, aux dates signalées par Enercoop, y compris le week-end et les jours fériés. Les horaires de semaine s’appliquent.`);
                 }
             }
-            if (Object.values(rule.seasons).some(s => s.peakType)) {
-                lines.push('Option réservée aux compteurs Linky. Enercoop annonce jusqu’à 15 jours de pointe par an. Pour comparer l’option, renseignez les dates de vos alertes à l’étape Tarifs du simulateur.');
+            if (rule.peakCalendar === 'enercoop-pointe') {
+                const dates = calendars[rule.peakCalendar].pointe.days.map(d => formatDate(d.replaceAll('/', '-')));
+                lines.push('Option réservée aux compteurs Linky. Enercoop annonce jusqu’à 15 jours de pointe par an. Le simulateur applique le calendrier aux relevés de consommation.');
+                lines.push(`<details><summary>Jours de pointe intégrés (${dates.length})</summary><p>${dates.join(', ')}.</p></details>`);
             }
             if (rule.calendarOverride) {
                 for (const type of rule.calendarOverride.types) {

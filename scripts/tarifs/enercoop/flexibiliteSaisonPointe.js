@@ -23,6 +23,7 @@ defineTarif({
     },
     dayRule: {
         type: "season",
+        peakCalendar: "enercoop-pointe",
         seasons: {
             hiver: { months: [11, 12, 1, 2, 3], weekendType: "hiverWeekend", peakType: "hiverPointe" },
             ete: { months: [4, 5, 6, 7, 8, 9, 10], weekendType: "eteWeekend", peakType: "etePointe" }

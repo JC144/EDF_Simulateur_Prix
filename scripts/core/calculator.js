@@ -22,15 +22,13 @@ export function computeMonths({ plan, getDayType, hcRangesFor, spotPricesFor }, 
         return monthsData;
     }
 
-    let currentMonth = null;
     let monthData = null;
     for (const day of days) {
         const [year, month] = day.date.split("/");
-        if (month !== currentMonth) {
+        if (!monthData || month !== monthData.month || Number(year) !== monthData.year) {
             if (monthData) {
                 sumMonthData(monthData);
             }
-            currentMonth = month;
             monthData = startMonth(parseInt(year), month, plan);
             monthsData.push(monthData);
         }

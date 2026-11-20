@@ -311,6 +311,23 @@ test('season + calendarOverride : jours de calendrier prioritaires sur la saison
     assert.strictEqual(abo.getDayType({ date: '2024/12/09' }, at(24)), 'rouge', '24h : pas de report');
 });
 
+test('une pointe saisonnière prime le week-end et le jour férié, une date inconnue est indisponible', () => {
+    const sandbox = freshSandbox();
+    const spec = validDef({
+        dayTypes: { saison: { HP: 2, HC: 1 }, weekend: { HP: 1, HC: 1 }, pointe: { HP: 4, HC: 1 } },
+        dayRule: { type: 'season', weekendDays: [0, 6], includePublicHolidays: true, peakCalendar: 'alertes',
+            seasons: { saison: { months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], weekendType: 'weekend', peakType: 'pointe' } } },
+    });
+    expectError(spec, 'dayRule.peakCalendar');
+    sandbox.defineCalendar('alertes', { pointe: { days: ['2026/05/14', '2026/12/26'] }, normal: { days: ['2026/12/25'] } });
+    const abo = sandbox.defineTarif(spec);
+    const atNoon = date => abo.getDayType({ date }, { hour: 12, minute: 0 });
+    assert.strictEqual(atNoon('2026/05/14'), 'pointe');
+    assert.strictEqual(atNoon('2026/12/26'), 'pointe');
+    assert.strictEqual(atNoon('2026/12/25'), 'weekend');
+    assert.strictEqual(atNoon('2026/12/27'), null);
+});
+
 test('validation : calendarOverride', () => {
     const defWith = overrides => validDef({
         dayTypes: { rouge: { HP: 2, HC: 1 }, hiver: { HP: 2, HC: 1 } },

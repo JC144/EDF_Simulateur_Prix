@@ -15,6 +15,7 @@ export const TARIF_SCRIPTS = [
     "scripts/tarifs-lib/calendars/tempo-edf.js",
     "scripts/tarifs-lib/calendars/ejp-edf.js",
     "scripts/tarifs-lib/calendars/zenflex-sobriete.js",
+    "scripts/tarifs-lib/calendars/enercoop-pointe.js",
 
     // Prix spot EPEX FR Day-Ahead (energy-charts.info, données SMARD.de,
     // CC BY 4.0), générés par import/spot-update.mjs — avant les tarifs spot (Sobry)
