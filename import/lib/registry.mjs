@@ -17,6 +17,7 @@ const PROVIDER_BY_HOST = {
     'doc.mint-energie.com': 'mint',
     'labellenergie.fr': 'labelleenergie',
     'www.faq.enercoop.fr': 'enercoop',
+    'www.alterna-energie.fr': 'alterna',
 };
 
 // Grilles hébergées sur un host générique (stockage cloud partagé) : mapping
@@ -28,6 +29,7 @@ const PROVIDER_BY_URL = {
 export function isPdfUrl(url) {
     const { host, pathname } = new URL(url);
     return pathname.toLowerCase().endsWith('.pdf')
+        || (host === 'www.alterna-energie.fr' && /^\/tarifs-electricite-(?:francaise|locale|vehicule-electrique)\/?$/.test(pathname))
         || (host === 'www.faq.enercoop.fr' && /^\/hc\/(?:fr\/)?article_attachments\/\d+$/.test(pathname));
 }
 

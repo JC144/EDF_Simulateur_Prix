@@ -3,7 +3,7 @@ const STATUS_LABELS = {
     'up-to-date': 'A JOUR',
     'modified': 'MODIFIE',
     'no-change': 'GRILLE CHANGEE, VALEURS IDENTIQUES',
-    'unsupported': 'NON GERE (HTML)',
+    'unsupported': 'SOURCE NON GEREE',
     'private-grid': 'GRILLE PRIVÉE, DERNIÈRE GRILLE PUBLIQUE CONSERVÉE',
     'no-parser': 'PARSER MANQUANT',
     'offer-missing': 'OFFRE INTROUVABLE',

@@ -1,21 +1,25 @@
 defineTarif({
     name: "Alterna - Base France",
     offer_type: "Marché",
-    lastUpdate: "2026-05-07",
+    lastUpdate: "2026-09-01",
     isCommunity: true,
     subscription_url: "https://www.alterna-energie.fr",
     price_url: "https://www.alterna-energie.fr/tarifs-electricite-francaise",
     subscriptions: {
-        3: 11.25,
-        6: 14.78,
-        9: 18.49,
-        12: 22.21,
-        15: 25.74,
-        18: 29.23,
-        24: 36.84,
-        30: 44.07,
-        36: 51.50
+        3: 13.93,
+        6: 17.66,
+        9: 22.28,
+        12: 26.16,
+        15: 29.8,
+        18: 33.54,
+        24: 41.54,
+        30: 48.87,
+        36: 56.28
     },
-    dayTypes: { bleu: { price: 17.40 } },
+    dayTypes: { bleu: { price: 19.04 } },
+    priceOverrides: {
+        3: { bleu: { price: 19.19 } },
+        6: { bleu: { price: 19.19 } }
+    },
     dayRule: { type: "constant", dayType: "bleu" }
 });

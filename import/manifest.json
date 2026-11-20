@@ -152,6 +152,27 @@
     "lastModified": "Mon, 16 Nov 2026 13:15:38 GMT",
     "lastApplied": "2026-11-20"
   },
+  "https://www.alterna-energie.fr/tarifs-electricite-francaise": {
+    "lastChecked": "2026-11-20",
+    "sha256": "5661e629607142db747d60fb60090c071a55503a6d9dedb7a3c4d358acae92a6",
+    "etag": "\"948a8735ec517f303dd5a7dbc8c20a1c\"",
+    "lastModified": "Fri, 09 Oct 2026 12:37:20 GMT",
+    "lastApplied": "2026-11-20"
+  },
+  "https://www.alterna-energie.fr/tarifs-electricite-locale": {
+    "lastChecked": "2026-11-20",
+    "sha256": "8f5025966bc4b9771f90e8966b5964091b5190df92deb8991af712f7bad3a7f7",
+    "etag": "\"4b95c9a3a0ae142b48adde817cda66c2\"",
+    "lastModified": "Fri, 09 Oct 2026 12:37:20 GMT",
+    "lastApplied": "2026-11-20"
+  },
+  "https://www.alterna-energie.fr/tarifs-electricite-vehicule-electrique": {
+    "lastChecked": "2026-11-20",
+    "sha256": "545041941017e6e37eee482394546ddff8d1f51729d0a48b69a97c3eb1ecc95a",
+    "etag": "\"a43db340a6a1736f6682ccc29b3c4643\"",
+    "lastModified": "Fri, 09 Oct 2026 12:37:20 GMT",
+    "lastApplied": "2026-11-20"
+  },
   "https://www.faq.enercoop.fr/hc/fr/article_attachments/37607556170770": {
     "lastChecked": "2026-11-20",
     "sha256": "da33ad5fc6d92f5979a17b55802d05f431d7b81a0b6b4386f6b399be31a843a5",

@@ -166,73 +166,81 @@
   {
     "name": "Alterna - Heures Creuses",
     "offer_type": "Marché",
-    "lastUpdate": "2026-05-07",
+    "lastUpdate": "2026-09-01",
     "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-francaise",
     "prices": [
       {
-        "puissance": 6,
-        "abonnement": 15.05,
+        "puissance": 3,
+        "abonnement": 13.93,
         "bleu": {
-          "prixKwhHP": 18.5,
-          "prixKwhHC": 14.67
+          "prixKwhHP": 20.54,
+          "prixKwhHC": 15.28
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 17.66,
+        "bleu": {
+          "prixKwhHP": 20.54,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.19,
+        "abonnement": 22.56,
         "bleu": {
-          "prixKwhHP": 18.5,
-          "prixKwhHC": 14.67
+          "prixKwhHP": 20.54,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.01,
+        "abonnement": 26.53,
         "bleu": {
-          "prixKwhHP": 18.5,
-          "prixKwhHC": 14.67
+          "prixKwhHP": 20.54,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.63,
+        "abonnement": 30.26,
         "bleu": {
-          "prixKwhHP": 18.5,
-          "prixKwhHC": 14.67
+          "prixKwhHP": 20.54,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.35,
+        "abonnement": 34.1,
         "bleu": {
-          "prixKwhHP": 18.5,
-          "prixKwhHC": 14.67
+          "prixKwhHP": 20.54,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.25,
+        "abonnement": 42.28,
         "bleu": {
-          "prixKwhHP": 18.5,
-          "prixKwhHC": 14.67
+          "prixKwhHP": 20.54,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.55,
+        "abonnement": 49.8,
         "bleu": {
-          "prixKwhHP": 18.5,
-          "prixKwhHC": 14.67
+          "prixKwhHP": 20.54,
+          "prixKwhHC": 15.28
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.91,
+        "abonnement": 57.39,
         "bleu": {
-          "prixKwhHP": 18.5,
-          "prixKwhHC": 14.67
+          "prixKwhHP": 20.54,
+          "prixKwhHC": 15.28
         }
       }
     ],
@@ -244,73 +252,81 @@
   {
     "name": "Alterna - Heures Creuses Locale",
     "offer_type": "Marché",
-    "lastUpdate": "2026-05-07",
+    "lastUpdate": "2026-09-01",
     "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-locale",
     "prices": [
       {
-        "puissance": 6,
-        "abonnement": 15.05,
+        "puissance": 3,
+        "abonnement": 13.93,
         "bleu": {
-          "prixKwhHP": 18.85,
-          "prixKwhHC": 14.93
+          "prixKwhHP": 21.07,
+          "prixKwhHC": 15.65
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 17.66,
+        "bleu": {
+          "prixKwhHP": 21.07,
+          "prixKwhHC": 15.65
         }
       },
       {
         "puissance": 9,
-        "abonnement": 19.19,
+        "abonnement": 22.56,
         "bleu": {
-          "prixKwhHP": 18.85,
-          "prixKwhHC": 14.93
+          "prixKwhHP": 21.07,
+          "prixKwhHC": 15.65
         }
       },
       {
         "puissance": 12,
-        "abonnement": 23.01,
+        "abonnement": 26.53,
         "bleu": {
-          "prixKwhHP": 18.85,
-          "prixKwhHC": 14.93
+          "prixKwhHP": 21.07,
+          "prixKwhHC": 15.65
         }
       },
       {
         "puissance": 15,
-        "abonnement": 26.63,
+        "abonnement": 30.26,
         "bleu": {
-          "prixKwhHP": 18.85,
-          "prixKwhHC": 14.93
+          "prixKwhHP": 21.07,
+          "prixKwhHC": 15.65
         }
       },
       {
         "puissance": 18,
-        "abonnement": 30.35,
+        "abonnement": 34.1,
         "bleu": {
-          "prixKwhHP": 18.85,
-          "prixKwhHC": 14.93
+          "prixKwhHP": 21.07,
+          "prixKwhHC": 15.65
         }
       },
       {
         "puissance": 24,
-        "abonnement": 38.25,
+        "abonnement": 42.28,
         "bleu": {
-          "prixKwhHP": 18.85,
-          "prixKwhHC": 14.93
+          "prixKwhHP": 21.07,
+          "prixKwhHC": 15.65
         }
       },
       {
         "puissance": 30,
-        "abonnement": 45.55,
+        "abonnement": 49.8,
         "bleu": {
-          "prixKwhHP": 18.85,
-          "prixKwhHC": 14.93
+          "prixKwhHP": 21.07,
+          "prixKwhHC": 15.65
         }
       },
       {
         "puissance": 36,
-        "abonnement": 52.91,
+        "abonnement": 57.39,
         "bleu": {
-          "prixKwhHP": 18.85,
-          "prixKwhHC": 14.93
+          "prixKwhHP": 21.07,
+          "prixKwhHC": 15.65
         }
       }
     ],
@@ -322,72 +338,72 @@
   {
     "name": "Alterna - Base France",
     "offer_type": "Marché",
-    "lastUpdate": "2026-05-07",
+    "lastUpdate": "2026-09-01",
     "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-francaise",
     "prices": [
       {
         "puissance": 3,
-        "abonnement": 11.25,
+        "abonnement": 13.93,
         "bleu": {
-          "prixKwhHC": 17.4
+          "prixKwhHC": 19.19
         }
       },
       {
         "puissance": 6,
-        "abonnement": 14.78,
+        "abonnement": 17.66,
         "bleu": {
-          "prixKwhHC": 17.4
+          "prixKwhHC": 19.19
         }
       },
       {
         "puissance": 9,
-        "abonnement": 18.49,
+        "abonnement": 22.28,
         "bleu": {
-          "prixKwhHC": 17.4
+          "prixKwhHC": 19.04
         }
       },
       {
         "puissance": 12,
-        "abonnement": 22.21,
+        "abonnement": 26.16,
         "bleu": {
-          "prixKwhHC": 17.4
+          "prixKwhHC": 19.04
         }
       },
       {
         "puissance": 15,
-        "abonnement": 25.74,
+        "abonnement": 29.8,
         "bleu": {
-          "prixKwhHC": 17.4
+          "prixKwhHC": 19.04
         }
       },
       {
         "puissance": 18,
-        "abonnement": 29.23,
+        "abonnement": 33.54,
         "bleu": {
-          "prixKwhHC": 17.4
+          "prixKwhHC": 19.04
         }
       },
       {
         "puissance": 24,
-        "abonnement": 36.84,
+        "abonnement": 41.54,
         "bleu": {
-          "prixKwhHC": 17.4
+          "prixKwhHC": 19.04
         }
       },
       {
         "puissance": 30,
-        "abonnement": 44.07,
+        "abonnement": 48.87,
         "bleu": {
-          "prixKwhHC": 17.4
+          "prixKwhHC": 19.04
         }
       },
       {
         "puissance": 36,
-        "abonnement": 51.5,
+        "abonnement": 56.28,
         "bleu": {
-          "prixKwhHC": 17.4
+          "prixKwhHC": 19.04
         }
       }
     ],
@@ -410,72 +426,72 @@
   {
     "name": "Alterna - Base Locale",
     "offer_type": "Marché",
-    "lastUpdate": "2026-05-07",
+    "lastUpdate": "2026-09-01",
     "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-locale",
     "prices": [
       {
         "puissance": 3,
-        "abonnement": 11.25,
+        "abonnement": 13.93,
         "bleu": {
-          "prixKwhHC": 17.72
+          "prixKwhHC": 19.68
         }
       },
       {
         "puissance": 6,
-        "abonnement": 14.78,
+        "abonnement": 17.66,
         "bleu": {
-          "prixKwhHC": 17.72
+          "prixKwhHC": 19.68
         }
       },
       {
         "puissance": 9,
-        "abonnement": 18.49,
+        "abonnement": 22.28,
         "bleu": {
-          "prixKwhHC": 17.72
+          "prixKwhHC": 19.53
         }
       },
       {
         "puissance": 12,
-        "abonnement": 22.21,
+        "abonnement": 26.16,
         "bleu": {
-          "prixKwhHC": 17.72
+          "prixKwhHC": 19.53
         }
       },
       {
         "puissance": 15,
-        "abonnement": 25.74,
+        "abonnement": 29.8,
         "bleu": {
-          "prixKwhHC": 17.72
+          "prixKwhHC": 19.53
         }
       },
       {
         "puissance": 18,
-        "abonnement": 29.23,
+        "abonnement": 33.54,
         "bleu": {
-          "prixKwhHC": 17.72
+          "prixKwhHC": 19.53
         }
       },
       {
         "puissance": 24,
-        "abonnement": 36.84,
+        "abonnement": 41.54,
         "bleu": {
-          "prixKwhHC": 17.72
+          "prixKwhHC": 19.53
         }
       },
       {
         "puissance": 30,
-        "abonnement": 44.07,
+        "abonnement": 48.87,
         "bleu": {
-          "prixKwhHC": 17.72
+          "prixKwhHC": 19.53
         }
       },
       {
         "puissance": 36,
-        "abonnement": 51.5,
+        "abonnement": 56.28,
         "bleu": {
-          "prixKwhHC": 17.72
+          "prixKwhHC": 19.53
         }
       }
     ],
@@ -498,185 +514,207 @@
   {
     "name": "Alterna - Heures Super Creuses",
     "offer_type": "Marché",
-    "lastUpdate": "2026-05-07",
+    "lastUpdate": "2026-09-01",
     "isCommunity": true,
     "subscription_url": "https://www.alterna-energie.fr",
     "price_url": "https://www.alterna-energie.fr/tarifs-electricite-vehicule-electrique",
     "prices": [
       {
-        "puissance": 6,
-        "abonnement": 16.65,
+        "puissance": 3,
+        "abonnement": 13.93,
         "hpEte": {
-          "prixKwhHC": 17.8
+          "prixKwhHC": 19.85
         },
         "hscEte": {
-          "prixKwhHC": 13.13
+          "prixKwhHC": 15
         },
         "hcEte": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 18.23
         },
         "hpHiver": {
-          "prixKwhHC": 20.91
+          "prixKwhHC": 22.28
         },
         "hscHiver": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 17.91
         },
         "hcHiver": {
-          "prixKwhHC": 18.27
+          "prixKwhHC": 20.66
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 17.66,
+        "hpEte": {
+          "prixKwhHC": 19.85
+        },
+        "hscEte": {
+          "prixKwhHC": 15
+        },
+        "hcEte": {
+          "prixKwhHC": 18.23
+        },
+        "hpHiver": {
+          "prixKwhHC": 22.28
+        },
+        "hscHiver": {
+          "prixKwhHC": 17.91
+        },
+        "hcHiver": {
+          "prixKwhHC": 20.66
         }
       },
       {
         "puissance": 9,
-        "abonnement": 20.83,
+        "abonnement": 22.56,
         "hpEte": {
-          "prixKwhHC": 17.8
+          "prixKwhHC": 19.85
         },
         "hscEte": {
-          "prixKwhHC": 13.13
+          "prixKwhHC": 15
         },
         "hcEte": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 18.23
         },
         "hpHiver": {
-          "prixKwhHC": 20.91
+          "prixKwhHC": 22.28
         },
         "hscHiver": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 17.91
         },
         "hcHiver": {
-          "prixKwhHC": 18.27
+          "prixKwhHC": 20.66
         }
       },
       {
         "puissance": 12,
-        "abonnement": 25.01,
+        "abonnement": 26.53,
         "hpEte": {
-          "prixKwhHC": 17.8
+          "prixKwhHC": 19.85
         },
         "hscEte": {
-          "prixKwhHC": 13.13
+          "prixKwhHC": 15
         },
         "hcEte": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 18.23
         },
         "hpHiver": {
-          "prixKwhHC": 20.91
+          "prixKwhHC": 22.28
         },
         "hscHiver": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 17.91
         },
         "hcHiver": {
-          "prixKwhHC": 18.27
+          "prixKwhHC": 20.66
         }
       },
       {
         "puissance": 15,
-        "abonnement": 29.19,
+        "abonnement": 30.26,
         "hpEte": {
-          "prixKwhHC": 17.8
+          "prixKwhHC": 19.85
         },
         "hscEte": {
-          "prixKwhHC": 13.13
+          "prixKwhHC": 15
         },
         "hcEte": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 18.23
         },
         "hpHiver": {
-          "prixKwhHC": 20.91
+          "prixKwhHC": 22.28
         },
         "hscHiver": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 17.91
         },
         "hcHiver": {
-          "prixKwhHC": 18.27
+          "prixKwhHC": 20.66
         }
       },
       {
         "puissance": 18,
-        "abonnement": 33.37,
+        "abonnement": 34.1,
         "hpEte": {
-          "prixKwhHC": 17.8
+          "prixKwhHC": 19.85
         },
         "hscEte": {
-          "prixKwhHC": 13.13
+          "prixKwhHC": 15
         },
         "hcEte": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 18.23
         },
         "hpHiver": {
-          "prixKwhHC": 20.91
+          "prixKwhHC": 22.28
         },
         "hscHiver": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 17.91
         },
         "hcHiver": {
-          "prixKwhHC": 18.27
+          "prixKwhHC": 20.66
         }
       },
       {
         "puissance": 24,
-        "abonnement": 41.74,
+        "abonnement": 42.28,
         "hpEte": {
-          "prixKwhHC": 17.8
+          "prixKwhHC": 19.85
         },
         "hscEte": {
-          "prixKwhHC": 13.13
+          "prixKwhHC": 15
         },
         "hcEte": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 18.23
         },
         "hpHiver": {
-          "prixKwhHC": 20.91
+          "prixKwhHC": 22.28
         },
         "hscHiver": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 17.91
         },
         "hcHiver": {
-          "prixKwhHC": 18.27
+          "prixKwhHC": 20.66
         }
       },
       {
         "puissance": 30,
-        "abonnement": 50.1,
+        "abonnement": 49.8,
         "hpEte": {
-          "prixKwhHC": 17.8
+          "prixKwhHC": 19.85
         },
         "hscEte": {
-          "prixKwhHC": 13.13
+          "prixKwhHC": 15
         },
         "hcEte": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 18.23
         },
         "hpHiver": {
-          "prixKwhHC": 20.91
+          "prixKwhHC": 22.28
         },
         "hscHiver": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 17.91
         },
         "hcHiver": {
-          "prixKwhHC": 18.27
+          "prixKwhHC": 20.66
         }
       },
       {
         "puissance": 36,
-        "abonnement": 58.46,
+        "abonnement": 57.39,
         "hpEte": {
-          "prixKwhHC": 17.8
+          "prixKwhHC": 19.85
         },
         "hscEte": {
-          "prixKwhHC": 13.13
+          "prixKwhHC": 15
         },
         "hcEte": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 18.23
         },
         "hpHiver": {
-          "prixKwhHC": 20.91
+          "prixKwhHC": 22.28
         },
         "hscHiver": {
-          "prixKwhHC": 16.24
+          "prixKwhHC": 17.91
         },
         "hcHiver": {
-          "prixKwhHC": 18.27
+          "prixKwhHC": 20.66
         }
       }
     ],

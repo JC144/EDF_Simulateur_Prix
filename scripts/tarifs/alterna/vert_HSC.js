@@ -4,34 +4,31 @@
 // nuit est en creuses ; en hiver (novembre-mars) c'est l'inverse, les super
 // creuses sont la nuit (23h-7h) et 11-18h sont des creuses normales. Tout est
 // facturé au prix du type de jour (pas de distinction HP/HC dans les plages).
-// Note : la version d'origine (origin/main) déclarait hscEte avec un
-// prixKwhHP jamais consulté, ce qui excluait silencieusement les heures
-// 11h-18h d'été du total (prix NaN). Corrigé ici : hscEte est facturé au
-// prix publié 13,13 c/kWh.
 defineTarif({
     name: "Alterna - Heures Super Creuses",
     offer_type: "Marché",
-    lastUpdate: "2026-05-07",
+    lastUpdate: "2026-09-01",
     isCommunity: true,
     subscription_url: "https://www.alterna-energie.fr",
     price_url: "https://www.alterna-energie.fr/tarifs-electricite-vehicule-electrique",
     subscriptions: {
-        6: 16.65,
-        9: 20.83,
-        12: 25.01,
-        15: 29.19,
-        18: 33.37,
-        24: 41.74,
-        30: 50.10,
-        36: 58.46
+        3: 13.93,
+        6: 17.66,
+        9: 22.56,
+        12: 26.53,
+        15: 30.26,
+        18: 34.1,
+        24: 42.28,
+        30: 49.8,
+        36: 57.39
     },
     dayTypes: {
-        hpEte: { price: 17.80 },
-        hscEte: { price: 13.13 },
-        hcEte: { price: 16.24 },
-        hpHiver: { price: 20.91 },
-        hscHiver: { price: 16.24 },
-        hcHiver: { price: 18.27 }
+        hpEte: { price: 19.85 },
+        hscEte: { price: 15 },
+        hcEte: { price: 18.23 },
+        hpHiver: { price: 22.28 },
+        hscHiver: { price: 17.91 },
+        hcHiver: { price: 20.66 }
     },
     dayRule: {
         type: "season",

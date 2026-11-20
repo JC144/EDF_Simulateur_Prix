@@ -33,8 +33,7 @@ const SCRIPTS = [
 
 // Lignes remontées dans la synthèse (le détail complet reste dans le bloc de
 // sortie de chaque script). Les libellés entre crochets viennent de
-// lib/report.mjs ; NON GERE (HTML) est volontairement exclu (imprimé à
-// chaque run pour les URLs HTML, vérification manuelle déjà connue).
+// lib/report.mjs. Les sources non gérées restent dans le rapport détaillé.
 const WARNING_PATTERNS = [
     /^ATTENTION : .*tarifs-manifest\.js/, // spot-update : nouvelle année à brancher dans le manifeste
     /^\[(INTERVENTION MANUELLE REQUISE|PARSER MANQUANT|ERREUR RESEAU|ERREUR PARSING|VALEUR INTROUVABLE \(patch refuse\)|OFFRE INTROUVABLE)\]/,

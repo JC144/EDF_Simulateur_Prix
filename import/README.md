@@ -98,7 +98,7 @@ leur sortie est **committée** (site sans build) et ne dépend que des données 
 - `tools/gen-tarif-pages.mjs` : une page standardisée par tarif,
   `tarifs/<slug>.html` (slug dérivé du `name`, cf. `scripts/utils/tarifMeta.js`) :
   date de la grille, lien vers l'offre (`subscription_url`) et vers la grille
-  officielle (`price_url`, « (PDF) » si l'URL finit par `.pdf`), abonnement par
+  officielle (`price_url`, « (PDF) » si le registre reconnaît une grille PDF), abonnement par
   puissance, prix du kWh (un tableau par groupe de puissances quand il y a des
   `priceOverrides`), heures creuses, règle des types de jour (formule pour les
   tarifs spot). Met aussi à jour `sitemap.xml` entre `<!-- TARIF-PAGES:BEGIN/END -->`
@@ -123,7 +123,7 @@ dans le navigateur (`scripts/tarif-page.js`), pas au moment de la génération.
 | `MODIFIE` | valeurs mises à jour dans les fichiers tarifs (détail affiché) |
 | `GRILLE CHANGEE, VALEURS IDENTIQUES` | PDF ré-édité sans changement de prix (réconcilié) |
 | `INTERVENTION MANUELLE REQUISE` | divergence **structurelle** : kVA ou type de jour ajouté/supprimé, `priceOverrides` présents d'un seul côté. L'outil ne patche jamais la structure : éditer le fichier tarif à la main, puis relancer |
-| `NON GERE (HTML)` | `price_url` non-PDF (Alterna) : vérification manuelle |
+| `SOURCE NON GEREE` | Le registre ne reconnaît pas l’URL de la grille ou son fournisseur. Vérification manuelle. |
 | `GRILLE PRIVÉE, DERNIÈRE GRILLE PUBLIQUE CONSERVÉE` | L’offre renvoie les abonnés à leur espace client (`pricesInCustomerArea: true`). Le simulateur conserve la grille publique datée. |
 | `PARSER MANQUANT` | PDF téléchargé, changement détecté et module du fournisseur absent |
 | `VALEUR INTROUVABLE (patch refuse)` | le littéral attendu n'est plus dans le fichier : rien n'est écrit |
@@ -273,7 +273,7 @@ npm test
 
 ## Particularités des fournisseurs
 
-- **Alterna** publie sa grille en HTML. La vérification est manuelle.
+- **Alterna** redirige ses trois URL de grille vers des PDF. `node update.mjs --provider alterna` lit la page TTC de chaque document. Les grilles France et Locale couvrent chacune les options Base et Heures Creuses. La grille Heures Super Creuses distingue trois prix du kWh pour chacune des deux saisons.
 - **Enercoop** publie ses grilles sur la [page des annexes tarifaires](https://www.faq.enercoop.fr/hc/fr/articles/360024967152-Annexes-tarifaires). `node update.mjs --provider enercoop` retrouve le PDF particuliers et actualise le lien des offres lors d’un changement de pièce jointe. Il importe les montants TTC de 1 à 36 kVA pour les quatre offres et l’option Jours de pointe. L’ancienne grille 2 saisons HP/HC est fermée à la souscription depuis le 4 juin 2025. Les dates des alertes de pointe sont saisies dans le simulateur.
 - Pour **Engie Elec Référence 3 ans**, l’import additionne les abonnements annuels TTC de fourniture et d’acheminement, puis divise par douze. Le kWh inclut la fourniture, l’acheminement (CU en Base, MUDT en HP/HC) et les obligations au prix de souscription. La fiche indique un mois, enregistré au premier du mois.
 - Pour **Sobry SoFlex**, l’import lit la grille résidentielle CU4 et les moyennes saisonnières du TURPE publiées dans le mémo de calcul du kWh. Il ajoute la CTA à l’abonnement TTC. Son assiette utilise les composantes fixes du barème Enedis en vigueur au 1er août 2026. Ces coefficients doivent être révisés au prochain changement de barème. [Grille TURPE 7 Enedis, pages 17 à 19](https://www.enedis.fr/media/4717/download).

@@ -104,7 +104,7 @@ Procédure de mise à jour :
    ```
    node import/update-all.mjs
    ```
-   qui lance les quatre scripts en parallèle, affiche une synthèse puis **régénère les pages du site** dérivées des tarifs (étape 2). Pour un tarif sans importateur (grilles HTML d'Alterna), modifiez à la main les prix et `lastUpdate` dans `scripts/tarifs/<fournisseur>/*.js`.
+   qui lance les quatre scripts en parallèle, affiche une synthèse puis **régénère les pages du site** dérivées des tarifs (étape 2). Pour un tarif sans importateur, modifiez à la main les prix et `lastUpdate` dans `scripts/tarifs/<fournisseur>/*.js`.
 2. **Régénérer les pages du site** — fait par `update-all.mjs` à chaque lancement. Après une modification manuelle seule :
    ```
    cd import && npm run gen
