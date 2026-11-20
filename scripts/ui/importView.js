@@ -17,6 +17,7 @@ export function initImportView({ getAvailableAbonnements, onStart, onStepForward
     const edfOnly = document.getElementById("communityRadioIsNotCommunity");
     const community = document.getElementById("communityRadioIsCommunity");
     const communityRequired = document.getElementById("communityRequired");
+    const communityWarning = document.getElementById("communityWarning");
     let communityPreference = community.checked;
     const jourZenPlusSelector = document.getElementById("jourZenPlus");
     const simulateButton = document.getElementById("simulateButton");
@@ -67,6 +68,7 @@ export function initImportView({ getAvailableAbonnements, onStart, onStepForward
         edfOnly.disabled = required;
         community.disabled = required;
         communityRequired.hidden = !required;
+        communityWarning.hidden = !community.checked;
     }
 
     function refreshCurrentOffers() {
@@ -79,6 +81,8 @@ export function initImportView({ getAvailableAbonnements, onStart, onStepForward
     }
 
     currentOffer.addEventListener("change", syncCommunityChoice);
+    edfOnly.addEventListener("change", syncCommunityChoice);
+    community.addEventListener("change", syncCommunityChoice);
     kvaSelector.addEventListener("change", () => {
         if (!currentOffer.disabled) refreshCurrentOffers();
     });

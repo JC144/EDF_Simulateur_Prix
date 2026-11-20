@@ -1057,14 +1057,6 @@
                             <h3 class="h4 d-block mt-3">
                                 Tarifs communautaires
                             </h3>
-                            <div class="alert alert-warning" role="alert">
-                                <p class="h5 alert-heading"><svg class="icon icon-triangle-exclamation me-2" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg>Vérifiez
-                                    ces tarifs avant de les utiliser</p>
-                                <p class="mb-0">Les tarifs communautaires ne nous parviennent pas directement et sont
-                                    maintenus par la communauté.<br/><strong>Ils peuvent ne pas être à jour : vérifiez-les
-                                        impérativement sur le site du fournisseur avant de prendre une
-                                        décision.</strong></p>
-                            </div>
                             <label class="choice-card" for="communityRadioIsNotCommunity">
                                 <input class="form-check-input" type="radio" name="communityPricesRadio"
                                     value="isNotCommunity" id="communityRadioIsNotCommunity" checked>
@@ -1080,6 +1072,14 @@
                                     vérifier sur leur site s'ils sont à jour.
                                 </span>
                             </label>
+                            <div id="communityWarning" class="alert alert-warning" role="alert" hidden>
+                                <p class="h5 alert-heading"><svg class="icon icon-triangle-exclamation me-2" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg>Vérifiez
+                                    ces tarifs avant de les utiliser</p>
+                                <p class="mb-0">Les tarifs communautaires ne nous parviennent pas directement et sont
+                                    maintenus par la communauté.<br/><strong>Ils peuvent ne pas être à jour : vérifiez-les
+                                        impérativement sur le site du fournisseur avant de prendre une
+                                        décision.</strong></p>
+                            </div>
                         </div>
                         </div>
                         <div id="wizardNav" class="wizard-nav my-4">
