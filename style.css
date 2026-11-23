@@ -1383,6 +1383,53 @@ a.pill:hover {
 /* ============================================================
    6. Résultats
    ============================================================ */
+.calculation-status {
+  padding: 0.875rem 1.125rem;
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--accent-palest);
+  color: var(--accent-ink);
+}
+
+.calculation-status-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.125rem 1rem;
+}
+
+.calculation-count {
+  color: var(--ink-2);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.calculation-progress {
+  display: block;
+  width: 100%;
+  height: 0.5rem;
+  margin-top: 0.5rem;
+  accent-color: var(--accent-dark);
+}
+
+.calculation-status[data-state="complete"] strong::before {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 0.85em;
+  margin-right: 0.65em;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.calculation-status[data-state="error"] {
+  background-color: var(--bs-danger-bg-subtle);
+  border-color: var(--bs-danger-border-subtle);
+  color: var(--bs-danger-text-emphasis);
+}
+
 /* En-tête d'un bloc mensuel dans l'accordéon de détail : couleurs foncées
    pour rester lisibles (contraste >= 4.5:1) sur le fond .tarif-detail-row. */
 .month-title {

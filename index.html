@@ -1500,7 +1500,7 @@
                         <!-- Étape 4 : offre de référence et tarifs à comparer -->
                         <div class="wizard-step container-sm" id="wizardStep4">
                             <h3 class="h4 mt-3"><label for="currentOffer">Comparer avec votre offre actuelle (facultatif)</label></h3>
-                            <select class="form-select mb-3" id="currentOffer" disabled>
+                            <select class="form-select mb-3" id="currentOffer">
                                 <option value="">Mon offre n'est pas disponible ou je ne souhaite pas la comparer</option>
                             </select>
                             <p class="form-text">Pour inclure un contrat local, un achat groupé ou une ancienne offre réservée à ses clients, sélectionnez-le comme offre actuelle.</p>
@@ -1552,7 +1552,15 @@
             <div id="pricesResultView" class="card maxcard">
                 <div class="card-body">
                     <h2 class="visually-hidden">Résultats de la simulation</h2>
-                    <div class="mt-4 mb-4">
+                    <div id="calculationStatus" class="calculation-status">
+                        <div class="calculation-status-line">
+                            <strong id="calculationLabel" role="status"></strong>
+                            <span id="calculationCount" class="calculation-count"></span>
+                        </div>
+                        <progress id="calculationProgress" class="calculation-progress" aria-label="Progression de l’analyse des offres"></progress>
+                        <button type="button" class="btn btn-primary mt-2" id="retryCalculation" hidden>Réessayer</button>
+                    </div>
+                    <div id="resultPeriod" class="mt-4 mb-4" hidden>
                         <div class="row">
                             <div class="input-group col">
                                 <span class="input-group-text">De</span>

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
-import { runSimulation, buildHCRanges } from '../../scripts/core/simulation.js';
+import { runSimulation, simulateOffers, buildHCRanges } from '../../scripts/core/simulation.js';
 import { defaultSettings } from '../helpers/settings.mjs';
 import { makeFullDay, makeGrille } from '../helpers/makeDay.mjs';
 
@@ -12,6 +12,27 @@ function installStubRegistry(abonnements) {
 }
 
 const DATA = [makeFullDay('2024/03/05', 1000)];
+
+test('un résultat complet est disponible après chaque offre calculée, même après une exclusion', () => {
+    const excluded = { ...makeGrille({ name: 'EDF - Calendrier incomplet' }), calendarCoversDate: () => false };
+    const offers = [excluded, makeGrille({ name: 'EDF - A' }), makeGrille({ name: 'EDF - B' })];
+    installStubRegistry(offers);
+    const settings = defaultSettings(6);
+    const steps = simulateOffers(settings, DATA, offers);
+    const first = steps.next().value;
+    assert.equal(first.completed, 1);
+    assert.deepEqual(first.simulation.calculatedMonths, []);
+    assert.equal(first.simulation.missingCalendars[0].title, excluded.name);
+    const second = steps.next().value;
+    assert.equal(second.completed, 2);
+    assert.deepEqual(second.simulation.yearsAvailable, [2024]);
+    assert.deepEqual(second.simulation.calculatedMonths.map(offer => offer.title), ['EDF - A']);
+    assert.ok(second.simulation.calculatedMonths[0].allMonths[0].price > 0);
+    assert.equal(steps.next().value.completed, offers.length);
+    const last = steps.next();
+    assert.equal(last.done, true);
+    assert.deepEqual(last.value, runSimulation(settings, DATA));
+});
 
 test('buildHCRanges : arrondi à l\'heure (23:59 -> 24:00), plage vide ou inversée rejetée', () => {
     assert.deepStrictEqual(buildHCRanges([

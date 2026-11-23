@@ -83,7 +83,7 @@ L'application est 100% statique (aucun build, aucune dépendance à installer), 
 * `scripts/ui/` — vues et rendu : `importView.js` (réglages + import CSV), `resultsView.js` (période + rafraîchissement), `resultsRenderer.js` (clonage/hydratation des templates), `viewManager.js` (navigation), `dom.js` (helpers).
 * `scripts/core/` — logique métier : `calculator.js` (calculs), `simulation.js` (personnalisation + calcul global), `tarifsRegistry.js` (accès au registre des tarifs).
 * `scripts/parsers/` — un parser par format d'export (EDF, Enedis, TotalEnergies, SER, Home Assistant) et `index.js` qui choisit le bon d'après le nom du fichier.
-* `scripts/tarifs-registry.js` et `scripts/tarifs/` — registre global `window.abonnements` et fichiers de tarifs (scripts classiques, chargés avant l'application).
+* L’assistant utilise `scripts/tarifs-catalogue.js`, généré par `npm run gen` depuis `import/`, pour proposer les puissances et les offres. Au clic sur « Simuler », il charge les grilles nécessaires de `scripts/tarifs/` dans le registre `window.abonnements`. Chaque offre calculée rejoint le classement de la période affichée.
 * `tarifs/` — une page HTML statique par tarif (grille tarifaire standardisée), **générée** à partir de `scripts/tarifs/` : ne pas éditer à la main (voir [Pages de grille tarifaire](#pages-de-grille-tarifaire)).
 
 Pour développer en local, servez le répertoire via un serveur HTTP (les modules ES ne fonctionnent pas en `file://`) :

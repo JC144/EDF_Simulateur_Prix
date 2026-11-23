@@ -1,47 +1,64 @@
 import { viewManager } from './ui/viewManager.js';
 import { initImportView } from './ui/importView.js';
 import { initResultsView } from './ui/resultsView.js';
-import { runSimulation } from './core/simulation.js';
 import { sumPeriod } from './core/calculator.js';
-import { getAvailableAbonnements, getAvailablePowers, loadTarifs } from './core/tarifsRegistry.js';
+import { getOfferChoices, getAvailablePowers, loadTarifs } from './core/tarifsRegistry.js';
 
 viewManager.init();
 
 // L'agrégation par période est injectée : les modules ui/ ne dépendent pas de core/.
-const resultsView = initResultsView({ sumPeriod });
+const resultsView = initResultsView({ sumPeriod, onRetry: showPrices });
+let pendingCalculation = null;
+let calculationId = 0;
 
-// Les scripts de tarifs (~440 Ko, ~150 Ko gzip, données spot comprises) ne sont pas chargés
-// avec l'accueil : leur téléchargement démarre à l'entrée dans l'assistant,
-// pendant que l'utilisateur importe son CSV, et Simuler l'attend au besoin.
-function preloadTarifs() {
-    loadTarifs().then(importView.refreshCurrentOffers).catch(function (error) {
+async function showPrices() {
+    viewManager.show("prices");
+    if (!pendingCalculation) return; // Avancer vers un classement déjà calculé.
+
+    const id = ++calculationId;
+    const { settings, data } = pendingCalculation;
+    let errorMessage = "Le chargement des tarifs a échoué. Vérifiez votre connexion.";
+    try {
+        const [offers, { simulateOffers }] = await Promise.all([
+            loadTarifs(settings), import('./core/simulation.js'), resultsView.start()
+        ]);
+        if (id !== calculationId) return;
+        errorMessage = "Le calcul des tarifs a échoué.";
+        const steps = simulateOffers(settings, data, offers);
+        let nextUpdate = 0;
+        let step = steps.next();
+        while (!step.done) {
+            if (performance.now() >= nextUpdate) {
+                resultsView.progress(step.value);
+                await new Promise(resolve => setTimeout(resolve, 0));
+                if (id !== calculationId) return;
+                nextUpdate = performance.now() + 50;
+            }
+            step = steps.next();
+        }
+        resultsView.show(step.value, offers.length);
+        pendingCalculation = null;
+    } catch (error) {
+        if (id !== calculationId) return;
         console.error(error);
-    });
+        resultsView.showError(errorMessage);
+    }
 }
 
 const importView = initImportView({
-    getAvailableAbonnements,
+    getOfferChoices,
     getAvailablePowers,
     onStart: function () {
-        preloadTarifs();
         viewManager.show("import");
         history.pushState({ view: "import", step: 1 }, "");
     },
     onStepForward: function (step) {
         history.pushState({ view: "import", step: step }, "");
     },
-    onSimulate: async function (settings, data) {
-        try {
-            await loadTarifs();
-        } catch (error) {
-            console.error(error);
-            alert("Les tarifs n'ont pas pu être chargés. Vérifiez votre connexion puis rechargez la page.");
-            return;
-        }
-        const simulation = runSimulation(settings, data);
-        viewManager.show("prices");
-        resultsView.show(simulation);
+    onSimulate: function (settings, data) {
+        pendingCalculation = { settings, data };
         history.pushState({ view: "prices" }, "");
+        showPrices();
     }
 });
 
@@ -63,11 +80,11 @@ if (location.hash === "#simulateur") {
 // Suivant, Simuler) pousse une entrée {view, step} et popstate ré-applique l'état.
 // Les vues ne sont jamais détruites : Retour/Avancer conservent réglages et CSV.
 window.addEventListener("popstate", function (event) {
+    calculationId++; // Un calcul quitté ne doit plus toucher à la vue.
     const state = event.state || { view: "presentation" };
     if (state.view === "prices") {
-        viewManager.show("prices");
+        showPrices();
     } else if (state.view === "import") {
-        preloadTarifs();
         viewManager.show("import");
         importView.goToStep(state.step || 1);
     } else {

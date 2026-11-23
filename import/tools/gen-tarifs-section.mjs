@@ -3,6 +3,7 @@
 // isCommunity). Aucun prix calculé : uniquement des métadonnées, la sortie
 // est donc stable tant que les tarifs ne changent pas. Chaque offre renvoie
 // vers sa page de grille tarifaire (générée par gen-tarif-pages.mjs).
+// Génère aussi scripts/tarifs-catalogue.js pour les sélecteurs de l'assistant.
 //
 // Usage :
 //   node import/tools/gen-tarifs-section.mjs           # réécrit index.html
@@ -14,7 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { listTarifDefs, REPO_ROOT } from '../lib/tarif-defs.mjs';
+import { listAppScripts, listTarifDefs, REPO_ROOT } from '../lib/tarif-defs.mjs';
 import {
     escapeHtml, formatDate, providerOf, offerLabel, replaceBetweenMarkers, syncFile, reportChanges, COMMUNITY_NOTE,
 } from '../lib/site-gen.mjs';
@@ -98,12 +99,31 @@ function generate(defs) {
     return lines.join('\n');
 }
 
+// Les réglages utilisent uniquement ces métadonnées. Conserver l'ordre du
+// manifeste, même si plusieurs fichiers sont chargés lors d'un second calcul.
+function generateCatalogue(defs) {
+    const entries = listAppScripts().flatMap(file => {
+        const offers = defs.filter(def => def.file === file);
+        const usesSpot = offers.some(def => def.dayRule.type === 'spot' || def.marketIndex);
+        return offers.map(def => ({
+            name: def.name, powers: Object.keys(def.subscriptions).map(Number), file,
+            ...(def.eligibility && { eligibility: true }),
+            ...(usesSpot && { usesSpot: true }),
+        }));
+    });
+    return '// Généré par import/tools/gen-tarifs-section.mjs.\nexport const TARIF_CATALOGUE = [\n'
+        + entries.map(entry => '    ' + JSON.stringify(entry)).join(',\n') + '\n];\n';
+}
+
 // -> { changes: [{ path, status }] }
 export function run({ check = false, defs = listTarifDefs() } = {}) {
     const indexPath = path.join(REPO_ROOT, 'index.html');
     const html = fs.readFileSync(indexPath, 'utf8');
     const next = replaceBetweenMarkers(html, BEGIN, END, `\n${generate(defs)}\n${INDENT}`, 'index.html');
-    return { changes: [syncFile(indexPath, next, { check })] };
+    return { changes: [
+        syncFile(indexPath, next, { check }),
+        syncFile(path.join(REPO_ROOT, 'scripts/tarifs-catalogue.js'), generateCatalogue(defs), { check }),
+    ] };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

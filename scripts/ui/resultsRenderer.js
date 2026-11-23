@@ -11,55 +11,70 @@ const MIN_MONTHLY_SAVINGS_FOR_SUPPORT = 5; // €/mois
 // de détail mensuel/journalier. Le HTML vit dans les <template> d'index.html ;
 // ce module se contente de les cloner et d'y injecter les valeurs.
 // sumPeriod est injectée par la vue (voir app.js) : aucun import de core/ ici.
-export function render(container, { calculatedMonths, missingCalendars = [], currentOffer }, dateBegin, dateEnd, sumPeriod) {
-    container.innerHTML = "";
-
-    const unavailable = missingCalendars.filter(c => c.months.some(m => m >= dateBegin && m <= dateEnd)).map(c => c.title);
-    const resultsForPeriod = calculatedMonths.filter(t => !unavailable.includes(t.title)).map((t) => {
-        return {
-            tarif: sumPeriod(t.allMonths, dateBegin, dateEnd),
-            title: t.title,
-            lastUpdate: t.lastUpdate,
-            display: t.display
-        }
-    });
-
-    const consoForPeriod = resultsForPeriod[0].tarif.conso;
-    const selected = resultsForPeriod.find(result => result.title === currentOffer);
-    const resultsOrdered = resultsForPeriod.filter(result => result !== selected)
-        .sort((a, b) => a.tarif.price - b.tarif.price);
-
+export function createResultsTable(container, currentOffer, dateBegin, dateEnd, sumPeriod) {
     const summary = cloneTemplate("tpl-result-summary");
-    if (unavailable.length) {
-        const notice = summary.refs["calendar-notice"];
-        notice.hidden = false;
-        notice.textContent = `Calendrier de pointe incomplet sur la période sélectionnée. Offre hors classement : ${unavailable.join(", ")}.`;
-    }
-    const cheapest = resultsOrdered[0]?.tarif;
-    const showSupport = !selected || (cheapest?.months.length > 0 &&
-        selected.tarif.price >= cheapest.price + MIN_MONTHLY_SAVINGS_FOR_SUPPORT * cheapest.months.length);
-    if (selected) {
-        resultsOrdered.unshift(selected);
-        summary.refs["diff-heading"].textContent = "Diff. avec votre offre";
-    }
-    summary.refs["conso-title"].textContent =
-        "Consommation  totale pour cette période : " + (consoForPeriod / 1000).toFixed(2) + "kWh";
-    const resultsBody = summary.refs["results-body"];
-    container.appendChild(summary.fragment);
+    const body = summary.refs["results-body"];
+    container.replaceChildren(summary.fragment);
+    const ranked = [];
+    let processed = 0;
+    let reference;
 
-    const offersBeforeSupport = Math.min(3, resultsOrdered.length);
-    resultsOrdered.forEach((result, index) => {
-        resultsBody.appendChild(renderTarifRow(result, index, resultsOrdered[0], selected, dateBegin));
-        if (showSupport && index + 1 === offersBeforeSupport) {
+    // Une table par période. Insérer uniquement les nouvelles lignes conserve
+    // les détails ouverts et évite de recalculer les répartitions déjà affichées.
+    return function update({ calculatedMonths, missingCalendars }, complete) {
+        const unavailable = new Set(missingCalendars
+            .filter(c => c.months.some(m => m >= dateBegin && m <= dateEnd)).map(c => c.title));
+        const notice = summary.refs["calendar-notice"];
+        if (unavailable.size) {
+            notice.hidden = false;
+            notice.textContent = `Calendrier de pointe incomplet sur la période sélectionnée. Offre hors classement : ${[...unavailable].join(", ")}.`;
+        }
+        const added = [];
+        for (; processed < calculatedMonths.length; processed++) {
+            const { title, lastUpdate, display, allMonths } = calculatedMonths[processed];
+            if (unavailable.has(title)) continue;
+            const result = { title, lastUpdate, display, tarif: sumPeriod(allMonths, dateBegin, dateEnd) };
+            if (!ranked.length) {
+                summary.refs["conso-title"].textContent = "Consommation  totale pour cette période : "
+                    + (result.tarif.conso / 1000).toFixed(2) + "kWh";
+            }
+            const { fragment, refs } = renderTarifRow(result, processed, dateBegin);
+            result.refs = refs;
+            result.row = fragment.firstElementChild;
+            const index = result.title === currentOffer ? 0 : ranked.findIndex(other =>
+                other.title !== currentOffer && other.tarif.price > result.tarif.price);
+            body.insertBefore(fragment, ranked[index]?.row ?? null);
+            ranked.splice(index < 0 ? ranked.length : index, 0, result);
+            added.push(result);
+        }
+        if (!ranked.length) {
+            summary.refs["conso-title"].textContent = complete ? "Aucune offre disponible pour cette période."
+                : "En attente des premières offres pour cette période…";
+            return;
+        }
+
+        const selected = ranked[0].title === currentOffer;
+        const waitingForCurrent = currentOffer && !selected && !complete;
+        summary.refs["diff-heading"].textContent = selected || waitingForCurrent
+            ? "Diff. avec votre offre" : "Diff. avec le plus avantageux";
+        const previousReference = reference;
+        reference = waitingForCurrent ? null : ranked[0];
+        const changed = (reference !== previousReference || complete) ? ranked : added;
+        for (const result of changed) renderDifference(result, reference, selected, complete);
+
+        if (!complete) return;
+        const cheapest = ranked[1]?.tarif;
+        if (!selected || (cheapest?.months.length > 0 &&
+            reference.tarif.price >= cheapest.price + MIN_MONTHLY_SAVINGS_FOR_SUPPORT * cheapest.months.length)) {
             const supportRow = cloneTemplate("tpl-results-support-row");
             const supportCta = document.querySelector("body > .support-cta");
             supportRow.refs["support-cell"].appendChild(supportCta.cloneNode(true));
-            resultsBody.appendChild(supportRow.fragment);
+            body.insertBefore(supportRow.fragment, ranked[3]?.row ?? null);
         }
-    });
+    };
 }
 
-function renderTarifRow(result, index, reference, selected, dateBegin) {
+function renderTarifRow(result, index, dateBegin) {
     const accordionRowId = dateBegin.getFullYear() + "-" + index;
     const { fragment, refs } = cloneTemplate("tpl-tarif-row");
     const monthCount = result.tarif.months.length;
@@ -97,10 +112,32 @@ function renderTarifRow(result, index, reference, selected, dateBegin) {
     insertTextBeforeSup(refs["monthly-price"], (result.tarif.price / monthCount).toFixed(2));
     setTextAroundBr(refs["total-price"], "soit " + result.tarif.price.toFixed(2) + " €", " pour la période.");
 
+    // Détail mensuel construit à la première ouverture de l'accordéon.
+    refs["accordion-row"].addEventListener("show.bs.collapse", () => {
+        result.tarif.months.forEach((m) => {
+            refs["accordion-cell"].appendChild(renderMonthDetail(m, result.display));
+        });
+    }, { once: true });
+    return { fragment, refs };
+}
+
+function renderDifference(result, reference, selected, complete) {
+    const refs = result.refs;
+    refs["diff-main"].replaceChildren();
+    refs["diff-container"].replaceChildren(refs["diff-main"]);
+    if (!reference) {
+        refs["diff-main"].textContent = "—";
+        return;
+    }
     if (result === reference) {
-        refs["diff-main"].appendChild(cloneTemplate(selected ? "tpl-diff-current" : "tpl-diff-best").fragment);
+        if (selected || complete) {
+            refs["diff-main"].appendChild(cloneTemplate(selected ? "tpl-diff-current" : "tpl-diff-best").fragment);
+        } else {
+            refs["diff-main"].textContent = "Meilleur prix provisoire";
+        }
     }
     else {
+        const monthCount = result.tarif.months.length;
         const diff = cloneTemplate("tpl-diff-amount");
         const priceDiff = result.tarif.price - reference.tarif.price;
         const totalDiff = signedPrice(priceDiff);
@@ -111,16 +148,6 @@ function renderTarifRow(result, index, reference, selected, dateBegin) {
         refs["diff-main"].appendChild(diff.refs["diff-badge"]);
         refs["diff-container"].appendChild(diff.fragment);
     }
-
-    // Détail mensuel construit à la première ouverture de l'accordéon :
-    // rendre d'avance ~700 jours par tarif pèserait inutilement.
-    refs["accordion-row"].addEventListener("show.bs.collapse", () => {
-        result.tarif.months.forEach((m) => {
-            refs["accordion-cell"].appendChild(renderMonthDetail(m, result.display));
-        });
-    }, { once: true });
-
-    return fragment;
 }
 
 function signedPrice(price) {

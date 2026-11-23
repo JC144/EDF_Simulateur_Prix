@@ -1,30 +1,37 @@
 // Liste ordonnée des scripts classiques de tarifs, chargés à la demande par
-// scripts/core/tarifsRegistry.js (au lancement du comparatif, pas sur
-// l'accueil : ~440 Ko, ~150 Ko gzip, épargnés au premier affichage).
+// scripts/core/tarifsRegistry.js à l'ouverture des résultats, selon les
+// offres à comparer.
 // L'ordre est celui d'exécution : registre → lib → calendriers → données spot
 // → tarifs (SoFlex exige SpotPrices["epex-fr"] à sa définition).
 // Source unique : les outils Node (tests/helpers/legacyLoader.mjs,
 // import/lib/tarif-defs.mjs, import/spot-update.mjs) lisent ce fichier.
 // Un chemin par ligne, entre guillemets doubles, relatif à la racine du dépôt.
-export const TARIF_SCRIPTS = [
+export const TARIF_LIBRARIES = [
     "scripts/tarifs-registry.js",
-
-    // Bibliothèque de définition déclarative des tarifs (defineTarif, defineCalendar)
-    // et calendriers de jours spéciaux partagés — voir scripts/tarifs/README.md
     "scripts/tarifs-lib/define-tarif.js",
+];
+
+export const TARIF_CALENDARS = [
     "scripts/tarifs-lib/calendars/tempo-edf.js",
     "scripts/tarifs-lib/calendars/ejp-edf.js",
     "scripts/tarifs-lib/calendars/zenflex-sobriete.js",
     "scripts/tarifs-lib/calendars/enercoop-pointe.js",
     "scripts/tarifs-lib/calendars/total-eclair.js",
+];
 
-    // Prix spot EPEX FR Day-Ahead (energy-charts.info, données SMARD.de,
-    // CC BY 4.0), générés par import/spot-update.mjs — avant les tarifs spot (Sobry)
+// Prix spot EPEX FR Day-Ahead (energy-charts.info, données SMARD.de,
+// CC BY 4.0), générés par import/spot-update.mjs.
+export const TARIF_SPOT_SERIES = [
     "scripts/tarifs-lib/spot/epex-fr-2023.js",
     "scripts/tarifs-lib/spot/epex-fr-2024.js",
     "scripts/tarifs-lib/spot/epex-fr-2025.js",
     "scripts/tarifs-lib/spot/epex-fr-2026.js",
+];
 
+export const TARIF_SCRIPTS = [
+    ...TARIF_LIBRARIES,
+    ...TARIF_CALENDARS,
+    ...TARIF_SPOT_SERIES,
     "scripts/tarifs/alpiq/base.js",
 
     "scripts/tarifs/alterna/baseHC_france.js",

@@ -1,6 +1,5 @@
 import { computeMonths } from './calculator.js';
-import { getAvailableAbonnements } from './tarifsRegistry.js';
-import { isEdfOffer } from '../utils/tarifMeta.js';
+import { getAvailableAbonnements, offersForComparison } from './tarifsRegistry.js';
 
 // Lance la simulation complète : pour chaque abonnement compatible, applique
 // les réglages utilisateur sur une vue résolue (le registre n'est jamais muté,
@@ -8,9 +7,11 @@ import { isEdfOffer } from '../utils/tarifMeta.js';
 // les agrégats mensuels.
 // settings : { kva, jourZenPlus, hcRawRanges, includeCommunity, currentOffer }
 export function runSimulation(settings, data) {
-    const { calculatedMonths, missingCalendars } = calculateAllMonths(settings, data);
-    const yearsAvailable = [...new Set(calculatedMonths[0].allMonths.map(m => m.year))].sort((a, b) => a - b);
-    return { calculatedMonths, missingCalendars, yearsAvailable, currentOffer: settings.currentOffer };
+    const offers = offersForComparison(getAvailableAbonnements(settings.kva), settings);
+    const steps = simulateOffers(settings, data, offers);
+    let step = steps.next();
+    while (!step.done) step = steps.next();
+    return step.value;
 }
 
 // Copie superficielle suffisante : le calculateur appelle getDayType avec la
@@ -40,18 +41,16 @@ function resolveView(resolved, kva) {
     };
 }
 
-function calculateAllMonths(settings, data) {
+// Chaque étape expose les résultats cumulés dans le même objet simulation.
+// L'interface les lit avant de demander le calcul de l'offre suivante.
+export function* simulateOffers(settings, data, offers) {
     // Défense en profondeur : les puissances des grilles sont des numbers
     // (garanti par defineTarif), on normalise le réglage au même type.
     const kva = Number(settings.kva);
-    let filteredAbonnements = getAvailableAbonnements(kva);
-    if (!settings.includeCommunity) {
-        filteredAbonnements = filteredAbonnements.filter(a => isEdfOffer(a.name));
-    }
-    filteredAbonnements = filteredAbonnements.filter(a => !a.eligibility || a.name === settings.currentOffer);
     const missingCalendars = [];
     const calculatedMonths = [];
-    for (const abo of filteredAbonnements) {
+    const simulation = { calculatedMonths, missingCalendars, yearsAvailable: [], currentOffer: settings.currentOffer };
+    for (const [index, abo] of offers.entries()) {
         let days = data;
         if (abo.calendarCoversDate) {
             // Le classement porte sur des mois entiers. Une date sans statut
@@ -64,23 +63,27 @@ function calculateAllMonths(settings, data) {
                 });
                 missingCalendars.push({ title: abo.name, months });
                 days = data.filter(d => !missing.has(d.date.slice(0, 7)));
-                if (!days.length) continue;
             }
         }
-        const resolved = resolveAbonnement(abo, settings);
-        calculatedMonths.push({
-            allMonths: computeMonths(resolveView(resolved, kva), days),
-            title: abo.name,
-            lastUpdate: abo.lastUpdate,
-            subscription_url: abo.subscription_url,
-            offer_type: abo.offer_type,
-            price_url: abo.price_url,
-            // Table de présentation dérivée par defineTarif (types de jour,
-            // bandes horaires) : consommée par le renderer via tariffDisplay.
-            display: abo.display
-        });
+        if (days.length) {
+            const resolved = resolveAbonnement(abo, settings);
+            const allMonths = computeMonths(resolveView(resolved, kva), days);
+            if (!calculatedMonths.length) {
+                simulation.yearsAvailable = [...new Set(allMonths.map(m => m.year))].sort((a, b) => a - b);
+            }
+            calculatedMonths.push({
+                allMonths,
+                title: abo.name,
+                lastUpdate: abo.lastUpdate,
+                subscription_url: abo.subscription_url,
+                offer_type: abo.offer_type,
+                price_url: abo.price_url,
+                display: abo.display
+            });
+        }
+        yield { completed: index + 1, total: offers.length, simulation };
     }
-    return { calculatedMonths, missingCalendars };
+    return simulation;
 }
 
 // Transforme les plages brutes des inputs time ([["22:00","23:59"], ...])

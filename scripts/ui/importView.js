@@ -7,7 +7,7 @@ import { initEnedisSnippetBox } from './enedisSnippetBox.js';
 // Écran d'import : réglages (puissance, jour Zen+, heures creuses, tarifs
 // communautaires) et chargement du fichier CSV. Détient les données parsées
 // jusqu'au lancement de la simulation.
-export function initImportView({ getAvailableAbonnements, getAvailablePowers, onStart, onStepForward, onSimulate }) {
+export function initImportView({ getOfferChoices, getAvailablePowers, onStart, onStepForward, onSimulate }) {
     let data = [];
 
     const csvFile = document.getElementById("csvFile");
@@ -62,7 +62,7 @@ export function initImportView({ getAvailableAbonnements, getAvailablePowers, on
         if (!community.disabled) {
             communityPreference = community.checked;
         }
-        const offers = getAvailableAbonnements(kvaSelector.value);
+        const offers = getOfferChoices(kvaSelector.value);
         const communityOnly = offers.length > 0 && offers.every(abo => !isEdfOffer(abo.name));
         const required = communityOnly || (currentOffer.value !== "" && !isEdfOffer(currentOffer.value));
         community.checked = required || communityPreference;
@@ -77,22 +77,20 @@ export function initImportView({ getAvailableAbonnements, getAvailablePowers, on
     }
 
     function refreshCurrentOffers() {
-        const powers = getAvailablePowers();
-        setOptions(kvaSelector, powers.map(kva => ({ text: kva + " kVA", value: kva })), kvaSelector.value);
-        const names = getAvailableAbonnements(kvaSelector.value).map(abo => abo.name);
+        const names = getOfferChoices(kvaSelector.value).map(abo => abo.name);
         names.sort((a, b) => a.localeCompare(b, "fr"));
         const selected = names.includes(currentOffer.value) ? currentOffer.value : "";
         setOptions(currentOffer, [noOfferOption, ...names.map(name => ({ text: name, value: name }))], selected);
-        currentOffer.disabled = false;
         syncCommunityChoice();
     }
 
+    const powers = getAvailablePowers();
+    setOptions(kvaSelector, powers.map(kva => ({ text: kva + " kVA", value: kva })), kvaSelector.value);
+    refreshCurrentOffers();
     currentOffer.addEventListener("change", syncCommunityChoice);
     edfOnly.addEventListener("change", syncCommunityChoice);
     community.addEventListener("change", syncCommunityChoice);
-    kvaSelector.addEventListener("change", () => {
-        if (!currentOffer.disabled) refreshCurrentOffers();
-    });
+    kvaSelector.addEventListener("change", refreshCurrentOffers);
 
     // Dropzone : le drag & drop alimente #csvFile puis rejoue le pipeline
     // d'import via l'événement change.
@@ -200,5 +198,5 @@ export function initImportView({ getAvailableAbonnements, getAvailablePowers, on
 
     // Application d'une étape depuis l'historique navigateur (popstate) :
     // navigation directe, sans pousser de nouvelle entrée.
-    return { goToStep: (n) => wizard.goTo(n), refreshCurrentOffers };
+    return { goToStep: (n) => wizard.goTo(n) };
 }
