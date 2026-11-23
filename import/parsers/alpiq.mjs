@@ -7,6 +7,8 @@ import { findKvaTables, extractConfiguredOffers } from '../lib/table.mjs';
 import { findNumericDate } from '../lib/dates.mjs';
 import { pageToText } from '../lib/pdf-text.mjs';
 
+import { addEnergyCharge } from '../lib/residential-grid.mjs';
+
 export const provider = 'alpiq';
 
 const CONFIGS = [
@@ -51,5 +53,13 @@ export function parse(doc) {
     // on peut donc couper les cellules au moindre écart.
     const pages = [alignLastSubscription(doc.pages[0], tables)];
     const offers = extractConfiguredOffers({ pages }, tables, CONFIGS, 'gtr_elec_part.pdf', { cellGap: 1 });
+    const options = doc.pages.slice(1).map(pageToText).join('\n');
+    if (/Prix option Électricité verte/i.test(options)) {
+        const price = options.match(/Prix option Électricité verte[\s\S]{0,300}?(\d+[,.]\d+)\s*€\/kWh TTC/i);
+        if (!price) throw new Error('Supplément TTC Alpiq introuvable');
+        const cents = Number(price[1].replace(',', '.')) * 100;
+        offers['Alpiq - Sérénité 100 % verte - Base'] = addEnergyCharge(offers['Alpiq - Base'], cents, true);
+        offers['Alpiq - Sérénité 100 % verte - HP/HC'] = addEnergyCharge(offers['Alpiq - Heures Creuses'], cents);
+    }
     return { gridDate: findNumericDate(pageToText(doc.pages[0])), offers };
 }

@@ -53,7 +53,7 @@ export function findInCache(url, sha256) {
     const basename = path.basename(new URL(url).pathname) || 'grille';
     if (sha256) {
         const exact = cachePathFor(url, sha256);
-        if (fs.existsSync(exact)) return exact;
+        return fs.existsSync(exact) ? exact : null;
     }
     const candidates = fs.readdirSync(CACHE_DIR)
         .filter(f => f.endsWith(`-${basename}`))

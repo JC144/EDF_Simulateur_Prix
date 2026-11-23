@@ -48,6 +48,7 @@ function calculateAllMonths(settings, data) {
     if (!settings.includeCommunity) {
         filteredAbonnements = filteredAbonnements.filter(a => isEdfOffer(a.name));
     }
+    filteredAbonnements = filteredAbonnements.filter(a => !a.eligibility || a.name === settings.currentOffer);
     const missingCalendars = [];
     const calculatedMonths = [];
     for (const abo of filteredAbonnements) {

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { reconcileOffer } from '../lib/reconcile.mjs';
 
 const SPOT_DEF = {
-    name: 'Sobry - SoCap',
+    name: 'Test - Spot avec plafond saisonnier',
     lastUpdate: '2026-06-17',
     subscriptions: { 6: 21.0402, 9: 27.6276 },
     spotFormula: {

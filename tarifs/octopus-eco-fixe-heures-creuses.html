@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Grille tarifaire Octopus Energy Eco-fixe Heures Creuses du 12 août 2026 : abonnement de 3 à 36 kVA, prix du kWh TTC, heures creuses.">
+    <meta name="description" content="Grille tarifaire Octopus Energy Eco-fixe Heures Creuses du 16 novembre 2026 : abonnement de 3 à 36 kVA, prix du kWh TTC, heures creuses.">
     <meta name="author" content="jcvasselon">
     <title>Eco-fixe HC Octopus Energy : prix du kWh 2026 TTC</title>
     <link rel="canonical" href="https://comparateur-abonnements-electricite.fr/tarifs/octopus-eco-fixe-heures-creuses.html">
@@ -31,9 +31,9 @@
                 "@id": "https://comparateur-abonnements-electricite.fr/tarifs/octopus-eco-fixe-heures-creuses.html#webpage",
                 "url": "https://comparateur-abonnements-electricite.fr/tarifs/octopus-eco-fixe-heures-creuses.html",
                 "name": "Eco-fixe HC Octopus Energy : prix du kWh 2026 TTC",
-                "description": "Grille tarifaire Octopus Energy Eco-fixe Heures Creuses du 12 août 2026 : abonnement de 3 à 36 kVA, prix du kWh TTC, heures creuses.",
+                "description": "Grille tarifaire Octopus Energy Eco-fixe Heures Creuses du 16 novembre 2026 : abonnement de 3 à 36 kVA, prix du kWh TTC, heures creuses.",
                 "inLanguage": "fr-FR",
-                "dateModified": "2026-08-12",
+                "dateModified": "2026-11-16",
                 "isPartOf": {
                     "@id": "https://comparateur-abonnements-electricite.fr/#website"
                 },
@@ -45,7 +45,7 @@
                     "name": "Grille tarifaire Octopus – Eco-fixe Heures Creuses",
                     "description": "Abonnement et prix du kWh de l’offre Eco-fixe Heures Creuses d’Octopus Energy"
                 },
-                "isBasedOn": "https://a.storyblok.com/f/151412/x/d505811345/grille-tarifaire-ecofixe-aout-26-hphc.pdf",
+                "isBasedOn": "https://a.storyblok.com/f/151412/x/82c5f363e2/grille-tarifaire-cocon_saisonnalise_hphc_nov26_b.pdf",
                 "publisher": {
                     "@id": "https://comparateur-abonnements-electricite.fr/#auteur"
                 }
@@ -85,7 +85,7 @@
         </div>
     </nav>
 
-    <main class="shell legal-shell tarif-page" data-last-update="2026-08-12">
+    <main class="shell legal-shell tarif-page" data-last-update="2026-11-16">
         <nav aria-label="Fil d’Ariane" class="breadcrumb-nav">
             <ol>
                 <li><a href="../">Accueil</a></li>
@@ -99,6 +99,24 @@
             <p class="tarifs-note">Ces tarifs sont maintenus par la communauté et peuvent ne pas être à jour : vérifiez-les sur le site du fournisseur avant toute décision.</p>
         </header>
 
+        <div class="tarif-history" data-history-url="historique/octopus-eco-fixe-heures-creuses.json" hidden>
+            <label for="grille-date">Grille tarifaire</label>
+            <select id="grille-date" class="form-select" aria-controls="grille-actuelle grille-archivee">
+                <option value="2026-11-16">16 novembre 2026 · Dernière grille</option>
+                <option value="2026-08-12">12 août 2026</option>
+            </select>
+        </div>
+        <div id="grille-archivee" hidden>
+            <section class="tarif-meta">
+                <h2 class="tarif-date" id="archive-titre"></h2>
+                <p>La simulation utilise la dernière grille de cette offre.</p>
+                <a href="#grille-2026-11-16" id="archive-retour">Revenir à la dernière grille</a>
+            </section>
+            <p id="archive-statut" role="status"></p>
+            <button type="button" id="archive-reessayer" hidden>Réessayer</button>
+            <div id="archive-prix"></div>
+        </div>
+        <div id="grille-actuelle">
         <section class="tarif-cta" aria-labelledby="tarif-cta-title">
             <h2 id="tarif-cta-title">Combien vous coûterait l’offre Eco-fixe Heures Creuses d’Octopus Energy&nbsp;?</h2>
             <p>Importez votre historique de consommation Linky&nbsp;: le simulateur calcule, demi-heure par demi-heure, ce que vous auriez payé avec cette offre et la compare aux autres offres d’électricité suivies.</p>
@@ -108,44 +126,46 @@
         </section>
 
         <section class="tarif-meta" aria-label="Source de la grille">
-            <p class="tarif-date">Grille tarifaire du <time datetime="2026-08-12">12 août 2026</time></p>
+            <p class="tarif-date">Grille tarifaire du <time datetime="2026-11-16">16 novembre 2026</time></p>
             <div class="alert alert-warning tarif-stale" role="alert" hidden>Cette grille a plus de 6 mois&nbsp;: les prix ont probablement évolué depuis. Vérifiez-les sur le site du fournisseur avant toute décision.</div>
             <noscript><p class="tarif-stale-hint">Si cette grille a plus de 6 mois, les prix ont probablement évolué&nbsp;: vérifiez-les sur le site du fournisseur.</p></noscript>
             <ul class="tarif-links">
                 <li><a href="https://octopusenergy.fr/offre-electricite-tarifs" target="_blank" rel="noopener">Page de l’offre sur le site du fournisseur</a></li>
-                <li><a href="https://a.storyblok.com/f/151412/x/d505811345/grille-tarifaire-ecofixe-aout-26-hphc.pdf" target="_blank" rel="noopener">Grille tarifaire officielle (PDF)</a></li>
+                <li><a href="https://a.storyblok.com/f/151412/x/82c5f363e2/grille-tarifaire-cocon_saisonnalise_hphc_nov26_b.pdf" target="_blank" rel="noopener">Grille tarifaire officielle (PDF)</a></li>
             </ul>
         </section>
 
         <section class="tarif-section">
             <h2>Abonnement</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 12 août 2026.</p>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Abonnement TTC par puissance souscrite</caption>
                 <thead><tr><th scope="col">Puissance</th><th scope="col">€ TTC / mois</th><th scope="col">€ TTC / an</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row">3 kVA</th><td data-label="€ TTC / mois">12,13</td><td data-label="€ TTC / an">145,56</td></tr>
-                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">15,86</td><td data-label="€ TTC / an">190,32</td></tr>
-                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">19,88</td><td data-label="€ TTC / an">238,56</td></tr>
-                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">23,76</td><td data-label="€ TTC / an">285,12</td></tr>
-                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">27,40</td><td data-label="€ TTC / an">328,80</td></tr>
-                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">31,14</td><td data-label="€ TTC / an">373,68</td></tr>
-                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">39,14</td><td data-label="€ TTC / an">469,68</td></tr>
-                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">46,47</td><td data-label="€ TTC / an">557,64</td></tr>
-                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">53,88</td><td data-label="€ TTC / an">646,56</td></tr>
+                    <tr><th scope="row">3 kVA</th><td data-label="€ TTC / mois">12,13<small class="tarif-change">Inchangé</small></td><td data-label="€ TTC / an">145,56<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">6 kVA</th><td data-label="€ TTC / mois">15,86<small class="tarif-change">Inchangé</small></td><td data-label="€ TTC / an">190,32<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">9 kVA</th><td data-label="€ TTC / mois">19,88<small class="tarif-change">Inchangé</small></td><td data-label="€ TTC / an">238,56<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">12 kVA</th><td data-label="€ TTC / mois">23,76<small class="tarif-change">Inchangé</small></td><td data-label="€ TTC / an">285,12<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">15 kVA</th><td data-label="€ TTC / mois">27,40<small class="tarif-change">Inchangé</small></td><td data-label="€ TTC / an">328,80<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">18 kVA</th><td data-label="€ TTC / mois">31,14<small class="tarif-change">Inchangé</small></td><td data-label="€ TTC / an">373,68<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">24 kVA</th><td data-label="€ TTC / mois">39,14<small class="tarif-change">Inchangé</small></td><td data-label="€ TTC / an">469,68<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">30 kVA</th><td data-label="€ TTC / mois">46,47<small class="tarif-change">Inchangé</small></td><td data-label="€ TTC / an">557,64<small class="tarif-change">Inchangé</small></td></tr>
+                    <tr><th scope="row">36 kVA</th><td data-label="€ TTC / mois">53,88<small class="tarif-change">Inchangé</small></td><td data-label="€ TTC / an">646,56<small class="tarif-change">Inchangé</small></td></tr>
                 </tbody>
             </table>
         </section>
 
         <section class="tarif-section">
             <h2>Prix du kWh</h2>
+            <p class="tarif-reference">Évolution depuis la grille du 12 août 2026.</p>
             <p class="tarif-unit">Prix TTC en centimes d’euro par kWh.</p>
             <h3>3 kVA</h3>
             <table class="table tarif-table">
                 <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro (3 kVA)</caption>
                 <thead><tr><th scope="col">Période</th><th scope="col">Heures pleines</th><th scope="col">Heures creuses</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">Hiver</span></th><td data-label="Heures pleines">21,95</td><td data-label="Heures creuses">16,26</td></tr>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">Été</span></th><td data-label="Heures pleines">18,76</td><td data-label="Heures creuses">14,05</td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">Hiver</span></th><td data-label="Heures pleines">22,31<small class="tarif-change tarif-rise">+1,64 %</small></td><td data-label="Heures creuses">16,50<small class="tarif-change tarif-rise">+1,48 %</small></td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">Été</span></th><td data-label="Heures pleines">21,06<small class="tarif-change tarif-rise">+12,26 %</small></td><td data-label="Heures creuses">15,65<small class="tarif-change tarif-rise">+11,39 %</small></td></tr>
                 </tbody>
             </table>
             <h3>6 kVA</h3>
@@ -153,8 +173,8 @@
                 <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro (6 kVA)</caption>
                 <thead><tr><th scope="col">Période</th><th scope="col">Heures pleines</th><th scope="col">Heures creuses</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">Hiver</span></th><td data-label="Heures pleines">24,09</td><td data-label="Heures creuses">17,73</td></tr>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">Été</span></th><td data-label="Heures pleines">17,87</td><td data-label="Heures creuses">13,44</td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">Hiver</span></th><td data-label="Heures pleines">22,31<small class="tarif-change tarif-fall">-7,39 %</small></td><td data-label="Heures creuses">16,50<small class="tarif-change tarif-fall">-6,94 %</small></td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">Été</span></th><td data-label="Heures pleines">21,06<small class="tarif-change tarif-rise">+17,85 %</small></td><td data-label="Heures creuses">15,65<small class="tarif-change tarif-rise">+16,44 %</small></td></tr>
                 </tbody>
             </table>
             <h3>9 à 36 kVA</h3>
@@ -162,8 +182,8 @@
                 <caption class="visually-hidden">Prix du kWh TTC en centimes d’euro (9 à 36 kVA)</caption>
                 <thead><tr><th scope="col">Période</th><th scope="col">Heures pleines</th><th scope="col">Heures creuses</th></tr></thead>
                 <tbody>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">Hiver</span></th><td data-label="Heures pleines">24,61</td><td data-label="Heures creuses">18,09</td></tr>
-                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">Été</span></th><td data-label="Heures pleines">18,76</td><td data-label="Heures creuses">14,05</td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #1c5cab; color: #ffffff">Hiver</span></th><td data-label="Heures pleines">24,97<small class="tarif-change tarif-rise">+1,46 %</small></td><td data-label="Heures creuses">18,34<small class="tarif-change tarif-rise">+1,38 %</small></td></tr>
+                    <tr><th scope="row"><span class="badge daytype-badge" style="background-color: #eda100; color: #0b0b0b">Été</span></th><td data-label="Heures pleines">19,30<small class="tarif-change tarif-rise">+2,88 %</small></td><td data-label="Heures creuses">14,43<small class="tarif-change tarif-rise">+2,70 %</small></td></tr>
                 </tbody>
             </table>
         </section>
@@ -181,6 +201,7 @@
             </ul>
         </section>
         <p class="tarif-footer-cta"><a class="btn btn-success tarif-cta-btn" href="../#simulateur">Simuler cette offre avec ma consommation Linky<svg class="icon icon-arrow-right ms-2" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a></p>
+        </div>
     </main>
 
     <footer class="band-dark tarif-footer">

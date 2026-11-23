@@ -2,7 +2,7 @@
 // scripts/core/tarifsRegistry.js (au lancement du comparatif, pas sur
 // l'accueil : ~440 Ko, ~150 Ko gzip, épargnés au premier affichage).
 // L'ordre est celui d'exécution : registre → lib → calendriers → données spot
-// → tarifs (socap/soflex exigent SpotPrices["epex-fr"] à leur définition).
+// → tarifs (SoFlex exige SpotPrices["epex-fr"] à sa définition).
 // Source unique : les outils Node (tests/helpers/legacyLoader.mjs,
 // import/lib/tarif-defs.mjs, import/spot-update.mjs) lisent ce fichier.
 // Un chemin par ligne, entre guillemets doubles, relatif à la racine du dépôt.
@@ -16,6 +16,7 @@ export const TARIF_SCRIPTS = [
     "scripts/tarifs-lib/calendars/ejp-edf.js",
     "scripts/tarifs-lib/calendars/zenflex-sobriete.js",
     "scripts/tarifs-lib/calendars/enercoop-pointe.js",
+    "scripts/tarifs-lib/calendars/total-eclair.js",
 
     // Prix spot EPEX FR Day-Ahead (energy-charts.info, données SMARD.de,
     // CC BY 4.0), générés par import/spot-update.mjs — avant les tarifs spot (Sobry)
@@ -69,7 +70,6 @@ export const TARIF_SCRIPTS = [
     "scripts/tarifs/octopus/ecoFixeHC.js",
     "scripts/tarifs/octopus/octosaisons.js",
 
-    "scripts/tarifs/sobry/socap.js",
     "scripts/tarifs/sobry/soflex.js",
 
     "scripts/tarifs/total/chargheures.js",
@@ -79,4 +79,38 @@ export const TARIF_SCRIPTS = [
     "scripts/tarifs/total/offreStandardFixeHC.js",
     "scripts/tarifs/total/offreVerteFixe.js",
     "scripts/tarifs/total/offreVerteFixeHC.js",
+
+    "scripts/tarifs/alpiq/releves.js",
+    "scripts/tarifs/alterna/releves.js",
+    "scripts/tarifs/dyneff/releves.js",
+    "scripts/tarifs/edf/releves.js",
+    "scripts/tarifs/engie/releves.js",
+    "scripts/tarifs/gedia/releves.js",
+    "scripts/tarifs/geg/releves.js",
+    "scripts/tarifs/happe/releves.js",
+    "scripts/tarifs/ilek/releves.js",
+    "scripts/tarifs/labelleenergie/releves.js",
+    "scripts/tarifs/octopus/releves.js",
+    "scripts/tarifs/ohm/releves.js",
+    "scripts/tarifs/papernest/releves.js",
+    "scripts/tarifs/plenitude/releves.js",
+    "scripts/tarifs/primeo/releves.js",
+    "scripts/tarifs/selia/releves.js",
+    "scripts/tarifs/total/releves.js",
+    "scripts/tarifs/urbansolar/releves.js",
+    "scripts/tarifs/total/fixe3Ans.js",
+    "scripts/tarifs/mint/smartGreen.js",
+    "scripts/tarifs/octopus/go.js",
+    "scripts/tarifs/symphonics/heuresCreuses.js",
+    "scripts/tarifs/ohm/classique.js",
+    "scripts/tarifs/energiedici/energieBleue.js",
+    "scripts/tarifs/plenitude/plenifix2Ans.js",
+    "scripts/tarifs/total/heuresEcoPlus.js",
+    "scripts/tarifs/ohm/extraEco.js",
+    "scripts/tarifs/ohm/weekEnd.js",
+    "scripts/tarifs/volterres/riverains.js",
+    "scripts/tarifs/ilek/voitureElectrique.js",
+    "scripts/tarifs/frank/dynamique.js",
+    "scripts/tarifs/labelleenergie/regionFiliere.js",
+    "scripts/tarifs/mylight150/vertDeFrance.js"
 ];

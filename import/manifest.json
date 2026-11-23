@@ -1,10 +1,31 @@
 {
   "https://a.storyblok.com/f/151412/x/0d23dec94c/grille-tarifaire-octosaisons.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "sha256": "45e23b80bdcee5d1628adf7a17183317f35739e96d454cfcff7f74b2331f0df4",
     "etag": "W/\"f6ec2a7cb4f4072f5255452e9268a2f4\"",
     "lastModified": "Wed, 21 Oct 2026 13:46:38 GMT",
     "lastApplied": "2026-10-27"
+  },
+  "https://a.storyblok.com/f/151412/x/7761058e02/grille-tarifaire-octopus_go_fixe_aout26.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "dc52e7d39c222001c73a332bd3f41cd6c0d18cef73705f35b405ee44195b176b",
+    "etag": "W/\"3bc867a10a32b6ca7c65e5ed29891074\"",
+    "lastModified": "Tue, 27 Oct 2026 12:22:41 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://a.storyblok.com/f/151412/x/82c5f363e2/grille-tarifaire-cocon_saisonnalise_hphc_nov26_b.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "126dec490338672db52429ca6e5d107943e7ebc2e02ed09d1997cca147115c2e",
+    "etag": "W/\"8631c19832cc84b6574d72069ebaed0a\"",
+    "lastModified": "Mon, 16 Nov 2026 14:17:43 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://a.storyblok.com/f/151412/x/a1eb50bef4/grille-tarifaire-cocon_fallback_nov26.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "4632e432e2d436b609d42baaf39dc3faac98bdf4fb8ef0bfcb28eb05e4e58a8b",
+    "etag": "W/\"ba914bee50cfd4bdf8631feee9b575ac\"",
+    "lastModified": "Thu, 12 Nov 2026 13:11:48 GMT",
+    "lastApplied": "2026-11-23"
   },
   "https://a.storyblok.com/f/151412/x/a5a79d71c2/grille-tarifaire-eco_conso_fixe_2_b_mars26.pdf": {
     "lastChecked": "2026-08-16",
@@ -27,12 +48,40 @@
     "lastModified": "Wed, 12 Aug 2026 10:37:08 GMT",
     "lastApplied": "2026-10-27"
   },
+  "https://a.storyblok.com/f/151412/x/e7ba241463/grille-tarifaire-cocon_saisonnalise_base_nov26_b.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "3fb15464f555e88264ddc605719ab84dd29086ef114da5842c531e2682a46bc5",
+    "etag": "W/\"8eca3a43685b72342572dcf9faf528df\"",
+    "lastModified": "Mon, 16 Nov 2026 14:17:27 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://a.storyblok.com/f/151412/x/f9e6edf063/grille-tarifaire-eco-fixe-aout-26-base.pdf": {
     "lastChecked": "2026-11-20",
     "sha256": "494be062cc9abc8ddda614c60a5c57f1c8f4431080884931841b5f9c7842c78f",
     "etag": "W/\"5f4a2fd082c6d92e94e9aa6bae3fce70\"",
     "lastModified": "Wed, 12 Aug 2026 10:37:42 GMT",
     "lastApplied": "2026-10-27"
+  },
+  "https://assets.papernest.com/doc/ppn_energie_grille_tarifaire.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "c947b26ee2657fbaafee3587ecbb092a643b0ada13771a724f1f96907a74eccb",
+    "etag": "W/\"38e6b94030e81e367823cc80b6bc4c70\"",
+    "lastModified": "Thu, 24 Sep 2026 09:38:26 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://cdn.prod.website-files.com/65f08fc6f2c52e2310a49dcb/6abd2b38f3fe5e9fbd1a3a90_340287e1a8a91a3fa80212e04e747089_GRILLE%20TARIFAIRE%20-%20OCT%202026.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "9ca4925c1f00cce20d58b8842870105ba24e9366e6424ba11b00ab1469926a03",
+    "etag": "\"637e86db46c119e2b2979439a013aae9\"",
+    "lastModified": "Fri, 09 Oct 2026 10:27:06 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://cdn.sanity.io/files/8navd656/production-fr/7186cef7994ce2ba46c482cdd338ad25cb095dee.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "c5b8a821221ac1b3a3213e73e7d4aba7c77094ed7b4c395ae2022cb7536d2fdb",
+    "etag": "\"c2b0122b3c0d9300717f58e6abfdfa90\"",
+    "lastModified": "Fri, 31 Jul 2026 13:35:57 GMT",
+    "lastApplied": "2026-11-23"
   },
   "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_21912_ONLINE_GREEN.pdf": {
     "lastChecked": "2026-11-20",
@@ -41,6 +90,13 @@
     "sha256": "bf32d2b1729c7d505a2009ad516c631f0a2daab700e929499ccdc86e9714b57e",
     "lastApplied": "2026-08-16"
   },
+  "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_22112_ONLINE_GREEN.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "70acdced1f51c2b62873824f34a61d45e353158381388786518a0a0c046816df",
+    "etag": "\"1752b461f956dd1:0\"",
+    "lastModified": "Thu, 08 Oct 2026 07:48:17 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_23012_CLASSIC_GREEN.pdf": {
     "lastChecked": "2026-11-20",
     "etag": "\"82ee8815192dc1:0\"",
@@ -48,160 +104,392 @@
     "sha256": "3a86cfffa31c2e1b37aeb5493aea45cf73097b70cd7bb72b21dd767620349e52",
     "lastApplied": "2026-07-18"
   },
+  "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_23224_SMART_GREEN.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "ef9b8739884e0d57ead47dcb835cbb142027fe439b58cb4f0c4ddf171abce5ae",
+    "etag": "\"8686216192dc1:0\"",
+    "lastModified": "Fri, 30 Jan 2026 15:57:07 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://doc.mint-energie.com/MintEnergie/MINT_ENERGIE_Fiche_Tarifs_28000_CLASSIC_GREEN.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "9902a719e90b98d326635452c292619e9ab40634019279077de92cdb6bc97767",
+    "etag": "\"cf52d4e8d60dd1:0\"",
+    "lastModified": "Tue, 20 Oct 2026 12:19:50 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://ilek.s3.amazonaws.com/uploads/producer/price_list_file/275/grille_offre_ve.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "b97a9b4d54eec2a37bfa86d748770474f79b1f8fc1e2e7c7d24e21ca87fd126c",
+    "etag": "\"14acfe9259949596673feeb45de16ddc\"",
+    "lastModified": "Thu, 08 Oct 2026 14:49:14 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://ilek.s3.amazonaws.com/uploads/producer/price_list_file/360/grille_360.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "5f722a32e5e880249f02d0a0b57ab15f60b7eae14449cd38ee5d62bf28911c80",
+    "etag": "\"891ba29d13566926665700b019ccf91d\"",
+    "lastModified": "Mon, 02 Nov 2026 05:59:57 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://labellenergie.fr/pdf/grille-tarifaire-la-bellenergie-particuliers.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "etag": "\"ab874-65f3395b95590\"",
     "lastModified": "Sun, 01 Nov 2026 09:23:40 GMT",
     "sha256": "ea44d640b906286c76cd22b25a83dc54aa6368bdb8977ff60bd7049eea3a1d0d",
     "lastApplied": "2026-11-20"
   },
+  "https://ohm-energie.com/grilles/elec/2026/05/ELEC-EXTRA_ECO.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "951a32d1c2f897197e172609512a75efe82272b1cd1c7ac06c2068a40b3a89e4",
+    "lastModified": "Tue, 26 May 2026 07:58:10 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://ohm-energie.com/grilles/elec/2026/09/ELEC-weekend_fixe.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "f751acef9f18d628840a68eabbbb326a5b970f62508f1c03256b5959104994f3",
+    "lastModified": "Thu, 03 Sep 2026 14:34:32 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://ohm-energie.com/grilles/elec/2026/11/ELEC-PremiOhm.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "fdf6e601f2d8d66715a4a5050dfca919c65cd07c935fa35c2e3a956275d1aa3d",
+    "lastModified": "Thu, 12 Nov 2026 11:07:01 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://ohm-energie.com/grilles/elec/2026/11/ELEC-Serenite_Fixe_1an.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "64b79b9f83f33b73cce12b59cfb5dc0febf86b2b25f0ad157ffc5de53f4c99bb",
+    "lastModified": "Thu, 12 Nov 2026 13:36:04 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://ohm-energie.com/grilles/elec/2026/11/ELEC-Serenite_Fixe_2ans.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "7ea82760d8cf366334d16cd700052da901388c925f3011cd219491a2a6623915",
+    "lastModified": "Thu, 12 Nov 2026 11:10:04 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf": {
-    "lastChecked": "2026-11-20",
-    "etag": "\"411b3-65fec440ea283\"",
-    "lastModified": "Tue, 10 Nov 2026 13:43:38 GMT",
+    "lastChecked": "2026-11-23",
+    "etag": "\"411b3-66011ea07aa72\"",
+    "lastModified": "Thu, 12 Nov 2026 10:38:37 GMT",
     "sha256": "d4983343bce245891a37da5bcb120909d561e6691578d2f0b4640fd4cc9bbe3c",
     "lastApplied": "2026-08-16"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_Tarif_Bleu.pdf": {
-    "lastChecked": "2026-11-20",
-    "etag": "\"4625d-66011756088c2\"",
-    "lastModified": "Thu, 12 Nov 2026 10:06:00 GMT",
+    "lastChecked": "2026-11-23",
+    "etag": "\"4625d-6601190291eb7\"",
+    "lastModified": "Thu, 12 Nov 2026 10:13:29 GMT",
     "sha256": "ff6be33b3ff50a7ec9c144bf68624ed2e38c59c873bad264963f7c49af9856b8",
     "lastApplied": "2026-08-16"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-auto.pdf": {
-    "lastChecked": "2026-11-20",
-    "etag": "\"45b7f-65fec17bf6d6b\"",
-    "lastModified": "Tue, 10 Nov 2026 13:31:15 GMT",
+    "lastChecked": "2026-11-23",
+    "etag": "\"45b7f-660113afbd3f7\"",
+    "lastModified": "Thu, 12 Nov 2026 09:49:40 GMT",
     "sha256": "7ec126cf767753e5943d355b37791ef8c2ad3e2b2a390a73b5fa4620a100349b",
     "lastApplied": "2026-09-25"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-regional.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "etag": "\"3fa3c-6601180f58e52\"",
     "lastModified": "Thu, 12 Nov 2026 10:09:14 GMT",
     "sha256": "3509b0fada510a3b34e0c6326d183509b07792499806bd98f8cf0fcc6e5b7b01",
     "lastApplied": "2026-09-25"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique-weekend.pdf": {
-    "lastChecked": "2026-11-20",
-    "etag": "\"3a40a-660121dc03aa4\"",
-    "lastModified": "Thu, 12 Nov 2026 10:53:05 GMT",
+    "lastChecked": "2026-11-23",
+    "etag": "\"3a40a-65febfb2836c5\"",
+    "lastModified": "Tue, 10 Nov 2026 13:23:15 GMT",
     "sha256": "91c5a7990c72193f14f98dd918de418ec6f43ae87cc67c12fddd4278cb297e84",
     "lastApplied": "2026-09-25"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-vert-electrique.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "etag": "\"3f76a-660119c121b1c\"",
     "lastModified": "Thu, 12 Nov 2026 10:16:49 GMT",
     "sha256": "b560a5b7162b25e298237b56a64589e2be6b4a3c79302c592dc99cbca6b80398",
     "lastApplied": "2026-09-25"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-estival.pdf": {
-    "lastChecked": "2026-11-20",
-    "etag": "\"3cb4c-6601126651806\"",
-    "lastModified": "Thu, 12 Nov 2026 09:43:55 GMT",
+    "lastChecked": "2026-11-23",
+    "etag": "\"3cb4c-66011fa0567e5\"",
+    "lastModified": "Thu, 12 Nov 2026 10:43:05 GMT",
     "sha256": "a5d59c4f130aa712190c81cda98c437629c256981bda72212f869066628aa86b",
     "lastApplied": "2026-09-25"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille-prix-zen-fixe.pdf": {
-    "lastChecked": "2026-11-20",
-    "etag": "\"30b51-65febf7f3c941\"",
-    "lastModified": "Tue, 10 Nov 2026 13:22:22 GMT",
+    "lastChecked": "2026-11-23",
+    "etag": "\"30b51-6601199fef768\"",
+    "lastModified": "Thu, 12 Nov 2026 10:16:14 GMT",
     "sha256": "8228219a85b44d8b86e8651837bbdf2f176159cd8853b13bae15d5b56351a294",
     "lastApplied": "2026-11-20"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-online.pdf": {
-    "lastChecked": "2026-11-20",
-    "etag": "\"390da-6601191ce85cd\"",
-    "lastModified": "Thu, 12 Nov 2026 10:13:57 GMT",
+    "lastChecked": "2026-11-23",
+    "etag": "\"390da-660119fbc7483\"",
+    "lastModified": "Thu, 12 Nov 2026 10:17:50 GMT",
     "sha256": "6658d72a8ac3bef50bceab5c54b08eecf49bb7378b4e5d6ac60c69074d7a48ae",
     "lastApplied": "2026-08-16"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end-plus.pdf": {
-    "lastChecked": "2026-11-20",
-    "etag": "\"3e340-66011925bfd7f\"",
-    "lastModified": "Thu, 12 Nov 2026 10:14:06 GMT",
+    "lastChecked": "2026-11-23",
+    "etag": "\"3e340-65febf887449b\"",
+    "lastModified": "Tue, 10 Nov 2026 13:22:31 GMT",
     "sha256": "9b09df00c82cbbb2c4ab3f045d4bda78fff0d1010e7ccd0d24d520b2e064561d",
     "lastApplied": "2026-09-25"
   },
   "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/grille-prix-zen-week-end.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "etag": "\"3fea4-65febf926615d\"",
     "lastModified": "Tue, 10 Nov 2026 13:22:42 GMT",
     "sha256": "aa1d7d0e716baa60b3fd2781a4ea9b7061bae2ef7d9c1e377b0548c253db2639",
     "lastApplied": "2026-09-25"
   },
+  "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Prix/grille-prix-zen-fixe50.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "5b4a2a1adae8565e82afba7644f360723db6c05886c257d20756d722c42a148e",
+    "etag": "\"42eec-660122a839e66\"",
+    "lastModified": "Thu, 12 Nov 2026 10:56:39 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://particuliers.alpiq.fr/grille-tarifaire/particuliers/gtr_elec_part.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "lastModified": "Mon, 09 Nov 2026 09:22:52 GMT",
     "sha256": "e99da488e8ed94c4f1058814899ad77b6876db5175406c3b12e3e6093e912519",
     "lastApplied": "2026-11-20"
   },
+  "https://particuliers.engie.fr/content/dam/happe-public/pdf/grille_tarifaire.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "19ef20297b68d8f445ecb85e8cb7658b8ca865aa13b07d76404e4defbe38d56b",
+    "etag": "\"6bd3d-660aca589fe62\"",
+    "lastModified": "Fri, 20 Nov 2026 03:14:48 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-adapt.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "1facbdb142480a1a734dc387a7a611b468c8beed0a3f1f88c19afbe5a70dc6f3",
+    "etag": "\"49e2c-660b8c4fe872d\"",
+    "lastModified": "Fri, 20 Nov 2026 17:42:35 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-car.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "3c0eee7dec58d35be3dd4e8b2b01893cd0a21a92ad55a6c520fe0e0a6c600b17",
+    "etag": "\"4902f-660b256f427ac\"",
+    "lastModified": "Fri, 20 Nov 2026 10:02:19 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://particuliers.engie.fr/content/dam/pdf/fiches-descriptives/fiche-descriptive-elec-reference-3-ans.pdf": {
-    "lastChecked": "2026-11-20",
-    "etag": "\"462bd-660b36113c44f\"",
-    "lastModified": "Fri, 20 Nov 2026 11:16:44 GMT",
+    "lastChecked": "2026-11-23",
+    "etag": "\"462bd-660b006776b32\"",
+    "lastModified": "Fri, 20 Nov 2026 07:16:39 GMT",
     "sha256": "702f2c04f2947a2b3e315bda5c9f9dd1a1f636d9bc0f7d9bd30529ec718fe7c1",
     "lastApplied": "2026-11-20"
   },
+  "https://particuliers.primeo-energie.fr/wp-content/uploads/GT-FD_Offre-Fixe-Sereine.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "e397868fbf985e7dfe702ce8077223a0e1ccde285e1ab96929b57a490807d2ab",
+    "etag": "\"64e6a-66076903e400a\"",
+    "lastModified": "Tue, 17 Nov 2026 10:43:22 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://souscription.ohm-energie.com/documents/public-document/grid-details/elec-classic-hphc-vert": {
+    "lastChecked": "2026-11-23",
+    "sha256": "3a15f605f28ccebc67679719c5937107df665b5f92b281c1edaa19e84823e801",
+    "lastModified": "Thu, 03 Sep 2026 16:18:37 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://storage.googleapis.com/sobry-legals/grille-tarifaire-sobry.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "sha256": "a08513a7bd1bfec32550645b41055010d2f6d230dcdafd805d28dceb7fc7f95a",
     "etag": "\"f82270d5c19517f4f6148c49d76edf6c\"",
     "lastModified": "Mon, 16 Nov 2026 13:15:38 GMT",
     "lastApplied": "2026-11-20"
   },
+  "https://symphonics.fr/app/uploads/2026/11/Grille-Tarifaire-Particulier-V261029.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "801ab2dc2bb1968033f8adcf2dd9e9160f6f83e4b8a1820f69becb6c850adce8",
+    "etag": "\"6aeb5975-4e313\"",
+    "lastModified": "Wed, 04 Nov 2026 16:12:37 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://volterres.fr/grille-tarifaire": {
+    "lastChecked": "2026-11-23",
+    "sha256": "a087168f151b10ea8252ce71d306105b15ba9ca20ef015338280140333f0596b",
+    "lastModified": "Tue, 04 Aug 2026 07:23:53 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://www.alterna-energie.fr/tarifs-electricite-francaise": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "sha256": "5661e629607142db747d60fb60090c071a55503a6d9dedb7a3c4d358acae92a6",
     "etag": "\"948a8735ec517f303dd5a7dbc8c20a1c\"",
     "lastModified": "Fri, 09 Oct 2026 12:37:20 GMT",
     "lastApplied": "2026-11-20"
   },
+  "https://www.alterna-energie.fr/tarifs-electricite-francaise-indexe": {
+    "lastChecked": "2026-11-23",
+    "sha256": "6d30a6d8fc6496b453fba935abbf858d1840823af87273960d6ddb6c2ac2ae6f",
+    "etag": "\"66c521a2e32002879fc557e02f9a4692\"",
+    "lastModified": "Fri, 09 Oct 2026 12:37:20 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://www.alterna-energie.fr/tarifs-electricite-locale": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "sha256": "8f5025966bc4b9771f90e8966b5964091b5190df92deb8991af712f7bad3a7f7",
     "etag": "\"4b95c9a3a0ae142b48adde817cda66c2\"",
     "lastModified": "Fri, 09 Oct 2026 12:37:20 GMT",
     "lastApplied": "2026-11-20"
   },
   "https://www.alterna-energie.fr/tarifs-electricite-vehicule-electrique": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "sha256": "545041941017e6e37eee482394546ddff8d1f51729d0a48b69a97c3eb1ecc95a",
     "etag": "\"a43db340a6a1736f6682ccc29b3c4643\"",
     "lastModified": "Fri, 09 Oct 2026 12:37:20 GMT",
     "lastApplied": "2026-11-20"
   },
+  "https://www.dyneff-elec-gaz.fr/wp-content/uploads/2026/02/ContratElec_BASE_260801.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "6b71459c7e718931b004f9441d465efc483f73858245d22b52a1f3702a0743b7",
+    "etag": "\"6a7081cb-15e3a\"",
+    "lastModified": "Mon, 03 Aug 2026 11:55:55 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.dyneff-elec-gaz.fr/wp-content/uploads/2026/02/ContratElec_HPHC_260801.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "ab48c1368500fea44b7d82d8aa042c514700cd4fe311dbd8f5ad2d921eca4d92",
+    "etag": "\"6a7081bf-15eda\"",
+    "lastModified": "Mon, 03 Aug 2026 11:55:43 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.dyneff-elec-gaz.fr/wp-content/uploads/2026/02/ContratElecVerte_BASE_260801.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "507cfa411fbf425bd27523861781c6b74ffe437300b8861d18a3697873a8014c",
+    "etag": "\"6a7081c1-1923d\"",
+    "lastModified": "Mon, 03 Aug 2026 11:55:45 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.dyneff-elec-gaz.fr/wp-content/uploads/2026/02/ContratElecVerte_HPHC_260801.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "82e76e0002883d481dfe11d2674e535198c8e386b66b63b743dc151b62e5da10",
+    "etag": "\"6a7081c3-19311\"",
+    "lastModified": "Mon, 03 Aug 2026 11:55:47 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.energiedici.fr/assets/documents/bulletin-adhesion_particuliers_energie-d-ici.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "975afca16c1e9daef57d8fa60dfdaba7e6f5765898f7b85d55b850fb1db87270",
+    "lastModified": "Thu, 23 Jul 2026 14:47:57 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.eniplenitude.fr/content/dam/plenitude-fr/documents/pages-offres/offre-plenifix-1-an/offre-plenifix_1an_elec.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "da9c801897658c80802feb686935febc37fb7efc76c79dec6e0dcc0834e4e1dd",
+    "etag": "\"0x8DF38F8A2084CAF\"",
+    "lastModified": "Mon, 02 Nov 2026 15:47:43 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.eniplenitude.fr/content/dam/plenitude-fr/documents/pages-offres/offre-plenifix-2-ans/offre-plenifix_2ans_elec.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "8f3798438f6d5b035d94362ded6ec12a3587c1b8ad0aad5125e7d44abccb53ad",
+    "etag": "\"0x8DEEF1FD2885D3B\"",
+    "lastModified": "Fri, 31 Jul 2026 16:21:48 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.eniplenitude.fr/content/dam/plenitude-fr/documents/pages-offres/offre-pleniweb/offre-pleniweb_1an_elec.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "6b011cc907fcb5680ddaa7092aef3db865ce1daf01128a10a8fccaca54337edd",
+    "etag": "\"0x8DF2F77ABE97378\"",
+    "lastModified": "Wed, 21 Oct 2026 13:31:54 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://www.faq.enercoop.fr/hc/fr/article_attachments/37607556170770": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "sha256": "da33ad5fc6d92f5979a17b55802d05f431d7b81a0b6b4386f6b399be31a843a5",
     "etag": "\"6238efd6ddc0f87da21cd85774a47f0d\"",
     "lastModified": "Tue, 28 Jul 2026 15:56:57 GMT",
     "lastApplied": "2026-11-20"
   },
+  "https://www.gedia-energies.com/api/documents/all-inclusive-electricite-fixe/grille-tarifaire": {
+    "lastChecked": "2026-11-23",
+    "sha256": "de11c41c0bf24a9a87ec7ac5ccac43a57594da60d40b52bd7f26c264bd16fb1e",
+    "etag": "\"1556ae0d52bf91d41ec50abae710805b\"",
+    "lastModified": "Fri, 20 Nov 2026 15:16:55 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.geg.fr/Medias/content-editor/Tarif%20Part/2026/Aout/Grille-tarifaire-Mes%20Offres%20Tarifs%20R%C3%A9glement%C3%A9es%20Bleues-PART08.26.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "d6a6909b2b91d4d56b9a8adb31906400bdeccda7bfcd60eea59ef04bcecc5480",
+    "etag": "\"4c5f7ec32fdd1:0\"",
+    "lastModified": "Tue, 18 Aug 2026 11:22:59 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.geg.fr/Medias/content-editor/Tarif%20Part/2026/Novembre/Grille-tarifaire-Mes%20Offres%20Elec%20fixes%203%20ans-PART1126.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "2f0cdd826edab27b6649c7d228ba5be100b804aea924ff51255b11a233d53444",
+    "etag": "\"47043a9c172dd1:0\"",
+    "lastModified": "Thu, 12 Nov 2026 16:19:58 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.geg.fr/Medias/tarifs/Grille-tarifaire-Mon%20Offre%20Tarif%20R%C3%A9glement%C3%A9e%20Bleue%20PART0826.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "0285eb39c3d061f04a607170e12aca9c7e742124e65cbbd8889f29e7f77dbff1",
+    "etag": "\"c03732e6a85cdd1:0\"",
+    "lastModified": "Thu, 15 Oct 2026 13:27:17 GMT",
+    "lastApplied": "2026-11-23"
+  },
+  "https://www.selia-energies.fr/wp-content/uploads/2026/11/D-R14-SELIA-SU-25-D-Grille-tarifaire-MCE-vert-fixe.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "e69e234765b0c229c64ca0886d789da4016f030a2de1fc4c757b15bbbec8b1e5",
+    "lastModified": "Mon, 02 Nov 2026 13:16:41 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://www.totalenergies.fr/fileadmin/Digital/Documents-contractuels/GT/grille-tarifaire-verte-fixe-particuliers.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "lastModified": "Thu, 24 Sep 2026 06:55:44 GMT",
     "sha256": "4595867913e9536c5bd698f74b16a87b23c5f08d4ef61ee38b628f43573a60c3",
     "lastApplied": "2026-09-25"
   },
+  "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-access-particuliers.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "c63c0c6e849cfdddbbda111321e8cb5dd0b474e4209c76f0b6cb790a9b6ab10d",
+    "lastModified": "Fri, 30 Oct 2026 12:15:59 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-charge-heures-particuliers.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "lastModified": "Fri, 30 Oct 2026 12:16:00 GMT",
     "sha256": "bb621e5a87d6ee6e2a10ce33225d4e9c214634461574d56395c1d91736b36a46",
     "lastApplied": "2026-09-25"
   },
+  "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-fixe-3ans-particuliers.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "bd9fef7f85a010ff5c05705ee16e94d5cb6c6fe4d893f29c3eeac2b7c2158fc6",
+    "lastModified": "Mon, 23 Nov 2026 08:08:23 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-heures-eco-particuliers.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "lastModified": "Fri, 30 Oct 2026 12:15:59 GMT",
     "sha256": "c90942b144361932946e550c2b479ec47fa8ec831e1a2a2166c37eb7fa2e919c",
     "lastApplied": "2026-08-16"
   },
+  "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-heures-eco-plus-particuliers.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "3c81fe534c90d7164dec8ab2c849eb11e866448c538edc7c42a60e0a20fe0c54",
+    "lastModified": "Fri, 30 Oct 2026 12:15:58 GMT",
+    "lastApplied": "2026-11-23"
+  },
   "https://www.totalenergies.fr/fileadmin/Digital/Groupe/PDF/Documents_contractuels/Particuliers/Tarifs_TotalEnergies/fr/grille-tarifaire-standard-fixe-particuliers.pdf": {
-    "lastChecked": "2026-11-20",
+    "lastChecked": "2026-11-23",
     "lastModified": "Thu, 24 Sep 2026 06:55:26 GMT",
     "sha256": "42ec575c32f784038876449fc663839e6b74c157f4835e969e76722f8fb49d16",
     "lastApplied": "2026-09-25"
+  },
+  "https://www.urbansolarenergy.fr/wp-content/uploads/2026/08/TARIFS-SMB-PARTICULIERS-AOUT-2026.pdf": {
+    "lastChecked": "2026-11-23",
+    "sha256": "85f1bf2b3649b7da2b19bed685ef769e8553729bebeacc35ee8ce53c5f0e8269",
+    "lastModified": "Mon, 03 Aug 2026 10:47:07 GMT",
+    "lastApplied": "2026-11-23"
   }
 }

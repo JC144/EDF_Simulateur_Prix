@@ -8,6 +8,8 @@ import { buildLines } from '../lib/pdf-text.mjs';
 import { parseFrNumber, euroPerKwhToCents } from '../lib/fr-numbers.mjs';
 import { findFrDate } from '../lib/dates.mjs';
 
+import { addEnergyCharge } from '../lib/residential-grid.mjs';
+
 export const provider = 'labelleenergie';
 
 const OFFERS = [
@@ -41,6 +43,29 @@ export function parse(doc) {
         offers[`${offer.name} HC`] = parseHpHc(block, offer.title);
     });
 
+    const options = doc.pages.map(pageText).join('\n');
+    const prices = ['Je choisis la région', 'Je choisis la source'].map(label => {
+        const start = options.indexOf(label);
+        const next = options.indexOf('Je choisis', start + label.length);
+        const segment = options.slice(start, next === -1 ? undefined : next);
+        const amount = segment.match(/(\d+(?:,\d+)?)\s*€\s*TTC\s*\/[\s\S]{0,140}?\bmois\b/i);
+        if (start < 0 || !amount || !/Gratuit 6 mois/i.test(segment)) throw new Error('Conditions de personnalisation à vérifier');
+        return parseFrNumber(amount[1]);
+    });
+    if (prices[0] !== prices[1]) throw new Error('Les options région et filière ont désormais des prix distincts');
+    const producer = options.split('Je choisis mon producteur')[1];
+    const markup = producer?.match(/TTC[\s\S]{0,100}?(\d+,\d+)\s*€\s*\/\s*kWh/i);
+    if (producer && !markup) throw new Error('Supplément producteur TTC illisible');
+    for (const [name, offer] of Object.entries(offers)) {
+        if (markup) {
+            const producerName = name.replace(/ HC$/, '') + ' avec producteur EnR - ' + (name.endsWith(' HC') ? 'HP/HC' : 'Base');
+            offers[producerName] = addEnergyCharge(offer, euroPerKwhToCents(parseFrNumber(markup[1])));
+        }
+        const label = name.replace(/ HC$/, '') + ' - Région ou filière (après 6 mois) - ' + (name.endsWith(' HC') ? 'HP/HC' : 'Base');
+        const subscriptions = Object.fromEntries(Object.entries(offer.subscriptions)
+            .map(([kva, monthly]) => [kva, Number((monthly + prices[0]).toFixed(2))]));
+        offers[label] = { ...offer, subscriptions };
+    }
     return { gridDate, offers };
 }
 

@@ -145,7 +145,10 @@ export function renderPriceSections(grid, previous, ind = '') {
     if (grid.formula) {
         lines.push(...renderSpot(grid, previous, inner));
     } else {
-        lines.push(`${inner}<p class="tarif-unit">Prix TTC en centimes d’euro par kWh.</p>`);
+        if (grid.marketIndex) {
+            lines.push(`${inner}<p>Chaque heure, le simulateur ajoute aux montants du tableau le prix EPEX France Day-Ahead de cette heure, TVA comprise. Un cours négatif réduit la facture.</p>`);
+        }
+        lines.push(`${inner}<p class="tarif-unit">${grid.marketIndex ? 'Part hors cours EPEX' : 'Prix TTC'} en centimes d’euro par kWh.</p>`);
         const groups = groupsForComparison(grid, previous);
         const kvas = Object.keys(grid.subscriptions).map(Number);
         for (const group of groups) {

@@ -9,10 +9,23 @@ import { fileURLToPath } from 'node:url';
 const PARSERS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'parsers');
 
 const PROVIDER_BY_HOST = {
+    'www.dyneff-elec-gaz.fr': 'dyneff',
+    'www.selia-energies.fr': 'selia',
+    'particuliers.primeo-energie.fr': 'primeo',
+    'assets.papernest.com': 'papernest',
+    'www.gedia-energies.com': 'gedia',
+    'www.geg.fr': 'geg',
+    'www.urbansolarenergy.fr': 'urbansolar',
+    'symphonics.fr': 'symphonics',
+    'www.energiedici.fr': 'energiedici',
+    'www.eniplenitude.fr': 'plenitude',
+    'ohm-energie.com': 'ohm',
+    'souscription.ohm-energie.com': 'ohm',
+    'volterres.fr': 'volterres',
+    'ilek.s3.amazonaws.com': 'ilek',
     'particulier.edf.fr': 'edf',
     'particuliers.engie.fr': 'engie',
     'www.totalenergies.fr': 'total',
-    'a.storyblok.com': 'octopus',
     'particuliers.alpiq.fr': 'alpiq',
     'doc.mint-energie.com': 'mint',
     'labellenergie.fr': 'labelleenergie',
@@ -28,13 +41,21 @@ const PROVIDER_BY_URL = {
 
 export function isPdfUrl(url) {
     const { host, pathname } = new URL(url);
-    return pathname.toLowerCase().endsWith('.pdf')
-        || (host === 'www.alterna-energie.fr' && /^\/tarifs-electricite-(?:francaise|locale|vehicule-electrique)\/?$/.test(pathname))
+    return (host === 'www.gedia-energies.com' && pathname === '/api/documents/all-inclusive-electricite-fixe/grille-tarifaire')
+        || pathname.toLowerCase().endsWith('.pdf')
+        || (host === 'souscription.ohm-energie.com' && pathname.startsWith('/documents/public-document/grid-details/'))
+        || (host === 'volterres.fr' && pathname === '/grille-tarifaire')
+        || (host === 'www.alterna-energie.fr' && /^\/tarifs-electricite-(?:francaise(?:-indexe)?|locale|vehicule-electrique)\/?$/.test(pathname))
         || (host === 'www.faq.enercoop.fr' && /^\/hc\/(?:fr\/)?article_attachments\/\d+$/.test(pathname));
 }
 
 export function providerFor(url) {
-    return PROVIDER_BY_URL[url] || PROVIDER_BY_HOST[new URL(url).host] || null;
+    const { host, pathname } = new URL(url);
+    if (host === 'a.storyblok.com' && pathname.startsWith('/f/151412/')) return 'octopus';
+    if (host === 'particuliers.engie.fr' && pathname.startsWith('/content/dam/happe-public/')) return 'happe';
+    if (host === 'cdn.prod.website-files.com' && pathname.startsWith('/65f08fc6f2c52e2310a49dcb/')) return 'mylight150';
+    if (host === 'cdn.sanity.io' && /^\/files\/8navd656\/production-fr\/[a-f0-9]+\.pdf$/.test(pathname)) return 'frank';
+    return PROVIDER_BY_URL[url] || PROVIDER_BY_HOST[host] || null;
 }
 
 // -> { provider, parser } | { provider, parser: null } (parser pas encore écrit)

@@ -10,21 +10,17 @@ export const provider = 'mint';
 
 const T = (offer, colCount, abo, prices) => ({ offer, colCount, abo, prices });
 
-const CONFIGS = {
-    'MINT_ENERGIE_Fiche_Tarifs_23012_CLASSIC_GREEN.pdf': [
-        T('Mint Energie - Classic & Green', 4, 1, [[3, ['bleu.price']]]),
-        T('Mint Energie - Classic & Green HC', 6, 1, [[3, ['bleu.HP']], [5, ['bleu.HC']]]),
-    ],
-    'MINT_ENERGIE_Fiche_Tarifs_21912_ONLINE_GREEN.pdf': [
-        T('Mint Energie - Online & Green', 4, 1, [[3, ['bleu.price']]]),
-        T('Mint Energie - Online & Green HC', 6, 1, [[3, ['bleu.HP']], [5, ['bleu.HC']]]),
-    ],
-};
+const families = { CLASSIC: 'Classic', ONLINE: 'Online', SMART: 'Smart' };
 
 export function parse(doc, url) {
     const basename = path.basename(new URL(url).pathname);
-    const configs = CONFIGS[basename];
-    if (!configs) throw new Error(`PDF Mint non configuré : ${basename}`);
+    const family = basename.match(/^MINT_ENERGIE_Fiche_Tarifs_\d+_(CLASSIC|ONLINE|SMART)_GREEN\.pdf$/i)?.[1].toUpperCase();
+    if (!family) throw new Error(`PDF Mint non configuré : ${basename}`);
+    const name = 'Mint Energie - ' + families[family] + ' & Green';
+    const configs = [
+        T(name, 4, 1, [[3, ['bleu.price']]]),
+        T(name + ' HC', 6, 1, [[3, ['bleu.HP']], [5, ['bleu.HC']]]),
+    ];
 
     // Page 1 = grille ; pages suivantes = fiche descriptive.
     const tables = findKvaTables({ pages: [doc.pages[0]] });

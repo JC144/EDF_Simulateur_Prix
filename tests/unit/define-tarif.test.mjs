@@ -537,7 +537,7 @@ test('validation : dayRule', () => {
 //  Tarifs au prix spot                                               //
 // ------------------------------------------------------------------ //
 
-// Formule type Sobry SoCap (centimes/kWh hors TVA, tva = multiplicateur).
+// Formule spot avec plafond saisonnier (centimes/kWh hors TVA, tva = multiplicateur).
 function validSpotDef(overrides = {}) {
     return validDef({
         dayTypes: undefined,

@@ -1035,21 +1035,6 @@
       "HC"
     ]
   },
-  "Sobry - SoCap": {
-    "types": {
-      "spot": {
-        "day": null,
-        "bands": {
-          "HP": "spot",
-          "HC": "spot"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "spot"
-    ]
-  },
   "Sobry - SoFlex": {
     "types": {
       "spot": {
@@ -1167,6 +1152,1482 @@
     ]
   },
   "TotalEnergie - Offre verte fixe HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Alpiq - Sérénité 100 % verte - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Alpiq - Sérénité 100 % verte - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Alterna - Mon électricité française indexée - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Alterna - Mon électricité française indexée - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Dyneff - Contrat+ Électricité - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Dyneff - Contrat+ Électricité - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Dyneff - Contrat+ Électricité Verte - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Dyneff - Contrat+ Électricité Verte - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "EDF - Zen Fixe 3 ans - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "EDF - Zen Fixe 3 ans - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Engie - Élec Adapt 1 an - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Engie - Élec Adapt 1 an - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Engie - Élec’Car 1 an (hors bonus de pilotage) - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Gedia - All Inclusive Électricité - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Gedia - All Inclusive Électricité - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "GEG - Élec Verte fixe 3 ans - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "GEG - Élec Verte fixe 3 ans - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "GEG - Élec Verte Direct Producteur fixe 3 ans - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "GEG - Élec Verte Direct Producteur fixe 3 ans - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "GEG - Tarif Bleu (zone GEG) - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "GEG - Tarif Bleu (zone GEG) - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Happ-e - Électricité 1 an - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Happ-e - Électricité 1 an - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Happ-e - Électricité 1 an VertÉlec+ - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Happ-e - Électricité 1 an VertÉlec+ - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "ilek - ÉnRFixe+ - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "ilek - ÉnRFixe+ - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "La Belle Energie - Constance avec producteur EnR - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "La Belle Energie - Constance avec producteur EnR - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "La Belle Energie - Garance avec producteur EnR - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "La Belle Energie - Garance avec producteur EnR - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "La Belle Energie - Prudence avec producteur EnR - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "La Belle Energie - Prudence avec producteur EnR - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Octopus - Eco Fixe Novembre 2026 (achat groupé) - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Octopus - Eco Fixe Novembre 2026 (achat groupé) - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "OHM Énergie - Premi’Ohm - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "OHM Énergie - Premi’Ohm - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "OHM Énergie - Sérénité Fixe 1 an - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "OHM Énergie - Sérénité Fixe 1 an - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "OHM Énergie - Sérénité Fixe 2 ans - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "OHM Énergie - Sérénité Fixe 2 ans - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Papernest Énergie - Électricité 100 % renouvelable - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Papernest Énergie - Électricité 100 % renouvelable - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Plenitude - Plenifix 1 an - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Plenitude - Plenifix 1 an - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Plenitude - Pleniweb 1 an - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Plenitude - Pleniweb 1 an - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Primeo Energie - Fixe Sereine - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Primeo Energie - Fixe Sereine - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Sélia - Mon Contrat Élec Vert Fixe (Deux-Sèvres) - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Sélia - Mon Contrat Élec Vert Fixe (Deux-Sèvres) - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "TotalEnergie - Access - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "TotalEnergie - Access - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Urban Solar Energy - Essentielle SMB - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Urban Solar Energy - Essentielle SMB - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "TotalEnergie - Fixe 3 ans - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "TotalEnergie - Fixe 3 ans - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Mint Energie - Smart & Green": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Mint Energie - Smart & Green HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Octopus - Octopus Go Fixe": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Symphonics - Heures Creuses (solaire)": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "OHM Énergie - Classique - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "OHM Énergie - Classique - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Énergie d’ici - Énergie Bleue - Base (CU4)": {
+    "types": {
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "ete"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Énergie d’ici - Énergie Bleue - Heures Creuses (MU4)": {
+    "types": {
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "ete"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Plenitude - Plenifix 2 ans (souscription août 2026) - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Plenitude - Plenifix 2 ans (souscription août 2026) - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "TotalEnergie - Heures Eco+ - Jours Éclair": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "eclair": {
+        "day": "eclair",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "vigilance": {
+        "day": "eclair",
+        "bands": {
+          "HP": "vigilance",
+          "HC": "vigilance"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "eclair"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC",
+      "vigilance"
+    ]
+  },
+  "OHM Énergie - Extra Eco - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "OHM Énergie - Extra Eco - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "OHM Énergie - Week-end": {
+    "types": {
+      "bleu": {
+        "day": "bleu",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "weekend": {
+        "day": "weekend",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "bleu",
+      "weekend"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Volterres - Mon producteur (riverains) - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "Volterres - Mon producteur (riverains) - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "ilek - Voiture électrique": {
+    "types": {
+      "hsc": {
+        "day": null,
+        "bands": {
+          "HP": "hsc",
+          "HC": "hsc"
+        }
+      },
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "hsc",
+      "HP",
+      "HC"
+    ]
+  },
+  "Frank Énergie - Dynamique CU4": {
+    "types": {
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "ete"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "Frank Énergie - Dynamique MU4": {
+    "types": {
+      "hiver": {
+        "day": "hiver",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      },
+      "ete": {
+        "day": "ete",
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [
+      "hiver",
+      "ete"
+    ],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "La Belle Energie - Prudence - Région ou filière (après 6 mois) - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "La Belle Energie - Prudence - Région ou filière (après 6 mois) - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "La Belle Energie - Constance - Région ou filière (après 6 mois) - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "La Belle Energie - Constance - Région ou filière (après 6 mois) - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "La Belle Energie - Garance - Région ou filière (après 6 mois) - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "La Belle Energie - Garance - Région ou filière (après 6 mois) - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "mylight150 - Vert de France Bienvenue - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "mylight150 - Vert de France Bienvenue - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "mylight150 - Vert de France Bienvenue autoproducteur - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "mylight150 - Vert de France Bienvenue autoproducteur - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "mylight150 - Vert de France Standard - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "mylight150 - Vert de France Standard - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "HP",
+          "HC": "HC"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "HP",
+      "HC"
+    ]
+  },
+  "mylight150 - Vert de France Standard autoproducteur - Base": {
+    "types": {
+      "bleu": {
+        "day": null,
+        "bands": {
+          "HP": "bleu",
+          "HC": "bleu"
+        }
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "mylight150 - Vert de France Standard autoproducteur - HP/HC": {
     "types": {
       "bleu": {
         "day": null,

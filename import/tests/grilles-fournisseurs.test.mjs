@@ -4,7 +4,31 @@ import { parse as alpiq } from '../parsers/alpiq.mjs';
 import { parse as engie } from '../parsers/engie.mjs';
 import { parse as labelleenergie } from '../parsers/labelleenergie.mjs';
 import { parse as sobry } from '../parsers/sobry.mjs';
+import { parse as mylight150 } from '../parsers/mylight150.mjs';
+import { parse as primeo } from '../parsers/primeo.mjs';
 import { KVAS } from '../lib/table.mjs';
+
+test('mylight150 : nouvelle édition à revoir et majoration annuelle répartie sur douze mois', () => {
+    assert.throws(() => mylight150({ sha256: 'nouvelle édition' }), /Nouvelle grille/);
+    const { offers } = mylight150({ sha256: '9ca4925c1f00cce20d58b8842870105ba24e9366e6424ba11b00ab1469926a03' });
+    assert.equal(Object.keys(offers).length, 8);
+    const standard = offers['mylight150 - Vert de France Standard autoproducteur - HP/HC'];
+    assert.equal(standard.subscriptions[6], 21.684);
+    assert.deepEqual(standard.dayTypes.bleu, { HP: 25.4, HC: 19 });
+    assert.equal(standard.subscriptions[3], undefined);
+});
+
+test('Primeo : tableau TTC du fournisseur et palier supérieur aux puissances intermédiaires', () => {
+    const doc = { sha256: 'e397868fbf985e7dfe702ce8077223a0e1ccde285e1ab96929b57a490807d2ab' };
+    const { offers } = primeo(doc);
+    const base = offers['Primeo Energie - Fixe Sereine - Base'];
+    const hc = offers['Primeo Energie - Fixe Sereine - HP/HC'];
+    assert.equal(base.subscriptions[7], 27.35);
+    assert.deepEqual(base.priceOverrides[6].bleu, { price: 24.75 });
+    assert.equal(hc.subscriptions[3], 21.16);
+    assert.equal(hc.subscriptions[17], 43.33);
+    assert.throws(() => primeo({ sha256: 'nouvelle édition' }), /Nouvelle édition/);
+});
 
 // Fragments de texte positionnés comme dans les tableaux PDF.
 function row(y, x, cells, gap = 30) {
@@ -45,11 +69,16 @@ test('La Bellenergie : la ligne détachée des 18 kVA contient aussi les deux pr
         items.push(...row(y - 50, 12, ['18']), ...row(y - 54, 42, ['26,03', '34,65', '0,1348', '0,1985']));
         items.push(...row(y - 30, 280, ['6', '14,86', '19,37', '0,1479', '0,2142', '0,1018', '0,1589']));
     }
-    const doc = { pages: [{ items: [] }, { items }] };
+    const customization = { items: [
+        ...row(800, 10, ['Je choisis la région']), ...row(780, 10, ['1 € TTC / mois. Gratuit 6 mois']),
+        ...row(750, 10, ['Je choisis la source']), ...row(730, 10, ['1 € TTC / mois. Gratuit 6 mois']),
+    ] };
+    const doc = { pages: [{ items: [] }, { items }, customization] };
     const { offers } = labelleenergie(doc);
     assert.equal(offers['La Belle Energie - Constance'].subscriptions[18], 34.65);
     assert.equal(offers['La Belle Energie - Constance'].dayTypes.bleu.price, 19.85);
     assert.equal(offers['La Belle Energie - Constance HC'].subscriptions[6], 19.37);
+    assert.equal(offers['La Belle Energie - Constance - Région ou filière (après 6 mois) - HP/HC'].subscriptions[6], 20.37);
 });
 
 test('Engie : CU et MUDT, obligations à la souscription et ligne HP/HC indisponible', () => {

@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// Mise à jour globale : lance les quatre scripts d'import du dossier
-// (calendriers Tempo/EJP, calendrier Zenflex, prix spot EPEX FR, grilles
-// tarifaires PDF) en sous-processus, bufferise leur sortie (affichée à la
+// Mise à jour globale : lance les cinq scripts d'import du dossier
+// (calendriers Tempo/EJP, calendriers Zenflex et Éclair, prix spot EPEX FR, grilles
+// tarifaires) en sous-processus, bufferise leur sortie (affichée à la
 // complétion de chaque script) et termine par une synthèse, puis régénère
 // les pages du site dérivées des tarifs (npm run gen ; vérification seule en
 // --dry-run / --check-only).
 //   node update-all.mjs [--dry-run] [--full] [--force] [--check-only]
-//                       [--only tempo,zenflex,spot,tarifs] [--sequential]
+//                       [--only tempo,zenflex,eclair,spot,tarifs] [--sequential]
 //                       [--goldens] [--help]
 //
 // Pour un ciblage fin (--from/--to, --option TEMPO|EJP, --provider, --tarif),
@@ -27,8 +27,10 @@ const IMPORT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const SCRIPTS = [
     { id: 'tempo', label: 'Calendriers Tempo/EJP', script: 'tempo-update.mjs', buildArgs: calendarArgs },
     { id: 'zenflex', label: 'Calendrier Zenflex', script: 'zenflex-update.mjs', buildArgs: calendarArgs },
+    { id: 'eclair', label: 'Jours Éclair TotalEnergies', script: 'eclair-update.mjs',
+        buildArgs: opts => opts.dryRun || opts.checkOnly ? ['--dry-run'] : [] },
     { id: 'spot', label: 'Prix spot EPEX FR', script: 'spot-update.mjs', buildArgs: calendarArgs },
-    { id: 'tarifs', label: 'Grilles tarifaires PDF', script: 'update.mjs', buildArgs: tarifsArgs },
+    { id: 'tarifs', label: 'Grilles tarifaires', script: 'update.mjs', buildArgs: tarifsArgs },
 ];
 
 // Lignes remontées dans la synthèse (le détail complet reste dans le bloc de
@@ -266,14 +268,14 @@ function printUsage() {
     console.log(`Usage : node update-all.mjs [options]
 
 Lance les scripts de mise à jour du dossier import/ (calendriers Tempo/EJP,
-calendrier Zenflex, prix spot EPEX FR, grilles tarifaires PDF), bufferise
+calendriers Zenflex et Éclair, prix spot EPEX FR, grilles tarifaires), bufferise
 leur sortie et affiche une synthèse finale.
 
 Options :
   --dry-run       forwardé à tous : tout le pipeline sauf l'écriture
   --full          forwardé à tempo/zenflex/spot : ré-import complet de l'historique
   --force         forwardé à tarifs (update.mjs) : re-parse même si SHA-256 inchangé
-  --check-only    tarifs en --check-only, les trois autres en --dry-run (rien n'est écrit)
+  --check-only    tarifs en --check-only, les autres en --dry-run (rien n'est écrit)
   --only a,b      limite aux scripts listés : ${SCRIPTS.map(s => s.id).join(', ')}
   --sequential    lance les scripts l'un après l'autre (défaut : parallèle)
   --goldens       si tout est OK et que des fichiers ont changé, régénère les goldens

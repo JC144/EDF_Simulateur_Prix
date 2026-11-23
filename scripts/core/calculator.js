@@ -112,9 +112,9 @@ function computeDay(day, aboPriceByDay, plan, getDayType, hcRangesFor, spotPrice
 
         const dayType = getDayType(dayData, hourData.time);
         const hc = hcRangesFor(dayType).some(range => isHC(hcHourOf(hourData.time), range));
-        const prixKwh = slotPrices
-            ? spotPrixKwh(slotPrices, hourData.time, step)
-            : (hc ? plan[dayType].prixKwhHC : plan[dayType].prixKwhHP);
+        const periodRate = plan[dayType];
+        const fixed = slotPrices && !periodRate ? 0 : (hc ? periodRate.prixKwhHC : periodRate.prixKwhHP);
+        const prixKwh = slotPrices ? fixed + spotPrixKwh(slotPrices, hourData.time, step) : fixed;
 
         hourData.type = dayType + (hc ? " HC" : " HP");
         hourData.price = centimesToEuros(whToKwh(hourData.conso) * prixKwh);

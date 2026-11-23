@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 import { listTarifDefs, groupByPriceUrl } from '../lib/tarif-defs.mjs';
 import { fetchGrille, findInCache } from '../lib/download.mjs';
+import { loadManifest } from '../lib/manifest.mjs';
 import { isPdfUrl, providerFor } from '../lib/registry.mjs';
 import { extractPdf, serializeDocText, serializeDocJson } from '../lib/pdf-text.mjs';
 
@@ -21,6 +22,7 @@ const { values: opts } = parseArgs({
     },
 });
 
+const manifest = loadManifest();
 const FIXTURES_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'fixtures');
 
 function slugFor(url) {
@@ -40,7 +42,7 @@ for (const [url, defs] of byUrl) {
 
     let pdfPath;
     if (opts.offline) {
-        pdfPath = findInCache(url);
+        pdfPath = findInCache(url, manifest[url]?.sha256);
         if (!pdfPath) {
             console.error(`[SKIP] pas de cache pour ${url}`);
             continue;

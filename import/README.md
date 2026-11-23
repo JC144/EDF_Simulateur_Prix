@@ -1,24 +1,36 @@
 # import/ — mise à jour des données tarifaires
 
 Outils locaux (jamais en CI) de mise à jour des données du simulateur :
-grilles tarifaires PDF des fournisseurs, calendriers Tempo/EJP et Zenflex,
+grilles tarifaires des fournisseurs, calendriers Tempo/EJP, Zenflex et Éclair,
 prix spot EPEX FR. Point d'entrée recommandé : `node update-all.mjs`
-(voir « Mise à jour globale » ci-dessous), qui orchestre les quatre scripts.
+(voir « Mise à jour globale » ci-dessous), qui orchestre les cinq scripts.
 
-L'outil grilles tarifaires (`update.mjs`), pour chaque `price_url` des `defineTarif` du repo :
+Les prix doivent être accessibles publiquement depuis le site du fournisseur. Pour les grilles PDF, `update.mjs` suit les `price_url` des définitions tarifaires du dépôt.
 
-1. télécharge la grille (requête conditionnelle + comparaison SHA-256 avec `manifest.json`),
-2. si elle a changé, extrait le texte du PDF (pdfjs-dist) et parse les prix,
-3. actualise les prix et `lastUpdate` dans `scripts/tarifs/**`, ainsi que `price_url` si Enercoop publie une nouvelle pièce jointe,
-4. met à jour `manifest.json` et la section « Derniers tarifs » du README racine.
+1. Il télécharge la grille (requête conditionnelle + comparaison SHA-256 avec `manifest.json`),
+2. Si elle a changé, il extrait le texte du PDF (pdfjs-dist) et parse les prix,
+3. Il actualise les prix et `lastUpdate` dans `scripts/tarifs/**`, ainsi que `price_url` pour les sources à découverte automatique.
+4. Il met à jour `manifest.json` et la section « Derniers tarifs » du README racine.
 
 **La revue humaine reste obligatoire** : relire `git diff scripts/tarifs`, régénérer les goldens, puis commit.
+
+### Sources spécifiques
+
+Pour les grilles dont le fournisseur publie un nouveau lien à chaque édition, notamment Mint et Octopus, vérifier le lien dans le catalogue et actualiser `price_url` avant l’import.
+
+La grille Fixe Sereine de Primeo contient son tableau TTC sous forme d’image. L’import vérifie l’empreinte du PDF avant d’appliquer les prix transcrits. [Document contractuel Primeo](https://particuliers.primeo-energie.fr/wp-content/uploads/GT-FD_Offre-Fixe-Sereine.pdf)
+
+L’import de mylight150 retrouve le catalogue officiel et contrôle son empreinte SHA-256. Les pages 3 et 4 de l’édition d’octobre 2026 sont en images. Les montants vérifiés sont transcrits dans le parseur. Une nouvelle édition est signalée avant toute modification des tarifs. [Catalogue tarifaire mylight150](https://www.mylight150.com/pages-legales/conditions-generales)
+
+Pour Frank Énergie, l’import contrôle les abonnements et les quatre plages d’acheminement des options CU4 et MU4, puis ajoute les frais de fourniture, l’accise et la TVA. Le calculateur ajoute le cours horaire EPEX France. Le tableau Enedis fait l’objet d’un contrôle d’empreinte, et l’accise doit être revue à la fin de sa période de validité le 31 janvier 2027. [Fiche Frank Énergie](https://cdn.sanity.io/files/8navd656/production-fr/7186cef7994ce2ba46c482cdd338ad25cb095dee.pdf) · [TURPE Enedis](https://www.enedis.fr/media/4717/download) · [Fiscalité de l’électricité](https://www.impots.gouv.fr/sites/default/files/formulaires/2040-tic-sd/2026/2040-tic-sd_5322.pdf)
+
+`node eclair-update.mjs` actualise l’historique des jours Éclair d’Heures Eco+. L’import global l’exécute également. Pour une année close dont l’archive comporte moins de vingt jours, le simulateur utilise les jours explicitement publiés et la période où aucun jour Éclair ne peut survenir. Il écarte du classement les mois incomplets. [Historique TotalEnergies](https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-plus-electricite/historique-jours-eclair)
 
 ## Installation
 
 ```powershell
 cd import
-npm ci        # unique dépendance : pdfjs-dist (extraction de texte PDF)
+npm ci        # pdfjs-dist pour les PDF
 ```
 
 Node ≥ 22 requis (comme les tests du repo).
@@ -46,7 +58,7 @@ git diff tests/golden               # revue des snapshots de simulation
 
 ## Mise à jour globale (update-all.mjs)
 
-Orchestrateur des quatre scripts (tempo, zenflex, spot, tarifs) : lancement
+Orchestrateur des cinq scripts (tempo, zenflex, eclair, spot, tarifs) : lancement
 en sous-processus **parallèles** (APIs distinctes), sortie de chaque script
 bufferisée et affichée à sa complétion, puis synthèse finale (statut, durée,
 avertissements notables : `INTERVENTION MANUELLE REQUISE`, `PARSER MANQUANT`,
@@ -55,10 +67,10 @@ bascule d'année spot) et rappel goldens consolidé. Code de sortie : 0 si tout
 OK, 1 sinon.
 
 ```powershell
-node update-all.mjs                    # run complet des 4 scripts
+node update-all.mjs                    # run complet des 5 scripts
 node update-all.mjs --dry-run          # tout le pipeline sauf l'écriture
-node update-all.mjs --check-only       # tarifs en --check-only, les 3 autres en --dry-run
-node update-all.mjs --only spot,tarifs # limite aux scripts listés (tempo, zenflex, spot, tarifs)
+node update-all.mjs --check-only       # tarifs en --check-only, les autres en --dry-run
+node update-all.mjs --only spot,tarifs # limite aux scripts listés (tempo, zenflex, eclair, spot, tarifs)
 node update-all.mjs --full             # tempo/zenflex/spot : ré-import complet de l'historique
 node update-all.mjs --force            # tarifs : re-parse même si SHA-256 inchangé
 node update-all.mjs --sequential       # l'un après l'autre (défaut : parallèle)
@@ -68,12 +80,12 @@ npm run update-all "--" --dry-run      # équivalent via npm (PowerShell avale u
 
 Matrice de forwarding des flags :
 
-| Flag | tempo | zenflex | spot | tarifs (`update.mjs`) |
-|---|---|---|---|---|
-| `--dry-run` | `--dry-run` | `--dry-run` | `--dry-run` | `--dry-run` |
-| `--full` | `--full` | `--full` | `--full` | — |
-| `--force` | — | — | — | `--force` |
-| `--check-only` | `--dry-run` | `--dry-run` | `--dry-run` | `--check-only` |
+| Flag | tempo | zenflex | eclair | spot | tarifs (`update.mjs`) |
+|---|---|---|---|---|---|
+| `--dry-run` | `--dry-run` | `--dry-run` | `--dry-run` | `--dry-run` | `--dry-run` |
+| `--full` | `--full` | `--full` | — | `--full` | — |
+| `--force` | — | — | — | — | `--force` |
+| `--check-only` | `--dry-run` | `--dry-run` | `--dry-run` | `--dry-run` | `--check-only` |
 
 Les flags de ciblage fin (`--from`/`--to`, `--option TEMPO|EJP`, `--provider`,
 `--tarif`) ne sont pas forwardés : lancer le script individuel dans ce cas.
@@ -124,7 +136,6 @@ dans le navigateur (`scripts/tarif-page.js`), pas au moment de la génération.
 | `GRILLE CHANGEE, VALEURS IDENTIQUES` | PDF ré-édité sans changement de prix (réconcilié) |
 | `INTERVENTION MANUELLE REQUISE` | divergence **structurelle** : kVA ou type de jour ajouté/supprimé, `priceOverrides` présents d'un seul côté. L'outil ne patche jamais la structure : éditer le fichier tarif à la main, puis relancer |
 | `SOURCE NON GEREE` | Le registre ne reconnaît pas l’URL de la grille ou son fournisseur. Vérification manuelle. |
-| `GRILLE PRIVÉE, DERNIÈRE GRILLE PUBLIQUE CONSERVÉE` | L’offre renvoie les abonnés à leur espace client (`pricesInCustomerArea: true`). Le simulateur conserve la grille publique datée. |
 | `PARSER MANQUANT` | PDF téléchargé, changement détecté et module du fournisseur absent |
 | `VALEUR INTROUVABLE (patch refuse)` | le littéral attendu n'est plus dans le fichier : rien n'est écrit |
 | `ERREUR RESEAU` / `ERREUR PARSING` | à investiguer (URL morte ? mise en page changée ?) |
@@ -141,11 +152,12 @@ Le SHA-256 du manifest n'est mis à jour **que** lorsqu'une grille est réconcil
 ## Architecture
 
 ```
-update-all.mjs        orchestrateur : lance les 4 scripts en parallèle et synthétise (voir « Mise à jour globale »)
-update.mjs            grilles tarifaires PDF (voir « Usage » ci-dessus)
+update-all.mjs        orchestrateur : lance les 5 scripts en parallèle et synthétise (voir « Mise à jour globale »)
+update.mjs            grilles tarifaires des fournisseurs (voir « Usage » ci-dessus)
 spot-update.mjs       mise à jour des prix spot EPEX FR (voir « Prix spot » ci-dessous)
 tempo-update.mjs      mise à jour des calendriers Tempo/EJP (voir « Calendriers Tempo / EJP » ci-dessous)
 zenflex-update.mjs    mise à jour du calendrier des jours de sobriété Zenflex (voir « Calendrier Zenflex » ci-dessous)
+eclair-update.mjs     mise à jour des jours Éclair de TotalEnergies
 manifest.json         état persistant par URL { sha256, etag, lastChecked, lastApplied } — committé
 lib/
   tarif-defs.mjs      énumère les defineTarif via node:vm (comme tests/helpers/legacyLoader.mjs) ;
@@ -277,6 +289,5 @@ npm test
 - **Enercoop** publie ses grilles sur la [page des annexes tarifaires](https://www.faq.enercoop.fr/hc/fr/articles/360024967152-Annexes-tarifaires). `node update.mjs --provider enercoop` retrouve le PDF particuliers et actualise le lien des offres lors d’un changement de pièce jointe. Il importe les montants TTC de 1 à 36 kVA pour les quatre offres et l’option Jours de pointe. L’ancienne grille 2 saisons HP/HC est fermée à la souscription depuis le 4 juin 2025. Le [calendrier des jours de pointe](../scripts/tarifs-lib/calendars/enercoop-pointe.js) se met à jour à la main. Après une modification, `npm run gen` actualise les dates affichées sur la fiche de l’offre.
 - Pour **Engie Elec Référence 3 ans**, l’import additionne les abonnements annuels TTC de fourniture et d’acheminement, puis divise par douze. Le kWh inclut la fourniture, l’acheminement (CU en Base, MUDT en HP/HC) et les obligations au prix de souscription. La fiche indique un mois, enregistré au premier du mois.
 - Pour **Sobry SoFlex**, l’import lit la grille résidentielle CU4 et les moyennes saisonnières du TURPE publiées dans le mémo de calcul du kWh. Il ajoute la CTA à l’abonnement TTC. Son assiette utilise les composantes fixes du barème Enedis en vigueur au 1er août 2026. Ces coefficients doivent être révisés au prochain changement de barème. [Grille TURPE 7 Enedis, pages 17 à 19](https://www.enedis.fr/media/4717/download).
-- **Sobry SoCap** est fermée à la souscription. Le simulateur conserve sa grille du 17 juin 2026. Sobry renvoie les clients concernés à leur espace personnel. [Information du fournisseur](https://prix.sobry.co/).
 - **Octopus** : l'URL du PDF change à chaque nouvelle grille (ex. `...-aout-26-base.pdf`), la `price_url` du repo pointe donc toujours vers l'ancienne et le changement n'est pas détecté. Mise à jour : remplacer `price_url` dans `scripts/tarifs/octopus/*.js` (liens sur la page de l'offre), puis relancer `node update.mjs --provider octopus`. Le parser reconnaît l'offre au titre de la page 1 (« Offre d’électricité - OctoSaisons / Eco fixe Base / Eco-fixe HPHC »), pas au nom de fichier : il n'y a rien à modifier dans le parser tant que la mise en page reste la même.
 - Les nouvelles puissances proposées par un fournisseur (ex. un kVA ajouté au PDF) ne sont pas signalées si le repo ne les modélise pas.

@@ -3,6 +3,7 @@
 import { buildLines } from '../lib/pdf-text.mjs';
 import { findFrDate } from '../lib/dates.mjs';
 import { parseFrNumber, euroPerKwhToCents } from '../lib/fr-numbers.mjs';
+import { gridRow, pairedOffers } from '../lib/residential-grid.mjs';
 import { buildOffer, KVAS } from '../lib/table.mjs';
 
 export const provider = 'engie';
@@ -69,11 +70,43 @@ function obligationRows(items, label, noThree = false) {
     return ttcRows(items, 2, label, noThree);
 }
 
+function parseRetailGrid(page, gridDate, car) {
+    const lines = buildLines(page.items);
+    const pairs = car ? 3 : 5;
+    if (!lines.some(l => l.text === Array(pairs).fill('HTT\tTTC*').join('\t'))
+        || !lines.some(l => l.text.includes('EUR/an')) || !lines.some(l => l.text.includes('Heures Pleines\tHeures Creuses'))) {
+        throw new Error('Abonnement annuel ou colonnes TTC ENGIE modifiés');
+    }
+    const base = [], hc = [];
+    for (const { cells } of lines.filter(l => KVAS.includes(l.cells[0]) && l.cells.length > 1)) {
+        if (cells.length !== 1 + 2 * pairs) throw new Error('Ligne ENGIE incomplète');
+        const monthly = index => {
+            const n = parseFrNumber(cells[index]);
+            if (n === null) throw new Error('Abonnement ENGIE absent');
+            return Number((n / 12).toFixed(8));
+        };
+        if (!car) base.push(gridRow(cells[0], monthly(2), cells[4]));
+        if (cells[0] !== '3') hc.push(car ? gridRow(cells[0], monthly(2), cells[4], cells[6])
+            : gridRow(cells[0], monthly(6), cells[8], cells[10]));
+    }
+    if (hc.map(r => r.kva).join() !== KVAS.slice(1).join()) throw new Error('Puissances HP/HC ENGIE incomplètes');
+    const offers = car ? { 'Engie - Élec’Car 1 an (hors bonus de pilotage) - HP/HC': buildOffer(hc, [['bleu.HP'], ['bleu.HC']]) }
+        : pairedOffers('Engie - Élec Adapt 1 an', base, hc);
+    return { gridDate, offers };
+}
+
 export function parse({ pages }) {
     const heading = pages.flatMap(p => buildLines(p.items)).find(l => /^Grille tarifaire\s*-/i.test(l.text));
     // La fiche date sa grille au mois, sans préciser de jour.
     const gridDate = heading && findFrDate('1 ' + heading.text.split('-').at(-1).trim());
     if (!gridDate) throw new Error('Engie : mois de la grille tarifaire introuvable');
+    const retail = pages.find(p => {
+        const lines = buildLines(p.items);
+        return lines.some(l => /^Grille tarifaire/i.test(l.text)) && lines.some(l => /^Elec(?: Adapt|[’']Car) 1 an$/i.test(l.text));
+    });
+    if (retail) {
+        return parseRetailGrid(retail, gridDate, buildLines(retail.items).some(l => /Elec[’']Car 1 an/i.test(l.text)));
+    }
     const [cs, hphc] = splitTables(section(pages, /^Fourniture comptage simple.*HP\/HC/, /\(CU\)$/));
     const cu = section(pages, /Acheminement.*\(CU\)$/, /\(CU4\)$/);
     const mudt = section(pages, /Acheminement.*\(MUDT\)$/, /\(MU4\)$/);

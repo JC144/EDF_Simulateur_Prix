@@ -1,0 +1,3 @@
+[
+  {"date":"2026-11-12","subscriptions":{"3":12.13,"6":15.86,"9":19.88,"12":23.76,"15":27.4,"18":31.14,"24":39.14,"30":46.47,"36":53.88},"groups":[{"kvas":[3],"rates":{"bleu":{"single":24.25}}},{"kvas":[6],"rates":{"bleu":{"single":23.3}}},{"kvas":[9],"rates":{"bleu":{"single":23.06}}},{"kvas":[12],"rates":{"bleu":{"single":22.92}}},{"kvas":[15],"rates":{"bleu":{"single":22.86}}},{"kvas":[18],"rates":{"bleu":{"single":22.82}}},{"kvas":[24],"rates":{"bleu":{"single":22.71}}},{"kvas":[30],"rates":{"bleu":{"single":22.69}}},{"kvas":[36],"rates":{"bleu":{"single":22.68}}}]}
+]

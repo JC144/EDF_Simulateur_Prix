@@ -11758,5 +11758,1125 @@
       "consoHP": 31728,
       "priceHP": 5.4921168
     }
+  ],
+  "EDF - Zen Fixe 3 ans - Base": [
+    {
+      "date": "2025/01/31",
+      "conso": 101169,
+      "price": 21.80584512,
+      "consoHC": 101169,
+      "priceHC": 21.1645548,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/30",
+      "conso": 51928,
+      "price": 11.50462792,
+      "consoHC": 51928,
+      "priceHC": 10.8633376,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/29",
+      "conso": 51722,
+      "price": 11.46153272,
+      "consoHC": 51722,
+      "priceHC": 10.8202424,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/28",
+      "conso": 52000,
+      "price": 11.51969032,
+      "consoHC": 52000,
+      "priceHC": 10.8784,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/27",
+      "conso": 51344,
+      "price": 11.38245512,
+      "consoHC": 51344,
+      "priceHC": 10.7411648,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/26",
+      "conso": 51622,
+      "price": 11.44061272,
+      "consoHC": 51622,
+      "priceHC": 10.7993224,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/25",
+      "conso": 52316,
+      "price": 11.58579752,
+      "consoHC": 52316,
+      "priceHC": 10.9445072,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/24",
+      "conso": 51798,
+      "price": 11.47743192,
+      "consoHC": 51798,
+      "priceHC": 10.8361416,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/23",
+      "conso": 51488,
+      "price": 11.41257992,
+      "consoHC": 51488,
+      "priceHC": 10.7712896,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/22",
+      "conso": 52424,
+      "price": 11.60839112,
+      "consoHC": 52424,
+      "priceHC": 10.9671008,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/21",
+      "conso": 51560,
+      "price": 11.42764232,
+      "consoHC": 51560,
+      "priceHC": 10.786352,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/20",
+      "conso": 52254,
+      "price": 11.57282712,
+      "consoHC": 52254,
+      "priceHC": 10.9315368,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/19",
+      "conso": 51632,
+      "price": 11.44270472,
+      "consoHC": 51632,
+      "priceHC": 10.8014144,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/18",
+      "conso": 51374,
+      "price": 11.38873112,
+      "consoHC": 51374,
+      "priceHC": 10.7474408,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/17",
+      "conso": 52154,
+      "price": 11.55190712,
+      "consoHC": 52154,
+      "priceHC": 10.9106168,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/16",
+      "conso": 51948,
+      "price": 11.50881192,
+      "consoHC": 51948,
+      "priceHC": 10.8675216,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/15",
+      "conso": 51326,
+      "price": 11.37868952,
+      "consoHC": 51326,
+      "priceHC": 10.7373992,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/14",
+      "conso": 52418,
+      "price": 11.60713592,
+      "consoHC": 52418,
+      "priceHC": 10.9658456,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/13",
+      "conso": 51398,
+      "price": 11.39375192,
+      "consoHC": 51398,
+      "priceHC": 10.7524616,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/12",
+      "conso": 51642,
+      "price": 11.44479672,
+      "consoHC": 51642,
+      "priceHC": 10.8035064,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/11",
+      "conso": 51920,
+      "price": 11.50295432,
+      "consoHC": 51920,
+      "priceHC": 10.861664,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/10",
+      "conso": 51662,
+      "price": 11.44898072,
+      "consoHC": 51662,
+      "priceHC": 10.8076904,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/09",
+      "conso": 52148,
+      "price": 11.55065192,
+      "consoHC": 52148,
+      "priceHC": 10.9093616,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/08",
+      "conso": 52236,
+      "price": 11.56906152,
+      "consoHC": 52236,
+      "priceHC": 10.9277712,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/07",
+      "conso": 51476,
+      "price": 11.41006952,
+      "consoHC": 51476,
+      "priceHC": 10.7687792,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/06",
+      "conso": 51806,
+      "price": 11.47910552,
+      "consoHC": 51806,
+      "priceHC": 10.8378152,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/05",
+      "conso": 52050,
+      "price": 11.53015032,
+      "consoHC": 52050,
+      "priceHC": 10.88886,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/04",
+      "conso": 51480,
+      "price": 11.41090632,
+      "consoHC": 51480,
+      "priceHC": 10.769616,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/03",
+      "conso": 51724,
+      "price": 11.46195112,
+      "consoHC": 51724,
+      "priceHC": 10.8206608,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/02",
+      "conso": 51950,
+      "price": 11.50923032,
+      "consoHC": 51950,
+      "priceHC": 10.86794,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2025/01/01",
+      "conso": 52246,
+      "price": 11.57115352,
+      "consoHC": 52246,
+      "priceHC": 10.9298632,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/31",
+      "conso": 52074,
+      "price": 11.53517112,
+      "consoHC": 52074,
+      "priceHC": 10.8938808,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/30",
+      "conso": 51868,
+      "price": 11.49207592,
+      "consoHC": 51868,
+      "priceHC": 10.8507856,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/29",
+      "conso": 51644,
+      "price": 11.44521512,
+      "consoHC": 51644,
+      "priceHC": 10.8039248,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/28",
+      "conso": 51490,
+      "price": 11.41299832,
+      "consoHC": 51490,
+      "priceHC": 10.771708,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/27",
+      "conso": 51422,
+      "price": 11.39877272,
+      "consoHC": 51422,
+      "priceHC": 10.7574824,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/26",
+      "conso": 51562,
+      "price": 11.42806072,
+      "consoHC": 51562,
+      "priceHC": 10.7867704,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/25",
+      "conso": 51944,
+      "price": 11.50797512,
+      "consoHC": 51944,
+      "priceHC": 10.8666848,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/24",
+      "conso": 52534,
+      "price": 11.63140312,
+      "consoHC": 52534,
+      "priceHC": 10.9901128,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/23",
+      "conso": 51774,
+      "price": 11.47241112,
+      "consoHC": 51774,
+      "priceHC": 10.8311208,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/22",
+      "conso": 51706,
+      "price": 11.45818552,
+      "consoHC": 51706,
+      "priceHC": 10.8168952,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/21",
+      "conso": 51950,
+      "price": 11.50923032,
+      "consoHC": 51950,
+      "priceHC": 10.86794,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/20",
+      "conso": 51328,
+      "price": 11.37910792,
+      "consoHC": 51328,
+      "priceHC": 10.7378176,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/19",
+      "conso": 52022,
+      "price": 11.52429272,
+      "consoHC": 52022,
+      "priceHC": 10.8830024,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/18",
+      "conso": 51850,
+      "price": 11.48831032,
+      "consoHC": 51850,
+      "priceHC": 10.84702,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/17",
+      "conso": 51644,
+      "price": 11.44521512,
+      "consoHC": 51644,
+      "priceHC": 10.8039248,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/16",
+      "conso": 52372,
+      "price": 11.59751272,
+      "consoHC": 52372,
+      "priceHC": 10.9562224,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/15",
+      "conso": 52166,
+      "price": 11.55441752,
+      "consoHC": 52166,
+      "priceHC": 10.9131272,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/14",
+      "conso": 51544,
+      "price": 11.42429512,
+      "consoHC": 51544,
+      "priceHC": 10.7830048,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/13",
+      "conso": 51788,
+      "price": 11.47533992,
+      "consoHC": 51788,
+      "priceHC": 10.8340496,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/12",
+      "conso": 51616,
+      "price": 11.43935752,
+      "consoHC": 51616,
+      "priceHC": 10.7980672,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/11",
+      "conso": 51860,
+      "price": 11.49040232,
+      "consoHC": 51860,
+      "priceHC": 10.849112,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/10",
+      "conso": 51896,
+      "price": 11.49793352,
+      "consoHC": 51896,
+      "priceHC": 10.8566432,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/09",
+      "conso": 51932,
+      "price": 11.50546472,
+      "consoHC": 51932,
+      "priceHC": 10.8641744,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/08",
+      "conso": 52072,
+      "price": 11.53475272,
+      "consoHC": 52072,
+      "priceHC": 10.8934624,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/07",
+      "conso": 52454,
+      "price": 11.61466712,
+      "consoHC": 52454,
+      "priceHC": 10.9733768,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/06",
+      "conso": 51798,
+      "price": 11.47743192,
+      "consoHC": 51798,
+      "priceHC": 10.8361416,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/05",
+      "conso": 51626,
+      "price": 11.44144952,
+      "consoHC": 51626,
+      "priceHC": 10.8001592,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/04",
+      "conso": 51818,
+      "price": 11.48161592,
+      "consoHC": 51818,
+      "priceHC": 10.8403256,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/03",
+      "conso": 52148,
+      "price": 11.55065192,
+      "consoHC": 52148,
+      "priceHC": 10.9093616,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/02",
+      "conso": 51942,
+      "price": 11.50755672,
+      "consoHC": 51942,
+      "priceHC": 10.8662664,
+      "consoHP": 0,
+      "priceHP": 0
+    },
+    {
+      "date": "2024/12/01",
+      "conso": 51770,
+      "price": 11.47157432,
+      "consoHC": 51770,
+      "priceHC": 10.830284,
+      "consoHP": 0,
+      "priceHP": 0
+    }
+  ],
+  "EDF - Zen Fixe 3 ans - HP/HC": [
+    {
+      "date": "2025/01/31",
+      "conso": 101169,
+      "price": 21.26959242,
+      "consoHC": 37725,
+      "priceHC": 6.2963025,
+      "consoHP": 63444,
+      "priceHP": 14.3319996
+    },
+    {
+      "date": "2025/01/30",
+      "conso": 51928,
+      "price": 11.17896352,
+      "consoHC": 20218,
+      "priceHC": 3.3743842,
+      "consoHP": 31710,
+      "priceHP": 7.163289
+    },
+    {
+      "date": "2025/01/29",
+      "conso": 51722,
+      "price": 11.16328512,
+      "consoHC": 19695,
+      "priceHC": 3.2870955,
+      "consoHP": 32027,
+      "priceHP": 7.2348993
+    },
+    {
+      "date": "2025/01/28",
+      "conso": 52000,
+      "price": 11.20691032,
+      "consoHC": 20020,
+      "priceHC": 3.341338,
+      "consoHP": 31980,
+      "priceHP": 7.224282
+    },
+    {
+      "date": "2025/01/27",
+      "conso": 51344,
+      "price": 11.08344092,
+      "consoHC": 19601,
+      "priceHC": 3.2714069,
+      "consoHP": 31743,
+      "priceHP": 7.1707437
+    },
+    {
+      "date": "2025/01/26",
+      "conso": 51622,
+      "price": 11.13320212,
+      "consoHC": 19822,
+      "priceHC": 3.3082918,
+      "consoHP": 31800,
+      "priceHP": 7.18362
+    },
+    {
+      "date": "2025/01/25",
+      "conso": 52316,
+      "price": 11.24118372,
+      "consoHC": 20649,
+      "priceHC": 3.4463181,
+      "consoHP": 31667,
+      "priceHP": 7.1535753
+    },
+    {
+      "date": "2025/01/24",
+      "conso": 51798,
+      "price": 11.17850652,
+      "consoHC": 19728,
+      "priceHC": 3.2926032,
+      "consoHP": 32070,
+      "priceHP": 7.244613
+    },
+    {
+      "date": "2025/01/23",
+      "conso": 51488,
+      "price": 11.11278452,
+      "consoHC": 19655,
+      "priceHC": 3.2804195,
+      "consoHP": 31833,
+      "priceHP": 7.1910747
+    },
+    {
+      "date": "2025/01/22",
+      "conso": 52424,
+      "price": 11.27850192,
+      "consoHC": 20430,
+      "priceHC": 3.409767,
+      "consoHP": 31994,
+      "priceHP": 7.2274446
+    },
+    {
+      "date": "2025/01/21",
+      "conso": 51560,
+      "price": 11.12031732,
+      "consoHC": 19803,
+      "priceHC": 3.3051207,
+      "consoHP": 31757,
+      "priceHP": 7.1739063
+    },
+    {
+      "date": "2025/01/20",
+      "conso": 52254,
+      "price": 11.25178092,
+      "consoHC": 20232,
+      "priceHC": 3.3767208,
+      "consoHP": 32022,
+      "priceHP": 7.2337698
+    },
+    {
+      "date": "2025/01/19",
+      "conso": 51632,
+      "price": 11.14212812,
+      "consoHC": 19709,
+      "priceHC": 3.2894321,
+      "consoHP": 31923,
+      "priceHP": 7.2114057
+    },
+    {
+      "date": "2025/01/18",
+      "conso": 51374,
+      "price": 11.06160292,
+      "consoHC": 20086,
+      "priceHC": 3.3523534,
+      "consoHP": 31288,
+      "priceHP": 7.0679592
+    },
+    {
+      "date": "2025/01/17",
+      "conso": 52154,
+      "price": 11.22476592,
+      "consoHC": 20307,
+      "priceHC": 3.3892383,
+      "consoHP": 31847,
+      "priceHP": 7.1942373
+    },
+    {
+      "date": "2025/01/16",
+      "conso": 51948,
+      "price": 11.20601952,
+      "consoHC": 19836,
+      "priceHC": 3.3106284,
+      "consoHP": 32112,
+      "priceHP": 7.2541008
+    },
+    {
+      "date": "2025/01/15",
+      "conso": 51326,
+      "price": 11.06981672,
+      "consoHC": 19763,
+      "priceHC": 3.2984447,
+      "consoHP": 31563,
+      "priceHP": 7.1300817
+    },
+    {
+      "date": "2025/01/14",
+      "conso": 52418,
+      "price": 11.29425652,
+      "consoHC": 20140,
+      "priceHC": 3.361366,
+      "consoHP": 32278,
+      "priceHP": 7.2916002
+    },
+    {
+      "date": "2025/01/13",
+      "conso": 51398,
+      "price": 11.10389952,
+      "consoHC": 19461,
+      "priceHC": 3.2480409,
+      "consoHP": 31937,
+      "priceHP": 7.2145683
+    },
+    {
+      "date": "2025/01/12",
+      "conso": 51642,
+      "price": 11.10715812,
+      "consoHC": 20340,
+      "priceHC": 3.394746,
+      "consoHP": 31302,
+      "priceHP": 7.0711218
+    },
+    {
+      "date": "2025/01/11",
+      "conso": 51920,
+      "price": 11.20081532,
+      "consoHC": 19817,
+      "priceHC": 3.3074573,
+      "consoHP": 32103,
+      "priceHP": 7.2520677
+    },
+    {
+      "date": "2025/01/10",
+      "conso": 51662,
+      "price": 11.12029012,
+      "consoHC": 20194,
+      "priceHC": 3.3703786,
+      "consoHP": 31468,
+      "priceHP": 7.1086212
+    },
+    {
+      "date": "2025/01/09",
+      "conso": 52148,
+      "price": 11.20783452,
+      "consoHC": 20571,
+      "priceHC": 3.4332999,
+      "consoHP": 31577,
+      "priceHP": 7.1332443
+    },
+    {
+      "date": "2025/01/08",
+      "conso": 52236,
+      "price": 11.26470672,
+      "consoHC": 19944,
+      "priceHC": 3.3286536,
+      "consoHP": 32292,
+      "priceHP": 7.2947628
+    },
+    {
+      "date": "2025/01/07",
+      "conso": 51476,
+      "price": 11.09119372,
+      "consoHC": 19975,
+      "priceHC": 3.3338275,
+      "consoHP": 31501,
+      "priceHP": 7.1160759
+    },
+    {
+      "date": "2025/01/06",
+      "conso": 51806,
+      "price": 11.14963372,
+      "consoHC": 20248,
+      "priceHC": 3.3793912,
+      "consoHP": 31558,
+      "priceHP": 7.1289522
+    },
+    {
+      "date": "2025/01/05",
+      "conso": 52050,
+      "price": 11.23561032,
+      "consoHC": 19725,
+      "priceHC": 3.2921025,
+      "consoHP": 32325,
+      "priceHP": 7.3022175
+    },
+    {
+      "date": "2025/01/04",
+      "conso": 51480,
+      "price": 11.06419032,
+      "consoHC": 20448,
+      "priceHC": 3.4127712,
+      "consoHP": 31032,
+      "priceHP": 7.0101288
+    },
+    {
+      "date": "2025/01/03",
+      "conso": 51724,
+      "price": 11.17058092,
+      "consoHC": 19579,
+      "priceHC": 3.2677351,
+      "consoHP": 32145,
+      "priceHP": 7.2615555
+    },
+    {
+      "date": "2025/01/02",
+      "conso": 51950,
+      "price": 11.17897732,
+      "consoHC": 20302,
+      "priceHC": 3.3884038,
+      "consoHP": 31648,
+      "priceHP": 7.1492832
+    },
+    {
+      "date": "2025/01/01",
+      "conso": 52246,
+      "price": 11.22053272,
+      "consoHC": 20731,
+      "priceHC": 3.4600039,
+      "consoHP": 31515,
+      "priceHP": 7.1192385
+    },
+    {
+      "date": "2024/12/31",
+      "conso": 52074,
+      "price": 11.22173892,
+      "consoHC": 20052,
+      "priceHC": 3.3466788,
+      "consoHP": 32022,
+      "priceHP": 7.2337698
+    },
+    {
+      "date": "2024/12/30",
+      "conso": 51868,
+      "price": 11.17337452,
+      "consoHC": 20083,
+      "priceHC": 3.3518527,
+      "consoHP": 31785,
+      "priceHP": 7.1802315
+    },
+    {
+      "date": "2024/12/29",
+      "conso": 51644,
+      "price": 11.10666592,
+      "consoHC": 20356,
+      "priceHC": 3.3974164,
+      "consoHP": 31288,
+      "priceHP": 7.0679592
+    },
+    {
+      "date": "2024/12/28",
+      "conso": 51490,
+      "price": 11.09966632,
+      "consoHC": 19885,
+      "priceHC": 3.3188065,
+      "consoHP": 31605,
+      "priceHP": 7.1395695
+    },
+    {
+      "date": "2024/12/27",
+      "conso": 51422,
+      "price": 11.06513012,
+      "consoHC": 20210,
+      "priceHC": 3.373049,
+      "consoHP": 31212,
+      "priceHP": 7.0507908
+    },
+    {
+      "date": "2024/12/26",
+      "conso": 51562,
+      "price": 11.12761312,
+      "consoHC": 19687,
+      "priceHC": 3.2857603,
+      "consoHP": 31875,
+      "priceHP": 7.2005625
+    },
+    {
+      "date": "2024/12/25",
+      "conso": 51944,
+      "price": 11.16511392,
+      "consoHC": 20514,
+      "priceHC": 3.4237866,
+      "consoHP": 31430,
+      "priceHP": 7.100037
+    },
+    {
+      "date": "2024/12/24",
+      "conso": 52534,
+      "price": 11.27921992,
+      "consoHC": 20839,
+      "priceHC": 3.4780291,
+      "consoHP": 31695,
+      "priceHP": 7.1599005
+    },
+    {
+      "date": "2024/12/23",
+      "conso": 51774,
+      "price": 11.16494292,
+      "consoHC": 19866,
+      "priceHC": 3.3156354,
+      "consoHP": 31908,
+      "priceHP": 7.2080172
+    },
+    {
+      "date": "2024/12/22",
+      "conso": 51706,
+      "price": 11.15695672,
+      "consoHC": 19741,
+      "priceHC": 3.2947729,
+      "consoHP": 31965,
+      "priceHP": 7.2208935
+    },
+    {
+      "date": "2024/12/21",
+      "conso": 51950,
+      "price": 11.18369732,
+      "consoHC": 20222,
+      "priceHC": 3.3750518,
+      "consoHP": 31728,
+      "priceHP": 7.1673552
+    },
+    {
+      "date": "2024/12/20",
+      "conso": 51328,
+      "price": 11.05669852,
+      "consoHC": 19993,
+      "priceHC": 3.3368317,
+      "consoHP": 31335,
+      "priceHP": 7.0785765
+    },
+    {
+      "date": "2024/12/19",
+      "conso": 52022,
+      "price": 11.19123012,
+      "consoHC": 20370,
+      "priceHC": 3.399753,
+      "consoHP": 31652,
+      "priceHP": 7.1501868
+    },
+    {
+      "date": "2024/12/18",
+      "conso": 51850,
+      "price": 11.18630032,
+      "consoHC": 19795,
+      "priceHC": 3.3037855,
+      "consoHP": 32055,
+      "priceHP": 7.2412245
+    },
+    {
+      "date": "2024/12/17",
+      "conso": 51644,
+      "price": 11.11138592,
+      "consoHC": 20276,
+      "priceHC": 3.3840644,
+      "consoHP": 31368,
+      "priceHP": 7.0860312
+    },
+    {
+      "date": "2024/12/16",
+      "conso": 52372,
+      "price": 11.26280212,
+      "consoHC": 20497,
+      "priceHC": 3.4209493,
+      "consoHP": 31875,
+      "priceHP": 7.2005625
+    },
+    {
+      "date": "2024/12/15",
+      "conso": 52166,
+      "price": 11.24712372,
+      "consoHC": 19974,
+      "priceHC": 3.3336606,
+      "consoHP": 32192,
+      "priceHP": 7.2721728
+    },
+    {
+      "date": "2024/12/14",
+      "conso": 51544,
+      "price": 11.11398892,
+      "consoHC": 19849,
+      "priceHC": 3.3127981,
+      "consoHP": 31695,
+      "priceHP": 7.1599005
+    },
+    {
+      "date": "2024/12/13",
+      "conso": 51788,
+      "price": 11.16727952,
+      "consoHC": 19880,
+      "priceHC": 3.317972,
+      "consoHP": 31908,
+      "priceHP": 7.2080172
+    },
+    {
+      "date": "2024/12/12",
+      "conso": 51616,
+      "price": 11.11538572,
+      "consoHC": 20101,
+      "priceHC": 3.3548569,
+      "consoHP": 31515,
+      "priceHP": 7.1192385
+    },
+    {
+      "date": "2024/12/11",
+      "conso": 51860,
+      "price": 11.14826232,
+      "consoHC": 20478,
+      "priceHC": 3.4177782,
+      "consoHP": 31382,
+      "priceHP": 7.0891938
+    },
+    {
+      "date": "2024/12/10",
+      "conso": 51896,
+      "price": 11.18418372,
+      "consoHC": 20007,
+      "priceHC": 3.3391683,
+      "consoHP": 31889,
+      "priceHP": 7.2037251
+    },
+    {
+      "date": "2024/12/09",
+      "conso": 51932,
+      "price": 11.17007312,
+      "consoHC": 20384,
+      "priceHC": 3.4020896,
+      "consoHP": 31548,
+      "priceHP": 7.1266932
+    },
+    {
+      "date": "2024/12/08",
+      "conso": 52072,
+      "price": 11.20907412,
+      "consoHC": 20259,
+      "priceHC": 3.3812271,
+      "consoHP": 31813,
+      "priceHP": 7.1865567
+    },
+    {
+      "date": "2024/12/07",
+      "conso": 52454,
+      "price": 11.30581092,
+      "consoHC": 20082,
+      "priceHC": 3.3516858,
+      "consoHP": 32372,
+      "priceHP": 7.3128348
+    },
+    {
+      "date": "2024/12/06",
+      "conso": 51798,
+      "price": 11.15885952,
+      "consoHC": 20061,
+      "priceHC": 3.3481809,
+      "consoHP": 31737,
+      "priceHP": 7.1693883
+    },
+    {
+      "date": "2024/12/05",
+      "conso": 51626,
+      "price": 11.12431172,
+      "consoHC": 19988,
+      "priceHC": 3.3359972,
+      "consoHP": 31638,
+      "priceHP": 7.1470242
+    },
+    {
+      "date": "2024/12/04",
+      "conso": 51818,
+      "price": 11.17199152,
+      "consoHC": 19915,
+      "priceHC": 3.3238135,
+      "consoHP": 31903,
+      "priceHP": 7.2068877
+    },
+    {
+      "date": "2024/12/03",
+      "conso": 52148,
+      "price": 11.20694952,
+      "consoHC": 20586,
+      "priceHC": 3.4358034,
+      "consoHP": 31562,
+      "priceHP": 7.1298558
+    },
+    {
+      "date": "2024/12/02",
+      "conso": 51942,
+      "price": 11.21475312,
+      "consoHC": 19665,
+      "priceHC": 3.2820885,
+      "consoHP": 32277,
+      "priceHP": 7.2913743
+    },
+    {
+      "date": "2024/12/01",
+      "conso": 51770,
+      "price": 11.15365532,
+      "consoHC": 20042,
+      "priceHC": 3.3450098,
+      "consoHP": 31728,
+      "priceHP": 7.1673552
+    }
   ]
 }

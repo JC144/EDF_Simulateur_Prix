@@ -9,6 +9,7 @@ export function priceSnapshot(g) {
         date: g.lastUpdate,
         subscriptions: Object.fromEntries(g.subscriptions.map(s => [s.kva, s.monthly])),
     };
+    if (g.marketIndex) snapshot.marketIndex = g.marketIndex;
     if (g.kind === 'spot') return { ...snapshot, source: g.source, formula: g.formula };
     if (g.hc.mode === 'byDayType') {
         snapshot.hc = { mode: 'byDayType', byType: g.hc.byType.map(t => ({ day: t.badge?.id ?? null, text: t.text })) };

@@ -3,10 +3,10 @@
 defineTarif({
     name: "Octopus - Eco-fixe Heures Creuses",
     offer_type: "Marché",
-    lastUpdate: "2026-08-12",
+    lastUpdate: "2026-11-16",
     isCommunity: true,
     subscription_url: "https://octopusenergy.fr/offre-electricite-tarifs",
-    price_url: "https://a.storyblok.com/f/151412/x/d505811345/grille-tarifaire-ecofixe-aout-26-hphc.pdf",
+    price_url: "https://a.storyblok.com/f/151412/x/82c5f363e2/grille-tarifaire-cocon_saisonnalise_hphc_nov26_b.pdf",
     subscriptions: {
         3: 12.13,
         6: 15.86,
@@ -19,14 +19,13 @@ defineTarif({
         36: 53.88
     },
     dayTypes: {
-        hiver: { HP: 24.61, HC: 18.09 },
-        ete: { HP: 18.76, HC: 14.05 }
+        hiver: { HP: 24.97, HC: 18.34 },
+        ete: { HP: 19.3, HC: 14.43 }
     },
-    // La grille a trois paliers de prix du kWh : 3 kVA, 6 kVA, 9 à 36 kVA
-    // (en été, 3 kVA est au prix de référence)
+    // Les puissances de 3 et 6 kVA ont leurs propres prix saisonniers.
     priceOverrides: {
-        3: { hiver: { HP: 21.95, HC: 16.26 } },
-        6: { hiver: { HP: 24.09, HC: 17.73 }, ete: { HP: 17.87, HC: 13.44 } }
+        3: { hiver: { HP: 22.31, HC: 16.5 }, ete: { HP: 21.06, HC: 15.65 } },
+        6: { hiver: { HP: 22.31, HC: 16.5 }, ete: { HP: 21.06, HC: 15.65 } }
     },
     dayRule: {
         type: "season",

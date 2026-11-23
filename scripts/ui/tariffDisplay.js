@@ -9,6 +9,7 @@
 // sous 3:1 (aqua, ambre) sont toujours accompagnées d'un libellé visible.
 
 const BAND_REGISTRY = {
+    vigilance: { label: "Heures de vigilance", short: "Vigilance", color: "#a32836" },
     hp: { label: "Heures pleines", short: "HP", color: "#eb6834" },
     hc: { label: "Heures creuses", short: "HC", color: "#2a78d6" },
     hsc: { label: "Super creuses", short: "HSC", color: "#1baf7a" },
@@ -19,7 +20,7 @@ const BAND_REGISTRY = {
 
 // Ordre d'affichage des colonnes/légendes : du plus cher au moins cher,
 // puis les bandes spéciales.
-const BAND_DISPLAY_ORDER = ["hp", "hc", "hsc", "happy", "spot", "base"];
+const BAND_DISPLAY_ORDER = ["hp", "hc", "hsc", "happy", "vigilance", "spot", "base"];
 
 // Noms de types de jour connus : à prix unique, leur bande se confond avec le
 // jour et s'affiche « Prix unique ».
@@ -29,6 +30,8 @@ const KNOWN_DAY_KEYS = new Set([
 ]);
 
 const DAY_REGISTRY = {
+    eclair: { label: "Jour Éclair", color: "#a32836", ink: "#ffffff" },
+    vigilance: { label: "Vigilance", color: "#a32836", ink: "#ffffff" },
     bleu: { label: "Bleu", color: "#256abf", ink: "#ffffff" },
     blanc: { label: "Blanc", color: "#f0efec", ink: "#0b0b0b" },
     rouge: { label: "Rouge", color: "#d03b3b", ink: "#ffffff" },

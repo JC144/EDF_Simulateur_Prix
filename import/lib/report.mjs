@@ -4,7 +4,6 @@ const STATUS_LABELS = {
     'modified': 'MODIFIE',
     'no-change': 'GRILLE CHANGEE, VALEURS IDENTIQUES',
     'unsupported': 'SOURCE NON GEREE',
-    'private-grid': 'GRILLE PRIVÉE, DERNIÈRE GRILLE PUBLIQUE CONSERVÉE',
     'no-parser': 'PARSER MANQUANT',
     'offer-missing': 'OFFRE INTROUVABLE',
     'patch-failed': 'VALEUR INTROUVABLE (patch refuse)',

@@ -16,7 +16,7 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 * **Abonnements**
   * Mise à jour automatique des prix de la plupart des abonnements (depuis les grilles tarifaires officielles)
   * Récupération automatique des jours Tempo, EJP et ZenFlex
-  * Prise en charge des tarifs spot (notamment les offres Sobry)
+  * Prise en charge des tarifs spot (dont Sobry SoFlex)
 * **À venir** : estimation du potentiel solaire
 
 ## Utilisation
@@ -140,7 +140,7 @@ Les archives initiales reprennent les versions pour lesquelles le dépôt indiqu
 
 ### Prix spot (tarifs Sobry)
 
-Les tarifs indexés sur le marché (Sobry SoCap/SoFlex) s'appuient sur les prix
+Les tarifs indexés sur le marché (Sobry SoFlex) s'appuient sur les prix
 spot EPEX FR Day-Ahead depuis 2023, committés dans `scripts/tarifs-lib/spot/`
 (un fichier par année). Mise à jour : via `node import/update-all.mjs` (ou
 `node import/spot-update.mjs` seul, incrémental — voir

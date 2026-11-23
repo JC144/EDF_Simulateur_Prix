@@ -243,6 +243,9 @@ function buildRuleLines(def, calendars) {
                     : ', placés par le fournisseur';
                 const count = entry.numberOfDays ? `${entry.numberOfDays} jours par an` : 'Jours';
                 lines.push(`${chip(type)} ${count}${period}.`);
+                for (const sub of rule.hourSubTypes?.[type] || []) {
+                    lines.push(`${chip(sub.dayType)} de ${sub.fromHour} h à ${sub.toHour} h ces jours-là.`);
+                }
             }
             lines.push(`${chip(rule.default)} tous les autres jours.`);
             if (rule.previousDayBefore !== undefined) lines.push(veille(rule.previousDayBefore));
@@ -297,7 +300,8 @@ export function buildGrille(def, display, calendars, warnings = []) {
         lastUpdate: def.lastUpdate,
         subscriptionUrl: def.subscription_url || null,
         priceUrl: def.price_url,
-        pricesInCustomerArea: def.pricesInCustomerArea === true,
+        marketIndex: def.marketIndex,
+        eligibility: def.eligibility,
         priceIsPdf: isPdfUrl(def.price_url),
         subscriptions: kvas.map(kva => {
             const monthly = def.subscriptions[kva];
@@ -351,6 +355,9 @@ export function pageTitle(g) {
     return fitting([
         ...[offer, offer.replace(/heures creuses/i, 'HC')].map(o => `${o} ${g.provider} : ${kwh}`),
         `${offer} ${g.provider} : tarifs ${year}`,
+        `${offer} · ${g.provider}`,
+        `${offer.replace(/\s*\([^)]*\)/g, '')} · ${g.provider}`,
+        `${offer} (${year})`,
     ], TITLE_MAX);
 }
 
@@ -360,11 +367,11 @@ export function pageDescription(g) {
     const kwh = g.kind === 'spot' ? 'formule du prix du kWh indexé sur le prix spot' : 'prix du kWh TTC';
     const body = `Grille tarifaire ${g.provider} ${offerName(g)} du ${formatDate(g.lastUpdate)} : abonnement ${range}, ${kwh}`
         + `${g.kind === 'grid' && g.hc.mode !== 'none' ? ', heures creuses' : ''}.`;
-    if (g.pricesInCustomerArea) return fitting([`${body} Prix actuels dans l’espace client.`, body], DESCRIPTION_MAX);
     return fitting([
         `${body} Lien vers la grille officielle du fournisseur.`,
         `${body} Lien vers la grille officielle.`,
         body,
+        `${g.provider} ${offerName(g)}. Abonnement ${range} et prix du kWh TTC au ${formatDate(g.lastUpdate)}.`,
     ], DESCRIPTION_MAX);
 }
 
@@ -537,12 +544,11 @@ export function renderPage(g, versions = [priceSnapshot(g)]) {
             + ' vérifiez-les sur le site du fournisseur.</p></noscript>',
         `${S}<ul class="tarif-links">`,
     );
+    if (g.eligibility) lines.push(`${S}    <li>${escapeHtml(g.eligibility)}</li>`);
     if (g.subscriptionUrl) {
         lines.push(`${S}    <li><a href="${escapeHtml(g.subscriptionUrl)}" target="_blank" rel="noopener">Page de l’offre sur le site du fournisseur</a></li>`);
     }
-    const priceLinkLabel = g.pricesInCustomerArea
-        ? 'Consulter mes tarifs actuels dans l’espace client'
-        : `Grille tarifaire officielle${g.priceIsPdf ? ' (PDF)' : ''}`;
+    const priceLinkLabel = `Grille tarifaire officielle${g.priceIsPdf ? ' (PDF)' : ''}`;
     lines.push(
         `${S}    <li><a href="${escapeHtml(g.priceUrl)}" target="_blank" rel="noopener">${priceLinkLabel}</a></li>`,
         `${S}</ul>`,

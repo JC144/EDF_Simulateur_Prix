@@ -18,6 +18,19 @@ const T = (offer, colCount, abo, prices) => ({ offer, colCount, abo, prices });
 // dans l'ordre des configs.
 const CONFIGS = [
     {
+        title: /Eco Fixe Novembre 2026/i,
+        pages: [1, 2],
+        tables: [
+            T('Octopus - Eco Fixe Novembre 2026 (achat groupé) - Base', 4, 1, [[3, ['bleu.price']]]),
+            T('Octopus - Eco Fixe Novembre 2026 (achat groupé) - HP/HC', 6, 1, [[3, ['bleu.HP']], [5, ['bleu.HC']]]),
+        ],
+    },
+    {
+        title: /Octopus Go Fixe/i,
+        pages: [1],
+        tables: [T('Octopus - Octopus Go Fixe', 6, 1, [[3, ['bleu.HP']], [5, ['bleu.HC']]])],
+    },
+    {
         title: /OctoSaisons/i,
         pages: [2],
         tables: [

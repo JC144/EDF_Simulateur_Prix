@@ -33,12 +33,15 @@ function monthlySnapshot(tarifs) {
     return snapshot;
 }
 
-function dailySnapshot(tarifs) {
+function dailySnapshot(tarifs, missingCalendars = []) {
     const snapshot = {};
     for (const tarif of tarifs) {
         const months = tarif.allMonths.filter(m =>
             (m.year === 2024 && m.month === '12') || (m.year === 2025 && m.month === '01'));
-        assert.strictEqual(months.length, 2, `${tarif.title} : fenêtre déc. 2024 / janv. 2025 incomplète`);
+        const unavailable = missingCalendars.find(entry => entry.title === tarif.title)?.months ?? [];
+        const expected = ['2024-12', '2025-01'].filter(key => !unavailable.some(date =>
+            key === date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0')));
+        assert.deepStrictEqual(months.map(m => m.year + '-' + m.month).sort(), expected, tarif.title);
         snapshot[tarif.title] = months.flatMap(m => m.days.map(day => ({
             date: day.date,
             conso: roundWh(day.conso),
@@ -131,8 +134,8 @@ test('golden journalier community 9 kVA (décembre 2024 et janvier 2025, tarifs 
     installFreshRegistry();
     // Une offre peut couvrir d'autres mois du CSV sans couvrir la fenêtre testée.
     const days = loadSampleData().filter(d => d.date >= '2024/12/01' && d.date < '2025/02/01');
-    const { calculatedMonths } = runSimulation(communitySettings(9), days);
-    checkGolden('daily-community-9kva', dailySnapshot(calculatedMonths.filter(t => !t.title.includes('EDF'))));
+    const { calculatedMonths, missingCalendars } = runSimulation(communitySettings(9), days);
+    checkGolden('daily-community-9kva', dailySnapshot(calculatedMonths.filter(t => !t.title.includes('EDF')), missingCalendars));
 });
 
 test('golden dayTypes EDF : type de jour à 3h, 12h et 23h pour chaque date du CSV', () => {

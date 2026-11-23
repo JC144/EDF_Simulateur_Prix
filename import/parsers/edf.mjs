@@ -28,6 +28,10 @@ const CONFIGS = {
     'Grille_prix_EJP.pdf': [
         T('EDF - EJP', [['bleu.HP', 'bleu.HC', 'rouge.HC'], ['rouge.HP']]),
     ],
+    'grille-prix-zen-fixe50.pdf': [
+        T('EDF - Zen Fixe 3 ans - Base', [['bleu.price']]),
+        T('EDF - Zen Fixe 3 ans - HP/HC', [['bleu.HP'], ['bleu.HC']]),
+    ],
     'Grille-prix-zen-fixe.pdf': [
         T('EDF - Zen Fixe', [['bleu.price']]),
         T('EDF - Zen Fixe Heures Creuses', [['bleu.HP'], ['bleu.HC']]),

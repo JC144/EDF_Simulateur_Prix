@@ -42,7 +42,8 @@ export function parse(doc) {
     const ttc = pages.filter(lines => lines.some(line => TTC_HEADER.test(line.text)));
     if (ttc.length !== 1) throw new Error('Alterna : page TTC absente ou ambiguë');
     const lines = ttc[0];
-    const gridDate = findNumericDate(lines.find(line => TTC_HEADER.test(line.text)).text);
+    const dateLine = lines.findIndex(line => TTC_HEADER.test(line.text));
+    const gridDate = findNumericDate(lines.slice(dateLine, dateLine + 2).map(l => l.text).join(' '));
     if (!gridDate) throw new Error('Alterna : date de la grille TTC introuvable');
 
     const title = lines.find(l => l.text === SEASONAL_TITLE || Object.hasOwn(STANDARD_OFFERS, l.text))?.text;
@@ -57,7 +58,10 @@ export function parse(doc) {
         return { gridDate, offers: { 'Alterna - Heures Super Creuses': offer } };
     }
 
-    const names = STANDARD_OFFERS[title];
+    const indexed = lines.some(l => /Offre indexée sur le TRV/i.test(l.text));
+    const names = indexed && title === 'Mon électricité française'
+        ? ['Alterna - Mon électricité française indexée - Base', 'Alterna - Mon électricité française indexée - HP/HC']
+        : STANDARD_OFFERS[title];
     if (!names || !lines.some(l => l.text === 'Option Base\tOption Heures Creuses')) {
         throw new Error('Alterna : titre de l’offre ou options de la grille TTC inconnus');
     }

@@ -97,6 +97,10 @@
 
         validateMetadata(def, errors);
         validateSubscriptions(def, errors);
+        if (def.marketIndex && (def.dayRule?.type !== "season" || !window.SpotPrices[def.marketIndex.source]
+            || !Number.isFinite(def.marketIndex.vat) || def.marketIndex.vat < 1)) {
+            errors.push("marketIndex : source spot connue, règle saisonnière et multiplicateur de TVA attendus");
+        }
         if (isPlainObject(def.dayRule) && def.dayRule.type === "spot") {
             // Tarif au prix spot : pas de grille par type de jour, la
             // validation classique (dayTypes/hcRanges) ne s'applique pas.
@@ -346,6 +350,10 @@
                 for (const type of Object.keys(calendar)) {
                     requireType(`dayRule.calendar "${rule.calendar}"`, type);
                 }
+                for (const [type, windows] of Object.entries(rule.hourSubTypes || {})) {
+                    if (!calendar[type]) errors.push("Jour spécial inconnu : " + type);
+                    validateHourSubRuleList("dayRule.hourSubTypes." + type, windows, requireType, errors);
+                }
                 break;
             }
 
@@ -553,11 +561,29 @@
             display: buildDisplay(def),
             getDayType: rule.getDayType
         };
+        if (def.eligibility) abonnement.eligibility = def.eligibility;
         if (hcParts.hcByDayType) {
             abonnement.hcByDayType = hcParts.hcByDayType;
         }
         if (rule.calendarCoversDate) {
             abonnement.calendarCoversDate = rule.calendarCoversDate;
+        }
+        if (def.marketIndex) {
+            const market = window.SpotPrices[def.marketIndex.source];
+            const cache = new Map();
+            abonnement.spotPricesFor = date => {
+                if (!market.days[date]) return null;
+                if (!cache.has(date)) {
+                    const quotes = market.days[date];
+                    const slots = quotes.length / 24;
+                    const hourly = Array.from({ length: 24 }, (_, hour) => {
+                        const total = quotes.slice(hour * slots, (hour + 1) * slots).reduce((sum, value) => sum + value, 0);
+                        return total / slots / 10 * def.marketIndex.vat; // €/MWh HT → c€/kWh TTC
+                    });
+                    cache.set(date, hourly);
+                }
+                return cache.get(date);
+            };
         }
         if (rule.spotPricesFor) {
             abonnement.spotPricesFor = rule.spotPricesFor;
@@ -609,6 +635,7 @@
                 for (const type of Object.keys(window.TarifCalendars[rule.calendar])) {
                     dayOf[type] = type;
                     dayKeys.push(type);
+                    for (const sub of rule.hourSubTypes?.[type] || []) subTypeDay[sub.dayType] = type;
                 }
                 break;
 
@@ -821,7 +848,10 @@
                 monthEnd: entry.monthEnd,
                 lastDays: entry.days
             }));
+            const coverage = Object.values(calendar).find(entry => entry.coverage)?.coverage;
             return {
+                calendarCoversDate: coverage && (date => coverage.some(([from, to]) => from <= date && date <= to)
+                    || specialDays.some(entry => entry.lastDays.includes(date))),
                 specialDays: specialDays,
                 hasSpecialDaysCustom: false,
                 getDayType: function (day, time) {
@@ -838,6 +868,9 @@
                             dayType = specialDay.name;
                         }
                     });
+                    for (const sub of rule.hourSubTypes?.[dayType] || []) {
+                        if (inSubRule(time, sub)) return sub.dayType;
+                    }
                     return dayType;
                 }
             };

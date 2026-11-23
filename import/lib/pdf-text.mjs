@@ -4,6 +4,7 @@
 // se mélangent si l'on sérialise naïvement : chaque parser peut donc
 // re-clusteriser les items par zone (filtre en X) via buildLines().
 import fs from 'node:fs';
+import { createHash } from 'node:crypto';
 import { getDocument } from 'pdfjs-dist/legacy/build/pdf.mjs';
 
 const Y_TOLERANCE = 2.5;   // pts : items à moins de 2.5pt de Y = même ligne
@@ -12,6 +13,7 @@ const CELL_GAP = 6;        // pts : écart horizontal minimal pour couper une ce
 // -> { pages: [{ items: [{ str, x, y, w }], width, height }] }
 export async function extractPdf(filePath) {
     const data = new Uint8Array(fs.readFileSync(filePath));
+    const sha256 = createHash('sha256').update(data).digest('hex');
     const doc = await getDocument({ data, isEvalSupported: false, useSystemFonts: true }).promise;
     const pages = [];
     try {
@@ -33,7 +35,7 @@ export async function extractPdf(filePath) {
     } finally {
         await doc.destroy();
     }
-    return { pages };
+    return { pages, sha256 };
 }
 
 // Regroupe des items en lignes physiques : tri Y décroissant, clustering

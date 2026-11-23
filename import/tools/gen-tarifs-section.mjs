@@ -77,7 +77,7 @@ function generate(defs) {
     const lines = [];
     lines.push(`${INDENT}<p class="tarifs-intro"><strong>${defs.length} offres de ${nbProviders} fournisseurs</strong>`
         + ` sont actuellement suivies. Les grilles tarifaires sont actualisées au fil de l’eau à partir`
-        + ` des documents officiels des fournisseurs (dernière mise à jour d’une grille : ${formatDate(lastUpdate)}).</p>`);
+        + ` des documents des fournisseurs (dernière mise à jour le ${formatDate(lastUpdate)}).</p>`);
     // Détail replié derrière un collapse Bootstrap (bouton et chevron stylés par
     // .tarifs-toggle dans style.css) ; le bundle Bootstrap est déjà chargé.
     lines.push(`${INDENT}<button class="tarifs-toggle collapsed" type="button" data-bs-toggle="collapse"`);

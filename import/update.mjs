@@ -17,7 +17,7 @@ import { parseArgs } from 'node:util';
 import { listTarifDefs, groupByPriceUrl, REPO_ROOT } from './lib/tarif-defs.mjs';
 import { loadManifest, saveManifest } from './lib/manifest.mjs';
 import { fetchGrille, findInCache } from './lib/download.mjs';
-import { resolveParser, providerFor } from './lib/registry.mjs';
+import { resolveParser } from './lib/registry.mjs';
 import { reconcileOffer } from './lib/reconcile.mjs';
 import { extractPdf } from './lib/pdf-text.mjs';
 import { patchTarifFile } from './lib/patch-tarif.mjs';
@@ -99,12 +99,6 @@ function applyChanges(perDefChanges, report) {
 }
 
 async function processUrl(url, urlDefs, manifest, report, appliedDates) {
-    const privateDefs = urlDefs.filter(def => def.pricesInCustomerArea);
-    if (privateDefs.length) {
-        report.add(url, 'private-grid', privateDefs.map(d => d.name).join(', '));
-        urlDefs = urlDefs.filter(def => !def.pricesInCustomerArea);
-        if (!urlDefs.length) return;
-    }
     const names = urlDefs.map(d => d.name).join(', ');
     const resolved = await resolveParser(url);
     if (!resolved) {
@@ -112,10 +106,14 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         return;
     }
 
+    if (resolved.parser?.checkInputs) {
+        try { await resolved.parser.checkInputs(opts.offline, today); }
+        catch (err) { report.add(url, 'manual', err.message); return; }
+    }
     const configuredUrl = url;
     if (!opts.offline && resolved.parser?.discoverUrl) {
         try {
-            url = await resolved.parser.discoverUrl();
+            url = await resolved.parser.discoverUrl(url);
         } catch (err) {
             report.add(url, 'network-error', err.message);
             return;
@@ -280,11 +278,10 @@ async function main() {
     for (const [url, urlDefs] of byUrl) {
         await processUrl(url, urlDefs, manifest, report, appliedDates);
     }
-
     report.summary();
 
     // Un --tarif ne réconcilie pas les autres offres de la même pièce jointe.
-    if (!opts['dry-run'] && !opts.offline && !opts.tarif) {
+    if (!opts['dry-run'] && !opts['check-only'] && !opts.offline && !opts.tarif) {
         saveManifest(manifest);
     }
     if (appliedDates.size > 0) {

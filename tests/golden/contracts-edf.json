@@ -2865,5 +2865,171 @@
       0,
       6
     ]
+  },
+  {
+    "name": "EDF - Zen Fixe 3 ans - Base",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-10-21",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Prix/grille-prix-zen-fixe50.pdf",
+    "prices": [
+      {
+        "puissance": 3,
+        "abonnement": 12.13,
+        "bleu": {
+          "prixKwhHC": 21.07
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 15.86,
+        "bleu": {
+          "prixKwhHC": 21.07
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.88,
+        "bleu": {
+          "prixKwhHC": 20.92
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.76,
+        "bleu": {
+          "prixKwhHC": 20.92
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.4,
+        "bleu": {
+          "prixKwhHC": 20.92
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.14,
+        "bleu": {
+          "prixKwhHC": 20.92
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.14,
+        "bleu": {
+          "prixKwhHC": 20.92
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.47,
+        "bleu": {
+          "prixKwhHC": 20.92
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 53.88,
+        "bleu": {
+          "prixKwhHC": 20.92
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
+        },
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "EDF - Zen Fixe 3 ans - HP/HC",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-10-21",
+    "isCommunity": false,
+    "subscription_url": "https://particulier.edf.fr/fr/accueil/electricite-gaz.html",
+    "price_url": "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Prix/grille-prix-zen-fixe50.pdf",
+    "prices": [
+      {
+        "puissance": 6,
+        "abonnement": 15.86,
+        "bleu": {
+          "prixKwhHP": 22.59,
+          "prixKwhHC": 16.69
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 19.88,
+        "bleu": {
+          "prixKwhHP": 22.59,
+          "prixKwhHC": 16.69
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 23.76,
+        "bleu": {
+          "prixKwhHP": 22.59,
+          "prixKwhHC": 16.69
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.4,
+        "bleu": {
+          "prixKwhHP": 22.59,
+          "prixKwhHC": 16.69
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.14,
+        "bleu": {
+          "prixKwhHP": 22.59,
+          "prixKwhHC": 16.69
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.14,
+        "bleu": {
+          "prixKwhHP": 22.59,
+          "prixKwhHC": 16.69
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 46.47,
+        "bleu": {
+          "prixKwhHP": 22.59,
+          "prixKwhHC": 16.69
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 53.88,
+        "bleu": {
+          "prixKwhHP": 22.59,
+          "prixKwhHC": 16.69
+        }
+      }
+    ],
+    "hc": [],
+    "hasHCCustom": true,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
   }
 ]

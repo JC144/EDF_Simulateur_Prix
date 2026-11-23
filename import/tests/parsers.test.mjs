@@ -20,7 +20,16 @@ function slugFor(url) {
         .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-const byUrl = groupByPriceUrl(listTarifDefs());
+const definitions = listTarifDefs();
+
+test('chaque tarif publié référence une grille de son fournisseur', () => {
+    for (const def of definitions) {
+        assert.ok(def.price_url, def.name);
+        assert.equal(providerFor(def.price_url), def.file.split('/')[2], def.name);
+    }
+});
+
+const byUrl = groupByPriceUrl(definitions);
 
 for (const [url, defs] of byUrl) {
     if (!isPdfUrl(url)) continue;
