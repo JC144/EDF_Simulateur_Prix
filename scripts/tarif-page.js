@@ -1,10 +1,19 @@
-import { isStale } from "./utils/tarifMeta.js";
+import { isStale, isSubscriptionDisabled } from "./utils/tarifMeta.js";
 import { formatDate } from "./utils/tarifFormat.js";
 import { renderHcSection, renderPriceSections } from "./ui/grillePrices.js";
 
 const page = document.querySelector("[data-last-update]");
 const warning = document.querySelector(".tarif-stale");
 if (page && warning) warning.hidden = !isStale(page.dataset.lastUpdate);
+
+const deadline = document.querySelector("[data-subscription-end]");
+if (deadline) {
+    deadline.hidden = !isSubscriptionDisabled({
+        kind: "expired",
+        endDate: deadline.dataset.subscriptionEnd,
+        endInclusive: deadline.dataset.endInclusive === "true"
+    });
+}
 
 const historyPicker = document.querySelector("[data-history-url]");
 if (historyPicker) enableHistory(historyPicker);

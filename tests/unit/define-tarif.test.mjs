@@ -42,6 +42,16 @@ function expectError(def, fragment, sandbox = freshSandbox()) {
     assert.ok(sandbox.tarifDefinitionErrors.length > 0, 'l\'erreur doit être accumulée dans tarifDefinitionErrors');
 }
 
+test('subscriptionRule : conservation du motif et validation des échéances', () => {
+    const subscriptionRule = { kind: 'expired', reason: 'Fin de souscription', endDate: '2028-02-29', endInclusive: true };
+    const abo = freshSandbox().defineTarif(validDef({ subscriptionRule }));
+    assert.deepStrictEqual(plain(abo.subscriptionRule), subscriptionRule);
+    for (const invalid of [{ kind: 'closed' }, { ...subscriptionRule, kind: 'missing' },
+        { ...subscriptionRule, endInclusive: 'false' }, { ...subscriptionRule, endDate: '2026-02-29' }]) {
+        expectError(validDef({ subscriptionRule: invalid }), 'subscriptionRule');
+    }
+});
+
 test('constant : contrat legacy généré (prices, hc, flags, getDayType)', () => {
     const sandbox = freshSandbox();
     const abo = sandbox.defineTarif(validDef());

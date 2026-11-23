@@ -1,5 +1,5 @@
 // État persistant de la détection de mise à jour, une entrée par URL unique :
-// { sha256, etag, lastModified, lastChecked, lastApplied }
+// { sha256, etag, lastModified, lastChecked, lastApplied, subscriptionRules? }
 // `sha256` est le hash du dernier PDF RÉCONCILIÉ avec le repo (patch appliqué
 // ou constat « valeurs identiques ») — un simple check ne le met jamais à jour.
 import fs from 'node:fs';

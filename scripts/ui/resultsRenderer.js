@@ -3,7 +3,7 @@ import { cloneTemplate } from './dom.js';
 import { bandColumns, buildDayModel, buildPeriodShare } from './tariffDisplay.js';
 import { renderDayChart } from './dayChart.js';
 import { renderBandShareBar } from './bandShareBar.js';
-import { isStale, STALE_MONTHS, tarifPagePath } from '../utils/tarifMeta.js';
+import { isStale, STALE_MONTHS, tarifPagePath, isSubscriptionDisabled, subscriptionBadgeLabel } from '../utils/tarifMeta.js';
 
 const MIN_MONTHLY_SAVINGS_FOR_SUPPORT = 5; // €/mois
 
@@ -24,16 +24,11 @@ export function createResultsTable(container, currentOffer, dateBegin, dateEnd, 
     return function update({ calculatedMonths, missingCalendars }, complete) {
         const unavailable = new Set(missingCalendars
             .filter(c => c.months.some(m => m >= dateBegin && m <= dateEnd)).map(c => c.title));
-        const notice = summary.refs["calendar-notice"];
-        if (unavailable.size) {
-            notice.hidden = false;
-            notice.textContent = `Calendrier de pointe incomplet sur la période sélectionnée. Offre hors classement : ${[...unavailable].join(", ")}.`;
-        }
         const added = [];
         for (; processed < calculatedMonths.length; processed++) {
-            const { title, lastUpdate, display, allMonths } = calculatedMonths[processed];
+            const { title, lastUpdate, display, allMonths, subscriptionRule } = calculatedMonths[processed];
             if (unavailable.has(title)) continue;
-            const result = { title, lastUpdate, display, tarif: sumPeriod(allMonths, dateBegin, dateEnd) };
+            const result = { title, lastUpdate, display, subscriptionRule, tarif: sumPeriod(allMonths, dateBegin, dateEnd) };
             if (!ranked.length) {
                 summary.refs["conso-title"].textContent = "Consommation  totale pour cette période : "
                     + (result.tarif.conso / 1000).toFixed(2) + "kWh";
@@ -84,6 +79,13 @@ function renderTarifRow(result, index, dateBegin) {
     refs["accordion-row"].id = accordionRowId;
 
     refs["title"].textContent = result.title;
+    const badge = refs["subscription-badge"];
+    if (isSubscriptionDisabled(result.subscriptionRule)) {
+        badge.textContent = subscriptionBadgeLabel(result.subscriptionRule);
+        badge.title = result.subscriptionRule.reason;
+    } else {
+        badge.remove();
+    }
     refs["last-update"].textContent = `Dernière mise à jour : ${result.lastUpdate}`;
     if (isStale(result.lastUpdate)) {
         const warning = refs["stale-warning"];

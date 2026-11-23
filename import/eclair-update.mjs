@@ -2,10 +2,16 @@ import fs from 'node:fs';
 import { parseArgs } from 'node:util';
 import { findFrDate } from './lib/dates.mjs';
 import { fetchGrille, findInCache } from './lib/download.mjs';
+import { listAppScripts } from './lib/tarif-defs.mjs';
 
 const url = 'https://www.totalenergies.fr/particuliers/electricite/offres-d-electricite/offre-heures-eco-plus-electricite/historique-jours-eclair';
-const dest = new URL('../scripts/tarifs-lib/calendars/total-eclair.js', import.meta.url);
+const calendarFile = 'scripts/tarifs-lib/calendars/total-eclair.js';
+const dest = new URL('../' + calendarFile, import.meta.url);
 const { values: opts } = parseArgs({ options: { 'dry-run': { type: 'boolean' }, offline: { type: 'boolean' } } });
+if (!listAppScripts().includes(calendarFile)) {
+    console.log('Éclair : calendrier retiré du manifeste.');
+    process.exit(0);
+}
 const file = opts.offline ? findInCache(url) : (await fetchGrille(url)).cachePath;
 if (!file) throw new Error('Historique Éclair absent du cache');
 const html = fs.readFileSync(file, 'utf8');

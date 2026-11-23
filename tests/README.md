@@ -20,8 +20,11 @@ node --test "tests/**/*.test.mjs"
 
 ## Structure
 
+- `tarifs/<slug>.test.mjs` — tests propres à une offre publiée, dont les règles
+  `getDayType` de Tempo, EJP, week-end et Estival. La commande de suppression
+  retire le fichier correspondant avec l’offre.
 - `unit/` — tests unitaires ciblés : frontières HP/HC du calculateur, plages HC
-  personnalisées, parser CSV EDF, règles `getDayType` (Tempo, EJP, week-end, Estival),
+  personnalisées, parser CSV EDF,
   slugs des pages de grille et péremption à 6 mois (`tarifMeta.test.mjs`). Le
   contenu des pages `tarifs/*.html` est testé côté `import/` (`npm test`).
 - `golden.test.mjs` + `golden/` — tests golden-master : les résultats complets de la

@@ -14,6 +14,16 @@ erreurs en français dans la console du navigateur et fait échouer les tests.
 
 ## Recettes
 
+### Indiquer une fermeture à la souscription
+
+Le champ facultatif `subscriptionRule` décrit la restriction publiée par le fournisseur pour ce tarif. L’import le renseigne pour les grilles prises en charge.
+
+```js
+subscriptionRule: { kind: "closed", reason: "Option EJP en extinction" },
+```
+
+Pour une édition à durée limitée, utiliser `kind: "expired"` avec un motif, une date `endDate` au format `AAAA-MM-JJ` et un booléen `endInclusive`. Si la date est incluse, le badge apparaît le lendemain à Paris. Sinon, il apparaît dès le début de cette date. Le classement continue d’inclure le tarif pour les abonnés actuels.
+
 ### Mettre à jour un prix
 
 Modifier la valeur dans `subscriptions` / `dayTypes` du fichier concerné, mettre à jour

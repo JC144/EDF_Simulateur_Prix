@@ -50,10 +50,11 @@ function loadScript(file) {
     return scripts.get(file);
 }
 
-export async function loadTarifs(settings) {
-    const { TARIF_LIBRARIES, TARIF_CALENDARS, TARIF_SPOT_SERIES } = await import('../tarifs-manifest.js');
+export async function loadTarifs(settings, onProgress) {
     const offers = offersForComparison(getOfferChoices(settings.kva), settings);
-    const files = new Set(offers.map(offer => offer.file));
+    let loaded = 0;
+    onProgress?.(loaded, offers.length);
+    const { TARIF_LIBRARIES, TARIF_CALENDARS, TARIF_SPOT_SERIES } = await import('../tarifs-manifest.js');
     const usesSpot = offers.some(offer => offer.usesSpot);
 
     // Une étape doit réussir avant d'exécuter ses dépendants. Un nouvel
@@ -61,11 +62,12 @@ export async function loadTarifs(settings) {
     await Promise.all(TARIF_LIBRARIES.map(loadScript));
     const dataFiles = usesSpot ? [...TARIF_CALENDARS, ...TARIF_SPOT_SERIES] : TARIF_CALENDARS;
     await Promise.all(dataFiles.map(loadScript));
-    await Promise.all([...files].map(loadScript));
-
-    const byName = new Map(getAbonnements().map(abo => [abo.name, abo]));
-    return offers.map(({ name }) => {
-        if (!byName.has(name)) throw new Error("Grille tarifaire absente : " + name);
-        return byName.get(name);
-    });
+    return Promise.all(offers.map(async ({ file, name }) => {
+        await loadScript(file);
+        const abonnement = getAbonnements().find(abo => abo.name === name);
+        if (!abonnement) throw new Error("Grille tarifaire absente : " + name);
+        loaded++;
+        onProgress?.(loaded, offers.length);
+        return abonnement;
+    }));
 }

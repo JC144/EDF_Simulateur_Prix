@@ -12,7 +12,7 @@
 //                   [--provider edf] [--tarif "EDF - Tempo"]
 import fs from 'node:fs';
 import path from 'node:path';
-import { parseArgs } from 'node:util';
+import { isDeepStrictEqual, parseArgs } from 'node:util';
 
 import { listTarifDefs, groupByPriceUrl, REPO_ROOT } from './lib/tarif-defs.mjs';
 import { loadManifest, saveManifest } from './lib/manifest.mjs';
@@ -23,7 +23,8 @@ import { extractPdf } from './lib/pdf-text.mjs';
 import { patchTarifFile } from './lib/patch-tarif.mjs';
 import { revalidateTarifs, loadDefsFromSource } from './lib/revalidate.mjs';
 import { updateReadmeDates } from './lib/readme.mjs';
-import { makeReport } from './lib/report.mjs';
+import { makeReport, printWithdrawals } from './lib/report.mjs';
+import { catalogStatus, isSubscriptionDisabled, todayInParis } from './lib/subscriptions.mjs';
 
 const { values: opts } = parseArgs({
     options: {
@@ -37,6 +38,7 @@ const { values: opts } = parseArgs({
 });
 
 const today = new Date().toISOString().slice(0, 10);
+const subscriptionDate = todayInParis();
 
 function filterDefs(defs) {
     let filtered = defs;
@@ -78,7 +80,7 @@ function applyChanges(perDefChanges, report) {
             const def = reloaded.find(d => d.name === name);
             for (const c of changes) {
                 const actual = c.path.reduce((o, k) => o?.[k], def);
-                if (actual !== c.new) {
+                if (!isDeepStrictEqual(structuredClone(actual), c.new)) {
                     return { ok: false, status: 'patch-failed', detail: `${name}: ${c.path.join('.')} relu à ${actual} au lieu de ${c.new}` };
                 }
             }
@@ -99,7 +101,8 @@ function applyChanges(perDefChanges, report) {
 }
 
 async function processUrl(url, urlDefs, manifest, report, appliedDates) {
-    const names = urlDefs.map(d => d.name).join(', ');
+    const offerNames = urlDefs.map(d => d.name);
+    const names = offerNames.join(', ');
     const resolved = await resolveParser(url);
     if (!resolved) {
         report.add(url, 'unsupported', names);
@@ -115,13 +118,16 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         try {
             url = await resolved.parser.discoverUrl(url);
         } catch (err) {
+            if (err.code === 'GRID_NOT_LISTED') report.flagOffers(offerNames, err.page, 'Grille absente du catalogue du fournisseur');
             report.add(url, 'network-error', err.message);
             return;
         }
     }
     const sourceChanged = url !== configuredUrl;
     const entry = manifest[url] || {};
+    const checkSubscriptions = !opts['check-only'] && resolved.parser?.subscriptionCheck?.(url);
     let pdfPath = null;
+    let unchanged = null;
     let sha256 = null;
     let fetchedValidators = null; // { etag, lastModified } — persistés à la réconciliation
 
@@ -138,8 +144,12 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         const conditional = entry.sha256 ? { etag: entry.etag, lastModified: entry.lastModified } : {};
         let result;
         try {
-            result = await fetchGrille(url, { ...conditional, force: opts.force || sourceChanged });
+            const needCopy = checkSubscriptions && entry.sha256 && !findInCache(url, entry.sha256);
+            result = await fetchGrille(url, { ...conditional, force: opts.force || sourceChanged || needCopy });
         } catch (err) {
+            if (err.status === 404 || err.status === 410) {
+                report.flagOffers(offerNames, url, `Grille introuvable (HTTP ${err.status})`);
+            }
             report.add(url, 'network-error', err.message);
             return;
         }
@@ -147,13 +157,10 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         manifest[url] = entry;
 
         if (result.status === 'not-modified') {
-            if (!opts.force && !sourceChanged) {
-                report.add(url, 'up-to-date', '304 Not Modified');
-                return;
-            }
+            if (!opts.force && !sourceChanged) unchanged = '304 Not Modified';
             pdfPath = findInCache(url, entry.sha256);
-            if (!pdfPath) {
-                report.add(url, 'network-error', '304 mais aucun PDF en cache pour --force');
+            if (!pdfPath && (!unchanged || checkSubscriptions)) {
+                report.add(url, 'network-error', '304 mais aucun PDF en cache pour lire la grille');
                 return;
             }
         } else {
@@ -162,11 +169,15 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
             if (sha256 === entry.sha256 && !opts.force && !sourceChanged) {
                 entry.etag = result.etag;
                 entry.lastModified = result.lastModified;
-                report.add(url, 'up-to-date', 'SHA-256 inchangé');
-                return;
+                unchanged = 'SHA-256 inchangé';
             }
             pdfPath = result.cachePath;
         }
+    }
+
+    if (unchanged && !checkSubscriptions) {
+        report.add(url, 'up-to-date', unchanged);
+        return;
     }
 
     if (opts['check-only']) {
@@ -181,26 +192,56 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
 
     // Extraction + parsing
     let parsed;
+    const rulesByName = new Map();
+    const ruleChanges = new Map();
     try {
         const doc = await extractPdf(pdfPath);
-        parsed = resolved.parser.parse(doc, url);
+        if (checkSubscriptions) {
+            const rules = checkSubscriptions(doc).filter(rule => rule.names.length);
+            // En aperçu ou en cas de réconciliation partielle, la fiche peut
+            // encore référencer l'ancienne URL du catalogue fournisseur.
+            for (const key of new Set([configuredUrl, url])) {
+                const grid = manifest[key] ??= {};
+                if (rules.length) grid.subscriptionRules = rules;
+                else delete grid.subscriptionRules;
+            }
+            for (const { names, ...restriction } of rules) {
+                const selected = names.filter(name => offerNames.includes(name));
+                for (const name of selected) rulesByName.set(name, restriction);
+                if (isSubscriptionDisabled(restriction, subscriptionDate)) report.flagOffers(selected, url, restriction.reason, restriction.kind);
+            }
+            for (const def of urlDefs) {
+                const next = rulesByName.get(def.name);
+                if (!isDeepStrictEqual(structuredClone(def.subscriptionRule), next)) {
+                    ruleChanges.set(def.name, { path: ['subscriptionRule'], old: def.subscriptionRule, new: next });
+                }
+            }
+        }
+        if (unchanged && !ruleChanges.size) {
+            report.add(url, 'up-to-date', unchanged);
+            return;
+        }
+        if (!unchanged) parsed = resolved.parser.parse(doc, url);
     } catch (err) {
         report.add(url, 'parse-error', err.message);
         return;
     }
 
-    const lastUpdate = parsed.gridDate || today;
+    const lastUpdate = parsed?.gridDate || today;
     const perDefChanges = [];
     const allIssues = [];
+    const missing = parsed ? offerNames.filter(name => !Object.hasOwn(parsed.offers, name) && rulesByName.get(name)?.kind !== 'closed') : [];
+    if (missing.length) {
+        report.flagOffers(missing, url, 'Offre non retrouvée par le parseur dans cette grille');
+        report.add(url, 'offer-missing', missing.join(', '));
+        return;
+    }
     for (const def of urlDefs) {
-        const offer = parsed.offers[def.name];
-        if (!offer) {
-            report.add(url, 'offer-missing', `"${def.name}" absente de la sortie du parser`);
-            return;
-        }
-        let reconciled;
+        const offer = parsed?.offers[def.name];
+        let reconciled = { changes: [], issues: [] };
         try {
-            reconciled = reconcileOffer(def, offer, lastUpdate);
+            // Une fermeture confirmée peut être publiée sans nouvelle grille de prix.
+            if (offer) reconciled = reconcileOffer(def, offer, lastUpdate);
         } catch (err) {
             report.add(url, 'parse-error', `${def.name} : ${err.message}`);
             return;
@@ -208,9 +249,10 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         if (reconciled.issues.length) {
             allIssues.push(...reconciled.issues.map(i => `${def.name} : ${i}`));
         }
-        if (def.price_url !== url) {
+        if (offer && def.price_url !== url) {
             reconciled.changes.push({ path: ['price_url'], old: def.price_url, new: url });
         }
+        if (ruleChanges.has(def.name)) reconciled.changes.push(ruleChanges.get(def.name));
         if (reconciled.changes.length) {
             perDefChanges.push({ def, changes: reconciled.changes });
         }
@@ -237,7 +279,7 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
         report.add(url, 'modified', `${totalChanges} valeur(s) — dry-run, rien n'est écrit`);
         for (const { def, changes } of perDefChanges) {
             for (const c of changes) {
-                console.log(`    ${def.name} · ${c.path.join('.')} : ${c.old} -> ${c.new}`);
+                console.log(`    ${def.name} · ${c.path.join('.')} : ${JSON.stringify(c.old)} -> ${JSON.stringify(c.new)}`);
             }
         }
         return;
@@ -254,11 +296,11 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
     }
     entry.lastApplied = today;
     const prevDate = appliedDates.get(resolved.provider);
-    if (!prevDate || lastUpdate > prevDate) appliedDates.set(resolved.provider, lastUpdate);
+    if (totalChanges > ruleChanges.size && (!prevDate || lastUpdate > prevDate)) appliedDates.set(resolved.provider, lastUpdate);
     report.add(url, 'modified', `${totalChanges} valeur(s) dans ${applied.files.join(', ')}`);
     for (const { def, changes } of perDefChanges) {
         for (const c of changes) {
-            console.log(`    ${def.name} · ${c.path.join('.')} : ${c.old} -> ${c.new}`);
+            console.log(`    ${def.name} · ${c.path.join('.')} : ${JSON.stringify(c.old)} -> ${JSON.stringify(c.new)}`);
         }
     }
 }
@@ -266,6 +308,10 @@ async function processUrl(url, urlDefs, manifest, report, appliedDates) {
 async function main() {
     const defs = filterDefs(listTarifDefs());
     if (defs.length === 0) {
+        if (!opts.provider && !opts.tarif) {
+            console.log('Le catalogue est vide. Aucune grille à mettre à jour.');
+            return;
+        }
         console.error('Aucun tarif ne correspond au filtre.');
         process.exit(2);
     }
@@ -295,7 +341,10 @@ async function main() {
         console.log('  UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"   (depuis la racine)');
         console.log('  git diff tests/golden');
     }
-    process.exit(report.hasErrors() ? 1 : 0);
+    const findings = [...report.withdrawals.values()];
+    if (process.send) process.send({ type: 'offer-withdrawals', findings, catalog: catalogStatus(opts['dry-run'] ? manifest : undefined) });
+    else printWithdrawals(findings);
+    process.exitCode = report.hasErrors() ? 1 : 0;
 }
 
 main();

@@ -4,6 +4,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
 import { runSimulation } from '../scripts/core/simulation.js';
+import { TARIF_CATALOGUE } from '../scripts/tarifs-catalogue.js';
 import { installFreshRegistry, loadAbonnements } from './helpers/legacyLoader.mjs';
 import { loadSampleData } from './helpers/csv.mjs';
 import { defaultSettings, communitySettings } from './helpers/settings.mjs';
@@ -100,7 +101,7 @@ function contractSnapshot(abo) {
 
 test('chargement : tous les scripts de tarifs du manifeste se chargent sans erreur', () => {
     const abonnements = loadAbonnements();
-    assert.ok(abonnements.length > 0);
+    assert.deepStrictEqual(Array.from(abonnements, abo => abo.name), TARIF_CATALOGUE.map(offer => offer.name));
     for (const abo of abonnements) {
         assert.strictEqual(typeof abo.name, 'string');
         assert.ok(Array.isArray(abo.prices) && abo.prices.length > 0, `${abo.name} : prices vide`);

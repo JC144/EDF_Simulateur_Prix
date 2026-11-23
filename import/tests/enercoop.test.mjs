@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parse, residentialAttachment } from '../parsers/enercoop.mjs';
+import { parse, residentialAttachment, subscriptionCheck } from '../parsers/enercoop.mjs';
 import { resolveParser } from '../lib/registry.mjs';
 
 test('l’import choisit uniquement la pièce jointe des particuliers et reconnaît son URL sans extension', async () => {
@@ -10,9 +10,8 @@ test('l’import choisit uniquement la pièce jointe des particuliers et reconna
     assert.equal(url, 'https://www.faq.enercoop.fr/hc/fr/article_attachments/42');
     assert.equal((await resolveParser(url)).parser.parse, parse);
     assert.equal(await resolveParser('https://www.faq.enercoop.fr/hc/fr/articles/42'), null);
-    for (const files of [[pro], [particulier, particulier]]) {
-        assert.throws(() => residentialAttachment({ article_attachments: files }), /absente ou ambiguë/);
-    }
+    assert.throws(() => residentialAttachment({ article_attachments: [pro] }), { code: 'GRID_NOT_LISTED' });
+    assert.throws(() => residentialAttachment({ article_attachments: [particulier, particulier] }), /ambiguë/);
 });
 
 // Même géométrie que l'annexe : abonnements par ligne, prix du kWh centrés
@@ -43,6 +42,17 @@ function grid(title, rates) {
     }
     return { items };
 }
+
+test('une ancienne grille fermée ne signale pas le retrait de son édition ouverte', () => {
+    const title = 'Flexi Watt - nuit & week-end';
+    const rates = ['0,30638', '0,17290'];
+    const closed = grid(title + ' — Offre fermée à la souscription', rates);
+    const check = subscriptionCheck();
+    const names = pages => check({ pages }).flatMap(f => f.names);
+    assert.deepEqual(names([closed]), ['Enercoop - Flexibilité - nuit & week-end']);
+    assert.deepEqual(names([closed, grid(title, rates)]), []);
+    assert.deepEqual(names([grid('Autre offre fermée à la souscription', rates)]), []);
+});
 
 test('annexes Enercoop : paliers Base, saisons, pointe et exclusion de la grille fermée', () => {
     const season = 'Offre Flexibilité - 2 saisons';

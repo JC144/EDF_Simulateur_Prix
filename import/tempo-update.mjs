@@ -11,7 +11,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-import { REPO_ROOT } from './lib/tarif-defs.mjs';
+import { isDeepStrictEqual } from 'node:util';
+import { REPO_ROOT, listAppScripts } from './lib/tarif-defs.mjs';
 import {
     CALENDARS, parseCalendarResponse, daysByType, mergeDaysByType,
     diffDaysByType, serializeCalendarFile, yearlyChunks,
@@ -35,17 +36,24 @@ main().catch(error => {
 async function main() {
     const args = parseArgs(process.argv.slice(2));
     const configs = args.option ? [CALENDARS[args.option]] : Object.values(CALENDARS);
+    const scripts = listAppScripts();
     let written = false;
     for (const config of configs) {
-        written = await updateCalendar(config, args) || written;
+        if (!scripts.includes(config.relativePath)) {
+            console.log(`${config.calendarName} : calendrier retiré du manifeste.`);
+            continue;
+        }
+        const { days, changed } = await updateCalendar(config, args);
+        if (config.option === 'TEMPO') syncTempoContract(days, args.dryRun);
+        written ||= changed;
     }
     if (written && !args.dryRun) {
-        console.log('Penser à relire git diff puis régénérer les goldens :');
+        console.log('Relire le diff et lancer les tests. La commande suivante accepte les nouveaux résultats après vérification.');
         console.log('  UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"');
     }
 }
 
-// -> true si le fichier du calendrier a été (ou serait, en dry-run) écrit.
+// Renvoie le calendrier complet, y compris en aperçu et quand il est déjà à jour.
 async function updateCalendar(config, args) {
     const file = path.join(REPO_ROOT, ...config.relativePath.split('/'));
     // Toujours relu, même en --full : sert au rapport ajouts/retraits.
@@ -59,7 +67,7 @@ async function updateCalendar(config, args) {
     const to = args.to ?? nextDay(todayParis());
     if (from > to) {
         console.log(`${config.calendarName} : à jour (dernière date connue ${lastKnown}).`);
-        return false;
+        return { days: existing, changed: false };
     }
     console.log(`${config.calendarName} : récupération ${from} -> ${to}`);
 
@@ -75,14 +83,37 @@ async function updateCalendar(config, args) {
     const content = serializeCalendarFile(config, next);
     if (fs.existsSync(file) && fs.readFileSync(file, 'utf8') === content) {
         console.log(`${config.calendarName} : aucun changement.`);
-        return false;
+        return { days: next, changed: false };
     }
     verifyGeneratedFile(content, file);
     if (!args.dryRun) {
         fs.writeFileSync(file, content);
     }
     console.log(`${args.dryRun ? 'Serait écrit' : 'Écrit'} : ${config.relativePath}`);
-    return true;
+    return { days: next, changed: true };
+}
+
+function syncTempoContract(days, dryRun) {
+    const relativePath = 'tests/golden/contracts-edf.json';
+    const file = path.join(REPO_ROOT, relativePath);
+    const contracts = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const tempo = contracts.find(contract => contract.name === 'EDF - Tempo');
+    if (!tempo) return; // Le calendrier peut servir à un autre contrat après le retrait de Tempo.
+
+    let changed = false;
+    for (const color of Object.keys(CALENDARS.TEMPO.types)) {
+        const group = tempo.specialDays.find(entry => entry.name === color);
+        if (!Array.isArray(group?.lastDays) || !Array.isArray(days[color])) {
+            throw new Error(`Liste des jours « ${color} » absente du calendrier ou de la référence EDF - Tempo`);
+        }
+        if (!isDeepStrictEqual(group.lastDays, days[color])) {
+            group.lastDays = days[color];
+            changed = true;
+        }
+    }
+    if (!changed) return;
+    if (!dryRun) fs.writeFileSync(file, JSON.stringify(contracts, null, 2) + '\n');
+    console.log(`Référence des jours Tempo ${dryRun ? 'à synchroniser' : 'synchronisée'} dans ${relativePath}.`);
 }
 
 function reportDiff(config, { added, removed }) {

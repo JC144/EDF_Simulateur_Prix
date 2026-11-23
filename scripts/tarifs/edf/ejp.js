@@ -6,6 +6,7 @@ defineTarif({
     offer_type: "TRV",
     lastUpdate: "2026-08-01",
     isCommunity: false,
+    subscriptionRule: { kind: "closed", reason: "Option EJP en extinction" },
     subscription_url: "",
     price_url: "https://particulier.edf.fr/content/dam/2-Actifs/Documents/Offres/Grille_prix_EJP.pdf",
     subscriptions: { 9: 19.52, 12: 23.14, 15: 26.81, 18: 30.37, 36: 52.6 },

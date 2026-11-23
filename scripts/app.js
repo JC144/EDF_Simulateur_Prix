@@ -19,8 +19,13 @@ async function showPrices() {
     const { settings, data } = pendingCalculation;
     let errorMessage = "Le chargement des tarifs a échoué. Vérifiez votre connexion.";
     try {
+        const viewReady = resultsView.start();
         const [offers, { simulateOffers }] = await Promise.all([
-            loadTarifs(settings), import('./core/simulation.js'), resultsView.start()
+            loadTarifs(settings, (loaded, total) => {
+                if (id === calculationId) resultsView.loading(loaded, total);
+            }),
+            import('./core/simulation.js'),
+            viewReady
         ]);
         if (id !== calculationId) return;
         errorMessage = "Le calcul des tarifs a échoué.";
@@ -40,6 +45,7 @@ async function showPrices() {
         pendingCalculation = null;
     } catch (error) {
         if (id !== calculationId) return;
+        calculationId++; // Les chargements encore en cours ne doivent pas masquer l’erreur.
         console.error(error);
         resultsView.showError(errorMessage);
     }

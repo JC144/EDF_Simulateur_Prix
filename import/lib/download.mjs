@@ -15,9 +15,12 @@ const HEADERS = {
     'Accept-Language': 'fr-FR,fr;q=0.9',
 };
 
+export function cacheBasename(url) {
+    return path.basename(new URL(url).pathname) || 'grille';
+}
+
 export function cachePathFor(url, sha256) {
-    const basename = path.basename(new URL(url).pathname) || 'grille';
-    return path.join(CACHE_DIR, `${sha256.slice(0, 8)}-${basename}`);
+    return path.join(CACHE_DIR, `${sha256.slice(0, 8)}-${cacheBasename(url)}`);
 }
 
 // -> { status: 'not-modified' } | { status: 'ok', sha256, buffer, cachePath, etag, lastModified }
@@ -29,7 +32,7 @@ export async function fetchGrille(url, { etag, lastModified, force = false } = {
 
     const res = await fetch(url, { headers, redirect: 'follow', signal: AbortSignal.timeout(30000) });
     if (res.status === 304) return { status: 'not-modified' };
-    if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+    if (!res.ok) throw Object.assign(new Error(`HTTP ${res.status} ${res.statusText}`), { status: res.status });
 
     const buffer = Buffer.from(await res.arrayBuffer());
     const sha256 = crypto.createHash('sha256').update(buffer).digest('hex');
@@ -50,7 +53,7 @@ export async function fetchGrille(url, { etag, lastModified, force = false } = {
 // connu du manifest (ou, à défaut, le plus récent pour ce basename).
 export function findInCache(url, sha256) {
     if (!fs.existsSync(CACHE_DIR)) return null;
-    const basename = path.basename(new URL(url).pathname) || 'grille';
+    const basename = cacheBasename(url);
     if (sha256) {
         const exact = cachePathFor(url, sha256);
         return fs.existsSync(exact) ? exact : null;

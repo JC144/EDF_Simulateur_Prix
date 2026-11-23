@@ -10542,1629 +10542,6 @@
     "specialDays": []
   },
   {
-    "name": "OHM Énergie - Premi’Ohm - Base",
-    "offer_type": "Marché",
-    "lastUpdate": "2026-11-13",
-    "isCommunity": true,
-    "subscription_url": "https://ohm-energie.com/offre/electricite",
-    "price_url": "https://ohm-energie.com/grilles/elec/2026/11/ELEC-PremiOhm.pdf",
-    "prices": [
-      {
-        "puissance": 3,
-        "abonnement": 12.15,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 4,
-        "abonnement": 14.48,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 5,
-        "abonnement": 15.05,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 6,
-        "abonnement": 15.88,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 7,
-        "abonnement": 18.44,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 8,
-        "abonnement": 19.02,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 9,
-        "abonnement": 19.9,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 10,
-        "abonnement": 22.36,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 11,
-        "abonnement": 22.94,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 12,
-        "abonnement": 23.78,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 13,
-        "abonnement": 26.05,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 14,
-        "abonnement": 26.58,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 15,
-        "abonnement": 27.42,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 16,
-        "abonnement": 29.79,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 17,
-        "abonnement": 30.34,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 18,
-        "abonnement": 31.16,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 19,
-        "abonnement": 33.79,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 20,
-        "abonnement": 35.35,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 21,
-        "abonnement": 36.69,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 22,
-        "abonnement": 37.67,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 23,
-        "abonnement": 38.29,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 24,
-        "abonnement": 39.16,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 25,
-        "abonnement": 41.55,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 26,
-        "abonnement": 42.99,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 27,
-        "abonnement": 44.21,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 28,
-        "abonnement": 45.1,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 29,
-        "abonnement": 45.66,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 30,
-        "abonnement": 46.49,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 31,
-        "abonnement": 48.91,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 32,
-        "abonnement": 50.36,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 33,
-        "abonnement": 51.59,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 34,
-        "abonnement": 52.49,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 35,
-        "abonnement": 53.06,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      },
-      {
-        "puissance": 36,
-        "abonnement": 53.89,
-        "bleu": {
-          "prixKwhHC": 23.24
-        }
-      }
-    ],
-    "hc": [
-      {
-        "start": {
-          "hour": 0,
-          "minute": 0
-        },
-        "end": {
-          "hour": 24,
-          "minute": 0
-        }
-      }
-    ],
-    "hasHCCustom": false,
-    "hasSpecialDaysCustom": false,
-    "specialDays": []
-  },
-  {
-    "name": "OHM Énergie - Premi’Ohm - HP/HC",
-    "offer_type": "Marché",
-    "lastUpdate": "2026-11-13",
-    "isCommunity": true,
-    "subscription_url": "https://ohm-energie.com/offre/electricite",
-    "price_url": "https://ohm-energie.com/grilles/elec/2026/11/ELEC-PremiOhm.pdf",
-    "prices": [
-      {
-        "puissance": 4,
-        "abonnement": 14.61,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 5,
-        "abonnement": 15.21,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 6,
-        "abonnement": 16.07,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 7,
-        "abonnement": 18.66,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 8,
-        "abonnement": 19.27,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 9,
-        "abonnement": 20.18,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 10,
-        "abonnement": 22.68,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 11,
-        "abonnement": 23.28,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 12,
-        "abonnement": 24.15,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 13,
-        "abonnement": 26.45,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 14,
-        "abonnement": 27.02,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 15,
-        "abonnement": 27.88,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 16,
-        "abonnement": 30.29,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 17,
-        "abonnement": 30.87,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 18,
-        "abonnement": 31.72,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 19,
-        "abonnement": 34.38,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 20,
-        "abonnement": 35.98,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 21,
-        "abonnement": 37.34,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 22,
-        "abonnement": 38.35,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 23,
-        "abonnement": 39.01,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 24,
-        "abonnement": 39.9,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 25,
-        "abonnement": 42.33,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 26,
-        "abonnement": 43.79,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 27,
-        "abonnement": 45.05,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 28,
-        "abonnement": 45.97,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 29,
-        "abonnement": 46.56,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 30,
-        "abonnement": 47.42,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 31,
-        "abonnement": 49.87,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 32,
-        "abonnement": 51.35,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 33,
-        "abonnement": 52.62,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 34,
-        "abonnement": 53.55,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 35,
-        "abonnement": 54.15,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      },
-      {
-        "puissance": 36,
-        "abonnement": 55.01,
-        "bleu": {
-          "prixKwhHP": 25.06,
-          "prixKwhHC": 18.21
-        }
-      }
-    ],
-    "hc": [],
-    "hasHCCustom": true,
-    "hasSpecialDaysCustom": false,
-    "specialDays": []
-  },
-  {
-    "name": "OHM Énergie - Sérénité Fixe 1 an - Base",
-    "offer_type": "Marché",
-    "lastUpdate": "2026-11-12",
-    "isCommunity": true,
-    "subscription_url": "https://ohm-energie.com/offre/electricite",
-    "price_url": "https://ohm-energie.com/grilles/elec/2026/11/ELEC-Serenite_Fixe_1an.pdf",
-    "prices": [
-      {
-        "puissance": 3,
-        "abonnement": 11.04,
-        "bleu": {
-          "prixKwhHC": 20.01
-        }
-      },
-      {
-        "puissance": 4,
-        "abonnement": 13.16,
-        "bleu": {
-          "prixKwhHC": 20.01
-        }
-      },
-      {
-        "puissance": 5,
-        "abonnement": 13.69,
-        "bleu": {
-          "prixKwhHC": 20.01
-        }
-      },
-      {
-        "puissance": 6,
-        "abonnement": 14.45,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 7,
-        "abonnement": 16.77,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 8,
-        "abonnement": 17.31,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 9,
-        "abonnement": 18.11,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 10,
-        "abonnement": 20.35,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 11,
-        "abonnement": 20.88,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 12,
-        "abonnement": 21.65,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 13,
-        "abonnement": 23.71,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 14,
-        "abonnement": 24.21,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 15,
-        "abonnement": 24.97,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 16,
-        "abonnement": 27.12,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 17,
-        "abonnement": 27.63,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 18,
-        "abonnement": 28.39,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 19,
-        "abonnement": 30.77,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 20,
-        "abonnement": 32.19,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 21,
-        "abonnement": 33.41,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 22,
-        "abonnement": 34.31,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 23,
-        "abonnement": 34.88,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 24,
-        "abonnement": 35.68,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 25,
-        "abonnement": 37.85,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 26,
-        "abonnement": 39.15,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 27,
-        "abonnement": 40.27,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 28,
-        "abonnement": 41.09,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 29,
-        "abonnement": 41.61,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 30,
-        "abonnement": 42.37,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 31,
-        "abonnement": 44.56,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 32,
-        "abonnement": 45.88,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 33,
-        "abonnement": 47.01,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 34,
-        "abonnement": 47.84,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 35,
-        "abonnement": 48.36,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      },
-      {
-        "puissance": 36,
-        "abonnement": 49.13,
-        "bleu": {
-          "prixKwhHC": 22.51
-        }
-      }
-    ],
-    "hc": [
-      {
-        "start": {
-          "hour": 0,
-          "minute": 0
-        },
-        "end": {
-          "hour": 24,
-          "minute": 0
-        }
-      }
-    ],
-    "hasHCCustom": false,
-    "hasSpecialDaysCustom": false,
-    "specialDays": []
-  },
-  {
-    "name": "OHM Énergie - Sérénité Fixe 1 an - HP/HC",
-    "offer_type": "Marché",
-    "lastUpdate": "2026-11-12",
-    "isCommunity": true,
-    "subscription_url": "https://ohm-energie.com/offre/electricite",
-    "price_url": "https://ohm-energie.com/grilles/elec/2026/11/ELEC-Serenite_Fixe_1an.pdf",
-    "prices": [
-      {
-        "puissance": 4,
-        "abonnement": 13.28,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 5,
-        "abonnement": 13.84,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 6,
-        "abonnement": 14.64,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 7,
-        "abonnement": 16.99,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 8,
-        "abonnement": 17.56,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 9,
-        "abonnement": 18.39,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 10,
-        "abonnement": 20.66,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 11,
-        "abonnement": 21.22,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 12,
-        "abonnement": 22.02,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 13,
-        "abonnement": 24.11,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 14,
-        "abonnement": 24.64,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 15,
-        "abonnement": 25.44,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 16,
-        "abonnement": 27.62,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 17,
-        "abonnement": 28.16,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 18,
-        "abonnement": 28.95,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 19,
-        "abonnement": 31.36,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 20,
-        "abonnement": 32.81,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 21,
-        "abonnement": 34.06,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 22,
-        "abonnement": 34.99,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 23,
-        "abonnement": 35.6,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 24,
-        "abonnement": 36.42,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 25,
-        "abonnement": 38.62,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 26,
-        "abonnement": 39.96,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 27,
-        "abonnement": 41.11,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 28,
-        "abonnement": 41.96,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 29,
-        "abonnement": 42.51,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 30,
-        "abonnement": 43.3,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 31,
-        "abonnement": 45.53,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 32,
-        "abonnement": 46.88,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 33,
-        "abonnement": 48.04,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 34,
-        "abonnement": 48.89,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 35,
-        "abonnement": 49.45,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      },
-      {
-        "puissance": 36,
-        "abonnement": 50.25,
-        "bleu": {
-          "prixKwhHP": 24.48,
-          "prixKwhHC": 17.78
-        }
-      }
-    ],
-    "hc": [],
-    "hasHCCustom": true,
-    "hasSpecialDaysCustom": false,
-    "specialDays": []
-  },
-  {
-    "name": "OHM Énergie - Sérénité Fixe 2 ans - Base",
-    "offer_type": "Marché",
-    "lastUpdate": "2026-11-13",
-    "isCommunity": true,
-    "subscription_url": "https://ohm-energie.com/offre/electricite",
-    "price_url": "https://ohm-energie.com/grilles/elec/2026/11/ELEC-Serenite_Fixe_2ans.pdf",
-    "prices": [
-      {
-        "puissance": 3,
-        "abonnement": 12.15,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 4,
-        "abonnement": 14.48,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 5,
-        "abonnement": 15.05,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 6,
-        "abonnement": 15.88,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 7,
-        "abonnement": 18.44,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 8,
-        "abonnement": 19.02,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 9,
-        "abonnement": 19.9,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 10,
-        "abonnement": 22.36,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 11,
-        "abonnement": 22.94,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 12,
-        "abonnement": 23.78,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 13,
-        "abonnement": 26.05,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 14,
-        "abonnement": 26.58,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 15,
-        "abonnement": 27.42,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 16,
-        "abonnement": 29.79,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 17,
-        "abonnement": 30.34,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 18,
-        "abonnement": 31.16,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 19,
-        "abonnement": 33.79,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 20,
-        "abonnement": 35.35,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 21,
-        "abonnement": 36.69,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 22,
-        "abonnement": 37.67,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 23,
-        "abonnement": 38.29,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 24,
-        "abonnement": 39.16,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 25,
-        "abonnement": 41.55,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 26,
-        "abonnement": 42.99,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 27,
-        "abonnement": 44.21,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 28,
-        "abonnement": 45.1,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 29,
-        "abonnement": 45.66,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 30,
-        "abonnement": 46.49,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 31,
-        "abonnement": 48.91,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 32,
-        "abonnement": 50.36,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 33,
-        "abonnement": 51.59,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 34,
-        "abonnement": 52.49,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 35,
-        "abonnement": 53.06,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      },
-      {
-        "puissance": 36,
-        "abonnement": 53.89,
-        "bleu": {
-          "prixKwhHC": 22.85
-        }
-      }
-    ],
-    "hc": [
-      {
-        "start": {
-          "hour": 0,
-          "minute": 0
-        },
-        "end": {
-          "hour": 24,
-          "minute": 0
-        }
-      }
-    ],
-    "hasHCCustom": false,
-    "hasSpecialDaysCustom": false,
-    "specialDays": []
-  },
-  {
-    "name": "OHM Énergie - Sérénité Fixe 2 ans - HP/HC",
-    "offer_type": "Marché",
-    "lastUpdate": "2026-11-13",
-    "isCommunity": true,
-    "subscription_url": "https://ohm-energie.com/offre/electricite",
-    "price_url": "https://ohm-energie.com/grilles/elec/2026/11/ELEC-Serenite_Fixe_2ans.pdf",
-    "prices": [
-      {
-        "puissance": 4,
-        "abonnement": 14.61,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 5,
-        "abonnement": 15.21,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 6,
-        "abonnement": 16.07,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 7,
-        "abonnement": 18.66,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 8,
-        "abonnement": 19.27,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 9,
-        "abonnement": 20.18,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 10,
-        "abonnement": 22.68,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 11,
-        "abonnement": 23.28,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 12,
-        "abonnement": 24.15,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 13,
-        "abonnement": 26.45,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 14,
-        "abonnement": 27.02,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 15,
-        "abonnement": 27.88,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 16,
-        "abonnement": 30.29,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 17,
-        "abonnement": 30.87,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 18,
-        "abonnement": 31.72,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 19,
-        "abonnement": 34.38,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 20,
-        "abonnement": 35.98,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 21,
-        "abonnement": 37.34,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 22,
-        "abonnement": 38.35,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 23,
-        "abonnement": 39.01,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 24,
-        "abonnement": 39.9,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 25,
-        "abonnement": 42.33,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 26,
-        "abonnement": 43.79,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 27,
-        "abonnement": 45.05,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 28,
-        "abonnement": 45.97,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 29,
-        "abonnement": 46.56,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 30,
-        "abonnement": 47.42,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 31,
-        "abonnement": 49.87,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 32,
-        "abonnement": 51.35,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 33,
-        "abonnement": 52.62,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 34,
-        "abonnement": 53.55,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 35,
-        "abonnement": 54.15,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      },
-      {
-        "puissance": 36,
-        "abonnement": 55.01,
-        "bleu": {
-          "prixKwhHP": 24.69,
-          "prixKwhHC": 18.03
-        }
-      }
-    ],
-    "hc": [],
-    "hasHCCustom": true,
-    "hasSpecialDaysCustom": false,
-    "specialDays": []
-  },
-  {
     "name": "Papernest Énergie - Électricité 100 % renouvelable - Base",
     "offer_type": "Marché",
     "lastUpdate": "2026-09-22",
@@ -17228,429 +15605,545 @@
     "specialDays": []
   },
   {
-    "name": "OHM Énergie - Week-end",
+    "name": "OHM Énergie - Prix Réservé - Base",
     "offer_type": "Marché",
-    "lastUpdate": "2026-09-04",
+    "lastUpdate": "2026-11-16",
     "isCommunity": true,
-    "subscription_url": "https://ohm-energie.com/offre/electricite",
-    "price_url": "https://ohm-energie.com/grilles/elec/2026/09/ELEC-weekend_fixe.pdf",
+    "subscription_url": "https://ohm-energie.com/prix-reserve-electricite-et-gaz",
+    "price_url": "https://ohm-energie.com/grilles/elec/2026/11/ELEC-Prix_Reserve.pdf",
     "prices": [
       {
         "puissance": 3,
-        "abonnement": 12.46,
+        "abonnement": 12.15,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.05
         }
       },
       {
         "puissance": 4,
-        "abonnement": 14.87,
+        "abonnement": 14.48,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.05
         }
       },
       {
         "puissance": 5,
-        "abonnement": 15.48,
+        "abonnement": 15.05,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.05
         }
       },
       {
         "puissance": 6,
-        "abonnement": 16.35,
+        "abonnement": 15.88,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.05
         }
       },
       {
         "puissance": 7,
-        "abonnement": 18.99,
+        "abonnement": 18.44,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 8,
-        "abonnement": 19.62,
+        "abonnement": 19.02,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 9,
-        "abonnement": 20.54,
+        "abonnement": 19.9,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 10,
-        "abonnement": 23.08,
+        "abonnement": 22.36,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 11,
-        "abonnement": 23.7,
+        "abonnement": 22.94,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 12,
-        "abonnement": 24.58,
+        "abonnement": 23.78,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 13,
-        "abonnement": 26.92,
+        "abonnement": 26.05,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 14,
-        "abonnement": 27.49,
+        "abonnement": 26.58,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 15,
-        "abonnement": 28.37,
+        "abonnement": 27.42,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 16,
-        "abonnement": 30.82,
+        "abonnement": 29.79,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 17,
-        "abonnement": 31.41,
+        "abonnement": 30.34,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 18,
-        "abonnement": 32.27,
+        "abonnement": 31.16,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 19,
-        "abonnement": 34.98,
+        "abonnement": 33.79,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 20,
-        "abonnement": 36.61,
+        "abonnement": 35.35,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 21,
-        "abonnement": 37.99,
+        "abonnement": 36.69,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 22,
-        "abonnement": 39.02,
+        "abonnement": 37.67,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 23,
-        "abonnement": 39.69,
+        "abonnement": 38.29,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 24,
-        "abonnement": 40.6,
+        "abonnement": 39.16,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 25,
-        "abonnement": 43.07,
+        "abonnement": 41.55,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 26,
-        "abonnement": 44.56,
+        "abonnement": 42.99,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 27,
-        "abonnement": 45.83,
+        "abonnement": 44.21,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 28,
-        "abonnement": 46.77,
+        "abonnement": 45.1,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 29,
-        "abonnement": 47.37,
+        "abonnement": 45.66,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 30,
-        "abonnement": 48.24,
+        "abonnement": 46.49,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 31,
-        "abonnement": 50.74,
+        "abonnement": 48.91,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 32,
-        "abonnement": 52.25,
+        "abonnement": 50.36,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 33,
-        "abonnement": 53.53,
+        "abonnement": 51.59,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 34,
-        "abonnement": 54.48,
+        "abonnement": 52.49,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 35,
-        "abonnement": 55.09,
+        "abonnement": 53.06,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
-        },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
         }
       },
       {
         "puissance": 36,
-        "abonnement": 55.97,
+        "abonnement": 53.89,
         "bleu": {
-          "prixKwhHP": 26.5,
-          "prixKwhHC": 17.37
+          "prixKwhHC": 18.7
+        }
+      }
+    ],
+    "hc": [
+      {
+        "start": {
+          "hour": 0,
+          "minute": 0
         },
-        "weekend": {
-          "prixKwhHP": 17.37,
-          "prixKwhHC": 17.37
+        "end": {
+          "hour": 24,
+          "minute": 0
+        }
+      }
+    ],
+    "hasHCCustom": false,
+    "hasSpecialDaysCustom": false,
+    "specialDays": []
+  },
+  {
+    "name": "OHM Énergie - Prix Réservé - HP/HC",
+    "offer_type": "Marché",
+    "lastUpdate": "2026-11-16",
+    "isCommunity": true,
+    "subscription_url": "https://ohm-energie.com/prix-reserve-electricite-et-gaz",
+    "price_url": "https://ohm-energie.com/grilles/elec/2026/11/ELEC-Prix_Reserve.pdf",
+    "prices": [
+      {
+        "puissance": 4,
+        "abonnement": 14.61,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 5,
+        "abonnement": 15.21,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 6,
+        "abonnement": 16.07,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 7,
+        "abonnement": 18.66,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 8,
+        "abonnement": 19.27,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 9,
+        "abonnement": 20.18,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 10,
+        "abonnement": 22.68,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 11,
+        "abonnement": 23.28,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 12,
+        "abonnement": 24.15,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 13,
+        "abonnement": 26.45,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 14,
+        "abonnement": 27.02,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 15,
+        "abonnement": 27.88,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 16,
+        "abonnement": 30.29,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 17,
+        "abonnement": 30.87,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 18,
+        "abonnement": 31.72,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 19,
+        "abonnement": 34.38,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 20,
+        "abonnement": 35.98,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 21,
+        "abonnement": 37.34,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 22,
+        "abonnement": 38.35,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 23,
+        "abonnement": 39.01,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 24,
+        "abonnement": 39.9,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 25,
+        "abonnement": 42.33,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 26,
+        "abonnement": 43.79,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 27,
+        "abonnement": 45.05,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 28,
+        "abonnement": 45.97,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 29,
+        "abonnement": 46.56,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 30,
+        "abonnement": 47.42,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 31,
+        "abonnement": 49.87,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 32,
+        "abonnement": 51.35,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 33,
+        "abonnement": 52.62,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 34,
+        "abonnement": 53.55,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 35,
+        "abonnement": 54.15,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
+        }
+      },
+      {
+        "puissance": 36,
+        "abonnement": 55.01,
+        "bleu": {
+          "prixKwhHP": 20.27,
+          "prixKwhHC": 14.85
         }
       }
     ],
     "hc": [],
     "hasHCCustom": true,
     "hasSpecialDaysCustom": false,
-    "specialDays": [
-      0,
-      6
-    ]
+    "specialDays": []
   },
   {
     "name": "Volterres - Mon producteur (riverains) - Base",

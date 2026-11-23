@@ -13,6 +13,7 @@ import { listTarifDefs, groupByPriceUrl } from '../lib/tarif-defs.mjs';
 import { fetchGrille, findInCache } from '../lib/download.mjs';
 import { loadManifest } from '../lib/manifest.mjs';
 import { isPdfUrl, providerFor } from '../lib/registry.mjs';
+import { fixtureSlug as slugFor } from '../lib/fixtures.mjs';
 import { extractPdf, serializeDocText, serializeDocJson } from '../lib/pdf-text.mjs';
 
 const { values: opts } = parseArgs({
@@ -24,11 +25,6 @@ const { values: opts } = parseArgs({
 
 const manifest = loadManifest();
 const FIXTURES_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'fixtures');
-
-function slugFor(url) {
-    return path.basename(new URL(url).pathname, '.pdf')
-        .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-}
 
 const byUrl = groupByPriceUrl(listTarifDefs());
 for (const [url, defs] of byUrl) {

@@ -351,7 +351,7 @@
                     <div class="kicker">Le catalogue</div>
                     <h2>Tarifs actuellement suivis</h2>
                     <!-- TARIFS-LIST:BEGIN -->
-                    <p class="tarifs-intro"><strong>146 offres de 26 fournisseurs</strong> sont actuellement suivies. Les grilles tarifaires sont actualisées au fil de l’eau à partir des documents des fournisseurs (dernière mise à jour le 23 novembre 2026).</p>
+                    <p class="tarifs-intro"><strong>141 offres de 26 fournisseurs</strong> sont actuellement suivies. Les grilles tarifaires sont actualisées au fil de l’eau à partir des documents des fournisseurs (dernière mise à jour le 23 novembre 2026).</p>
                     <button class="tarifs-toggle collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#tarifsDetail" aria-expanded="false" aria-controls="tarifsDetail">
                         <span>Voir le détail des offres suivies</span>
@@ -919,39 +919,14 @@
                                         <a href="tarifs/ohm-energie-extra-eco-hp-hc.html">détails de l’offre</a>
                                     </div>
                                     <div class="tarifs-offer">
-                                        <span class="tarifs-offer-name"><strong>OHM Énergie - Premi’Ohm - Base</strong>
-                                            <span class="tarifs-offer-meta">Offre de marché — grille du 13 novembre 2026</span></span>
-                                        <a href="tarifs/ohm-energie-premi-ohm-base.html">détails de l’offre</a>
+                                        <span class="tarifs-offer-name"><strong>OHM Énergie - Prix Réservé - Base</strong>
+                                            <span class="tarifs-offer-meta">Offre de marché — grille du 16 novembre 2026</span></span>
+                                        <a href="tarifs/ohm-energie-prix-reserve-base.html">détails de l’offre</a>
                                     </div>
                                     <div class="tarifs-offer">
-                                        <span class="tarifs-offer-name"><strong>OHM Énergie - Premi’Ohm - HP/HC</strong>
-                                            <span class="tarifs-offer-meta">Offre de marché — grille du 13 novembre 2026</span></span>
-                                        <a href="tarifs/ohm-energie-premi-ohm-hp-hc.html">détails de l’offre</a>
-                                    </div>
-                                    <div class="tarifs-offer">
-                                        <span class="tarifs-offer-name"><strong>OHM Énergie - Sérénité Fixe 1 an - Base</strong>
-                                            <span class="tarifs-offer-meta">Offre de marché — grille du 12 novembre 2026</span></span>
-                                        <a href="tarifs/ohm-energie-serenite-fixe-1-an-base.html">détails de l’offre</a>
-                                    </div>
-                                    <div class="tarifs-offer">
-                                        <span class="tarifs-offer-name"><strong>OHM Énergie - Sérénité Fixe 1 an - HP/HC</strong>
-                                            <span class="tarifs-offer-meta">Offre de marché — grille du 12 novembre 2026</span></span>
-                                        <a href="tarifs/ohm-energie-serenite-fixe-1-an-hp-hc.html">détails de l’offre</a>
-                                    </div>
-                                    <div class="tarifs-offer">
-                                        <span class="tarifs-offer-name"><strong>OHM Énergie - Sérénité Fixe 2 ans - Base</strong>
-                                            <span class="tarifs-offer-meta">Offre de marché — grille du 13 novembre 2026</span></span>
-                                        <a href="tarifs/ohm-energie-serenite-fixe-2-ans-base.html">détails de l’offre</a>
-                                    </div>
-                                    <div class="tarifs-offer">
-                                        <span class="tarifs-offer-name"><strong>OHM Énergie - Sérénité Fixe 2 ans - HP/HC</strong>
-                                            <span class="tarifs-offer-meta">Offre de marché — grille du 13 novembre 2026</span></span>
-                                        <a href="tarifs/ohm-energie-serenite-fixe-2-ans-hp-hc.html">détails de l’offre</a>
-                                    </div>
-                                    <div class="tarifs-offer">
-                                        <span class="tarifs-offer-name"><strong>OHM Énergie - Week-end</strong>
-                                            <span class="tarifs-offer-meta">Offre de marché — grille du 4 septembre 2026</span></span>
-                                        <a href="tarifs/ohm-energie-week-end.html">détails de l’offre</a>
+                                        <span class="tarifs-offer-name"><strong>OHM Énergie - Prix Réservé - HP/HC</strong>
+                                            <span class="tarifs-offer-meta">Offre de marché — grille du 16 novembre 2026</span></span>
+                                        <a href="tarifs/ohm-energie-prix-reserve-hp-hc.html">détails de l’offre</a>
                                     </div>
                                     <div class="tarifs-offer">
                                         <span class="tarifs-offer-name"><strong>Papernest Énergie - Électricité 100 % renouvelable - Base</strong>
@@ -1557,7 +1532,7 @@
                             <strong id="calculationLabel" role="status"></strong>
                             <span id="calculationCount" class="calculation-count"></span>
                         </div>
-                        <progress id="calculationProgress" class="calculation-progress" aria-label="Progression de l’analyse des offres"></progress>
+                        <progress id="calculationProgress" class="calculation-progress" aria-labelledby="calculationLabel"></progress>
                         <button type="button" class="btn btn-primary mt-2" id="retryCalculation" hidden>Réessayer</button>
                     </div>
                     <div id="resultPeriod" class="mt-4 mb-4" hidden>
@@ -1700,7 +1675,6 @@
             <div class="position-relative py-2 px-4 text-center border border-info rounded-pill">
                 <h4 class="h5 mt-1 mb-1" data-ref="conso-title"></h4>
             </div>
-            <p class="mt-3" data-ref="calendar-notice" hidden></p>
             <div class="alert alert-warning mt-3" role="alert">
                 <strong class="alert-heading"><svg class="icon icon-triangle-exclamation toast-icon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg>
                     Attention:
@@ -1745,6 +1719,7 @@
                 <button type="button" class="btn btn-link p-0 ms-3 tarif-toggle" title="Détail mois par mois"
                     data-bs-toggle="collapse" aria-expanded="false" data-ref="toggle"><svg class="icon icon-chevron-right" viewBox="0 0 320 512" aria-hidden="true" focusable="false"><use href="#fa-chevron-right"/></svg></button>
                 <span class="ms-2" data-ref="title"></span>
+                <span class="ms-2 tarif-badge tarif-badge-closed" data-ref="subscription-badge"></span>
                 <!-- Grille de plus de STALE_MONTHS mois : tooltip Bootstrap (voir resultsRenderer) -->
                 <span class="ms-1 text-warning tarif-stale-icon" tabindex="0" role="img"
                     data-ref="stale-warning" hidden><svg class="icon icon-triangle-exclamation" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><use href="#fa-triangle-exclamation"/></svg></span>

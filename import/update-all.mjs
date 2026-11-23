@@ -15,6 +15,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
 import { REPO_ROOT } from './lib/tarif-defs.mjs';
+import { printWithdrawals } from './lib/report.mjs';
+import { catalogStatus } from './lib/subscriptions.mjs';
+import { printCatalogStatus } from './status.mjs';
 import { reportChanges } from './lib/site-gen.mjs';
 import { run as runTarifsSection } from './tools/gen-tarifs-section.mjs';
 import { run as runTarifPages } from './tools/gen-tarif-pages.mjs';
@@ -102,6 +105,9 @@ async function main() {
             await runGoldens();
         }
     }
+    const tarifs = results.find(r => r.entry.id === 'tarifs');
+    if (tarifs?.withdrawals) printWithdrawals(tarifs.withdrawals);
+    printCatalogStatus(tarifs?.catalog ?? catalogStatus());
     if (!allOk) process.exitCode = 1;
 }
 
@@ -159,16 +165,24 @@ function runScript(entry, cliArgs) {
     const start = Date.now();
     return new Promise(resolve => {
         const chunks = [];
+        let withdrawals;
+        let catalog;
         let settled = false;
         const done = code => {
             if (settled) return;
             settled = true;
             const output = chunks.join('');
-            resolve({ entry, code, durationMs: Date.now() - start, output, ...analyzeOutput(output) });
+            resolve({ entry, code, durationMs: Date.now() - start, output, withdrawals, catalog, ...analyzeOutput(output) });
         };
         const child = spawn(process.execPath, [path.join(IMPORT_DIR, entry.script), ...cliArgs], {
             cwd: IMPORT_DIR,
-            stdio: ['ignore', 'pipe', 'pipe'],
+            stdio: entry.id === 'tarifs' ? ['ignore', 'pipe', 'pipe', 'ipc'] : ['ignore', 'pipe', 'pipe'],
+        });
+        child.on('message', message => {
+            if (message.type === 'offer-withdrawals') {
+                withdrawals = message.findings;
+                catalog = message.catalog;
+            }
         });
         for (const stream of [child.stdout, child.stderr]) {
             stream.setEncoding('utf8');
@@ -269,7 +283,8 @@ function printUsage() {
 
 Lance les scripts de mise à jour du dossier import/ (calendriers Tempo/EJP,
 calendriers Zenflex et Éclair, prix spot EPEX FR, grilles tarifaires), bufferise
-leur sortie et affiche une synthèse finale.
+leur sortie et termine par le nombre d’offres actives, de tarifs et de fournisseurs du catalogue.
+Pour afficher aussi les souscriptions désactivées, lancer npm run status.
 
 Options :
   --dry-run       forwardé à tous : tout le pipeline sauf l'écriture

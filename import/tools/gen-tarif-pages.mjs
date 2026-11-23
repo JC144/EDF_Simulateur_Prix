@@ -23,7 +23,7 @@ import {
     COMMUNITY_NOTE, JOURS, MOIS, escapeHtml, formatDate, formatHour, providerOf, offerLabel,
     replaceBetweenMarkers, reportChanges, syncFile, toMinutes,
 } from '../lib/site-gen.mjs';
-import { tarifSlug, STALE_MONTHS } from '../../scripts/utils/tarifMeta.js';
+import { tarifSlug, STALE_MONTHS, subscriptionBadgeLabel } from '../../scripts/utils/tarifMeta.js';
 import { bandInfo, dayBadge } from '../../scripts/ui/tariffDisplay.js';
 import { formatKvaGroup, joinFr, renderBadge, renderHcSection, renderPriceSections } from '../../scripts/ui/grillePrices.js';
 import { priceSnapshot, syncHistory } from '../lib/grille-history.mjs';
@@ -299,9 +299,11 @@ export function buildGrille(def, display, calendars, warnings = []) {
         isCommunity: def.isCommunity === true,
         lastUpdate: def.lastUpdate,
         subscriptionUrl: def.subscription_url || null,
+        subscriptionRule: def.subscriptionRule,
         priceUrl: def.price_url,
         marketIndex: def.marketIndex,
         eligibility: def.eligibility,
+        subscriptionNote: def.subscriptionNote,
         priceIsPdf: isPdfUrl(def.price_url),
         subscriptions: kvas.map(kva => {
             const monthly = def.subscriptions[kva];
@@ -509,6 +511,13 @@ export function renderPage(g, versions = [priceSnapshot(g)]) {
         `${M}    <p class="tarif-badges"><span class="tarif-badge">${g.offerType === 'TRV' ? 'Tarif réglementé' : 'Offre de marché'}</span>`
             + `${g.isCommunity ? ' <span class="tarif-badge tarif-badge-community">Tarif communautaire</span>' : ''}</p>`,
     ];
+    const rule = g.subscriptionRule;
+    if (rule) {
+        const expiry = rule.kind === 'expired'
+            ? ` data-subscription-end="${escapeHtml(rule.endDate)}" data-end-inclusive="${rule.endInclusive}" hidden` : '';
+        lines.push(`${S}<p${expiry}><span class="tarif-badge tarif-badge-closed">${subscriptionBadgeLabel(rule)}</span> ${escapeHtml(rule.reason)}</p>`);
+        if (expiry) lines.push(`${S}<noscript><p>${escapeHtml(rule.reason)}</p></noscript>`);
+    }
     if (g.isCommunity) lines.push(`${M}    <p class="tarifs-note">${COMMUNITY_NOTE}</p>`);
     lines.push(`${M}</header>`, '');
     if (versions.length > 1) {
@@ -545,6 +554,7 @@ export function renderPage(g, versions = [priceSnapshot(g)]) {
         `${S}<ul class="tarif-links">`,
     );
     if (g.eligibility) lines.push(`${S}    <li>${escapeHtml(g.eligibility)}</li>`);
+    if (g.subscriptionNote) lines.push(`${S}    <li>${escapeHtml(g.subscriptionNote)}</li>`);
     if (g.subscriptionUrl) {
         lines.push(`${S}    <li><a href="${escapeHtml(g.subscriptionUrl)}" target="_blank" rel="noopener">Page de l’offre sur le site du fournisseur</a></li>`);
     }
@@ -605,6 +615,10 @@ function renderSitemapEntries(grilles) {
     return `\n${entries.join('\n')}\n  `;
 }
 
+export function renderSitemap(sitemap, grilles) {
+    return replaceBetweenMarkers(sitemap, SITEMAP_BEGIN, SITEMAP_END, renderSitemapEntries(grilles), 'sitemap.xml');
+}
+
 // ------------------------------------------------------------------ //
 //  Orchestration                                                     //
 // ------------------------------------------------------------------ //
@@ -656,7 +670,7 @@ export function run({ check = false } = {}) {
 
     const sitemapPath = path.join(REPO_ROOT, 'sitemap.xml');
     const sitemap = fs.readFileSync(sitemapPath, 'utf8');
-    const nextSitemap = replaceBetweenMarkers(sitemap, SITEMAP_BEGIN, SITEMAP_END, renderSitemapEntries(grilles), 'sitemap.xml');
+    const nextSitemap = renderSitemap(sitemap, grilles);
     changes.push(syncFile(sitemapPath, nextSitemap, { check }));
 
     return { changes, warnings, errors };

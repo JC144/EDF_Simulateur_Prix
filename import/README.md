@@ -45,6 +45,7 @@ node update.mjs --force             # re-parse même si le SHA-256 n'a pas chang
 node update.mjs --offline           # réutilise les PDFs du cache/ (dev, sans réseau)
 node update.mjs --provider edf      # limite à un fournisseur
 node update.mjs --tarif "EDF - Tempo"
+npm run status                      # offres actives, tarifs, fournisseurs et souscriptions désactivées
 npm test                            # tests unitaires + snapshots des parsers (sans réseau)
 ```
 
@@ -56,7 +57,40 @@ $env:UPDATE_GOLDEN='1'; node --test "tests/**/*.test.mjs"; $env:UPDATE_GOLDEN=$n
 git diff tests/golden               # revue des snapshots de simulation
 ```
 
+## Supprimer un tarif ou un fournisseur
+
+Depuis le dossier `import/`, choisissez le nom exact de l’offre, le slug de sa page ou le nom du dossier fournisseur sous `scripts/tarifs/`.
+
+```powershell
+node remove.mjs --tarif "EDF - Tempo"          # aperçu pour une offre
+node remove.mjs --tarif edf-tempo --apply      # appliquer la suppression
+node remove.mjs --provider edf                 # aperçu de toutes les offres EDF
+node remove.mjs --provider edf --apply         # supprimer le fournisseur et ses offres
+```
+
+L’aperçu est le mode par défaut. `--dry-run` le sélectionne explicitement. Les mêmes options sont disponibles via `npm run remove "--" …` sous PowerShell.
+
+La commande retire les définitions sélectionnées, leurs fiches HTML, leurs archives dans `tarifs/historique/`, leurs tests dédiés et leurs entrées dans les snapshots de simulation. Elle actualise aussi le manifeste des scripts, le catalogue du simulateur, la liste des offres sur l’accueil et le sitemap.
+
+Si plusieurs offres partagent un fichier JavaScript, une grille PDF, un calendrier ou les prix spot, la ressource est conservée tant qu’une offre l’utilise. Les fichiers de test de la grille suivent la même règle. Seules les offres encore suivies figurent dans le snapshot du parseur. Les fichiers de cache sont nettoyés lorsque leur nom permet de les rattacher à la grille retirée.
+
+Le retrait de la dernière offre d’un fournisseur supprime aussi son parseur, son test d’import et les anciennes grilles identifiées dans `import/manifest.json`. Les tests propres à une offre se placent dans `tests/tarifs/<slug>.test.mjs` depuis la racine. Ceux d’un parseur se placent dans `import/tests/<fournisseur>.test.mjs`.
+
+### Repérer les retraits en fin d’import
+
+`update.mjs` et `update-all.mjs` affichent le nom de chaque offre concernée, le motif, le lien à consulter et sa commande `remove.mjs --tarif <slug> --apply`. Omettez `--apply` pour prévisualiser les fichiers concernés.
+
+Le bilan signale les fermetures mentionnées dans les grilles prises en charge (option EJP d’EDF et offres Enercoop identifiées). Pour Plenitude, il compare la fin de la période de souscription à la date du jour en France. Une période expirée invite à rechercher l’édition suivante de la grille.
+
+L’import synchronise le champ facultatif `subscriptionRule` de chaque tarif concerné, y compris pour les échéances futures. Après `npm run gen`, les résultats et les fiches affichent les fermetures documentées à la date de consultation, en heure de Paris. Un lien manquant ou un retrait à confirmer reste un signal de maintenance.
+
+Une grille en HTTP 404 ou 410, un lien de grille absent d’un catalogue analysé ou une offre introuvable dans le résultat du parseur apparaissent parmi les retraits à confirmer. Les pannes réseau et les erreurs de lecture restent dans le rapport d’import. En mode `--offline`, les constats portent sur les PDF en cache. En mode `--check-only`, seules les vérifications réseau et de catalogue sont effectuées.
+
 ## Mise à jour globale (update-all.mjs)
+
+La dernière ligne de `update-all.mjs` donne le nombre d’offres actives, le nombre total de tarifs et le nombre de fournisseurs du catalogue, même avec `--only`. Chaque fiche compte pour un tarif. Les options Base et HP/HC d’une offre comptent donc chacune une fois. Chaque fournisseur compte une fois, même si toutes ses offres sont fermées à la souscription.
+
+Depuis `import/`, `npm run status` affiche le même bilan et liste les fiches à souscription désactivée avec leur motif. Cette commande fonctionne hors ligne. Elle utilise le lien de souscription de chaque fiche et les conditions relevées dans la dernière grille lue par l’importeur. Une fiche est inactive si son lien est vide, si le fournisseur a signalé sa fermeture ou si sa période de souscription a expiré à la date du jour en France. Un retrait à confirmer reste un avertissement.
 
 Orchestrateur des cinq scripts (tempo, zenflex, eclair, spot, tarifs) : lancement
 en sous-processus **parallèles** (APIs distinctes), sortie de chaque script
@@ -234,10 +268,17 @@ un an par requête (le script tranche par année) ; les statuts par défaut
 pas encore annoncés — la couleur du lendemain tombe vers 11h) ne sont pas
 stockés : les calendriers ne listent que les jours spéciaux. Tout statut
 inconnu fait échouer le run. Le fichier est re-sérialisé entièrement
-(revalidation VM avant écriture, comme le reste du dossier). Après mise à
-jour : relire `git diff scripts/tarifs-lib/calendars` puis régénérer les
-goldens (`UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"`). Le premier
-import (2026-07) a été fait en `--full` : il a purgé les erreurs des listes
+(revalidation VM avant écriture, comme le reste du dossier).
+
+Chaque import Tempo synchronise les listes de jours blancs et rouges du contrat
+`EDF - Tempo` dans `tests/golden/contracts-edf.json`, même si le calendrier
+local est déjà à jour. L’option `--dry-run` affiche les changements prévus.
+Relire `git diff scripts/tarifs-lib/calendars tests/golden/contracts-edf.json`,
+puis lancer les tests. Si une correction historique change la couleur d’un jour
+ou un montant attendu sur le CSV d’exemple, vérifier cet écart avant de
+régénérer les références de simulation.
+
+Le premier import (2026-07) a été fait en `--full` : il a purgé les erreurs des listes
 historiques saisies à la main (16 dates Tempo mistypées « 2020 », doublons,
 saison EJP 2025-2026 manquante). Logique pure testée dans
 `tests/tempo-data.test.mjs`.

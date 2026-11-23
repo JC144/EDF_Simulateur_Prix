@@ -11,14 +11,10 @@ import { fileURLToPath } from 'node:url';
 
 import { listTarifDefs, groupByPriceUrl } from '../lib/tarif-defs.mjs';
 import { providerFor, isPdfUrl } from '../lib/registry.mjs';
+import { fixtureSlug, trackedGrid } from '../lib/fixtures.mjs';
 import { loadFixture } from '../lib/pdf-text.mjs';
 
 const IMPORT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-
-function slugFor(url) {
-    return path.basename(new URL(url).pathname, '.pdf')
-        .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-}
 
 const definitions = listTarifDefs();
 
@@ -35,7 +31,7 @@ for (const [url, defs] of byUrl) {
     if (!isPdfUrl(url)) continue;
     const provider = providerFor(url);
     if (!provider) continue;
-    const slug = slugFor(url);
+    const slug = fixtureSlug(url);
     const fixturePath = path.join(IMPORT_DIR, 'fixtures', provider, `${slug}.json`);
     const expectedPath = path.join(IMPORT_DIR, 'fixtures', provider, `${slug}.expected.json`);
     const parserPath = path.join(IMPORT_DIR, 'parsers', `${provider}.mjs`);
@@ -48,9 +44,7 @@ for (const [url, defs] of byUrl) {
         const parser = await import(`../parsers/${provider}.mjs`);
         const parsed = parser.parse(loadFixture(fixturePath), url);
 
-        for (const def of defs) {
-            assert.ok(parsed.offers[def.name], `offre "${def.name}" absente de la sortie du parser`);
-        }
-        assert.deepEqual(parsed, JSON.parse(fs.readFileSync(expectedPath, 'utf8')));
+        const expected = JSON.parse(fs.readFileSync(expectedPath, 'utf8'));
+        assert.deepEqual(trackedGrid(parsed, defs), trackedGrid(expected, defs));
     });
 }

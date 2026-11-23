@@ -228,7 +228,16 @@ test('renderPage : métadonnées, liens conditionnels, échappement, déterminis
 
     const other = renderPage(grilleOf({ ...base, name: 'Mint Énergie - Autre', subscription_url: '', price_url: 'https://exemple.fr/annexes' }));
     assert.doesNotMatch(other, /Page de l’offre/);
+    assert.doesNotMatch(other, /tarif-badge-closed/);
     assert.match(other, /Grille tarifaire officielle<\/a>/);
+
+    const closed = renderPage(grilleOf({ ...base, subscriptionRule: { kind: 'closed', reason: 'Réservé aux abonnés A & B' } }));
+    assert.match(closed, /<p><span class="tarif-badge tarif-badge-closed">Fermée à la souscription<\/span> Réservé aux abonnés A &amp; B<\/p>/);
+    const expired = renderPage(grilleOf({ ...base, subscriptionRule: {
+        kind: 'expired', endDate: '2026-12-01', endInclusive: false, reason: 'Fin le 1er décembre (non inclus)',
+    } }));
+    assert.match(expired, /data-subscription-end="2026-12-01" data-end-inclusive="false" hidden/);
+    assert.match(expired, /Souscription close pour cette grille/);
 });
 
 test('pageTitle / pageDescription : modèle, année de la grille, repli sous les limites', () => {

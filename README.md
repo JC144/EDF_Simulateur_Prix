@@ -3,21 +3,10 @@ Un outil pour simuler les différents tarifs de fournisseurs d'électricité dep
 
 [Version en ligne: https://comparateur-abonnements-electricite.fr](https://comparateur-abonnements-electricite.fr)
 
-## ☀️ Méga-Update estivale ☀️
-* **Import Enedis simplifié** : récupérez votre consommation directement depuis votre navigateur, sans extension ni service tiers
-* **Questionnaire initial repensé**
-  * Assistant pas-à-pas plus ergonomique
-  * Retour en arrière possible à chaque étape
-  * Champs de saisie plus lisibles
-* **Comparateur de prix**
-  * Répartition de la consommation par type de prix (heures pleines, heures creuses, etc.) **en kWh** ou **en euros**
-  * Performances nettement améliorées et consommation mémoire fortement réduite
-  * Indicateur signalant les mois pour lesquels il manque des jours de consommation
-* **Abonnements**
-  * Mise à jour automatique des prix de la plupart des abonnements (depuis les grilles tarifaires officielles)
-  * Récupération automatique des jours Tempo, EJP et ZenFlex
-  * Prise en charge des tarifs spot (dont Sobry SoFlex)
-* **À venir** : estimation du potentiel solaire
+## 🍁 Méga-Update automnale 🍁
+* **Support exhaustif de tous les fournisseurs français** : 141 tarifs, 26 fournisseurs
+* **Performances** : Chargement dynamique des prix
+* **Automatisation de l'import** : Mise en place du tooling pour importer les fichiers plutôt que de les gérer à la main
 
 ## Utilisation
 
@@ -69,6 +58,7 @@ Toutes les contributions sont les bienvenues, via une Pull Request vers `main` (
 
 * **Ajouter un tarif** — suivez le guide [scripts/tarifs/README.md](scripts/tarifs/README.md) : les tarifs sont des définitions déclaratives `defineTarif(...)` dans `scripts/tarifs/<fournisseur>/*.js` (aucune fonction à écrire), avec des recettes pour chaque type d'offre (Base, HP/HC, week-end, calendrier type Tempo, saisonnier, prix spot). N'oubliez pas d'ajouter son chemin dans `scripts/tarifs-manifest.js` (liste des scripts de tarifs, chargés à la demande au lancement du comparatif), puis générez la page de grille du tarif (`cd import && npm run gen`, voir [Pages de grille tarifaire](#pages-de-grille-tarifaire)).
 * **Mettre à jour un tarif** — modifiez les prix et `lastUpdate` dans le fichier concerné, puis suivez la [procédure de mise à jour](#mise-à-jour-des-données-tarifaires) (snapshots de simulation, pages de grille, relecture du diff).
+* **Supprimer un tarif ou un fournisseur** — depuis la racine, `node import/remove.mjs --tarif "EDF - Tempo"` ou `node import/remove.mjs --provider edf` affiche les fichiers concernés. Ajoutez `--apply` pour effectuer la suppression. [Détail du nettoyage](import/README.md#supprimer-un-tarif-ou-un-fournisseur)
 * **Créer un importateur pour un fournisseur non géré** — ajoutez un parser `import/parsers/<fournisseur>.mjs` respectant le contrat `parse(doc, url) -> { gridDate, offers }` (clés = `name` des `defineTarif`, prix kWh en centimes TTC, abonnements en €/mois TTC). Les outils `import/tools/` (`dump-text.mjs`, `try-parser.mjs`, `gen-expected.mjs`) permettent d'itérer sur des fixtures locales, avec des tests sans réseau — voir [import/README.md](import/README.md).
 * **Corriger ou améliorer l'application** (parsers d'export de consommation, interface, calculs) — l'architecture est décrite dans la section [Développement](#développement) ci-dessous.
 * **Signaler un problème ou proposer une offre manquante** — ouvrez une [issue](https://github.com/JC144/EDF_Simulateur_Prix/issues).
@@ -109,7 +99,7 @@ Procédure de mise à jour :
    ```
    cd import && npm run gen
    ```
-3. **Régénérer les snapshots de simulation** (goldens) — ou `node import/update-all.mjs --goldens` à l'étape 1 :
+3. **Régénérer les snapshots de simulation** (goldens) si les résultats attendus changent. L’import Tempo synchronise déjà les listes de jours blancs et rouges. Pour une mise à jour globale, utilisez `node import/update-all.mjs --goldens` à l’étape 1 ou lancez :
    ```
    UPDATE_GOLDEN=1 node --test "tests/**/*.test.mjs"
    ```
@@ -125,6 +115,8 @@ Procédure de mise à jour :
    cd import && npm test
    ```
    `npm test` échoue si les pages générées ne sont plus à jour (`npm run gen` oublié).
+
+`update-all.mjs` termine par le nombre d’offres actives, de tarifs et de fournisseurs du catalogue. Depuis la racine, `node import/status.mjs` affiche aussi les offres à souscription désactivée et le motif pour chacune.
 
 `node import/update-all.mjs --dry-run` (ou `--check-only`) exécute tout sans rien écrire et se contente de signaler les pages à régénérer. Détails et options : [import/README.md](import/README.md).
 
@@ -176,4 +168,4 @@ Basé sur une idée de [Nicolas 'Automnen'](https://twitter.com/autommen/) et [M
 * [libussa](libussa)
 
 ## A propos de l'auteur
-[Jean-Christophe VASSELON](https://www.linkedin.com/in/jvasselon/)
+[Jean-Christophe VASSELON](https://jc.vasselon.com)

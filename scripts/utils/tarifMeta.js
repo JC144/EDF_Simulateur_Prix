@@ -25,6 +25,22 @@ export function tarifPagePath(name) {
 // Au-delà de cet âge, une grille est signalée comme à vérifier.
 export const STALE_MONTHS = 6;
 
+const parisDay = new Intl.DateTimeFormat("fr-CA", { timeZone: "Europe/Paris" });
+
+export function todayInParis(date = new Date()) {
+    return parisDay.format(date);
+}
+
+export function isSubscriptionDisabled(rule, today = todayInParis()) {
+    if (rule?.kind === "closed") return true;
+    if (rule?.kind !== "expired") return false;
+    return rule.endInclusive ? today > rule.endDate : today >= rule.endDate;
+}
+
+export function subscriptionBadgeLabel(rule) {
+    return rule.kind === "closed" ? "Fermée à la souscription" : "Souscription close pour cette grille";
+}
+
 // lastUpdate "AAAA-MM-JJ". Vrai si today est strictement postérieur à
 // lastUpdate + STALE_MONTHS mois (calcul en UTC ; Date.UTC reporte les jours
 // en trop : 31 août + 6 mois = 3 mars).

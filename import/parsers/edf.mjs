@@ -8,11 +8,20 @@
 // des priceOverrides : la valeur de référence est celle de la plus grande
 // puissance.
 import path from 'node:path';
-import { buildLines } from '../lib/pdf-text.mjs';
+import { buildLines, pageToText } from '../lib/pdf-text.mjs';
 import { findKvaTables, extractTableValues, buildOffer } from '../lib/table.mjs';
 import { findApplicableDate } from '../lib/dates.mjs';
 
 export const provider = 'edf';
+
+export function subscriptionCheck(url) {
+    if (path.basename(new URL(url).pathname) !== 'Grille_prix_EJP.pdf') return null;
+    return doc => {
+        const closed = /option tarifaire EJP est en extinction et n['’]est plus disponible à la souscription/i;
+        return closed.test(pageToText(doc.pages[0]))
+            ? [{ names: ['EDF - EJP'], kind: 'closed', reason: 'Option EJP en extinction' }] : [];
+    };
+}
 
 const T = (offer, cols) => ({ offer, cols });
 

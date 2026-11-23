@@ -12,7 +12,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-import { REPO_ROOT } from './lib/tarif-defs.mjs';
+import { REPO_ROOT, listAppScripts } from './lib/tarif-defs.mjs';
 import { ZENFLEX, parseOpmResponse, requestDates, nextDay } from './lib/zenflex-data.mjs';
 import {
     daysByType, mergeDaysByType, diffDaysByType, serializeCalendarFile,
@@ -33,6 +33,10 @@ main().catch(error => {
 
 async function main() {
     const args = parseArgs(process.argv.slice(2));
+    if (!listAppScripts().includes(ZENFLEX.relativePath)) {
+        console.log('Zenflex : calendrier retiré du manifeste.');
+        return;
+    }
     const written = await updateCalendar(ZENFLEX, args);
     if (written && !args.dryRun) {
         console.log('Penser à relire git diff puis régénérer les goldens :');

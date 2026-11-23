@@ -153,6 +153,19 @@
         if (typeof def.subscription_url !== "string") {
             errors.push("subscription_url manquant (chaîne vide acceptée)");
         }
+        if (def.subscriptionRule !== undefined) {
+            const rule = def.subscriptionRule;
+            if (!isPlainObject(rule) || !["closed", "expired"].includes(rule.kind)
+                || typeof rule.reason !== "string" || !rule.reason.trim()) {
+                errors.push("subscriptionRule : type closed ou expired et motif attendus");
+            } else if (rule.kind === "expired") {
+                const end = new Date(rule.endDate + "T00:00:00Z");
+                if (typeof rule.endInclusive !== "boolean" || !Number.isFinite(end.getTime())
+                    || end.toISOString().slice(0, 10) !== rule.endDate) {
+                    errors.push("subscriptionRule : endDate (AAAA-MM-JJ) et endInclusive (booléen) attendus");
+                }
+            }
+        }
         if (typeof def.price_url !== "string" || def.price_url === "") {
             errors.push("price_url manquant (lien vers la grille tarifaire officielle)");
         }
@@ -552,6 +565,7 @@
             lastUpdate: def.lastUpdate,
             isCommunity: def.isCommunity,
             subscription_url: def.subscription_url,
+            subscriptionRule: def.subscriptionRule,
             price_url: def.price_url,
             prices: buildPrices(def),
             hc: hcParts.hc,

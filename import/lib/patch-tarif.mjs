@@ -7,6 +7,9 @@
 // Hypothèse garantie par defineTarif : les champs patchés sont des littéraux
 // purs (objets/nombres/chaînes), sans fonctions ni expressions.
 
+import { isDeepStrictEqual } from 'node:util';
+import { loadDefsFromSource } from './revalidate.mjs';
+
 const IDENT_CHAR = /[A-Za-z0-9_$]/;
 
 function isQuote(ch) {
@@ -88,6 +91,7 @@ function findKeyValue(src, objStart, objEnd, key) {
         if (src[i] === ',') { i++; continue; }
 
         // Lecture du token clé : identifiant, nombre ou chaîne.
+        const keyStart = i;
         let keyText = null;
         if (isQuote(src[i])) {
             const end = skipString(src, i);
@@ -104,7 +108,7 @@ function findKeyValue(src, objStart, objEnd, key) {
         if (src[i] !== ':') throw new Error(`":" attendu après la clé "${keyText}"`);
         i = skipWs(src, i + 1);
         const end = valueEnd(src, i, objEnd);
-        if (keyText === String(key)) return { valueStart: i, valueEnd: end };
+        if (keyText === String(key)) return { keyStart, valueStart: i, valueEnd: end };
         i = end;
     }
     return null;
@@ -126,7 +130,7 @@ function findDefineTarifBlocks(src) {
                 j = skipWs(src, j + 1);
                 if (src[j] === '{') {
                     const objEnd = findMatching(src, j);
-                    blocks.push({ objStart: j, objEnd });
+                    blocks.push({ start: i, objStart: j, objEnd });
                     i = objEnd + 1;
                     continue;
                 }
@@ -141,6 +145,21 @@ function blockName(src, block) {
     const loc = findKeyValue(src, block.objStart, block.objEnd, 'name');
     if (!loc || !isQuote(src[loc.valueStart])) return null;
     return src.slice(loc.valueStart + 1, loc.valueEnd - 1);
+}
+
+// Retire les appels déclaratifs sélectionnés en conservant le source des voisins.
+export function removeTarifBlocks(source, names) {
+    const remaining = new Set(names);
+    for (const block of findDefineTarifBlocks(source).reverse()) {
+        if (!remaining.delete(blockName(source, block))) continue;
+        let end = skipWs(source, block.objEnd + 1);
+        if (source[end++] !== ')') throw new Error('Fin de defineTarif introuvable');
+        if (source[end] === ';') end++;
+        end += /^(?:[ \t]*\r?\n){0,2}/.exec(source.slice(end))[0].length;
+        source = source.slice(0, block.start) + source.slice(end);
+    }
+    if (remaining.size) throw new Error('Bloc defineTarif introuvable : ' + [...remaining].join(', '));
+    return source;
 }
 
 // Descend le chemin (ex. ["priceOverrides","3","bleu","price"]) dans le bloc
@@ -172,6 +191,28 @@ function formatScalar(newValue, oldRaw) {
     return String(newValue);
 }
 
+// La règle facultative peut apparaître, changer ou disparaître à chaque édition.
+function patchSubscriptionRule(src, block, tarifName, change) {
+    const actual = loadDefsFromSource(src, tarifName).find(def => def.name === tarifName).subscriptionRule;
+    if (!isDeepStrictEqual(structuredClone(actual), structuredClone(change.old))) {
+        throw new Error('règle de souscription modifiée depuis la lecture du tarif');
+    }
+    const loc = locateValue(src, block, ['subscriptionRule']);
+    if (change.new === undefined) {
+        if (!loc) return src;
+        const comma = skipWs(src, loc.valueEnd);
+        if (src[comma] !== ',') return src.slice(0, loc.keyStart) + src.slice(loc.valueEnd);
+        const beforeComma = src.slice(loc.valueEnd, comma);
+        return src.slice(0, loc.keyStart) + beforeComma + src.slice(comma + 1).trimStart();
+    }
+    const fields = Object.entries(change.new).map(([key, value]) => `${key}: ${JSON.stringify(value)}`);
+    const literal = '{ ' + fields.join(', ') + ' }';
+    if (loc) return src.slice(0, loc.valueStart) + literal + src.slice(loc.valueEnd);
+    const anchor = locateValue(src, block, ['subscription_url']).keyStart;
+    const indent = /(?:\r?\n)?[ \t]*$/.exec(src.slice(0, anchor))[0];
+    return src.slice(0, anchor) + 'subscriptionRule: ' + literal + ',' + indent + src.slice(anchor);
+}
+
 // changes: [{ path: ["subscriptions","6"], old: 15.65, new: 15.79 }, ...]
 // -> { source, applied: [...], failed: [{ ...change, reason }] }
 // Aucune écriture disque ici : le fichier n'est réécrit par l'appelant que
@@ -187,6 +228,15 @@ export function patchTarifFile(source, tarifName, changes) {
         const block = findDefineTarifBlocks(src).find(b => blockName(src, b) === tarifName);
         if (!block) {
             failed.push({ ...change, reason: `bloc defineTarif "${tarifName}" introuvable` });
+            continue;
+        }
+        if (change.path.length === 1 && change.path[0] === 'subscriptionRule') {
+            try {
+                src = patchSubscriptionRule(src, block, tarifName, change);
+                applied.push(change);
+            } catch (err) {
+                failed.push({ ...change, reason: err.message });
+            }
             continue;
         }
         const loc = locateValue(src, block, change.path);

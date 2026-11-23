@@ -61,8 +61,8 @@ export function listAppScripts() {
 }
 
 // Exécute les scripts de l'application avec la VRAIE factory defineTarif
-// (validation comprise) et renvoie les abonnements construits (champ display
-// notamment) et les calendriers. Lève à la moindre erreur de définition.
+// (validation comprise) et renvoie les abonnements avec leur fichier source
+// et les calendriers. Lève à la moindre erreur de définition.
 // -> { abonnements, calendars }
 export function loadBuiltTarifs() {
     const sandbox = { abonnements: [], console };
@@ -70,7 +70,9 @@ export function loadBuiltTarifs() {
     const context = vm.createContext(sandbox);
     for (const rel of listAppScripts()) {
         const code = fs.readFileSync(path.join(REPO_ROOT, rel), 'utf8');
+        const firstOffer = sandbox.abonnements.length;
         new vm.Script(code, { filename: rel }).runInContext(context);
+        for (const offer of sandbox.abonnements.slice(firstOffer)) offer.file = rel;
     }
     const errors = sandbox.tarifDefinitionErrors ?? [];
     if (errors.length > 0) {

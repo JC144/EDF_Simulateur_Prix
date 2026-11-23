@@ -936,6 +936,14 @@ a.pill:hover {
   border-color: var(--border);
 }
 
+.tarif-badge-closed {
+  color: #734308;
+  background: #fff4dc;
+  border-color: #e8c589;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .tarif-meta {
   background: var(--surface);
   border: 1px solid var(--border);

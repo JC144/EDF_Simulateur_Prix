@@ -1710,99 +1710,6 @@
       "HC"
     ]
   },
-  "OHM Énergie - Premi’Ohm - Base": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "bleu",
-          "HC": "bleu"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "bleu"
-    ]
-  },
-  "OHM Énergie - Premi’Ohm - HP/HC": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "HP",
-          "HC": "HC"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "HP",
-      "HC"
-    ]
-  },
-  "OHM Énergie - Sérénité Fixe 1 an - Base": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "bleu",
-          "HC": "bleu"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "bleu"
-    ]
-  },
-  "OHM Énergie - Sérénité Fixe 1 an - HP/HC": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "HP",
-          "HC": "HC"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "HP",
-      "HC"
-    ]
-  },
-  "OHM Énergie - Sérénité Fixe 2 ans - Base": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "bleu",
-          "HC": "bleu"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "bleu"
-    ]
-  },
-  "OHM Énergie - Sérénité Fixe 2 ans - HP/HC": {
-    "types": {
-      "bleu": {
-        "day": null,
-        "bands": {
-          "HP": "HP",
-          "HC": "HC"
-        }
-      }
-    },
-    "dayOrder": [],
-    "bandOrder": [
-      "HP",
-      "HC"
-    ]
-  },
   "Papernest Énergie - Électricité 100 % renouvelable - Base": {
     "types": {
       "bleu": {
@@ -2293,27 +2200,32 @@
       "HC"
     ]
   },
-  "OHM Énergie - Week-end": {
+  "OHM Énergie - Prix Réservé - Base": {
     "types": {
       "bleu": {
-        "day": "bleu",
+        "day": null,
         "bands": {
-          "HP": "HP",
-          "HC": "HC"
+          "HP": "bleu",
+          "HC": "bleu"
         }
-      },
-      "weekend": {
-        "day": "weekend",
+      }
+    },
+    "dayOrder": [],
+    "bandOrder": [
+      "bleu"
+    ]
+  },
+  "OHM Énergie - Prix Réservé - HP/HC": {
+    "types": {
+      "bleu": {
+        "day": null,
         "bands": {
           "HP": "HP",
           "HC": "HC"
         }
       }
     },
-    "dayOrder": [
-      "bleu",
-      "weekend"
-    ],
+    "dayOrder": [],
     "bandOrder": [
       "HP",
       "HC"

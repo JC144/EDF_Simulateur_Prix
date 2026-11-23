@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 
 import { listTarifDefs, groupByPriceUrl } from '../lib/tarif-defs.mjs';
 import { providerFor, isPdfUrl } from '../lib/registry.mjs';
+import { fixtureSlug as slugFor } from '../lib/fixtures.mjs';
 import { reconcileOffer } from '../lib/reconcile.mjs';
 import { loadFixture } from '../lib/pdf-text.mjs';
 
@@ -28,11 +29,6 @@ if (!provider || !known.includes(provider)) {
 }
 
 const parser = await import(new URL(`../parsers/${provider}.mjs`, import.meta.url));
-
-function slugFor(url) {
-    return path.basename(new URL(url).pathname, '.pdf')
-        .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-}
 
 const byUrl = groupByPriceUrl(listTarifDefs());
 let exitCode = 0;

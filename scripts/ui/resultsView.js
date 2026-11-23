@@ -125,8 +125,11 @@ export function initResultsView({ sumPeriod, onRetry }) {
             count.textContent = "";
             progressBar.removeAttribute("value");
         } else {
-            count.textContent = total === 0 ? "0 offre analysée"
-                : `${completed} / ${total} ${total === 1 ? "offre analysée" : "offres analysées"}`;
+            const unit = state === "calculating"
+                ? (total > 1 ? "offres analysées" : "offre analysée")
+                : (total > 1 ? "offres comparées" : "offre comparée");
+            const quantity = state === "complete" ? total : `${completed} / ${total}`;
+            count.textContent = `${quantity} ${unit}`;
             if (total > 0) {
                 progressBar.max = total;
                 progressBar.value = completed;
@@ -144,6 +147,9 @@ export function initResultsView({ sumPeriod, onRetry }) {
             setStatus("loading", "Chargement des offres…");
             window.scrollTo({ top: 0, behavior: "instant" });
             ({ createResultsTable } = await import('./resultsRenderer.js'));
+        },
+        loading(loaded, total) {
+            setStatus("loading", "Chargement des offres…", loaded, total);
         },
         progress({ completed, total, simulation }) {
             setStatus("calculating", "Classement provisoire", completed, total);

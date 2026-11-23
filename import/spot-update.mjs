@@ -11,7 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
-import { REPO_ROOT } from './lib/tarif-defs.mjs';
+import { REPO_ROOT, listTarifDefs } from './lib/tarif-defs.mjs';
 import { buildDays, serializeYearFile, splitByYear } from './lib/spot-data.mjs';
 
 const SOURCE_NAME = 'epex-fr';
@@ -28,6 +28,10 @@ main().catch(error => {
 
 async function main() {
     const args = parseArgs(process.argv.slice(2));
+    if (!listTarifDefs().some(def => def.dayRule.source === SOURCE_NAME || def.marketIndex?.source === SOURCE_NAME)) {
+        console.log('Aucun tarif ne suit les prix spot ' + SOURCE_NAME + '.');
+        return;
+    }
     const existingDays = args.full ? {} : loadExistingDays();
     const existingDates = Object.keys(existingDays).sort();
 

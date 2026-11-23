@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { patchTarifFile } from '../lib/patch-tarif.mjs';
+import { loadDefsFromSource } from '../lib/revalidate.mjs';
 
 // Fichier réaliste : deux blocs defineTarif, commentaires, priceOverrides.
 const SOURCE = `// Grille EDF fictive pour les tests
@@ -43,6 +44,26 @@ test('patch simple : abonnement + lastUpdate dans le bon bloc', () => {
     assert.match(source, /name: "Test - Base", \/\/ offre de base\n    offer_type: "TRV",\n    lastUpdate: "2026-07-18"/);
     // Le second bloc est intact (même lastUpdate d'origine).
     assert.match(source, /name: "Test - HC",\n    offer_type: "TRV",\n    lastUpdate: "2026-02-01"/);
+});
+
+test('subscriptionRule : ajout, nouvelle échéance et réouverture dans un fichier partagé', () => {
+    const closed = { kind: 'closed', reason: 'Option « historique » réservée aux "anciens" clients' };
+    const dated = { kind: 'expired', reason: 'Fin de la période', endDate: '2026-12-01', endInclusive: false };
+    const change = (old, next) => [{ path: ['subscriptionRule'], old, new: next }];
+    const name = 'Test - HC';
+    for (const source of [SOURCE, SOURCE.replaceAll('\n', '\r\n')]) {
+        const added = patchTarifFile(source, name, change(undefined, closed));
+        assert.deepEqual(added.failed, []);
+        const updated = patchTarifFile(added.source, name, change(closed, dated));
+        assert.deepEqual(updated.failed, []);
+        const [base, hc] = loadDefsFromSource(updated.source, 'tarifs.js');
+        assert.equal(base.subscriptionRule, undefined);
+        assert.deepEqual(structuredClone(hc.subscriptionRule), dated);
+        assert.equal(patchTarifFile(updated.source, name, change(closed, undefined)).failed.length, 1);
+        const reopened = patchTarifFile(updated.source, name, change(dated, undefined));
+        assert.deepEqual(reopened.failed, []);
+        assert.equal(reopened.source, source);
+    }
 });
 
 test('patch HP/HC dans le second bloc uniquement', () => {

@@ -1,6 +1,7 @@
 import { buildLines } from '../lib/pdf-text.mjs';
 import { findApplicableDate } from '../lib/dates.mjs';
 import { extractConfiguredOffers, findKvaTables } from '../lib/table.mjs';
+import { uniqueGridUrl } from '../lib/catalog-link.mjs';
 
 export const provider = 'enercoop';
 
@@ -16,10 +17,11 @@ export async function discoverUrl() {
 export function residentialAttachment({ article_attachments }) {
     const matches = article_attachments.filter(a => a.content_type === 'application/pdf'
         && /annexes? tarifaires?.*particuliers?/i.test(a.file_name));
-    if (matches.length !== 1 || !Number.isSafeInteger(matches[0].id)) {
+    if (matches.length > 1 || matches.some(a => !Number.isSafeInteger(a.id))) {
         throw new Error('Annexe tarifaire particuliers Enercoop absente ou ambiguë');
     }
-    return `https://www.faq.enercoop.fr/hc/fr/article_attachments/${matches[0].id}`;
+    return uniqueGridUrl(new Set(matches.map(a => `https://www.faq.enercoop.fr/hc/fr/article_attachments/${a.id}`)),
+        'https://www.faq.enercoop.fr/hc/fr/articles/360024967152-Annexes-tarifaires');
 }
 
 const seasonalPrices = [
@@ -38,15 +40,37 @@ const configs = [
             [...seasonalPrices[3], 'etePointe.HC'], ['hiverPointe.HP', 'etePointe.HP']] },
 ];
 
+function gridHeader(doc, table) {
+    const lines = buildLines(doc.pages[table.page].items, { yTolerance: 4 });
+    const header = lines.filter(l => l.y > table.yTop).map(l => l.text).join('\n');
+    // L’option Jours de pointe reprend le titre de l’offre 2 saisons.
+    return { lines, header, config: configs.findLast(c => c.title.test(header)), closed: /offre fermée à la souscription/i.test(header) };
+}
+
+export function subscriptionCheck() {
+    return doc => {
+        const closures = new Set();
+        const open = new Set();
+        for (const table of findKvaTables(doc)) {
+            const { closed, config } = gridHeader(doc, table);
+            if (!config) continue;
+            if (closed) closures.add(config.offer);
+            else open.add(config.offer);
+        }
+        return [{ names: [...closures].filter(name => !open.has(name)), kind: 'closed', reason: 'Offre indiquée comme fermée à la souscription' }];
+    };
+}
+
 export function parse(doc) {
     const offers = {};
+    const closedOffers = new Set();
     let gridDate = null;
     for (const table of findKvaTables(doc)) {
-        const lines = buildLines(doc.pages[table.page].items, { yTolerance: 4 });
-        const header = lines.filter(l => l.y > table.yTop).map(l => l.text).join('\n');
-        if (/offre fermée à la souscription/i.test(header)) continue;
-        // L'option reprend le titre « 2 saisons » au-dessus de son propre titre.
-        const config = configs.findLast(c => c.title.test(header));
+        const { lines, header, config, closed } = gridHeader(doc, table);
+        if (closed) {
+            if (config) closedOffers.add(config.offer);
+            continue;
+        }
         if (!config || offers[config.offer]) throw new Error(`Grille Enercoop inconnue ou en double, page ${table.page + 1}`);
         const date = findApplicableDate(lines);
         if (!date || (gridDate && date !== gridDate)) throw new Error('Date de grille Enercoop absente ou incohérente');
@@ -73,6 +97,6 @@ export function parse(doc) {
             prices: config.prices.map((paths, i) => [3 + i * 2, paths]),
         }], 'Enercoop'));
     }
-    if (Object.keys(offers).length !== configs.length) throw new Error('Grilles Enercoop ouvertes incomplètes');
+    if (configs.some(c => !offers[c.offer] && !closedOffers.has(c.offer))) throw new Error('Grilles Enercoop ouvertes incomplètes');
     return { gridDate, offers };
 }

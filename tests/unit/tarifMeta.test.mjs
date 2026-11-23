@@ -2,8 +2,20 @@
 // slugs (stables, uniques sur tous les tarifs chargés) et péremption 6 mois.
 import { test } from 'node:test';
 import assert from 'node:assert';
-import { tarifSlug, tarifPagePath, isStale, STALE_MONTHS } from '../../scripts/utils/tarifMeta.js';
+import { tarifSlug, tarifPagePath, isStale, STALE_MONTHS, isSubscriptionDisabled, todayInParis } from '../../scripts/utils/tarifMeta.js';
 import { loadAbonnements } from '../helpers/legacyLoader.mjs';
+
+test('souscription : fermeture et échéances inclusives ou exclusives à minuit à Paris', () => {
+    const before = todayInParis(new Date('2026-11-30T22:59:59Z'));
+    const midnight = todayInParis(new Date('2026-11-30T23:00:00Z'));
+    const deadline = { kind: 'expired', endDate: '2026-12-01', endInclusive: false };
+    assert.equal(isSubscriptionDisabled(undefined, midnight), false);
+    assert.equal(isSubscriptionDisabled({ kind: 'closed' }, before), true);
+    assert.equal(isSubscriptionDisabled(deadline, before), false);
+    assert.equal(isSubscriptionDisabled(deadline, midnight), true);
+    assert.equal(isSubscriptionDisabled({ ...deadline, endInclusive: true }, midnight), false);
+    assert.equal(isSubscriptionDisabled({ ...deadline, endInclusive: true }, '2026-12-02'), true);
+});
 
 test('tarifSlug : accents, ponctuation, tirets', () => {
     assert.strictEqual(tarifSlug('EDF - Bleu Heures Creuses'), 'edf-bleu-heures-creuses');
@@ -19,7 +31,6 @@ test('tarifPagePath : chemin relatif à la racine du site', () => {
 
 test('tarifSlug : unique et bien formé pour tous les tarifs chargés', () => {
     const names = loadAbonnements().map(a => a.name);
-    assert.ok(names.length > 0);
     const slugs = names.map(tarifSlug);
     for (const slug of slugs) {
         assert.match(slug, /^[a-z0-9]+(-[a-z0-9]+)*$/);

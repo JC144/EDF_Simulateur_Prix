@@ -61,6 +61,7 @@ function renderGroup(title, defs, provider, note) {
 }
 
 function generate(defs) {
+    if (!defs.length) return `${INDENT}<p class="tarifs-intro">Aucune offre suivie actuellement.</p>`;
     const official = defs.filter(d => d.isCommunity !== true);
     const community = defs.filter(d => d.isCommunity === true);
 
@@ -101,7 +102,7 @@ function generate(defs) {
 
 // Les réglages utilisent uniquement ces métadonnées. Conserver l'ordre du
 // manifeste, même si plusieurs fichiers sont chargés lors d'un second calcul.
-function generateCatalogue(defs) {
+export function generateCatalogue(defs) {
     const entries = listAppScripts().flatMap(file => {
         const offers = defs.filter(def => def.file === file);
         const usesSpot = offers.some(def => def.dayRule.type === 'spot' || def.marketIndex);
@@ -115,11 +116,15 @@ function generateCatalogue(defs) {
         + entries.map(entry => '    ' + JSON.stringify(entry)).join(',\n') + '\n];\n';
 }
 
+export function renderIndex(html, defs) {
+    return replaceBetweenMarkers(html, BEGIN, END, `\n${generate(defs)}\n${INDENT}`, 'index.html');
+}
+
 // -> { changes: [{ path, status }] }
 export function run({ check = false, defs = listTarifDefs() } = {}) {
     const indexPath = path.join(REPO_ROOT, 'index.html');
     const html = fs.readFileSync(indexPath, 'utf8');
-    const next = replaceBetweenMarkers(html, BEGIN, END, `\n${generate(defs)}\n${INDENT}`, 'index.html');
+    const next = renderIndex(html, defs);
     return { changes: [
         syncFile(indexPath, next, { check }),
         syncFile(path.join(REPO_ROOT, 'scripts/tarifs-catalogue.js'), generateCatalogue(defs), { check }),

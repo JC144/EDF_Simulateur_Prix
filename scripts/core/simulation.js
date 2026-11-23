@@ -76,6 +76,7 @@ export function* simulateOffers(settings, data, offers) {
                 title: abo.name,
                 lastUpdate: abo.lastUpdate,
                 subscription_url: abo.subscription_url,
+                subscriptionRule: abo.subscriptionRule,
                 offer_type: abo.offer_type,
                 price_url: abo.price_url,
                 display: abo.display

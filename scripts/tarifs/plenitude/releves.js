@@ -3,6 +3,7 @@ defineTarif({
     offer_type: "Marché",
     lastUpdate: "2026-11-03",
     isCommunity: true,
+    subscriptionRule: { kind: "expired", reason: "Fin de souscription à cette grille le 01/12/2026 (non inclus)", endDate: "2026-12-01", endInclusive: false },
     subscription_url: "https://www.eniplenitude.fr/offres-electricite",
     price_url: "https://www.eniplenitude.fr/content/dam/plenitude-fr/documents/pages-offres/offre-plenifix-1-an/offre-plenifix_1an_elec.pdf",
     subscriptions: {
@@ -44,6 +45,7 @@ defineTarif({
     offer_type: "Marché",
     lastUpdate: "2026-11-03",
     isCommunity: true,
+    subscriptionRule: { kind: "expired", reason: "Fin de souscription à cette grille le 01/12/2026 (non inclus)", endDate: "2026-12-01", endInclusive: false },
     subscription_url: "https://www.eniplenitude.fr/offres-electricite",
     price_url: "https://www.eniplenitude.fr/content/dam/plenitude-fr/documents/pages-offres/offre-plenifix-1-an/offre-plenifix_1an_elec.pdf",
     subscriptions: {
@@ -76,6 +78,7 @@ defineTarif({
     offer_type: "Marché",
     lastUpdate: "2026-10-01",
     isCommunity: true,
+    subscriptionRule: { kind: "expired", reason: "Fin de souscription à cette grille le 17/11/2026 (non inclus)", endDate: "2026-11-17", endInclusive: false },
     subscription_url: "https://www.eniplenitude.fr/offres-electricite",
     price_url: "https://www.eniplenitude.fr/content/dam/plenitude-fr/documents/pages-offres/offre-pleniweb/offre-pleniweb_1an_elec.pdf",
     subscriptions: {
@@ -118,6 +121,7 @@ defineTarif({
     offer_type: "Marché",
     lastUpdate: "2026-10-01",
     isCommunity: true,
+    subscriptionRule: { kind: "expired", reason: "Fin de souscription à cette grille le 17/11/2026 (non inclus)", endDate: "2026-11-17", endInclusive: false },
     subscription_url: "https://www.eniplenitude.fr/offres-electricite",
     price_url: "https://www.eniplenitude.fr/content/dam/plenitude-fr/documents/pages-offres/offre-pleniweb/offre-pleniweb_1an_elec.pdf",
     subscriptions: {

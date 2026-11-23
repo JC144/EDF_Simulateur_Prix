@@ -4,6 +4,7 @@ import { buildLines, pageToText } from '../lib/pdf-text.mjs';
 import { parseFrNumber } from '../lib/fr-numbers.mjs';
 import { buildOffer } from '../lib/table.mjs';
 import { fetchGrille, findInCache } from '../lib/download.mjs';
+import { uniqueGridUrl } from '../lib/catalog-link.mjs';
 
 // Les tableaux Enedis sont des images dans ce PDF. Une nouvelle édition
 // déclenche une revue avant de réutiliser les coefficients vérifiés ci-dessous.
@@ -55,9 +56,9 @@ export function parse(doc) {
 }
 
 export async function discoverUrl() {
-    const { buffer } = await fetchGrille('https://www.frankenergie.fr/fr/tarification-dynamique');
+    const page = 'https://www.frankenergie.fr/fr/tarification-dynamique';
+    const { buffer } = await fetchGrille(page);
     const links = [...buffer.toString('utf8').matchAll(/href="(https:\/\/cdn\.sanity\.io\/files\/8navd656\/production-fr\/[a-f0-9]+\.pdf)">\s*<p[^>]*>Tarifs<\/p>/gi)];
     const targets = new Set(links.map(match => match[1]));
-    if (targets.size !== 1) throw new Error('Lien Tarifs Frank Énergie absent ou ambigu');
-    return [...targets][0];
+    return uniqueGridUrl(targets, page);
 }

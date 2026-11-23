@@ -4,6 +4,7 @@ defineTarif({
     lastUpdate: "2026-08-03",
     isCommunity: true,
     eligibility: "Grille réservée aux souscriptions du 3 au 24 août 2026 inclus.",
+    subscriptionRule: { kind: "expired", reason: "Fin de souscription à cette grille le 25/08/2026 (non inclus)", endDate: "2026-08-25", endInclusive: false },
     subscription_url: "https://www.eniplenitude.fr/offres-electricite",
     price_url: "https://www.eniplenitude.fr/content/dam/plenitude-fr/documents/pages-offres/offre-plenifix-2-ans/offre-plenifix_2ans_elec.pdf",
     subscriptions: {
@@ -46,6 +47,7 @@ defineTarif({
     lastUpdate: "2026-08-03",
     isCommunity: true,
     eligibility: "Grille réservée aux souscriptions du 3 au 24 août 2026 inclus.",
+    subscriptionRule: { kind: "expired", reason: "Fin de souscription à cette grille le 25/08/2026 (non inclus)", endDate: "2026-08-25", endInclusive: false },
     subscription_url: "https://www.eniplenitude.fr/offres-electricite",
     price_url: "https://www.eniplenitude.fr/content/dam/plenitude-fr/documents/pages-offres/offre-plenifix-2-ans/offre-plenifix_2ans_elec.pdf",
     subscriptions: {

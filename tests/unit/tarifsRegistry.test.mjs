@@ -46,15 +46,22 @@ test('chargement EDF puis communautaire : reprise sur erreur et partage des scri
     await assert.rejects(loadTarifs(settings), /define-tarif/);
     assert.ok(requests.every(url => !url.includes('/calendars/')));
     offline = false;
-    const [edf, concurrent] = await Promise.all([loadTarifs(settings), loadTarifs(settings)]);
+    const progress = [];
+    const [edf, concurrent] = await Promise.all([
+        loadTarifs(settings, (loaded, total) => progress.push([loaded, total])),
+        loadTarifs(settings)
+    ]);
     assert.deepEqual(concurrent, edf);
-    assert.ok(edf.length > 0 && edf.every(abo => abo.name.startsWith('EDF - ')));
+    assert.deepEqual(progress, Array.from({ length: edf.length + 1 }, (_, i) => [i, edf.length]));
+    const expectedEdf = getOfferChoices(9).filter(o => o.name.startsWith('EDF - ') && !o.eligibility);
+    assert.deepEqual(edf.map(abo => abo.name), expectedEdf.map(o => o.name));
     assert.ok(!requests.some(url => url.includes('/spot/') || url.includes('/tarifs/frank/')));
 
     const previousCount = requests.length;
-    const currentOffer = getOfferChoices(9).find(o => o.eligibility).name;
+    const currentOffer = getOfferChoices(9).find(o => o.eligibility)?.name;
     const community = await loadTarifs({ ...settings, includeCommunity: true, currentOffer });
-    assert.ok(requests.some(url => url.includes('/spot/')));
+    assert.equal(requests.some(url => url.includes('/spot/')),
+        getOfferChoices(9).some(o => o.usesSpot && (!o.eligibility || o.name === currentOffer)));
     assert.ok(requests.slice(previousCount).every(url => !requests.slice(0, previousCount).includes(url)));
     const expected = loadAbonnements().filter(abo => abo.prices.some(p => p.puissance === 9)
         && (!abo.eligibility || abo.name === currentOffer));

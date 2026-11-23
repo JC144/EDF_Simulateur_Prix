@@ -1,5 +1,6 @@
 import { buildOffer } from '../lib/table.mjs';
 import { fetchGrille } from '../lib/download.mjs';
+import { uniqueGridUrl } from '../lib/catalog-link.mjs';
 
 // La grille officielle est composée d’images. Les montants TTC ci-dessous
 // proviennent des pages 3–4 du catalogue d’octobre 2026, vérifiées sur le PDF.
@@ -12,11 +13,11 @@ const subscriptions = [
 ];
 
 export async function discoverUrl() {
-    const { buffer } = await fetchGrille('https://www.mylight150.com/pages-legales/conditions-generales');
+    const page = 'https://www.mylight150.com/pages-legales/conditions-generales';
+    const { buffer } = await fetchGrille(page);
     const matches = [...buffer.toString('utf8').matchAll(/href="(https:\/\/cdn\.prod\.website-files\.com\/65f08fc6f2c52e2310a49dcb\/[^"]+\.pdf)"/gi)];
     const candidates = new Set(matches.map(m => m[1]).filter(url => /GRILLE[\s_-]*TARIFAIRE/i.test(decodeURIComponent(url))));
-    if (candidates.size !== 1) throw new Error('Catalogue tarifaire mylight150 absent ou ambigu');
-    return [...candidates][0];
+    return uniqueGridUrl(candidates, page);
 }
 
 export function parse(doc) {
